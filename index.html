@@ -508,18 +508,8 @@
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- Main JavaScript Files -->
-    <script type="module" src="/js/config.js"></script>
-    <script type="module" src="/js/utils.js"></script>
-    <script type="module" src="/js/navigation.js"></script>
-    <script type="module" src="/js/hero.js"></script>
-    <script type="module" src="/js/animations.js"></script>
-    <script type="module" src="/js/counters.js"></script>
-    <script type="module" src="/js/gallery.js"></script>
-    <script type="module" src="/js/forms.js"></script>
-    <script type="module" src="/js/floating-elements.js"></script>
-    <script type="module" src="/js/performance.js"></script>
-    <script type="module" src="/js/main.js"></script>
+    <!-- Main JavaScript File -->
+    <script src="js/main.js"></script>
 
     <!-- Analytics -->
     <!-- Google Analytics 4 -->
@@ -533,21 +523,6 @@
             page_location: window.location.href,
             anonymize_ip: true
         });
-    </script>
-
-    <!-- Service Worker Registration (for future PWA) -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(function(registrationError) {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
     </script>
 </body>
 </html>
