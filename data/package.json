@@ -1,0 +1,175 @@
+{
+  "name": "magdal-resort-website",
+  "version": "1.0.0",
+  "description": "ריזורט משפחתי יוקרתי במושב מגדל - אתר תדמית מקצועי",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --host=localhost --open=/",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "cleancss -o dist/css/styles.min.css css/*.css",
+    "minify-js": "uglifyjs js/*.js -o dist/js/main.min.js",
+    "optimize-images": "imagemin assets/images/**/* --out-dir=dist/assets/images/",
+    "deploy": "npm run build && netlify deploy --prod",
+    "test": "html-validate *.html",
+    "lint:css": "stylelint css/*.css",
+    "lint:js": "eslint js/*.js",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "serve": "http-server -p 8080 -c-1",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:css": "chokidar \"css/**/*.css\" -c \"npm run build:css\"",
+    "watch:js": "chokidar \"js/**/*.js\" -c \"npm run build:js\"",
+    "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=reports/lighthouse.html",
+    "analyze": "npm run lighthouse && echo 'Performance report generated in reports/lighthouse.html'"
+  },
+  "keywords": [
+    "ריזורט",
+    "בצפון",
+    "שבתות חתן",
+    "אירוח משפחתי",
+    "בריכה פרטית",
+    "מושב מגדל",
+    "חופשות משפחתיות",
+    "אירועים",
+    "נופש",
+    "גליל"
+  ],
+  "author": {
+    "name": "מגדל של חיים",
+    "email": "info@magdalresort.co.il",
+    "url": "https://magdalresort.co.il"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magdalresort/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/magdalresort/website/issues",
+    "email": "info@magdalresort.co.il"
+  },
+  "homepage": "https://magdalresort.co.il",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "clean-css-cli": "^5.6.2",
+    "uglify-js": "^3.17.4",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "html-validate": "^8.7.4",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "http-server": "^14.1.1",
+    "npm-run-all": "^4.1.5",
+    "chokidar-cli": "^3.0.0",
+    "lighthouse": "^11.4.0",
+    "@netlify/cli": "^17.10.1"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "swiper": "^11.0.5",
+    "lightbox2": "^2.11.4",
+    "vanilla-lazyload": "^17.8.5"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "htmlWhitespaceSensitivity": "css"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "declaration-empty-line-before": null,
+      "rule-empty-line-before": null,
+      "comment-empty-line-before": null,
+      "selector-class-pattern": null,
+      "custom-property-pattern": null
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "error",
+      "no-unused-vars": "warn"
+    }
+  },
+  "build": {
+    "source": ".",
+    "destination": "dist",
+    "minify": true,
+    "sourcemaps": false
+  },
+  "deployment": {
+    "platform": "netlify",
+    "domain": "magdalresort.co.il",
+    "redirects": true,
+    "headers": true,
+    "functions": false
+  },
+  "features": {
+    "pwa": false,
+    "serviceWorker": false,
+    "webManifest": false,
+    "offlineSupport": false,
+    "pushNotifications": false
+  },
+  "analytics": {
+    "googleAnalytics": "G-XXXXXXXXXX",
+    "facebookPixel": "XXXXXXXXXX",
+    "hotjar": "XXXXXXXXXX"
+  },
+  "seo": {
+    "sitemap": true,
+    "robots": true,
+    "schema": true,
+    "openGraph": true,
+    "twitterCard": true
+  },
+  "performance": {
+    "lazyLoading": true,
+    "imageOptimization": true,
+    "caching": true,
+    "compression": true,
+    "criticalCSS": false
+  },
+  "security": {
+    "csp": true,
+    "xss": true,
+    "ssl": true,
+    "headers": true
+  },
+  "a11y": {
+    "wcag": "AA",
+    "screenReader": true,
+    "keyboard": true,
+    "contrast": true,
+    "alt": true
+  }
+}
