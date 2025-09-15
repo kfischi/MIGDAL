@@ -1,0 +1,364 @@
+# Netlify Configuration for Magdal Resort Website
+[build]
+  # Build command (if using build process)
+  command = "npm run build"
+  # Directory to deploy
+  publish = "."
+  # Functions directory (for future serverless functions)
+  functions = "netlify/functions"
+
+# Build settings
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# Redirect rules
+[[redirects]]
+  # Hebrew URLs
+  from = "/אודות"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/חבילות"
+  to = "/packages.html"
+  status = 301
+
+[[redirects]]
+  from = "/מתקנים"
+  to = "/facilities.html"
+  status = 301
+
+[[redirects]]
+  from = "/גלריה"
+  to = "/gallery.html"
+  status = 301
+
+[[redirects]]
+  from = "/יצירת-קשר"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/הזמנה"
+  to = "/booking.html"
+  status = 301
+
+# English URLs (SEO)
+[[redirects]]
+  from = "/about-us"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/packages"
+  to = "/packages.html"
+  status = 301
+
+[[redirects]]
+  from = "/facilities"
+  to = "/facilities.html"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/gallery.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/book-now"
+  to = "/booking.html"
+  status = 301
+
+# Social redirects
+[[redirects]]
+  from = "/whatsapp"
+  to = "https://wa.me/972501234567"
+  status = 302
+
+[[redirects]]
+  from = "/call"
+  to = "tel:+972501234567"
+  status = 302
+
+[[redirects]]
+  from = "/facebook"
+  to = "https://facebook.com/magdalresort"
+  status = 302
+
+[[redirects]]
+  from = "/instagram"
+  to = "https://instagram.com/magdalresort"
+  status = 302
+
+# Legacy redirects (if migrating from old site)
+[[redirects]]
+  from = "/old-booking"
+  to = "/booking.html"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# API redirects (for future API endpoints)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA fallback (if needed for future SPA pages)
+[[redirects]]
+  from = "/app/*"
+  to = "/app/index.html"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # Content Security Policy
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdnjs.cloudflare.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdnjs.cloudflare.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      media-src 'self' https: blob:;
+      connect-src 'self' https://www.google-analytics.com https://api.magdalresort.co.il;
+      frame-src 'self' https://www.youtube.com https://player.vimeo.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self' https://wa.me;
+    """
+
+# Headers for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    # Cache static assets for 1 year
+    Cache-Control = "public, max-age=31536000, immutable"
+    # CORS for fonts and assets
+    Access-Control-Allow-Origin = "*"
+
+# Headers for images
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    # Image optimization hints
+    Accept-CH = "DPR, Viewport-Width, Width"
+
+# Headers for videos
+[[headers]]
+  for = "/assets/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    # Enable range requests for video streaming
+    Accept-Ranges = "bytes"
+
+# Headers for CSS and JS
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Headers for fonts
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "font/woff2"
+
+[[headers]]
+  for = "*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "font/woff"
+
+# Headers for JSON data files
+[[headers]]
+  for = "/data/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/json; charset=utf-8"
+
+# Headers for HTML files
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "text/html; charset=utf-8"
+
+# Headers for XML files (sitemap, robots)
+[[headers]]
+  for = "*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/xml; charset=utf-8"
+
+# Headers for manifest and service worker
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/manifest+json"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "application/javascript"
+
+# Form processing (Netlify Forms)
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  [plugins.inputs]
+    baseUrl = "https://magdalresort.co.il"
+    changeFreq = "weekly"
+    priority = 0.8
+    trailingSlash = false
+
+[[plugins]]
+  package = "netlify-plugin-minify-html"
+  [plugins.inputs]
+    contexts = ["production"]
+
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+  [plugins.inputs]
+    quality = 80
+    progressive = true
+    webp = true
+
+# Edge functions (for future advanced features)
+[[edge_functions]]
+  function = "geo-redirect"
+  path = "/api/location/*"
+
+# Deploy contexts
+[context.production]
+  command = "npm run build:production"
+  [context.production.environment]
+    NODE_ENV = "production"
+    GATSBY_ENV = "production"
+
+[context.deploy-preview]
+  command = "npm run build:preview"
+  [context.deploy-preview.environment]
+    NODE_ENV = "development"
+
+[context.branch-deploy]
+  command = "npm run build:branch"
+  [context.branch-deploy.environment]
+    NODE_ENV = "development"
+
+# Split testing (A/B testing)
+[context.production.split_testing]
+  path = "/*"
+  branches = [
+    {group = "a", branch = "main", weight = 90},
+    {group = "b", branch = "variant-b", weight = 10}
+  ]
+
+# Functions configuration (for future serverless functions)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Large Media configuration (for large images/videos)
+[large_media]
+  lfs = true
+
+# Analytics and monitoring
+[template.environment]
+  GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX"
+  FACEBOOK_PIXEL_ID = "XXXXXXXXXX"
+  HOTJAR_ID = "XXXXXXXXXX"
+
+# Custom domain settings
+[[custom_domains]]
+  domain = "magdalresort.co.il"
+  branch = "main"
+  
+[[custom_domains]]
+  domain = "www.magdalresort.co.il"
+  branch = "main"
+
+# Prerendering (for better SEO)
+[prerender]
+  enabled = true
+  paths = [
+    "/",
+    "/about.html",
+    "/facilities.html", 
+    "/gallery.html",
+    "/contact.html",
+    "/booking.html"
+  ]
+
+# Asset optimization
+[asset_optimization]
+  bundle = true
+  minify = true
+  compress = true
+  
+  [asset_optimization.css]
+    minify = true
+    bundle = true
+    
+  [asset_optimization.js]
+    minify = true
+    bundle = false # Keep modular for better caching
+    
+  [asset_optimization.images]
+    compress = true
+    quality = 80
+    
+  [asset_optimization.html]
+    minify = true
+    pretty_urls = true
