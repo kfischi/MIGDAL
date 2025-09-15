@@ -279,3 +279,356 @@ export const FORM_CONFIG = {
     
     fields: [
       {
+        id: 'name',
+        type: 'text',
+        label: 'שם מלא',
+        required: true,
+        placeholder: 'הכנס שם מלא',
+        validation: {
+          minLength: 2,
+          pattern: /^[א-ת\s]+$/,
+          message: 'נא להכניס שם תקין בעברית'
+        }
+      },
+      {
+        id: 'phone',
+        type: 'tel',
+        label: 'טלפון',
+        required: true,
+        placeholder: '050-123-4567',
+        validation: {
+          pattern: /^0\d{1,2}-?\d{7}$/,
+          message: 'נא להכניס מספר טלפון תקין'
+        }
+      },
+      {
+        id: 'checkin',
+        type: 'date',
+        label: 'תאריך הגעה',
+        required: true,
+        validation: {
+          min: new Date().toISOString().split('T')[0],
+          message: 'תאריך חייב להיות בעתיד'
+        }
+      },
+      {
+        id: 'guests',
+        type: 'number',
+        label: 'מספר אורחים',
+        required: true,
+        min: 1,
+        max: 50,
+        placeholder: 'עד 50 אורחים',
+        validation: {
+          min: 1,
+          max: 50,
+          message: 'מספר אורחים חייב להיות בין 1 ל-50'
+        }
+      },
+      {
+        id: 'message',
+        type: 'textarea',
+        label: 'הודעה נוספת',
+        required: false,
+        placeholder: 'ספרו לנו על האירוע שלכם...',
+        rows: 3
+      }
+    ]
+  }
+};
+
+// Animation Configuration
+export const ANIMATION_CONFIG = {
+  aos: {
+    duration: 1000,
+    once: true,
+    offset: 100,
+    easing: 'ease-out-cubic'
+  },
+  counters: {
+    duration: 2000,
+    easing: 'ease-out',
+    increment: (target) => target / 100
+  },
+  scroll: {
+    behavior: 'smooth',
+    block: 'start'
+  },
+  typing: {
+    speed: 50,
+    deleteSpeed: 30,
+    delay: 2000
+  }
+};
+
+// Performance Configuration
+export const PERFORMANCE_CONFIG = {
+  lazyLoading: {
+    enabled: true,
+    rootMargin: '50px',
+    threshold: 0.1
+  },
+  imageOptimization: {
+    formats: ['webp', 'jpg'],
+    quality: 80,
+    placeholder: 'blur'
+  },
+  caching: {
+    enabled: true,
+    version: '1.0.0',
+    assets: [
+      '/assets/css/styles.css',
+      '/assets/js/main.js',
+      '/assets/images/logos/logo-main.png'
+    ]
+  }
+};
+
+// SEO Configuration
+export const SEO_CONFIG = {
+  defaultTitle: 'מגדל של חיים - ריזורט משפחתי יוקרתי בצפון',
+  titleTemplate: '%s | מגדל של חיים',
+  defaultDescription: 'ריזורט משפחתי יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן ואירועים משפחתיים',
+  keywords: [
+    'ריזורט בצפון',
+    'שבתות חתן',
+    'אירוח משפחתי',
+    'בריכה פרטית',
+    'מושב מגדל',
+    'חופשות משפחתיות',
+    'אירועים'
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'he_IL',
+    url: 'https://magdalresort.co.il',
+    siteName: 'מגדל של חיים',
+    images: [
+      {
+        url: '/assets/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'מגדל של חיים - ריזורט משפחתי בצפון'
+      }
+    ]
+  },
+  twitter: {
+    cardType: 'summary_large_image',
+    site: '@magdalresort',
+    creator: '@magdalresort'
+  }
+};
+
+// Analytics Configuration
+export const ANALYTICS_CONFIG = {
+  googleAnalytics: {
+    trackingId: 'G-XXXXXXXXXX',
+    enabled: true,
+    anonymizeIp: true
+  },
+  facebookPixel: {
+    pixelId: 'XXXXXXXXXX',
+    enabled: true
+  },
+  hotjar: {
+    hjid: 'XXXXXXXXXX',
+    enabled: false
+  },
+  events: {
+    pageView: 'page_view',
+    contact: 'contact_submit',
+    booking: 'booking_request',
+    gallery: 'gallery_view',
+    phone: 'phone_click',
+    whatsapp: 'whatsapp_click'
+  }
+};
+
+// Breakpoints for responsive design
+export const BREAKPOINTS = {
+  xs: 480,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536
+};
+
+// Theme Configuration
+export const THEME_CONFIG = {
+  colors: {
+    primary: {
+      50: '#eff6ff',
+      100: '#dbeafe',
+      500: '#3b82f6',
+      600: '#2563eb',
+      700: '#1d4ed8',
+      800: '#1e40af',
+      900: '#1e3a8a'
+    },
+    gold: {
+      50: '#fffbeb',
+      100: '#fef3c7',
+      500: '#f59e0b',
+      600: '#d97706',
+      700: '#b45309',
+      800: '#92400e',
+      900: '#78350f'
+    }
+  },
+  fonts: {
+    primary: 'Assistant, sans-serif',
+    secondary: 'Heebo, sans-serif',
+    mono: 'SF Mono, Monaco, monospace'
+  },
+  spacing: {
+    section: '80px',
+    container: '20px'
+  }
+};
+
+// API Endpoints (for future use)
+export const API_CONFIG = {
+  baseUrl: 'https://api.magdalresort.co.il',
+  endpoints: {
+    booking: '/api/booking',
+    availability: '/api/availability',
+    contact: '/api/contact',
+    newsletter: '/api/newsletter',
+    testimonials: '/api/testimonials'
+  },
+  timeout: 10000,
+  retries: 3
+};
+
+// Error Messages
+export const ERROR_MESSAGES = {
+  network: 'שגיאת רשת. אנא נסה שוב.',
+  validation: 'אנא מלא את כל השדות הנדרשים.',
+  booking: 'שגיאה בשליחת הבקשה. אנא נסה שוב או צור קשר טלפונית.',
+  general: 'אירעה שגיאה. אנא נסה שוב או צור איתנו קשר.',
+  phone: 'מספר טלפון לא תקין.',
+  email: 'כתובת אימייל לא תקינה.',
+  date: 'תאריך לא תקין.',
+  required: 'שדה נדרש.'
+};
+
+// Success Messages
+export const SUCCESS_MESSAGES = {
+  booking: 'הבקשה נשלחה בהצלחה! אנו ניצור איתכם קשר בקרוב.',
+  contact: 'ההודעה נשלחה בהצלחה! תודה על פנייתכם.',
+  newsletter: 'נרשמתם בהצלחה לניוזלטר!',
+  general: 'הפעולה בוצעה בהצלחה!'
+};
+
+// Feature Flags
+export const FEATURE_FLAGS = {
+  enableBookingForm: true,
+  enableNewsletter: false,
+  enableChatBot: false,
+  enablePWA: false,
+  enableDarkMode: false,
+  enableMultiLanguage: false,
+  enablePaymentGateway: false,
+  enableReviews: true,
+  enableBlog: false,
+  enableVirtualTour: false
+};
+
+// Pricing Configuration (for future pricing page)
+export const PRICING_CONFIG = {
+  currency: '₪',
+  seasons: {
+    high: {
+      name: 'עונת שיא',
+      months: [7, 8, 9], // July, August, September
+      multiplier: 1.5
+    },
+    regular: {
+      name: 'עונה רגילה',
+      months: [4, 5, 6, 10, 11],
+      multiplier: 1.0
+    },
+    low: {
+      name: 'עונה שקטה',
+      months: [12, 1, 2, 3],
+      multiplier: 0.8
+    }
+  },
+  packages: [
+    {
+      id: 'weekend',
+      name: 'סוף שבוע',
+      description: 'חבילה לסוף שבוע מושלם',
+      basePrice: 1200,
+      duration: '2 לילות',
+      features: ['בריכה פרטית', 'מטבח מאובזר', 'גינה', 'חניה']
+    },
+    {
+      id: 'week',
+      name: 'שבוע מלא',
+      description: 'שבוע של חופשה מושלמת',
+      basePrice: 4000,
+      duration: '7 לילות',
+      features: ['הכל כלול', 'הנחה 15%', 'ניקיון יומי', 'תמיכה 24/7']
+    }
+  ]
+};
+
+// Loading States
+export const LOADING_STATES = {
+  idle: 'idle',
+  loading: 'loading',
+  success: 'success',
+  error: 'error'
+};
+
+// Local Storage Keys
+export const STORAGE_KEYS = {
+  theme: 'magdal_theme',
+  language: 'magdal_language',
+  userPreferences: 'magdal_preferences',
+  bookingDraft: 'magdal_booking_draft',
+  visitCount: 'magdal_visit_count',
+  lastVisit: 'magdal_last_visit'
+};
+
+// Regular Expressions for Validation
+export const REGEX_PATTERNS = {
+  phone: /^0\d{1,2}-?\d{7}$/,
+  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  hebrewName: /^[א-ת\s]+$/,
+  englishName: /^[a-zA-Z\s]+$/,
+  numbers: /^\d+$/,
+  url: /^https?:\/\/.+/
+};
+
+// Default Configuration Object
+export const DEFAULT_CONFIG = {
+  site: SITE_CONFIG,
+  contact: CONTACT_INFO,
+  social: SOCIAL_LINKS,
+  navigation: NAVIGATION_MENU,
+  stats: STATS_DATA,
+  features: FEATURES_DATA,
+  gallery: {
+    categories: GALLERY_CATEGORIES,
+    images: GALLERY_IMAGES
+  },
+  forms: FORM_CONFIG,
+  animations: ANIMATION_CONFIG,
+  performance: PERFORMANCE_CONFIG,
+  seo: SEO_CONFIG,
+  analytics: ANALYTICS_CONFIG,
+  theme: THEME_CONFIG,
+  api: API_CONFIG,
+  messages: {
+    errors: ERROR_MESSAGES,
+    success: SUCCESS_MESSAGES
+  },
+  features: FEATURE_FLAGS,
+  pricing: PRICING_CONFIG
+};
+
+// Export default configuration
+export default DEFAULT_CONFIG;
