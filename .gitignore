@@ -1,0 +1,514 @@
+# Magdal Resort Website - Git Ignore File
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+.output/
+.nuxt/
+.next/
+.cache/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.parcel-cache
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Image processing temporary files
+.image-cache/
+images-optimized/
+*.tmp
+
+# Large media files (use Git LFS instead)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.m4v
+
+# Large image files (>10MB should use Git LFS)
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.webp
+# *.svg
+# *.ico
+
+# Audio files
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+
+# Archive files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Document files (if not needed in repo)
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Development tools
+.sass-cache/
+.cache/
+.parcel-cache/
+
+# Testing
+/coverage
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Storybook build outputs
+storybook-static
+
+# Local Netlify folder
+.netlify/
+
+# Cloudflare Workers
+.wrangler/
+
+# Vercel
+.vercel
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Jest
+jest-coverage/
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettierignore
+
+# TypeScript
+*.tsbuildinfo
+
+# Webpack
+.webpack/
+
+# Rollup
+.rollup.cache/
+
+# Vite
+.vite/
+
+# Analytics and monitoring
+analytics-reports/
+lighthouse-reports/
+reports/
+
+# Database files (if using local databases)
+*.sqlite
+*.db
+
+# Configuration files with sensitive data
+config.local.js
+config.private.js
+secrets.json
+
+# API keys and credentials
+api-keys.txt
+credentials.json
+firebase-adminsdk-*.json
+
+# Local development files
+.local/
+local/
+dev-assets/
+test-images/
+sample-data/
+
+# Generated sitemaps and feeds
+sitemap.xml
+feed.xml
+robots.txt.generated
+
+# Compiled CSS from preprocessors
+# (uncomment if you're using Sass/Less and don't want compiled CSS in repo)
+# css/compiled/
+# *.compiled.css
+
+# Minified files
+*.min.js
+*.min.css
+*.min.html
+
+# Source maps (uncomment if you don't want them in production)
+# *.map
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Temporary files from image optimization
+optimized-*
+resized-*
+compressed-*
+
+# Email templates (if generated)
+email-templates-compiled/
+
+# Analytics data
+analytics-data/
+user-data/
+
+# Error logs
+error.log
+access.log
+
+# Performance monitoring
+perf-data/
+metrics/
+
+# SEO tools output
+seo-analysis/
+keyword-research/
+
+# Social media assets (working files)
+social-media-drafts/
+post-templates/
+
+# Legal documents (keep originals elsewhere)
+# contracts/
+# licenses/
+
+# Financial data
+# invoices/
+# receipts/
+
+# Personal notes and TODO files
+TODO.md
+NOTES.md
+todo.txt
+notes.txt
+
+# Draft content
+drafts/
+content-drafts/
+
+# Marketing materials (working versions)
+marketing-assets/
+ad-creatives/
+
+# Customer data (never commit)
+customer-data/
+user-uploads/
+form-submissions/
+
+# Backup configurations
+*.backup.json
+*.backup.js
+
+# IDE specific files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Git hooks
+.git/hooks/
+
+# Husky
+.husky/_/
+
+# Commitizen
+.cz-config.js
+
+# Release notes
+CHANGELOG.draft.md
+
+# Deployment scripts with sensitive info
+deploy-secrets.sh
+deploy-config.sh
+
+# SSL certificates and keys
+*.pem
+*.crt
+*.key
+*.csr
+
+# FTP/SFTP configurations
+.ftpconfig
+.sftpconfig
+
+# WordPress specific (if ever used)
+wp-config.php
+wp-content/uploads/
+
+# Docker
+Dockerfile.local
+docker-compose.override.yml
+.dockerignore.local
+
+# Kubernetes
+k8s-secrets/
+kube-config/
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Ansible
+*.retry
+
+# Monitoring and alerting configurations
+alert-configs/
+monitoring-configs/
+
+# Load testing results
+load-test-results/
+performance-test-data/
+
+# Security scan results
+security-scan-results/
+vulnerability-reports/
+
+# Backup databases
+*.sql.backup
+*.dump
+
+# Local email testing
+mailhog-data/
+local-mail/
+
+# Feature flags configuration (local)
+feature-flags.local.json
+
+# A/B testing data
+ab-test-results/
+experiment-data/
+
+# Machine learning models (if any)
+*.model
+models/
+ml-data/
+
+# Generated documentation
+api-docs/generated/
+code-docs/build/
+
+# Localization working files
+translations-work/
+locale-temp/
+
+# QR codes and generated marketing materials
+qr-codes/
+generated-graphics/
+
+# Video editing project files
+*.prproj
+*.aep
+*.fcp
+
+# Design files (working versions)
+design-work/
+*.sketch
+*.fig
+*.xd
+*.ai
+*.psd
+
+# 3D models and assets
+*.blend
+*.fbx
+*.obj
+*.3ds
+
+# Audio editing project files
+*.aup
+*.logic
+*.ptf
+
+# Game development assets (if applicable)
+*.unity
+*.unitypackage
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ruby specific  
+*.gem
+.ruby-version
+.ruby-gemset
+.rvmrc
+.rbenv-version
+
+# PHP specific
+composer.phar
+vendor/
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+
+# Swift specific
+*.dSYM.zip
+*.dSYM
+
+# Go specific
+*.exe
+*.test
+*.prof
+
+# Rust specific
+target/
+Cargo.lock
+
+# Keep important files (force include)
+# !important-file.ext
+# !assets/images/critical/
+# !docs/README.md
