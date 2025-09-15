@@ -1,0 +1,543 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "name": "הכל",
+      "description": "כל התמונות במתחם",
+      "icon": "🏠",
+      "order": 1
+    },
+    {
+      "id": "pool",
+      "name": "בריכה",
+      "description": "תמונות הבריכה הפרטית",
+      "icon": "🏊‍♂️",
+      "order": 2
+    },
+    {
+      "id": "rooms",
+      "name": "חדרים",
+      "description": "חדרי השינה והסלונים",
+      "icon": "🛏️",
+      "order": 3
+    },
+    {
+      "id": "kitchen",
+      "name": "מטבח",
+      "description": "המטבח המאובזר",
+      "icon": "👨‍🍳",
+      "order": 4
+    },
+    {
+      "id": "garden",
+      "name": "גינה",
+      "description": "הגינה ואזורי הפנאי",
+      "icon": "🌿",
+      "order": 5
+    },
+    {
+      "id": "view",
+      "name": "נוף",
+      "description": "נופי הגליל המדהימים",
+      "icon": "🌄",
+      "order": 6
+    },
+    {
+      "id": "events",
+      "name": "אירועים",
+      "description": "תמונות מאירועים שהתקיימו",
+      "icon": "🎉",
+      "order": 7
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "filename": "pool-main-day.jpg",
+      "title": "בריכה פרטית - יום",
+      "alt": "בריכה פרטית גדולה במהלך היום עם כסאות נוח וכיסא רחצה",
+      "description": "הבריכה הפרטית הגדולה במהלך היום - מים צלולים ונקיים עם אזור ישיבה מוצל",
+      "category": "pool",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/pool-main-day_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/pool-main-day_md.jpg",
+        "large": "/assets/images/gallery/large/pool-main-day_lg.jpg",
+        "original": "/assets/images/gallery/original/pool-main-day.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/pool-main-day_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/pool-main-day_md.webp",
+        "large": "/assets/images/gallery/webp/large/pool-main-day_lg.webp"
+      },
+      "tags": ["בריכה", "יום", "מים", "כסאות נוח", "רחצה"],
+      "uploadDate": "2024-01-15",
+      "photographer": "צילום מקצועי",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "filename": "pool-evening-lights.jpg",
+      "title": "בריכה פרטית - ערב",
+      "alt": "בריכה פרטית עם תאורה רומנטית בשעות הערב",
+      "description": "הבריכה בשעות הערב עם תאורה מיוחדת שיוצרת אווירה רומנטית ומרגיעה",
+      "category": "pool",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/pool-evening-lights_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/pool-evening-lights_md.jpg",
+        "large": "/assets/images/gallery/large/pool-evening-lights_lg.jpg",
+        "original": "/assets/images/gallery/original/pool-evening-lights.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/pool-evening-lights_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/pool-evening-lights_md.webp",
+        "large": "/assets/images/gallery/webp/large/pool-evening-lights_lg.webp"
+      },
+      "tags": ["בריכה", "ערב", "תאורה", "רומנטי", "אווירה"],
+      "uploadDate": "2024-01-15",
+      "photographer": "צילום מקצועי",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "filename": "pool-kids-area.jpg",
+      "title": "אזור ילדים בבריכה",
+      "alt": "אזור רדוד ובטוח לילדים בבריכה עם משחקי מים",
+      "description": "האזור הרדוד והבטוח לילדים עם ציוד משחק מתאים לגילאים שונים",
+      "category": "pool",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/pool-kids-area_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/pool-kids-area_md.jpg",
+        "large": "/assets/images/gallery/large/pool-kids-area_lg.jpg",
+        "original": "/assets/images/gallery/original/pool-kids-area.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/pool-kids-area_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/pool-kids-area_md.webp",
+        "large": "/assets/images/gallery/webp/large/pool-kids-area_lg.webp"
+      },
+      "tags": ["בריכה", "ילדים", "בטיחות", "משחקים", "רדוד"],
+      "uploadDate": "2024-01-16",
+      "photographer": "צילום מקצועי",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "filename": "master-bedroom.jpg",
+      "title": "חדר שינה ראשי",
+      "alt": "חדר שינה ראשי מרווח עם מיטה זוגית גדולה וחלון לנוף",
+      "description": "חדר השינה הראשי המרווח עם מיטה זוגית נוחה, ארון בגדים גדול וחלון לנוף הגליל",
+      "category": "rooms",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/master-bedroom_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/master-bedroom_md.jpg",
+        "large": "/assets/images/gallery/large/master-bedroom_lg.jpg",
+        "original": "/assets/images/gallery/original/master-bedroom.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/master-bedroom_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/master-bedroom_md.webp",
+        "large": "/assets/images/gallery/webp/large/master-bedroom_lg.webp"
+      },
+      "tags": ["חדר שינה", "מיטה זוגית", "נוף", "מרווח", "ארון"],
+      "uploadDate": "2024-01-17",
+      "photographer": "צילום מקצועי",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "filename": "kids-room.jpg",
+      "title": "חדר ילדים",
+      "alt": "חדר ילדים עם מיטות קומותיים צבעוניות ואזור משחק",
+      "description": "חדר ילדים מעוצב ונוח עם מיטות קומותיים איכותיות ואזור משחק מיוחד",
+      "category": "rooms",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/kids-room_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/kids-room_md.jpg",
+        "large": "/assets/images/gallery/large/kids-room_lg.jpg",
+        "original": "/assets/images/gallery/original/kids-room.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/kids-room_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/kids-room_md.webp",
+        "large": "/assets/images/gallery/webp/large/kids-room_lg.webp"
+      },
+      "tags": ["ילדים", "מיטות קומותיים", "משחק", "צבעוני", "בטוח"],
+      "uploadDate": "2024-01-17",
+      "photographer": "צילום מקצועי",
+      "order": 5
+    },
+    {
+      "id": 6,
+      "filename": "living-room-main.jpg",
+      "title": "סלון ראשי",
+      "alt": "סלון ראשי מרווח עם ספות נוחות וטלוויזיה גדולה",
+      "description": "הסלון הראשי המרווח עם ספות נוחות, שולחן קפה וטלוויזיה גדולה לבילוי משפחתי",
+      "category": "rooms",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/living-room-main_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/living-room-main_md.jpg",
+        "large": "/assets/images/gallery/large/living-room-main_lg.jpg",
+        "original": "/assets/images/gallery/original/living-room-main.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/living-room-main_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/living-room-main_md.webp",
+        "large": "/assets/images/gallery/webp/large/living-room-main_lg.webp"
+      },
+      "tags": ["סלון", "ספות", "טלוויזיה", "משפחתי", "נוח"],
+      "uploadDate": "2024-01-18",
+      "photographer": "צילום מקצועי",
+      "order": 6
+    },
+    {
+      "id": 7,
+      "filename": "kitchen-full.jpg",
+      "title": "מטבח מאובזר",
+      "alt": "מטבח גדול ומאובזר עם אי מרכזי ומכשירי חשמל מקצועיים",
+      "description": "המטבח הגדול והמאובזר עם אי מרכזי, מכשירי חשמל מקצועיים וכל הציוד לבישול קבוצתי",
+      "category": "kitchen",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/kitchen-full_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/kitchen-full_md.jpg",
+        "large": "/assets/images/gallery/large/kitchen-full_lg.jpg",
+        "original": "/assets/images/gallery/original/kitchen-full.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/kitchen-full_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/kitchen-full_md.webp",
+        "large": "/assets/images/gallery/webp/large/kitchen-full_lg.webp"
+      },
+      "tags": ["מטבח", "מאובזר", "אי מרכזי", "מקצועי", "גדול"],
+      "uploadDate": "2024-01-19",
+      "photographer": "צילום מקצועי",
+      "order": 7
+    },
+    {
+      "id": 8,
+      "filename": "kitchen-appliances.jpg",
+      "title": "מכשירי המטבח",
+      "alt": "מכשירי חשמל מקצועיים במטבח כולל תנור כפול ומקרר גדול",
+      "description": "מכשירי החשמל המקצועיים במטבח - תנור כפול, מקרר אמריקאי, מדיח כלים ועוד",
+      "category": "kitchen",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/kitchen-appliances_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/kitchen-appliances_md.jpg",
+        "large": "/assets/images/gallery/large/kitchen-appliances_lg.jpg",
+        "original": "/assets/images/gallery/original/kitchen-appliances.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/kitchen-appliances_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/kitchen-appliances_md.webp",
+        "large": "/assets/images/gallery/webp/large/kitchen-appliances_lg.webp"
+      },
+      "tags": ["מטבח", "מכשירים", "תנור", "מקרר", "מדיח"],
+      "uploadDate": "2024-01-19",
+      "photographer": "צילום מקצועי",
+      "order": 8
+    },
+    {
+      "id": 9,
+      "filename": "dining-area.jpg",
+      "title": "פינת אוכל",
+      "alt": "פינת אוכל גדולה עם שולחן ל-20 איש וכסאות נוחים",
+      "description": "פינת האוכל הגדולה עם שולחן מרכזי שמיטיב לארח עד 20 איש בנוחות",
+      "category": "kitchen",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/dining-area_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/dining-area_md.jpg",
+        "large": "/assets/images/gallery/large/dining-area_lg.jpg",
+        "original": "/assets/images/gallery/original/dining-area.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/dining-area_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/dining-area_md.webp",
+        "large": "/assets/images/gallery/webp/large/dining-area_lg.webp"
+      },
+      "tags": ["פינת אוכל", "שולחן", "כסאות", "אוכל", "קבוצתי"],
+      "uploadDate": "2024-01-20",
+      "photographer": "צילום מקצועי",
+      "order": 9
+    },
+    {
+      "id": 10,
+      "filename": "garden-overview.jpg",
+      "title": "הגינה הגדולה",
+      "alt": "גינה גדולה ומטופחת עם דשא ירוק ועצים מבוגרים",
+      "description": "הגינה הגדולה והמטופחת עם דשא ירוק, עצי פרי מבוגרים ופינות ישיבה מוצלות",
+      "category": "garden",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/garden-overview_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/garden-overview_md.jpg",
+        "large": "/assets/images/gallery/large/garden-overview_lg.jpg",
+        "original": "/assets/images/gallery/original/garden-overview.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/garden-overview_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/garden-overview_md.webp",
+        "large": "/assets/images/gallery/webp/large/garden-overview_lg.webp"
+      },
+      "tags": ["גינה", "דשא", "עצים", "מטופח", "ירוק"],
+      "uploadDate": "2024-01-21",
+      "photographer": "צילום מקצועי",
+      "order": 10
+    },
+    {
+      "id": 11,
+      "filename": "bbq-area.jpg",
+      "title": "אזור ברביקיו",
+      "alt": "אזור ברביקיו מעוצב עם גריל גדול ושולחנות פיקניק",
+      "description": "אזור הברביקיו המעוצב עם גריל גדול, שולחנות פיקניק ואזור הכנה נוח",
+      "category": "garden",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/bbq-area_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/bbq-area_md.jpg",
+        "large": "/assets/images/gallery/large/bbq-area_lg.jpg",
+        "original": "/assets/images/gallery/original/bbq-area.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/bbq-area_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/bbq-area_md.webp",
+        "large": "/assets/images/gallery/webp/large/bbq-area_lg.webp"
+      },
+      "tags": ["ברביקיו", "גריל", "שולחנות", "פיקניק", "בישול"],
+      "uploadDate": "2024-01-21",
+      "photographer": "צילום מקצועי",
+      "order": 11
+    },
+    {
+      "id": 12,
+      "filename": "playground.jpg",
+      "title": "אזור משחקים לילדים",
+      "alt": "אזור משחקים בטוח לילדים עם נדנדות וגלשה",
+      "description": "אזור משחקים בטוח ומהנה לילדים עם נדנדות, גלשה וציוד משחק איכותי",
+      "category": "garden",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/playground_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/playground_md.jpg",
+        "large": "/assets/images/gallery/large/playground_lg.jpg",
+        "original": "/assets/images/gallery/original/playground.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/playground_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/playground_md.webp",
+        "large": "/assets/images/gallery/webp/large/playground_lg.webp"
+      },
+      "tags": ["משחקים", "ילדים", "נדנדות", "גלשה", "בטוח"],
+      "uploadDate": "2024-01-22",
+      "photographer": "צילום מקצועי",
+      "order": 12
+    },
+    {
+      "id": 13,
+      "filename": "galilee-view.jpg",
+      "title": "נוף הגליל",
+      "alt": "נוף פנורמי מרהיב של הרי הגליל מהמתחם",
+      "description": "הנוף הפנורמי המרהיב של הרי הגליל שנראה מכל חלקי המתחם",
+      "category": "view",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/galilee-view_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/galilee-view_md.jpg",
+        "large": "/assets/images/gallery/large/galilee-view_lg.jpg",
+        "original": "/assets/images/gallery/original/galilee-view.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/galilee-view_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/galilee-view_md.webp",
+        "large": "/assets/images/gallery/webp/large/galilee-view_lg.webp"
+      },
+      "tags": ["נוף", "גליל", "הרים", "פנורמי", "מרהיב"],
+      "uploadDate": "2024-01-23",
+      "photographer": "צילום מקצועי",
+      "order": 13
+    },
+    {
+      "id": 14,
+      "filename": "sunset-view.jpg",
+      "title": "שקיעה מהמתחם",
+      "alt": "שקיעה מרהיבה מהמתחם עם צבעי זהב וכתום",
+      "description": "שקיעה מדהימה שנצפית מהמתחם עם צבעי זהב וכתום על רקע הרי הגליל",
+      "category": "view",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/sunset-view_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/sunset-view_md.jpg",
+        "large": "/assets/images/gallery/large/sunset-view_lg.jpg",
+        "original": "/assets/images/gallery/original/sunset-view.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/sunset-view_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/sunset-view_md.webp",
+        "large": "/assets/images/gallery/webp/large/sunset-view_lg.webp"
+      },
+      "tags": ["שקיעה", "צבעים", "זהב", "כתום", "רומנטי"],
+      "uploadDate": "2024-01-23",
+      "photographer": "צילום מקצועי",
+      "order": 14
+    },
+    {
+      "id": 15,
+      "filename": "wedding-setup.jpg",
+      "title": "הכנה לשבת חתן",
+      "alt": "המתחם מוכן לקבלת שבת חתן עם עיטור חגיגי",
+      "description": "המתחם מעוצב ומוכן לקבלת שבת חתן עם עיטור חגיגי ושולחנות מסודרים",
+      "category": "events",
+      "featured": true,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/wedding-setup_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/wedding-setup_md.jpg",
+        "large": "/assets/images/gallery/large/wedding-setup_lg.jpg",
+        "original": "/assets/images/gallery/original/wedding-setup.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/wedding-setup_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/wedding-setup_md.webp",
+        "large": "/assets/images/gallery/webp/large/wedding-setup_lg.webp"
+      },
+      "tags": ["שבת חתן", "אירוע", "עיטור", "חגיגי", "שולחנות"],
+      "uploadDate": "2024-01-24",
+      "photographer": "צילום מקצועי",
+      "order": 15
+    },
+    {
+      "id": 16,
+      "filename": "family-gathering.jpg",
+      "title": "אירוע משפחתי",
+      "alt": "משפחה גדולה נהנית במתחם סביב הבריכה",
+      "description": "משפחה גדולה נהנית ממסיבה משפחתית במתחם עם פעילויות סביב הבריכה",
+      "category": "events",
+      "featured": false,
+      "orientation": "landscape",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sizes": {
+        "thumbnail": "/assets/images/gallery/thumbnails/family-gathering_thumb.jpg",
+        "medium": "/assets/images/gallery/medium/family-gathering_md.jpg",
+        "large": "/assets/images/gallery/large/family-gathering_lg.jpg",
+        "original": "/assets/images/gallery/original/family-gathering.jpg"
+      },
+      "webp": {
+        "thumbnail": "/assets/images/gallery/webp/thumbnails/family-gathering_thumb.webp",
+        "medium": "/assets/images/gallery/webp/medium/family-gathering_md.webp",
+        "large": "/assets/images/gallery/webp/large/family-gathering_lg.webp"
+      },
+      "tags": ["משפחה", "אירוע", "בריכה", "פעילויות", "שמחה"],
+      "uploadDate": "2024-01-24",
+      "photographer": "צילום מקצועי",
+      "order": 16
+    }
+  ],
+  "metadata": {
+    "totalImages": 16,
+    "lastUpdated": "2024-01-24",
+    "photographer": "צילום מקצועי - מגדל של חיים",
+    "copyright": "© 2025 מגדל של חיים. כל הזכויות שמורות.",
+    "defaultImagePath": "/assets/images/gallery/",
+    "supportedFormats": ["jpg", "webp"],
+    "imageSizes": ["thumbnail", "medium", "large", "original"],
+    "loadingStrategy": "lazy",
+    "lightboxEnabled": true
+  },
+  "settings": {
+    "itemsPerPage": 12,
+    "enableInfiniteScroll": true,
+    "enableLightbox": true,
+    "enableZoom": true,
+    "enableShare": true,
+    "enableDownload": false,
+    "defaultCategory": "all",
+    "sortBy": "order",
+    "sortOrder": "asc",
+    "animationDuration": 300,
+    "lazyLoadOffset": 100
+  }
+}
