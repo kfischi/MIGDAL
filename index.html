@@ -41,32 +41,12 @@
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://unpkg.com">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Assistant:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/hero.css">
-    <link rel="stylesheet" href="/css/stats.css">
-    <link rel="stylesheet" href="/css/features.css">
-    <link rel="stylesheet" href="/css/about.css">
-    <link rel="stylesheet" href="/css/gallery.css">
-    <link rel="stylesheet" href="/css/contact.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-    <link rel="stylesheet" href="/css/utilities.css">
+    <!-- 🎯 CSS FIXED - רק קובץ אחד! -->
+    <link rel="stylesheet" href="css/styles.css">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -121,12 +101,6 @@
       }
     }
     </script>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/css/variables.css" as="style">
-    <link rel="preload" href="/css/base.css" as="style">
-    <link rel="preload" href="/js/config.js" as="script">
-    <link rel="preload" href="/js/main.js" as="script">
 </head>
 
 <body>
@@ -175,13 +149,13 @@
         <section class="hero" id="home" role="banner" aria-labelledby="hero-title">
             <div class="hero-background" aria-hidden="true"></div>
             <div class="hero-content">
-                <h1 class="hero-title" id="hero-title" data-aos="fade-up">מגדל של חיים</h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200" aria-describedby="hero-title">
+                <h1 class="hero-title" id="hero-title">מגדל של חיים</h1>
+                <p class="hero-subtitle" aria-describedby="hero-title">
                     ריזורט משפחתי יוקרתי בלב הצפון • מתחם גדול עם בריכה פרטית<br>
                     המקום המושלם לשבתות חתן, אירועים משפחתיים וחופשות בלתי נשכחות
                 </p>
                 
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400" role="group" aria-label="פעולות ראשיות">
+                <div class="hero-buttons" role="group" aria-label="פעולות ראשיות">
                     <a href="#contact" class="btn btn-primary" aria-label="בדוק זמינות ותאריכים">בדוק זמינות</a>
                     <a href="#gallery" class="btn btn-secondary" aria-label="צפה בגלריית התמונות">צפה בגלריה</a>
                 </div>
@@ -193,20 +167,20 @@
             <div class="section-container">
                 <h2 class="sr-only" id="stats-title">הסטטיסטיקות שלנו</h2>
                 <div class="stats-container">
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100" role="img" aria-label="98 אחוז שביעות רצון">
-                        <span class="stat-number" data-count="98" aria-hidden="true">0</span>
+                    <div class="stat-item" role="img" aria-label="98 אחוז שביעות רצון">
+                        <span class="stat-number" data-count="98">0</span>
                         <span class="stat-label">% שביעות רצון</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200" role="img" aria-label="500 משפחות מאושרות">
-                        <span class="stat-number" data-count="500" aria-hidden="true">0</span>
+                    <div class="stat-item" role="img" aria-label="500 משפחות מאושרות">
+                        <span class="stat-number" data-count="500">0</span>
                         <span class="stat-label">משפחות מאושרות</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300" role="img" aria-label="50 אנשים במתחם">
-                        <span class="stat-number" data-count="50" aria-hidden="true">0</span>
+                    <div class="stat-item" role="img" aria-label="50 אנשים במתחם">
+                        <span class="stat-number" data-count="50">0</span>
                         <span class="stat-label">אנשים במתחם</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400" role="img" aria-label="24 שעות שירות">
-                        <span class="stat-number" data-count="24" aria-hidden="true">0</span>
+                    <div class="stat-item" role="img" aria-label="24 שעות שירות">
+                        <span class="stat-number" data-count="24">0</span>
                         <span class="stat-label">שעות שירות</span>
                     </div>
                 </div>
@@ -217,14 +191,14 @@
         <section class="features-section" id="facilities" aria-labelledby="features-title">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 class="section-title" id="features-title" data-aos="fade-up">למה לבחור במגדל של חיים?</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title" id="features-title">למה לבחור במגדל של חיים?</h2>
+                    <p class="section-subtitle">
                         מתחם יוקרתי עם כל המתקנים שאתם צריכים לחופשה מושלמת
                     </p>
                 </header>
 
                 <div class="features-grid">
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">🏊‍♂️</span>
                         <h3 class="feature-title">בריכה פרטית גדולה</h3>
                         <p class="feature-description">
@@ -232,7 +206,7 @@
                         </p>
                     </article>
 
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">🏡</span>
                         <h3 class="feature-title">מתחם גדול ומרווח</h3>
                         <p class="feature-description">
@@ -240,7 +214,7 @@
                         </p>
                     </article>
 
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
                         <h3 class="feature-title">מתאים לקבוצות גדולות</h3>
                         <p class="feature-description">
@@ -248,7 +222,7 @@
                         </p>
                     </article>
 
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">🍽️</span>
                         <h3 class="feature-title">מטבח מאובזר במלואו</h3>
                         <p class="feature-description">
@@ -256,7 +230,7 @@
                         </p>
                     </article>
 
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">🌿</span>
                         <h3 class="feature-title">סביבה טבעית מדהימה</h3>
                         <p class="feature-description">
@@ -264,7 +238,7 @@
                         </p>
                     </article>
 
-                    <article class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <article class="feature-card">
                         <span class="feature-icon" aria-hidden="true">💎</span>
                         <h3 class="feature-title">מחיר שווה לכל הכיס</h3>
                         <p class="feature-description">
@@ -279,7 +253,7 @@
         <section class="about-section" id="about" aria-labelledby="about-title">
             <div class="section-container">
                 <div class="about-content">
-                    <div class="about-text" data-aos="slide-in-right">
+                    <div class="about-text">
                         <h2 class="about-title" id="about-title">החזון שלנו</h2>
                         <p class="about-description">
                             מגדל של חיים הוא יותר מסתם מקום לינה - זה מקום שבו נוצרים זיכרונות לכל החיים. 
@@ -299,7 +273,7 @@
                         <a href="#contact" class="btn btn-primary">בואו לבקר אותנו</a>
                     </div>
 
-                    <div class="about-image" data-aos="slide-in-left" role="img" aria-label="נוף מגדל של חיים">
+                    <div class="about-image" role="img" aria-label="נוף מגדל של חיים">
                         <span aria-hidden="true">🏔️</span>
                     </div>
                 </div>
@@ -310,34 +284,34 @@
         <section class="gallery-preview" id="gallery" aria-labelledby="gallery-title">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 class="section-title" id="gallery-title" data-aos="fade-up">גלריית תמונות</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title" id="gallery-title">גלריית תמונות</h2>
+                    <p class="section-subtitle">
                         הציצו לתוך המתחם המדהים שלנו וגלו מה מחכה לכם
                     </p>
                 </header>
 
                 <div class="gallery-grid" role="group" aria-label="תמונות הריזורט">
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" role="img" aria-label="הבריכה הפרטית">
+                    <div class="gallery-item" role="img" aria-label="הבריכה הפרטית">
                         <span aria-hidden="true">🏊‍♂️</span>
                     </div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" role="img" aria-label="אזור הברביקיו">
+                    <div class="gallery-item" role="img" aria-label="אזור הברביקיו">
                         <span aria-hidden="true">🔥</span>
                     </div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" role="img" aria-label="סלון ראשי">
+                    <div class="gallery-item" role="img" aria-label="סלון ראשי">
                         <span aria-hidden="true">🛋️</span>
                     </div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" role="img" aria-label="מטבח מאובזר">
+                    <div class="gallery-item" role="img" aria-label="מטבח מאובזר">
                         <span aria-hidden="true">👨‍🍳</span>
                     </div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" role="img" aria-label="חדרי שינה">
+                    <div class="gallery-item" role="img" aria-label="חדרי שינה">
                         <span aria-hidden="true">🛏️</span>
                     </div>
-                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" role="img" aria-label="נוף הגליל">
+                    <div class="gallery-item" role="img" aria-label="נוף הגליל">
                         <span aria-hidden="true">🌄</span>
                     </div>
                 </div>
 
-                <div class="gallery-cta" data-aos="fade-up">
+                <div class="gallery-cta">
                     <a href="/gallery.html" class="btn btn-primary">צפה בגלריה המלאה</a>
                 </div>
             </div>
@@ -347,14 +321,14 @@
         <section class="contact-section" id="contact" aria-labelledby="contact-title">
             <div class="section-container">
                 <header class="section-header">
-                    <h2 class="section-title" id="contact-title" data-aos="fade-up">צרו קשר והזמינו היום</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title" id="contact-title">צרו קשר והזמינו היום</h2>
+                    <p class="section-subtitle">
                         אנחנו כאן לענות על כל שאלה ולעזור לכם לתכנן את החופשה המושלמת
                     </p>
                 </header>
 
                 <div class="contact-content">
-                    <div class="contact-info" data-aos="slide-in-right">
+                    <div class="contact-info">
                         <h3>פרטי התקשרות</h3>
                         
                         <div class="contact-item">
@@ -398,7 +372,7 @@
                         </div>
                     </div>
 
-                    <div class="quick-form" data-aos="slide-in-left">
+                    <div class="quick-form">
                         <h3>בדיקת זמינות מהירה</h3>
                         <form id="quickBookingForm" novalidate aria-label="טופס בדיקת זמינות">
                             <div class="form-group">
@@ -498,17 +472,7 @@
         <span aria-hidden="true">↑</span>
     </button>
 
-    <!-- Loading indicator -->
-    <div id="loading-indicator" class="loading-indicator" aria-hidden="true">
-        <div class="loading-spinner"></div>
-        <p>טוען...</p>
-    </div>
-
-    <!-- Scripts -->
-    <!-- AOS Animation Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Main JavaScript File -->
+    <!-- 🎯 JAVASCRIPT FIXED - רק קובץ אחד! -->
     <script src="js/main.js"></script>
 
     <!-- Analytics -->
@@ -523,6 +487,21 @@
             page_location: window.location.href,
             anonymize_ip: true
         });
+    </script>
+
+    <!-- Service Worker Registration (for future PWA) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
