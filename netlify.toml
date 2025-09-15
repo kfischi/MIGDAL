@@ -1,364 +1,265 @@
-# Netlify Configuration for Magdal Resort Website
-[build]
-  # Build command (if using build process)
-  command = "npm run build"
-  # Directory to deploy
-  publish = "."
-  # Functions directory (for future serverless functions)
-  functions = "netlify/functions"
-
-# Build settings
-[build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
-
-# Redirect rules
-[[redirects]]
-  # Hebrew URLs
-  from = "/אודות"
-  to = "/about.html"
-  status = 301
-
-[[redirects]]
-  from = "/חבילות"
-  to = "/packages.html"
-  status = 301
-
-[[redirects]]
-  from = "/מתקנים"
-  to = "/facilities.html"
-  status = 301
-
-[[redirects]]
-  from = "/גלריה"
-  to = "/gallery.html"
-  status = 301
-
-[[redirects]]
-  from = "/יצירת-קשר"
-  to = "/contact.html"
-  status = 301
-
-[[redirects]]
-  from = "/הזמנה"
-  to = "/booking.html"
-  status = 301
-
-# English URLs (SEO)
-[[redirects]]
-  from = "/about-us"
-  to = "/about.html"
-  status = 301
-
-[[redirects]]
-  from = "/packages"
-  to = "/packages.html"
-  status = 301
-
-[[redirects]]
-  from = "/facilities"
-  to = "/facilities.html"
-  status = 301
-
-[[redirects]]
-  from = "/gallery"
-  to = "/gallery.html"
-  status = 301
-
-[[redirects]]
-  from = "/contact-us"
-  to = "/contact.html"
-  status = 301
-
-[[redirects]]
-  from = "/book-now"
-  to = "/booking.html"
-  status = 301
-
-# Social redirects
-[[redirects]]
-  from = "/whatsapp"
-  to = "https://wa.me/972501234567"
-  status = 302
-
-[[redirects]]
-  from = "/call"
-  to = "tel:+972501234567"
-  status = 302
-
-[[redirects]]
-  from = "/facebook"
-  to = "https://facebook.com/magdalresort"
-  status = 302
-
-[[redirects]]
-  from = "/instagram"
-  to = "https://instagram.com/magdalresort"
-  status = 302
-
-# Legacy redirects (if migrating from old site)
-[[redirects]]
-  from = "/old-booking"
-  to = "/booking.html"
-  status = 301
-
-[[redirects]]
-  from = "/home"
-  to = "/"
-  status = 301
-
-# API redirects (for future API endpoints)
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-# SPA fallback (if needed for future SPA pages)
-[[redirects]]
-  from = "/app/*"
-  to = "/app/index.html"
-  status = 200
-
-# 404 fallback
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
-# Headers for security and performance
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Security headers
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    
-    # Content Security Policy
-    Content-Security-Policy = """
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdnjs.cloudflare.com;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdnjs.cloudflare.com;
-      font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: https: blob:;
-      media-src 'self' https: blob:;
-      connect-src 'self' https://www.google-analytics.com https://api.magdalresort.co.il;
-      frame-src 'self' https://www.youtube.com https://player.vimeo.com;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self' https://wa.me;
-    """
-
-# Headers for static assets
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    # Cache static assets for 1 year
-    Cache-Control = "public, max-age=31536000, immutable"
-    # CORS for fonts and assets
-    Access-Control-Allow-Origin = "*"
-
-# Headers for images
-[[headers]]
-  for = "/assets/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    # Image optimization hints
-    Accept-CH = "DPR, Viewport-Width, Width"
-
-# Headers for videos
-[[headers]]
-  for = "/assets/videos/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    # Enable range requests for video streaming
-    Accept-Ranges = "bytes"
-
-# Headers for CSS and JS
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "text/css; charset=utf-8"
-
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "application/javascript; charset=utf-8"
-
-# Headers for fonts
-[[headers]]
-  for = "*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "font/woff2"
-
-[[headers]]
-  for = "*.woff"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "font/woff"
-
-# Headers for JSON data files
-[[headers]]
-  for = "/data/*.json"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-    Content-Type = "application/json; charset=utf-8"
-
-# Headers for HTML files
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-    Content-Type = "text/html; charset=utf-8"
-
-# Headers for XML files (sitemap, robots)
-[[headers]]
-  for = "*.xml"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-    Content-Type = "application/xml; charset=utf-8"
-
-# Headers for manifest and service worker
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-    Content-Type = "application/manifest+json"
-
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "no-cache"
-    Content-Type = "application/javascript"
-
-# Form processing (Netlify Forms)
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-[build.processing.images]
-  compress = true
-
-# Plugin configuration
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-  [plugins.inputs]
-    baseUrl = "https://magdalresort.co.il"
-    changeFreq = "weekly"
-    priority = 0.8
-    trailingSlash = false
-
-[[plugins]]
-  package = "netlify-plugin-minify-html"
-  [plugins.inputs]
-    contexts = ["production"]
-
-[[plugins]]
-  package = "netlify-plugin-image-optim"
-  [plugins.inputs]
-    quality = 80
-    progressive = true
-    webp = true
-
-# Edge functions (for future advanced features)
-[[edge_functions]]
-  function = "geo-redirect"
-  path = "/api/location/*"
-
-# Deploy contexts
-[context.production]
-  command = "npm run build:production"
-  [context.production.environment]
-    NODE_ENV = "production"
-    GATSBY_ENV = "production"
-
-[context.deploy-preview]
-  command = "npm run build:preview"
-  [context.deploy-preview.environment]
-    NODE_ENV = "development"
-
-[context.branch-deploy]
-  command = "npm run build:branch"
-  [context.branch-deploy.environment]
-    NODE_ENV = "development"
-
-# Split testing (A/B testing)
-[context.production.split_testing]
-  path = "/*"
-  branches = [
-    {group = "a", branch = "main", weight = 90},
-    {group = "b", branch = "variant-b", weight = 10}
-  ]
-
-# Functions configuration (for future serverless functions)
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-# Large Media configuration (for large images/videos)
-[large_media]
-  lfs = true
-
-# Analytics and monitoring
-[template.environment]
-  GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX"
-  FACEBOOK_PIXEL_ID = "XXXXXXXXXX"
-  HOTJAR_ID = "XXXXXXXXXX"
-
-# Custom domain settings
-[[custom_domains]]
-  domain = "magdalresort.co.il"
-  branch = "main"
-  
-[[custom_domains]]
-  domain = "www.magdalresort.co.il"
-  branch = "main"
-
-# Prerendering (for better SEO)
-[prerender]
-  enabled = true
-  paths = [
-    "/",
-    "/about.html",
-    "/facilities.html", 
-    "/gallery.html",
-    "/contact.html",
-    "/booking.html"
-  ]
-
-# Asset optimization
-[asset_optimization]
-  bundle = true
-  minify = true
-  compress = true
-  
-  [asset_optimization.css]
-    minify = true
-    bundle = true
-    
-  [asset_optimization.js]
-    minify = true
-    bundle = false # Keep modular for better caching
-    
-  [asset_optimization.images]
-    compress = true
-    quality = 80
-    
-  [asset_optimization.html]
-    minify = true
-    pretty_urls = true
+4:56:22 PM: Waiting for other deploys from your team to complete. Check the queue: https://app.netlify.com/teams/kfischi/builds
+4:56:46 PM: build-image version: 4a8ac839785702e700079d30b165ce05e5b74e43 (noble)
+4:56:46 PM: buildbot version: ea492e86968abb8ab1c6f00e7c4b5466855f8c43
+4:56:46 PM: Fetching cached dependencies
+4:56:46 PM: Starting to download cache of 225.2MB (Last modified: 2025-09-15 13:54:29 +0000 UTC)
+4:56:46 PM: Finished downloading cache in 474ms
+4:56:46 PM: Starting to extract cache
+4:56:53 PM: Finished extracting cache in 6.481s
+4:56:53 PM: Finished fetching cache in 7.002s
+4:56:53 PM: Starting to prepare the repo for build
+4:56:53 PM: Preparing Git Reference refs/heads/main
+4:56:54 PM: Custom functions path detected. Proceeding with the specified path: 'netlify/functions'
+4:56:54 PM: Custom build command detected. Proceeding with the specified command: 'npm run build:production'
+4:56:54 PM: Starting to install dependencies
+4:56:54 PM: Started restoring cached python cache
+4:56:57 PM: Finished restoring cached python cache
+4:56:57 PM: Started restoring cached ruby cache
+4:57:03 PM: Finished restoring cached ruby cache
+4:57:03 PM: Started restoring cached go cache
+4:57:04 PM: Finished restoring cached go cache
+4:57:05 PM: Downloading and installing node v18.20.8...
+4:57:05 PM: Downloading https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.xz...
+4:57:06 PM: Computing checksum with sha256sum
+4:57:06 PM: Checksums matched!
+4:57:08 PM: Now using node v18.20.8 (npm v10.8.2)
+4:57:08 PM: Enabling Node.js Corepack
+4:57:08 PM: Started restoring cached build plugins
+4:57:08 PM: Finished restoring cached build plugins
+4:57:08 PM: Successfully installed dependencies
+4:57:08 PM: Starting build script
+4:57:09 PM: Detected 0 framework(s)
+4:57:09 PM: Section completed: initializing
+4:57:10 PM: ​
+4:57:10 PM: Netlify Build                                                 
+4:57:10 PM: ────────────────────────────────────────────────────────────────
+4:57:10 PM: ​
+4:57:10 PM: ❯ Version
+4:57:10 PM:   @netlify/build 35.1.6
+4:57:10 PM: ​
+4:57:10 PM: ❯ Flags
+4:57:10 PM:   accountId: 684b368d76cdaf1e47dc76fb
+4:57:10 PM:   baseRelDir: true
+4:57:10 PM:   buildId: 68c81b06d4c4b20008946eeb
+4:57:10 PM:   deployId: 68c81b06d4c4b20008946eed
+4:57:10 PM: ​
+4:57:10 PM: ❯ Current directory
+4:57:10 PM:   /opt/build/repo
+4:57:10 PM: ​
+4:57:10 PM: ❯ Config file
+4:57:10 PM:   /opt/build/repo/netlify.toml
+4:57:10 PM: ​
+4:57:10 PM: ❯ Context
+4:57:10 PM:   production
+4:57:10 PM: ​
+4:57:10 PM: ❯ Installing plugins
+4:57:10 PM:    - @netlify/plugin-sitemap@0.8.1
+4:57:10 PM:    - netlify-plugin-minify-html@0.3.1
+4:57:10 PM:    - netlify-plugin-image-optim@0.4.0
+4:57:21 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+4:57:18 PM: ​
+4:57:18 PM: ❯ Installing extensions
+4:57:18 PM:    - neon
+4:57:20 PM: ​
+4:57:20 PM: Plugin "netlify-plugin-image-optim" invalid input "quality"   
+4:57:20 PM: ────────────────────────────────────────────────────────────────
+4:57:20 PM: ​
+4:57:20 PM:   Error message
+4:57:20 PM:   Plugin "netlify-plugin-image-optim" does not accept any inputs but you specified: "quality", "progressive", "webp"
+4:57:20 PM:   Check your plugin configuration to be sure that:
+4:57:20 PM:     - the input name is spelled correctly
+4:57:20 PM:     - the input is included in the plugin's available configuration options
+    - the plugin's input requirements have not changed
+​
+4:57:20 PM:   Plugin inputs
+4:57:20 PM:   progressive: true
+4:57:20 PM:   quality: 80
+4:57:20 PM:   webp: true
+4:57:20 PM: ​
+4:57:20 PM:   Plugin details
+4:57:20 PM:   Package:        netlify-plugin-image-optim
+4:57:20 PM:   Version:        0.4.0
+4:57:20 PM:   Repository:     git+https://github.com/chrisdwheatley/netlify-plugin-image-optim.git
+4:57:20 PM:   npm link:       https://www.npmjs.com/package/netlify-plugin-image-optim
+4:57:20 PM:   Report issues:  https://github.com/chrisdwheatley/netlify-plugin-image-optim/issues
+4:57:20 PM: ​
+4:57:20 PM:   Error location
+4:57:20 PM:   While loading "netlify-plugin-image-optim" from netlify.toml
+4:57:20 PM: ​
+4:57:20 PM:   Resolved config
+4:57:20 PM:   build:
+4:57:20 PM:     command: npm run build:production
+4:57:20 PM:     commandOrigin: config
+4:57:20 PM:     environment:
+4:57:20 PM:       - NODE_VERSION
+4:57:20 PM:       - NPM_VERSION
+4:57:20 PM:       - NODE_ENV
+4:57:20 PM:       - GATSBY_ENV
+4:57:20 PM:     processing:
+4:57:20 PM:       css:
+4:57:20 PM:         bundle: true
+4:57:20 PM:         minify: true
+4:57:20 PM:       html:
+4:57:20 PM:         pretty_urls: true
+4:57:20 PM:       images:
+4:57:20 PM:         compress: true
+4:57:20 PM:       js:
+4:57:20 PM:         bundle: true
+4:57:20 PM:         minify: true
+4:57:20 PM:       skip_processing: false
+4:57:20 PM:     publish: /opt/build/repo
+4:57:20 PM:     publishOrigin: config
+4:57:20 PM:   functions:
+4:57:20 PM:     "*":
+4:57:20 PM:       node_bundler: esbuild
+4:57:20 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+4:57:20 PM:   headers:
+4:57:21 PM:     - for: /*
+      values:
+        Content-Security-Policy: >-
+          default-src 'self';
+                script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdnjs.cloudflare.com;
+                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdnjs.cloudflare.com;
+                font-src 'self' https://fonts.gstatic.com;
+                img-src 'self' data: https: blob:;
+                media-src 'self' https: blob:;
+                connect-src 'self' https://www.google-analytics.com https://api.magdalresort.co.il;
+                frame-src 'self' https://www.youtube.com https://player.vimeo.com;
+                object-src 'none';
+                base-uri 'self';
+                form-action 'self' https://wa.me;
+        Permissions-Policy: camera=(), microphone=(), geolocation=()
+        Referrer-Policy: strict-origin-when-cross-origin
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: DENY
+        X-XSS-Protection: 1; mode=block
+    - for: /assets/*
+      values:
+        Access-Control-Allow-Origin: "*"
+        Cache-Control: public, max-age=31536000, immutable
+    - for: /assets/images/*
+      values:
+        Accept-CH: DPR, Viewport-Width, Width
+        Cache-Control: public, max-age=31536000, immutable
+    - for: /assets/videos/*
+      values:
+        Accept-Ranges: bytes
+        Cache-Control: public, max-age=31536000, immutable
+    - for: "*.css"
+      values:
+        Cache-Control: public, max-age=31536000, immutable
+        Content-Type: text/css; charset=utf-8
+    - for: "*.js"
+      values:
+        Cache-Control: public, max-age=31536000, immutable
+        Content-Type: application/javascript; charset=utf-8
+    - for: "*.woff2"
+      values:
+        Cache-Control: public, max-age=31536000, immutable
+        Content-Type: font/woff2
+    - for: "*.woff"
+      values:
+        Cache-Control: public, max-age=31536000, immutable
+        Content-Type: font/woff
+    - for: /data/*.json
+      values:
+        Cache-Control: public, max-age=3600
+        Content-Type: application/json; charset=utf-8
+    - for: "*.html"
+      values:
+        Cache-Control: public, max-age=3600
+        Content-Type: text/html; charset=utf-8
+    - for: "*.xml"
+      values:
+        Cache-Control: public, max-age=3600
+        Content-Type: application/xml; charset=utf-8
+    - for: /manifest.json
+      values:
+        Cache-Control: public, max-age=3600
+        Content-Type: application/manifest+json
+    - for: /sw.js
+      values:
+        Cache-Control: no-cache
+        Content-Type: application/javascript
+  headersOrigin: config
+  plugins:
+    - inputs:
+        trailingSlash: false
+      origin: config
+      package: "@netlify/plugin-sitemap"
+    - inputs: {}
+      origin: config
+      package: netlify-plugin-minify-html
+    - inputs:
+        progressive: true
+        webp: true
+      origin: config
+      package: netlify-plugin-image-optim
+  redirects:
+    - from: /אודות
+      status: 301
+      to: /about.html
+    - from: /חבילות
+      status: 301
+      to: /packages.html
+    - from: /מתקנים
+      status: 301
+      to: /facilities.html
+    - from: /גלריה
+      status: 301
+      to: /gallery.html
+    - from: /יצירת-קשר
+      status: 301
+      to: /contact.html
+    - from: /הזמנה
+      status: 301
+      to: /booking.html
+    - from: /about-us
+      status: 301
+      to: /about.html
+    - from: /packages
+      status: 301
+      to: /packages.html
+    - from: /facilities
+      status: 301
+      to: /facilities.html
+    - from: /gallery
+      status: 301
+      to: /gallery.html
+    - from: /contact-us
+      status: 301
+      to: /contact.html
+    - from: /book-now
+      status: 301
+      to: /booking.html
+    - from: /whatsapp
+      status: 302
+      to: https://wa.me/972501234567
+    - from: /call
+      status: 302
+      to: tel:+972501234567
+    - from: /facebook
+      status: 302
+      to: https://facebook.com/magdalresort
+    - from: /instagram
+      status: 302
+      to: https://instagram.com/magdalresort
+    - from: /old-booking
+      status: 301
+      to: /booking.html
+    - from: /home
+      status: 301
+      to: /
+    - from: /api/*
+      status: 200
+      to: /.netlify/functions/:splat
+    - from: /app/*
+      status: 200
+      to: /app/index.html
+    - from: /*
+      status: 404
+      to: /404.html
+  redirectsOrigin: config
+4:57:21 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+4:57:21 PM: Failing build: Failed to build site
+4:57:21 PM: Finished processing build request in 35.218s
