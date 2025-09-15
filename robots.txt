@@ -1,0 +1,350 @@
+# Robots.txt for Magdal Resort Website
+# https://magdalresort.co.il
+
+# Allow all web crawlers to access all content
+User-agent: *
+Allow: /
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Disallow access to certain directories and files
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /netlify/
+Disallow: /.netlify/
+Disallow: /dist/
+Disallow: /build/
+Disallow: /.cache/
+Disallow: /logs/
+Disallow: /backup/
+Disallow: /drafts/
+
+# Disallow access to development and testing files
+Disallow: /test/
+Disallow: /tests/
+Disallow: /dev/
+Disallow: /development/
+Disallow: /staging/
+Disallow: /*.test.html
+Disallow: /*.dev.html
+Disallow: /*.backup.*
+Disallow: /*.old.*
+Disallow: /*.tmp.*
+
+# Disallow access to configuration files
+Disallow: /*.json
+Disallow: /*.yml
+Disallow: /*.yaml
+Disallow: /*.toml
+Disallow: /*.config.*
+Disallow: /.env*
+Disallow: /package*.json
+Disallow: /netlify.toml
+Disallow: /_redirects
+
+# Allow access to important JSON files
+Allow: /manifest.json
+Allow: /data/*.json
+
+# Disallow access to source files and documentation
+Disallow: /src/
+Disallow: /docs/
+Disallow: /documentation/
+Disallow: /*.md
+Disallow: /README*
+Disallow: /LICENSE*
+Disallow: /CHANGELOG*
+
+# Allow README for root
+Allow: /README.md
+
+# Disallow access to image processing and temporary directories
+Disallow: /images-temp/
+Disallow: /image-cache/
+Disallow: /optimized/
+Disallow: /resized/
+Disallow: /thumbnails-temp/
+
+# Disallow access to analytics and tracking files
+Disallow: /analytics/
+Disallow: /tracking/
+Disallow: /reports/
+Disallow: /metrics/
+
+# Disallow access to email and form processing
+Disallow: /form-handler/
+Disallow: /email-templates/
+Disallow: /submissions/
+
+# Disallow access to security files
+Disallow: /.htaccess
+Disallow: /.htpasswd
+Disallow: /web.config
+Disallow: /security/
+
+# Block bad bots and scrapers
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Block aggressive crawlers
+User-agent: Bytespider
+Disallow: /
+
+User-agent: FriendlyCrawler
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+# Block email harvesters
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+User-agent: WebBandit
+Disallow: /
+
+User-agent: EmailWolf
+Disallow: /
+
+# Block content scrapers
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: Wget
+Disallow: /
+
+User-agent: WebReaper
+Disallow: /
+
+User-agent: WebSauger
+Disallow: /
+
+User-agent: Website
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebZip
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+# Block vulnerability scanners
+User-agent: Nikto
+Disallow: /
+
+User-agent: sqlmap
+Disallow: /
+
+User-agent: w3af
+Disallow: /
+
+User-agent: Netsparker
+Disallow: /
+
+User-agent: Acunetix
+Disallow: /
+
+# Special instructions for image bots
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.webp
+Allow: *.svg
+Disallow: /assets/images/private/
+Disallow: /assets/images/drafts/
+
+# Special instructions for video bots
+User-agent: Googlebot-Video
+Allow: /assets/videos/
+Allow: *.mp4
+Allow: *.webm
+Allow: *.mov
+Disallow: /assets/videos/private/
+Disallow: /assets/videos/drafts/
+
+# News crawlers
+User-agent: Googlebot-News
+Allow: /
+
+# Mobile crawlers
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Archive crawlers
+User-agent: ia_archiver
+Allow: /
+
+User-agent: Wayback
+Allow: /
+
+# Social media crawlers for rich previews
+User-agent: facebookexternalhit/1.1
+Allow: /
+
+User-agent: facebookcatalog
+Allow: /
+
+User-agent: Twitterbot/1.0
+Allow: /
+
+User-agent: LinkedInBot/1.0
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: redditbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: SkypeUriPreview
+Allow: /
+
+User-agent: ZoomBot
+Allow: /
+
+# SEO and analytics tools (allow some, block others)
+User-agent: SiteAuditBot
+Allow: /
+
+User-agent: GTmetrix
+Allow: /
+
+User-agent: PageSpeed
+Allow: /
+
+User-agent: Lighthouse
+Allow: /
+
+User-agent: UptimeRobot
+Allow: /
+
+User-agent: Pingdom
+Allow: /
+
+# Language-specific instructions
+# Hebrew content discovery
+User-agent: *
+Allow: /*hebrew*
+Allow: /*עברית*
+Allow: /*ישראל*
+
+# Regional crawlers
+User-agent: IsraeliBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://magdalresort.co.il/sitemap.xml
+
+# Additional sitemaps
+Sitemap: https://magdalresort.co.il/sitemap-images.xml
+Sitemap: https://magdalresort.co.il/sitemap-videos.xml
+Sitemap: https://magdalresort.co.il/sitemap-news.xml
+
+# Host directive (if needed)
+Host: https://magdalresort.co.il
+
+# Cache directive for crawl budget optimization
+# Request crawlers to be respectful
+Crawl-delay: 1
