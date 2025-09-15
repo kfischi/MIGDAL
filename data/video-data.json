@@ -1,0 +1,534 @@
+{
+  "categories": [
+    {
+      "id": "promotional",
+      "name": "וידאו תדמית",
+      "description": "סרטוני תדמית והצגת המתחם",
+      "icon": "🎬",
+      "order": 1
+    },
+    {
+      "id": "tour",
+      "name": "סיור וירטואלי",
+      "description": "סיור מלא במתחם",
+      "icon": "🎥",
+      "order": 2
+    },
+    {
+      "id": "facilities",
+      "name": "מתקנים",
+      "description": "הצגת המתקנים השונים",
+      "icon": "🏊‍♂️",
+      "order": 3
+    },
+    {
+      "id": "testimonials",
+      "name": "המלצות",
+      "description": "עדויות וידאו מלקוחות",
+      "icon": "⭐",
+      "order": 4
+    },
+    {
+      "id": "events",
+      "name": "אירועים",
+      "description": "תיעוד אירועים שהתקיימו",
+      "icon": "🎉",
+      "order": 5
+    },
+    {
+      "id": "seasonal",
+      "name": "עונתי",
+      "description": "וידאו לפי עונות השנה",
+      "icon": "🌸",
+      "order": 6
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "title": "מגדל של חיים - סרטון תדמית ראשי",
+      "description": "סרטון תדמית מקצועי המציג את כל יופיו של המתחם - הבריכה, החדרים, הגינה והנוף המדהים",
+      "category": "promotional",
+      "duration": "02:30",
+      "featured": true,
+      "thumbnail": "/assets/videos/thumbnails/main-promo-thumb.jpg",
+      "poster": "/assets/videos/posters/main-promo-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/main-promo-1080p.mp4",
+          "720p": "/assets/videos/mp4/main-promo-720p.mp4",
+          "480p": "/assets/videos/mp4/main-promo-480p.mp4"
+        },
+        "webm": {
+          "1080p": "/assets/videos/webm/main-promo-1080p.webm",
+          "720p": "/assets/videos/webm/main-promo-720p.webm"
+        }
+      },
+      "subtitles": {
+        "he": "/assets/videos/subtitles/main-promo-he.vtt",
+        "en": "/assets/videos/subtitles/main-promo-en.vtt"
+      },
+      "uploadDate": "2024-01-15",
+      "views": 1250,
+      "likes": 98,
+      "tags": ["תדמית", "מקצועי", "בריכה", "גינה", "נוף"],
+      "accessibility": {
+        "hasSubtitles": true,
+        "hasAudioDescription": true,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "מגדל של חיים - ריזורט משפחתי יוקרתי בצפון",
+        "description": "הכירו את מגדל של חיים - ריזורט משפחתי יוקרתי במושב מגדל עם בריכה פרטית, גינה מטופחת ונוף מרהיב",
+        "keywords": ["ריזורט", "צפון", "בריכה", "משפחתי", "מגדל"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": true,
+      "controls": true,
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "סיור וירטואלי מלא במתחם",
+      "description": "סיור מפורט וחוויתי בכל חלקי המתחם - מהכניסה דרך הבריכה, החדרים, המטבח ועד לגינה",
+      "category": "tour",
+      "duration": "05:45",
+      "featured": true,
+      "thumbnail": "/assets/videos/thumbnails/virtual-tour-thumb.jpg",
+      "poster": "/assets/videos/posters/virtual-tour-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/virtual-tour-1080p.mp4",
+          "720p": "/assets/videos/mp4/virtual-tour-720p.mp4",
+          "480p": "/assets/videos/mp4/virtual-tour-480p.mp4"
+        },
+        "webm": {
+          "1080p": "/assets/videos/webm/virtual-tour-1080p.webm",
+          "720p": "/assets/videos/webm/virtual-tour-720p.webm"
+        }
+      },
+      "subtitles": {
+        "he": "/assets/videos/subtitles/virtual-tour-he.vtt"
+      },
+      "chapters": [
+        {
+          "title": "כניסה וחזית המתחם",
+          "startTime": "00:00",
+          "endTime": "00:45"
+        },
+        {
+          "title": "אזור הבריכה",
+          "startTime": "00:45",
+          "endTime": "01:30"
+        },
+        {
+          "title": "חדרי שינה וסלונים",
+          "startTime": "01:30",
+          "endTime": "03:00"
+        },
+        {
+          "title": "המטבח המאובזר",
+          "startTime": "03:00",
+          "endTime": "04:00"
+        },
+        {
+          "title": "הגינה ואזורי הפנאי",
+          "startTime": "04:00",
+          "endTime": "05:45"
+        }
+      ],
+      "uploadDate": "2024-01-16",
+      "views": 890,
+      "likes": 76,
+      "tags": ["סיור", "וירטואלי", "מלא", "חדרים", "מטבח"],
+      "accessibility": {
+        "hasSubtitles": true,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "סיור וירטואלי - מגדל של חיים",
+        "description": "סיור מפורט במתחם מגדל של חיים - הבריכה, החדרים, המטבח והגינה",
+        "keywords": ["סיור", "וירטואלי", "ריזורט", "מתחם", "בריכה"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": false,
+      "controls": true,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "הבריכה הפרטית - יום וערב",
+      "description": "מבט מקרוב על הבריכה הפרטית הגדולה במהלך היום ובערב עם תאורה מיוחדת",
+      "category": "facilities",
+      "duration": "01:20",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/pool-feature-thumb.jpg",
+      "poster": "/assets/videos/posters/pool-feature-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/pool-feature-1080p.mp4",
+          "720p": "/assets/videos/mp4/pool-feature-720p.mp4"
+        },
+        "webm": {
+          "720p": "/assets/videos/webm/pool-feature-720p.webm"
+        }
+      },
+      "uploadDate": "2024-01-17",
+      "views": 567,
+      "likes": 45,
+      "tags": ["בריכה", "פרטית", "תאורה", "ערב", "יום"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "בריכה פרטית - מגדל של חיים",
+        "description": "הבריכה הפרטית במגדל של חיים - יום וערב עם תאורה מיוחדת",
+        "keywords": ["בריכה", "פרטית", "מחוממת", "תאורה"]
+      },
+      "autoplay": false,
+      "loop": true,
+      "muted": true,
+      "controls": true,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "title": "המטבח המקצועי",
+      "description": "הצגת המטבח הגדול והמאובזר עם כל המכשירים המקצועיים לבישול קבוצתי",
+      "category": "facilities",
+      "duration": "01:45",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/kitchen-tour-thumb.jpg",
+      "poster": "/assets/videos/posters/kitchen-tour-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/kitchen-tour-1080p.mp4",
+          "720p": "/assets/videos/mp4/kitchen-tour-720p.mp4"
+        }
+      },
+      "uploadDate": "2024-01-18",
+      "views": 434,
+      "likes": 32,
+      "tags": ["מטבח", "מקצועי", "מאובזר", "בישול", "קבוצתי"],
+      "accessibility": {
+        "hasSubtitles": true,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "מטבח מקצועי - מגדל של חיים",
+        "description": "המטבח המאובזר במלואו במגדל של חיים עם ציוד מקצועי לבישול קבוצתי",
+        "keywords": ["מטבח", "מאובזר", "מקצועי", "בישול"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": false,
+      "controls": true,
+      "order": 4
+    },
+    {
+      "id": 5,
+      "title": "המלצה - משפחת כהן",
+      "description": "המלצה מרגשת ממשפחת כהן על החוויה המדהימה שחוו במגדל של חיים",
+      "category": "testimonials",
+      "duration": "01:15",
+      "featured": true,
+      "thumbnail": "/assets/videos/thumbnails/testimonial-cohen-thumb.jpg",
+      "poster": "/assets/videos/posters/testimonial-cohen-poster.jpg",
+      "sources": {
+        "mp4": {
+          "720p": "/assets/videos/mp4/testimonial-cohen-720p.mp4",
+          "480p": "/assets/videos/mp4/testimonial-cohen-480p.mp4"
+        }
+      },
+      "subtitles": {
+        "he": "/assets/videos/subtitles/testimonial-cohen-he.vtt"
+      },
+      "uploadDate": "2024-01-19",
+      "views": 723,
+      "likes": 89,
+      "tags": ["המלצה", "משפחת כהן", "חוויה", "שביעות רצון"],
+      "accessibility": {
+        "hasSubtitles": true,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "המלצה מלקוחות - מגדל של חיים",
+        "description": "שמעו מה לקוחותינו אומרים על החוויה במגדל של חיים",
+        "keywords": ["המלצה", "לקוחות", "חוויה", "שביעות רצון"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": false,
+      "controls": true,
+      "order": 5
+    },
+    {
+      "id": 6,
+      "title": "שבת חתן במגדל של חיים",
+      "description": "תיעוד מרגש משבת חתן שהתקיימה במתחם עם כל המשפחה והחברים",
+      "category": "events",
+      "duration": "03:20",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/wedding-event-thumb.jpg",
+      "poster": "/assets/videos/posters/wedding-event-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/wedding-event-1080p.mp4",
+          "720p": "/assets/videos/mp4/wedding-event-720p.mp4"
+        }
+      },
+      "uploadDate": "2024-01-20",
+      "views": 656,
+      "likes": 78,
+      "tags": ["שבת חתן", "אירוע", "משפחה", "חתונה", "שמחה"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "שבת חתן במגדל של חיים",
+        "description": "תיעוד משבת חתן מושלמת במתחם מגדל של חיים",
+        "keywords": ["שבת חתן", "אירוע", "חתונה", "צפון"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": true,
+      "controls": true,
+      "order": 6
+    },
+    {
+      "id": 7,
+      "title": "מגדל של חיים בחורף",
+      "description": "המתחם במהלל החורף עם הגשם, הירק והאווירה הקסומה של הצפון",
+      "category": "seasonal",
+      "duration": "02:10",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/winter-season-thumb.jpg",
+      "poster": "/assets/videos/posters/winter-season-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/winter-season-1080p.mp4",
+          "720p": "/assets/videos/mp4/winter-season-720p.mp4"
+        }
+      },
+      "uploadDate": "2024-01-21",
+      "views": 389,
+      "likes": 34,
+      "tags": ["חורף", "גשם", "ירק", "עונתי", "אווירה"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "מגדל של חיים בחורף",
+        "description": "המתחם בחורף - ירק, רענן ויפה במיוחד",
+        "keywords": ["חורף", "עונתי", "גשם", "ירק"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": true,
+      "controls": true,
+      "order": 7
+    },
+    {
+      "id": 8,
+      "title": "מגדל של חיים בקיץ",
+      "description": "המתחם בעונת הקיץ עם הבריכה, השמש והפעילויות החוץ",
+      "category": "seasonal",
+      "duration": "02:25",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/summer-season-thumb.jpg",
+      "poster": "/assets/videos/posters/summer-season-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/summer-season-1080p.mp4",
+          "720p": "/assets/videos/mp4/summer-season-720p.mp4"
+        }
+      },
+      "uploadDate": "2024-01-22",
+      "views": 812,
+      "likes": 67,
+      "tags": ["קיץ", "שמש", "בריכה", "פעילויות", "חוץ"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "מגדל של חיים בקיץ",
+        "description": "המתחם בקיץ - בריכה, שמש ופעילויות מהנות",
+        "keywords": ["קיץ", "בריכה", "שמש", "פעילויות"]
+      },
+      "autoplay": false,
+      "loop": false,
+      "muted": true,
+      "controls": true,
+      "order": 8
+    },
+    {
+      "id": 9,
+      "title": "דרון - נוף עילי של המתחם",
+      "description": "צילום דרון מרהיב של כל המתחם מלמעלה עם הנוף הפנורמי של הגליל",
+      "category": "promotional",
+      "duration": "01:50",
+      "featured": true,
+      "thumbnail": "/assets/videos/thumbnails/drone-overview-thumb.jpg",
+      "poster": "/assets/videos/posters/drone-overview-poster.jpg",
+      "sources": {
+        "mp4": {
+          "4k": "/assets/videos/mp4/drone-overview-4k.mp4",
+          "1080p": "/assets/videos/mp4/drone-overview-1080p.mp4",
+          "720p": "/assets/videos/mp4/drone-overview-720p.mp4"
+        },
+        "webm": {
+          "1080p": "/assets/videos/webm/drone-overview-1080p.webm"
+        }
+      },
+      "uploadDate": "2024-01-23",
+      "views": 1456,
+      "likes": 132,
+      "tags": ["דרון", "אווירי", "נוף", "פנורמי", "גליל"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": true,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "צילום דרון - מגדל של חיים",
+        "description": "צילום דרון מרהיב של מתחם מגדל של חיים עם נוף הגליל",
+        "keywords": ["דרון", "אווירי", "נוף", "מתחם", "גליל"]
+      },
+      "autoplay": false,
+      "loop": true,
+      "muted": true,
+      "controls": true,
+      "order": 9
+    },
+    {
+      "id": 10,
+      "title": "טיים לאפס - יום במגדל של חיים",
+      "description": "טיים לאפס מקסים של יום שלם במתחם - מהזריחה ועד השקיעה",
+      "category": "promotional",
+      "duration": "00:45",
+      "featured": false,
+      "thumbnail": "/assets/videos/thumbnails/timelapse-day-thumb.jpg",
+      "poster": "/assets/videos/posters/timelapse-day-poster.jpg",
+      "sources": {
+        "mp4": {
+          "1080p": "/assets/videos/mp4/timelapse-day-1080p.mp4",
+          "720p": "/assets/videos/mp4/timelapse-day-720p.mp4"
+        }
+      },
+      "uploadDate": "2024-01-24",
+      "views": 543,
+      "likes": 48,
+      "tags": ["טיים לאפס", "יום", "זריחה", "שקיעה", "זמן"],
+      "accessibility": {
+        "hasSubtitles": false,
+        "hasAudioDescription": false,
+        "hasSignLanguage": false
+      },
+      "seo": {
+        "title": "טיים לאפס - מגדל של חיים",
+        "description": "יום שלם במגדל של חיים בטיים לאפס מהיר",
+        "keywords": ["טיים לאפס", "יום", "זמן", "זריחה", "שקיעה"]
+      },
+      "autoplay": false,
+      "loop": true,
+      "muted": true,
+      "controls": true,
+      "order": 10
+    }
+  ],
+  "playlists": [
+    {
+      "id": "main-showcase",
+      "title": "מגדל של חיים - תצוגה ראשית",
+      "description": "הווידאו הטובים ביותר המציגים את המתחם",
+      "videos": [1, 2, 9, 5],
+      "thumbnail": "/assets/videos/playlists/main-showcase-thumb.jpg",
+      "featured": true
+    },
+    {
+      "id": "facility-tours",
+      "title": "סיורי מתקנים",
+      "description": "הצגה מפורטת של כל המתקנים במתחם",
+      "videos": [3, 4, 2],
+      "thumbnail": "/assets/videos/playlists/facility-tours-thumb.jpg",
+      "featured": false
+    },
+    {
+      "id": "customer-stories",
+      "title": "סיפורי לקוחות",
+      "description": "המלצות ועדויות מלקוחות מרוצים",
+      "videos": [5],
+      "thumbnail": "/assets/videos/playlists/customer-stories-thumb.jpg",
+      "featured": false
+    },
+    {
+      "id": "seasonal-beauty",
+      "title": "יופי עונתי",
+      "description": "המתחם בעונות השנה השונות",
+      "videos": [7, 8, 10],
+      "thumbnail": "/assets/videos/playlists/seasonal-beauty-thumb.jpg",
+      "featured": false
+    }
+  ],
+  "metadata": {
+    "totalVideos": 10,
+    "totalDuration": "22:55",
+    "totalViews": 7752,
+    "totalLikes": 699,
+    "lastUpdated": "2024-01-24",
+    "defaultPoster": "/assets/videos/default-poster.jpg",
+    "defaultThumbnail": "/assets/videos/default-thumb.jpg",
+    "supportedFormats": ["mp4", "webm"],
+    "supportedQualities": ["480p", "720p", "1080p", "4k"],
+    "maxFileSize": "500MB",
+    "encoding": "H.264",
+    "audioCodec": "AAC"
+  },
+  "settings": {
+    "autoplay": false,
+    "defaultVolume": 0.7,
+    "defaultQuality": "720p",
+    "enableCaptions": true,
+    "enableFullscreen": true,
+    "enablePictureInPicture": true,
+    "enablePlaybackSpeed": true,
+    "enableKeyboardShortcuts": true,
+    "preload": "metadata",
+    "crossorigin": "anonymous",
+    "playsinline": true,
+    "analytics": {
+      "trackViews": true,
+      "trackProgress": true,
+      "trackCompletion": true,
+      "trackInteractions": true
+    }
+  },
+  "streaming": {
+    "enabled": false,
+    "provider": "cloudflare",
+    "adaptiveBitrate": true,
+    "hlsSupport": false,
+    "dashSupport": false
+  },
+  "seo": {
+    "videoSitemap": "/video-sitemap.xml",
+    "structuredData": true,
+    "openGraph": true,
+    "twitterCard": true,
+    "thumbnailSize": "1280x720",
+    "defaultDescription": "סרטוני מגדל של חיים - ריזורט משפחתי יוקרתי בצפון"
+  }
+}
