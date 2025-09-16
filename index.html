@@ -2,10 +2,43 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל</title>
-    <meta name="description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 12 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי, שבתות חתן ואירועי משפחה">
-    <meta name="keywords" content="מגדל של חיים, ריזורט דתי, שבתות חתן, אירוח חרדי, בריכה פרטית, מושבה מגדל, ציבור דתי, אירועי משפחה">
+    <meta name="description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי, שבתות חתן ואירועי משפחה">
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל">
+    <meta property="og:description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי">
+    <meta property="og:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="מגדל של חיים - בריכה פרטית עם נוף מדהים לכינרת והר הארבל">
+    <meta property="og:url" content="https://migdal-chaim.com">
+    <meta property="og:site_name" content="מגדל של חיים">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל">
+    <meta name="twitter:description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+    <meta name="twitter:image:alt" content="מגדל של חיים - בריכה פרטית עם נוף מדהים לכינרת">
+    
+    <!-- WhatsApp specific meta tags -->
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="keywords" content="מגדל של חיים, ריזורט דתי, שבתות חתן, אירוח חרדי, בריכה פרטית, מושבה מגדל, ציבור דתי, אירועי משפחה, כינרת, הר הארבל">
+    <link rel="canonical" href="https://migdal-chaim.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -22,85 +55,286 @@
             "addressCountry": "IL"
         },
         "amenityFeature": [
-            {
-                "@type": "LocationFeatureSpecification",
-                "name": "בריכה פרטית"
-            },
-            {
-                "@type": "LocationFeatureSpecification", 
-                "name": "מטבח מאובזר"
-            },
-            {
-                "@type": "LocationFeatureSpecification",
-                "name": "חדר משחקים"
-            }
+            {"@type": "LocationFeatureSpecification", "name": "בריכה פרטית"},
+            {"@type": "LocationFeatureSpecification", "name": "מטבח מאובזר"},
+            {"@type": "LocationFeatureSpecification", "name": "חדר משחקים"}
         ],
-        "numberOfRooms": "12"
+        "numberOfRooms": "21"
     }
     </script>
     
-    <!-- Accessibility and legal compliance -->
-    
     <style>
+        /* CSS Custom Properties for Responsive Design */
+        :root {
+            /* Colors */
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #2d87ae;
+            --light-blue: #e0f7fa;
+            --accent-gold: #fbbf24;
+            --dark-gray: #1a365d;
+            --medium-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --white: #ffffff;
+            --success-green: #10b981;
+            --error-red: #ef4444;
+            
+            /* Spacing Scale */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Typography Scale */
+            --font-xs: 0.75rem;
+            --font-sm: 0.875rem;
+            --font-base: 1rem;
+            --font-lg: 1.125rem;
+            --font-xl: 1.25rem;
+            --font-2xl: 1.5rem;
+            --font-3xl: 1.875rem;
+            --font-4xl: 2.25rem;
+            --font-5xl: 3rem;
+            --font-6xl: 3.75rem;
+            
+            /* Container Widths */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1536px;
+            
+            /* Breakpoints */
+            --bp-sm: 640px;
+            --bp-md: 768px;
+            --bp-lg: 1024px;
+            --bp-xl: 1280px;
+            
+            /* Component Sizes */
+            --header-height: 80px;
+            --header-height-mobile: 70px;
+            --button-height: 48px;
+            --button-height-sm: 40px;
+            --button-height-lg: 56px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 300ms ease-in-out;
+            --transition-slow: 500ms ease-in-out;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-2xl: 2rem;
+            --radius-full: 9999px;
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #1a365d;
+            color: var(--dark-gray);
+            overflow-x: hidden;
         }
+
+        /* Container System */
+        .container {
+            width: 100%;
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .container-sm { max-width: var(--container-sm); }
+        .container-md { max-width: var(--container-md); }
+        .container-lg { max-width: var(--container-lg); }
+        .container-xl { max-width: var(--container-xl); }
+        .container-2xl { max-width: var(--container-2xl); }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        .grid-1 { grid-template-columns: 1fr; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-auto { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+        /* Flexbox Utilities */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+        .justify-evenly { justify-content: space-evenly; }
+
+        /* Spacing Utilities */
+        .gap-2 { gap: var(--space-2); }
+        .gap-4 { gap: var(--space-4); }
+        .gap-6 { gap: var(--space-6); }
+        .gap-8 { gap: var(--space-8); }
+
+        .p-4 { padding: var(--space-4); }
+        .p-6 { padding: var(--space-6); }
+        .p-8 { padding: var(--space-8); }
+        .px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+        .py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+        .py-6 { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+        .py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+        .py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+        .py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+        .py-20 { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+
+        .m-4 { margin: var(--space-4); }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mb-4 { margin-bottom: var(--space-4); }
+        .mb-6 { margin-bottom: var(--space-6); }
+        .mb-8 { margin-bottom: var(--space-8); }
+        .mt-8 { margin-top: var(--space-8); }
+
+        /* Typography */
+        .text-xs { font-size: var(--font-xs); }
+        .text-sm { font-size: var(--font-sm); }
+        .text-base { font-size: var(--font-base); }
+        .text-lg { font-size: var(--font-lg); }
+        .text-xl { font-size: var(--font-xl); }
+        .text-2xl { font-size: var(--font-2xl); }
+        .text-3xl { font-size: var(--font-3xl); }
+        .text-4xl { font-size: var(--font-4xl); }
+        .text-5xl { font-size: var(--font-5xl); }
+        .text-6xl { font-size: var(--font-6xl); }
+
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+
+        .font-normal { font-weight: 400; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .font-extrabold { font-weight: 800; }
+        .font-black { font-weight: 900; }
+
+        /* Colors */
+        .text-white { color: var(--white); }
+        .text-gray { color: var(--medium-gray); }
+        .text-primary { color: var(--primary-blue); }
+        .text-secondary { color: var(--secondary-blue); }
+
+        .bg-white { background-color: var(--white); }
+        .bg-gray { background-color: var(--light-gray); }
+        .bg-primary { background-color: var(--primary-blue); }
+        .bg-secondary { background-color: var(--secondary-blue); }
+        .bg-light-blue { background-color: var(--light-blue); }
+
+        /* Display Utilities */
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+        .hidden { display: none; }
+        .invisible { visibility: hidden; }
+
+        /* Position Utilities */
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .sticky { position: sticky; }
+
+        /* Border Radius */
+        .rounded { border-radius: var(--radius); }
+        .rounded-md { border-radius: var(--radius-md); }
+        .rounded-lg { border-radius: var(--radius-lg); }
+        .rounded-xl { border-radius: var(--radius-xl); }
+        .rounded-2xl { border-radius: var(--radius-2xl); }
+        .rounded-full { border-radius: var(--radius-full); }
+
+        /* Shadow */
+        .shadow { box-shadow: var(--shadow); }
+        .shadow-md { box-shadow: var(--shadow-md); }
+        .shadow-lg { box-shadow: var(--shadow-lg); }
+        .shadow-xl { box-shadow: var(--shadow-xl); }
 
         /* Header */
         .header {
-            background: rgba(26, 54, 93, 0.95);
+            background: rgba(30, 58, 138, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            height: var(--header-height);
+            transition: all var(--transition-normal);
         }
 
         .header.scrolled {
-            background: rgba(26, 54, 93, 0.98);
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 20px rgba(26, 54, 93, 0.3);
+            background: rgba(30, 58, 138, 0.98);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            height: 100%;
+            padding: 0 var(--space-4);
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
+            font-size: var(--font-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--white);
             text-decoration: none;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: var(--space-8);
+            margin: 0;
+            padding: 0;
         }
 
         .nav-menu a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            transition: all var(--transition-fast);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
         }
 
         .nav-menu a:hover {
@@ -112,19 +346,21 @@
             display: none;
             background: none;
             border: none;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--white);
+            font-size: var(--font-2xl);
             cursor: pointer;
+            padding: var(--space-2);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
@@ -137,7 +373,6 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(1.2) contrast(1.3) saturate(1.1);
         }
 
         .hero-overlay {
@@ -146,162 +381,144 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.4), rgba(45, 135, 174, 0.4));
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(45, 135, 174, 0.6));
             z-index: -1;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 3rem;
+            padding: var(--space-8);
             z-index: 2;
-            position: relative;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 4px 4px 10px rgba(0,0,0,0.9), 2px 2px 6px rgba(0,0,0,1), 0px 0px 20px rgba(0,0,0,0.7);
+            font-size: var(--font-6xl);
+            margin-bottom: var(--space-4);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
             animation: fadeInUp 1s ease-out;
             font-weight: 900;
-            color: #ffffff;
         }
 
         .hero-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            opacity: 1;
+            font-size: var(--font-2xl);
+            margin-bottom: var(--space-2);
             animation: fadeInUp 1s ease-out 0.2s both;
             font-weight: 700;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
-            color: #e0f7fa;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
         .hero-location {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            color: #81e6d9;
+            font-size: var(--font-xl);
+            margin-bottom: var(--space-8);
+            color: var(--light-blue);
             animation: fadeInUp 1s ease-out 0.4s both;
             font-weight: 600;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: var(--space-4);
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
 
+        /* Buttons */
         .btn {
-            padding: 1.2rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-4) var(--space-8);
             border: none;
-            border-radius: 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            border-radius: var(--radius-full);
+            font-size: var(--font-lg);
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-fast);
             text-decoration: none;
-            display: inline-block;
+            min-height: var(--button-height);
+            white-space: nowrap;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
+            background: linear-gradient(45deg, var(--secondary-blue), #4299e1);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(45, 135, 174, 0.6);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
-            color: white;
+            color: var(--white);
             border: 2px solid rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-2px);
         }
 
         /* Stats Section */
         .stats {
-            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
-            padding: 5rem 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: linear-gradient(135deg, var(--light-blue), #b2f5ea);
+            padding: var(--space-20) 0;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            gap: var(--space-8);
         }
 
         .stat-item {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
-            transition: all 0.4s ease;
+            background: var(--white);
+            padding: var(--space-12) var(--space-8);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
         }
 
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(45, 135, 174, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .stat-item:hover::before {
-            left: 100%;
-        }
-
         .stat-item:hover {
-            transform: translateY(-15px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
 
         .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #2d87ae;
-            margin-bottom: 0.5rem;
+            font-size: var(--font-5xl);
+            font-weight: 700;
+            color: var(--secondary-blue);
+            margin-bottom: var(--space-2);
+            display: block;
         }
 
         .stat-label {
-            font-size: 1.2rem;
-            color: #4a5568;
+            font-size: var(--font-xl);
+            color: var(--medium-gray);
             font-weight: 500;
         }
 
         /* Features Section */
         .features {
-            padding: 6rem 0;
-            background: white;
+            padding: var(--space-24) 0;
+            background: var(--white);
         }
 
         .section-title {
             text-align: center;
-            font-size: 3rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
+            font-size: var(--font-5xl);
+            color: var(--dark-gray);
+            margin-bottom: var(--space-4);
             position: relative;
+            font-weight: 800;
         }
 
         .section-title::after {
@@ -312,15 +529,15 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            background: linear-gradient(45deg, var(--secondary-blue), #4299e1);
             border-radius: 2px;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.3rem;
-            color: #4a5568;
-            margin-bottom: 3rem;
+            font-size: var(--font-xl);
+            color: var(--medium-gray);
+            margin-bottom: var(--space-16);
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -329,1329 +546,278 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            gap: var(--space-8);
+            margin-top: var(--space-16);
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 3rem;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: var(--space-12);
+            border-radius: var(--radius-2xl);
             text-align: center;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
             border: 1px solid rgba(45, 135, 174, 0.1);
         }
 
         .feature-card:hover {
-            transform: translateY(-15px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.2);
-            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--light-blue), #b2f5ea);
         }
 
-        .feature-card .icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: #2d87ae;
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-6);
         }
 
         .feature-card h3 {
-            font-size: 1.8rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
+            font-size: var(--font-2xl);
+            color: var(--dark-gray);
+            margin-bottom: var(--space-4);
+            font-weight: 700;
         }
 
         .feature-card p {
-            color: #4a5568;
+            color: var(--medium-gray);
             line-height: 1.7;
-            font-size: 1.1rem;
+            font-size: var(--font-lg);
         }
 
         /* About Section */
         .about {
-            background: white;
-            padding: 6rem 0;
+            background: var(--white);
+            padding: var(--space-24) 0;
         }
 
-        /* Gallery Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: start;
+            margin-top: var(--space-12);
+        }
+
+        .about-text {
+            background: linear-gradient(135deg, var(--light-blue), #b2ebf2);
+            padding: var(--space-10);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-8);
+        }
+
+        .about-text h3 {
+            font-size: var(--font-2xl);
+            color: var(--dark-gray);
+            margin-bottom: var(--space-6);
+            font-weight: 700;
+        }
+
+        .about-text p {
+            margin-bottom: var(--space-6);
+            color: var(--medium-gray);
+            line-height: 1.8;
+        }
+
+        /* Gallery Preview */
         .gallery {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e6fffa 100%);
-        }
-
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #e6fffa, #b2f5ea);
-            color: #1a365d;
-            border: 2px solid transparent;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.3);
+            padding: var(--space-24) 0;
+            background: linear-gradient(135deg, #f8fafc, var(--light-blue));
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-12);
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.2);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
             cursor: pointer;
             aspect-ratio: 4/3;
         }
 
         .gallery-item:hover {
-            transform: translateY(-15px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.3);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-            border-radius: 20px;
+            transition: transform var(--transition-normal);
         }
 
         .gallery-item:hover img {
             transform: scale(1.05);
         }
 
-        /* Hidden class for filtering */
-        .hidden {
-            display: none !important;
-        }
-
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%);
-            padding: 6rem 0;
-            color: white;
+            background: linear-gradient(135deg, var(--dark-gray), var(--secondary-blue));
+            padding: var(--space-24) 0;
+            color: var(--white);
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: var(--space-16);
             align-items: start;
         }
 
         .contact-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #81e6d9;
+            font-size: var(--font-4xl);
+            margin-bottom: var(--space-8);
+            color: var(--light-blue);
+            font-weight: 700;
         }
 
         .contact-info p {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
             opacity: 0.9;
-            font-size: 1.1rem;
+            font-size: var(--font-lg);
             line-height: 1.7;
         }
 
         .contact-details {
             background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            margin-top: 2rem;
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-8);
             backdrop-filter: blur(10px);
         }
 
         .contact-details h4 {
-            color: #81e6d9;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            color: var(--light-blue);
+            margin-bottom: var(--space-4);
+            font-size: var(--font-xl);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: var(--space-4);
+            font-size: var(--font-lg);
         }
 
         .contact-item i {
-            margin-left: 1rem;
-            color: #81e6d9;
-            font-size: 1.2rem;
+            margin-left: var(--space-4);
+            color: var(--light-blue);
+            font-size: var(--font-xl);
         }
 
         .contact-form {
             background: rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-            border-radius: 25px;
+            padding: var(--space-12);
+            border-radius: var(--radius-2xl);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: var(--space-3);
             font-weight: 600;
-            color: #81e6d9;
+            color: var(--light-blue);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1.2rem;
+            padding: var(--space-4);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            border-radius: var(--radius-lg);
             background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
+            color: var(--white);
+            font-size: var(--font-base);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: all var(--transition-fast);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #81e6d9;
+            border-color: var(--light-blue);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 20px rgba(129, 230, 217, 0.3);
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
         .form-group textarea {
-            height: 150px;
+            height: 120px;
             resize: vertical;
         }
 
         /* Footer */
         .footer {
             background: #1a202c;
-            color: white;
+            color: var(--white);
             text-align: center;
-            padding: 3rem 0;
+            padding: var(--space-12) 0;
         }
 
         .footer p {
-            font-size: 1rem;
+            font-size: var(--font-base);
             opacity: 0.8;
         }
 
         /* Floating Buttons */
         .floating-buttons {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: var(--space-8);
+            left: var(--space-8);
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
         }
 
         .whatsapp-btn {
-            display: block;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.8rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: var(--font-2xl);
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-fast);
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
-        }
-
-        .accessibility-btn {
-            display: block;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #4299e1, #2d87ae);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-        }
-
-        .accessibility-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.6);
-        }
-
-        .accessibility-menu {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            z-index: 2000;
-            padding: 0;
-            border: 2px solid #2d87ae;
-        }
-
-        .accessibility-content {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .accessibility-content h3 {
-            color: #1a365d;
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .accessibility-option {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 0.8rem;
-            background: linear-gradient(45deg, #e6fffa, #b2f5ea);
-            border: 2px solid #2d87ae;
-            border-radius: 10px;
-            color: #1a365d;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .accessibility-option:hover,
-        .accessibility-option:focus {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .close-accessibility {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        .close-accessibility:hover {
-            background: #c82333;
-        }
-
-        /* High contrast mode */
-        body.high-contrast {
-            filter: contrast(150%) brightness(120%);
-        }
-
-        /* Large font mode */
-        body.large-font {
-            font-size: 120%;
-        }
-
-        body.large-font h1 {
-            font-size: 5.5rem;
-        }
-
-        body.large-font h2 {
-            font-size: 3.5rem;
-        }
-
-        body.large-font h3 {
-            font-size: 2.5rem;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-xl);
         }
 
         .back-to-top {
             display: none;
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            background: linear-gradient(45deg, var(--secondary-blue), #4299e1);
             border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: var(--font-xl);
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-fast);
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 35px rgba(45, 135, 174, 0.6);
-        }
-
-        .back-to-top.visible {
-            display: block;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 90%;
-            max-width: 1000px;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: modalFadeIn 0.3s ease-out;
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 15px;
-        }
-
-        .close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 2001;
-            transition: all 0.3s ease;
-        }
-
-        .close:hover {
-            color: #81e6d9;
-            transform: scale(1.2);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50%) scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(-50%) scale(1);
-            }
-        }
-
-        /* Accessibility improvements */
-        :focus {
-            outline: 3px solid #81e6d9;
-            outline-offset: 2px;
-        }
-
-        .skip-to-content {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: #1a365d;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 1001;
-            border-radius: 4px;
-        }
-
-        .skip-to-content:focus {
-            top: 6px;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            .btn {
-                border: 2px solid;
-            }
-            
-            .nav-menu a {
-                border: 1px solid transparent;
-            }
-            
-            .nav-menu a:hover,
-            .nav-menu a:focus {
-                border-color: white;
-            }
-        }
-
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(26, 54, 93, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                border-radius: 0 0 15px 15px;
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .floating-buttons {
-                bottom: 20px;
-                left: 20px;
-            }
-
-            .whatsapp-btn, .back-to-top {
-                width: 60px;
-                height: 60px;
-            }
-
-            .filter-buttons {
-                gap: 0.5rem;
-            }
-
-            .filter-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-to-content">דלג לתוכן הראשי</a>
-
-    <!-- Header -->
-    <header class="header" id="header" role="banner">
-        <nav class="nav" role="navigation" aria-label="ניווט ראשי">
-            <a href="#" class="logo" aria-label="מגדל של חיים - דף הבית">מגדל של חיים</a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" aria-label="עבור לדף הבית">בית</a></li>
-                <li><a href="#about" aria-label="עבור למידע אודות">אודות</a></li>
-                <li><a href="#features" aria-label="עבור למתקנים">מתקנים</a></li>
-                <li><a href="#gallery" aria-label="עבור לגלריה">גלריה</a></li>
-                <li><a href="#contact" aria-label="עבור ליצירת קשר">יצירת קשר</a></li>
-            </ul>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט ניווט" aria-expanded="false">☰</button>
-        </nav>
-    </header>
-
-    <!-- Main content wrapper -->
-    <main id="main-content" role="main">
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>מגדל של חיים</h1>
-            <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושבה מגדל</p>
-            <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
-                <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats" id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="80">0</div>
-                    <div class="stat-label">אורחים מקסימום</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="12">0</div>
-                    <div class="stat-label">חדרים פרטיים</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="2">0</div>
-                    <div class="stat-label">דונם שטח</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="2025">2020</div>
-                    <div class="stat-label">שנת הקמה</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">מה מייחד אותנו</h2>
-            <p class="section-subtitle">מתחם יוקרתי עם כל המתקנים שאתם צריכים לחוויה מושלמת</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה פרטית" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>בריכה פרטית מחוממת</h3>
-                    <p>בריכה גדולה ומטופחת עם נוף פנורמי לכינרת והר הארבל. מתאימה לכל הגילאים עם אזור רדוד לילדים וחלק עמוק למבוגרים.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדרים פרטיים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>12 חדרים פרטיים</h3>
-                    <p>כל חדר עם מקלחת ושירותים פרטיים. חדרים מרווחים ונוחים המתאימים למשפחות וקבוצות. עיצוב מודרני עם אווירה חמה ומזמינה.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/28.jpg" alt="ציבור דתי וחרדי" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>ציבור דתי וחרדי</h3>
-                    <p>התמחות מלאה באירוח הציבור הדתי והחרדי. סביבה מתאימה לשמירת מסורת ומנהגים, עם הבנה מלאה של הצרכים המיוחדים.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="שבתות חתן ואירועים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>שבתות חתן ואירועים</h3>
-                    <p>מתמחים בשבתות חתן רחבים ואירועי משפחה. מתחם מרווח של 2 דונם המאפשר אירוח כיד המלך עם כל הנוחות והפרטיות.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/24.jpg" alt="מטבח מאובזר" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>מטבח מאובזר במלואו</h3>
-                    <p>מטבח גדול ומעוצב עם כיריים אינדוקציה, מקררים גדולים וכל הציוד הדרוש לבישול לקבוצות גדולות. כולל חדר אוכל פרטי.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="אזורי פנאי ומשחקים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
-                    <h3>אזורי פנאי ומשחקים</h3>
-                    <p>חדר משחקים עם שולחן סנוקר, פינג פונג, הוקי אוויר ועוד. בריכת דגי נוי ומתחם חיצוני מרווח לפעילויות משפחתיות.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">הסיפור מאחורי מגדל של חיים</h2>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem;">
-                <div>
-                    <h3 style="font-size: 1.8rem; color: #1a365d; margin-bottom: 1.5rem;">מקום עם נשמה</h3>
-                    <p style="margin-bottom: 1.5rem; color: #4a5568; line-height: 1.8;">
-                        כאשר החלטנו להקים את המתחם בשנת 2025, לא ידענו שהדרך תהיה כה מאתגרת. 
-                        בכל פעם שנתקלנו בקושי - הבירוקרטיה, הקבלנים, האישורים - פנינו בלב שלם אל הצדיק האור החיים הקדוש.
-                        כל פעם הגיעה הישועה במיוחד בזמן הנכון.
-                    </p>
-                    <p style="margin-bottom: 1.5rem; color: #4a5568; line-height: 1.8;">
-                        השם "מגדל של חיים" נולד מתוך הכרת הטוב עמוקה. הצדיק שלא זכה לילדים בעולם הזה, 
-                        זוכה עכשיו לבנים רוחניים שיוצרים מקום של שמחה ואחדות לעם ישראל.
-                        כל משפחה שמגיעה הנה היא חלק מהמשפחה הגדולה הזו.
-                    </p>
-                    <p style="color: #4a5568; line-height: 1.8;">
-                        אנחנו, הבעלים, גדלנו כיתומים וחוינו את הקושי של חיים ללא יציבות משפחתית. 
-                        המקום הזה נבנה מתוך הרצון העמוק ליצור את הבית שתמיד חלמנו עליו - 
-                        מקום שבו כל משפחה מרגישה בטוחה, אהובה ומוגנת.
-                    </p>
-                </div>
-                
-                <div>
-                    <div style="background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); padding: 2.5rem; border-radius: 20px; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.6rem; color: #1a365d; margin-bottom: 1rem;">החזון שלנו</h3>
-                        <p style="margin-bottom: 1rem; color: #2c5282; line-height: 1.6;">
-                            ליצור מקום שבו משפחות דתיות וחרדיות יכולות לחגוג את השמחות הגדולות בחיים
-                            בסביבה שמכבדת את הערכים והמסורת שלהם.
-                        </p>
-                        <p style="color: #2c5282; line-height: 1.6;">
-                            כל שבת חתן שנערכת כאן, כל חגיגת הולדת וכל התקהלות משפחתית
-                            מוסיפה חיים ונשמה למקום הזה.
-                        </p>
-                    </div>
-
-                    <div style="background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%); padding: 2.5rem; border-radius: 20px;">
-                        <h3 style="font-size: 1.6rem; color: #1a365d; margin-bottom: 1rem;">מה שמנחה אותנו</h3>
-                        <ul style="color: #2c5282; line-height: 1.8; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
-                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
-                                כל אורח הוא חלק מהמשפחה שלנו
-                            </li>
-                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
-                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
-                                שמירה קפדנית על הלכה ומסורת
-                            </li>
-                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
-                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
-                                איכות ונקיון ללא פשרות
-                            </li>
-                            <li style="position: relative; padding-right: 1.5rem;">
-                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
-                                יצירת זיכרונות שישארו לנצח
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 4rem; text-align: center; background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%); padding: 4rem; border-radius: 20px; color: white;">
-                <h3 style="font-size: 2.5rem; margin-bottom: 3rem;">למה דווקא מושבה מגדל?</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 3rem;">
-                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
-                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">המיקום המושלם</h4>
-                        <p style="line-height: 1.8; font-size: 1.1rem;">
-                            במושבה ההיסטורית מגדל, רק 2 דקות נסיעה מהכינרת, אתם מוצאים את השילוב המושלם 
-                            בין נגישות לשקט. הסביבה הפסטורלית והירוקה מאפשרת ניתוק אמיתי מהמולת העיר, 
-                            בזמן שכל האטרקציות של הצפון נמצאות במרחק נגיעה. זהו המקום שבו אפשר באמת להרגיש 
-                            שאתם בחופשה, רחוק מכל הרעש והלחצים של החיים היומיומיים.
-                        </p>
-                    </div>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
-                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">הנוף המיוחד</h4>
-                        <p style="line-height: 1.8; font-size: 1.1rem;">
-                            נוף פנורמי מרהיב אל הכינרת והר הארבל שמשתנה לאורך היום ויוצר אווירות שונות. 
-                            בשעות הבוקר תוכלו לראות את הזריחה מעל המים הכחולים, בצהריים את השמש משתקפת 
-                            בכינרת, ובערב את השקיעה הצובעת את ההרים בגוונים של זהב וכתום. 
-                            הנוף לא רק יפה, הוא מרגיע את הנפש ומחבר אתכם לטבע ולבורא עולם.
-                        </p>
-                    </div>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
-                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">האווירה הייחודית</h4>
-                        <p style="line-height: 1.8; font-size: 1.1rem;">
-                            מושבה שקטה ומכבדת שמציעה סביבה טבעית ונעימה לכל המשפחה. 
-                            המקום מאפשר לכם ליהנות מחופשה באווירה רגועה ופתוחה, 
-                            עם שכנים ידידותיים ותושבים מקומיים שמכבדים את האורחים. 
-                            הילדים יכולים לשחק בחופשיות במרחב הפתוח והבטוח, 
-                            והמבוגרים יכולים להירגע ולהנות מהשקט והיופי של הגליל העליון.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- עדויות לקוחות -->
-            <div style="margin-top: 4rem;">
-                <h3 style="text-align: center; font-size: 2rem; color: #1a365d; margin-bottom: 3rem;">מה הלקוחות שלנו אומרים</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
-                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
-                            "עשינו שבת חתן למאה איש. המקום מושלם - כל החדרים נקיים ומאובזרים, 
-                            הבריכה מדהימה והצוות עזר בכל מה שצריך. חוויה בלתי נשכחת!"
-                        </p>
-                        <div style="font-weight: bold; color: #2d87ae;">- משפחת כהן, ירושלים</div>
-                    </div>
-
-                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
-                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
-                            "המתחם מתאים בדיוק לציבור שלנו. השקט, הנוף והאווירה הדתית יצרו 
-                            את האירוע המושלם לבן שלנו. בהחלט נחזור!"
-                        </p>
-                        <div style="font-weight: bold; color: #2d87ae;">- משפחת לוי, בני ברק</div>
-                    </div>
-
-                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
-                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
-                            "החדרים מרווחים, המטבח מצוין והילדים נהנו מכל רגע. 
-                            המקום הזה באמת מרגיש כמו בית. תודה על הארוח המיוחד!"
-                        </p>
-                        <div style="font-weight: bold; color: #2d87ae;">- משפחת שוורץ, מודיעין עילית</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">טעימה מהגלריה</h2>
-            <p class="section-subtitle">כמה תמונות נבחרות מהמתחם המיוחד שלנו</p>
-            
-            <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <!-- תמונות נבחרות -->
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה+ונוף'">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדר שינה" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+שינה'">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח" onerror="this.src='https://via.placeholder.com/400x300/68d391/white?text=מטבח'">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="פנאי" onerror="this.src='https://via.placeholder.com/400x300/f687b3/white?text=פנאי'">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="מתחם חיצוני" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/white?text=מתחם+חיצוני'">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/white?text=נוף'">
-                </div>
-            </div>
-
-            <!-- כפתור לגלריה המלאה -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="gallery.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
-                    צפו בגלריה המלאה - 50+ תמונות
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>צרו קשר עמנו</h3>
-                    <p>מגדל של חיים - המקום המושלם לשבתות חתן, אירועי משפחה וחופשות בלתי נשכחות בצפון.</p>
-                    <p>אנו מתמחים באירוח הציבור הדתי והחרדי ומספקים חוויה מותאמת אישית לכל משפחה.</p>
-                    
-                    <div class="contact-details">
-                        <h4>פרטי יצירת קשר</h4>
-                        <div class="contact-item">
-                            <i>📞</i>
-                            <span>טלפון להזמנות: 072-3311083</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>📱</i>
-                            <span>WhatsApp: 052-398-3394</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🏠</i>
-                            <span>מושבה מגדל, הגליל העליון</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>👥</i>
-                            <span>קיבולת: 48-80 אורחים</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🛏️</i>
-                            <span>12 חדרים עם מקלחת פרטית</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🏊‍♂️</i>
-                            <span>בריכה פרטית מחוממת</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🎯</i>
-                            <span>התמחות: ציבור דתי וחרדי</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <h3 style="color: #81e6d9; margin-bottom: 2rem; font-size: 1.8rem;">שלחו הודעה</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">שם מלא</label>
-                            <input type="text" id="name" name="name" placeholder="הכניסו את שמכם המלא" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">טלפון</label>
-                            <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="dates">תאריכים מבוקשים</label>
-                            <input type="text" id="dates" name="dates" placeholder="מתי אתם מעוניינים להגיע?">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="guests">מספר אורחים</label>
-                            <input type="number" id="guests" name="guests" placeholder="כמה אורחים צפויים?" min="1" max="80">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">הודעה</label>
-                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם ועל הדרישות המיוחדות"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח הודעה לוואטסאפ</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <!-- Site Map -->
-            <div style="background: #2a3441; margin-bottom: 2rem; padding: 2rem; border-radius: 15px;">
-                <h3 style="color: #81e6d9; margin-bottom: 1.5rem; text-align: center;">מפת האתר</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: right;">
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">ניווט ראשי</h4>
-                        <ul style="list-style: none; padding: 0; color: white; line-height: 2;">
-                            <li><a href="#home" style="color: white; text-decoration: none;">בית</a></li>
-                            <li><a href="#about" style="color: white; text-decoration: none;">אודות</a></li>
-                            <li><a href="#features" style="color: white; text-decoration: none;">מתקנים</a></li>
-                            <li><a href="#gallery" style="color: white; text-decoration: none;">גלריה</a></li>
-                            <li><a href="#contact" style="color: white; text-decoration: none;">יצירת קשר</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">דפים נוספים</h4>
-                        <ul style="list-style: none; padding: 0; color: white; line-height: 2;">
-                            <li><a href="gallery.html" style="color: white; text-decoration: none;">גלריה מלאה</a></li>
-                            <li><a href="#accessibility" style="color: white; text-decoration: none;">הצהרת נגישות</a></li>
-                            <li><a href="#privacy" style="color: white; text-decoration: none;">מדיניות פרטיות</a></li>
-                            <li><a href="#terms" style="color: white; text-decoration: none;">תקנון השימוש</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">יצירת קשר</h4>
-                        <ul style="list-style: none; padding: 0; color: white; line-height: 2;">
-                            <li>טלפון: 072-3311083</li>
-                            <li>WhatsApp: 052-398-3394</li>
-                            <li>מושבה מגדל, הגליל העליון</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">מידע נוסף</h4>
-                        <ul style="list-style: none; padding: 0; color: white; line-height: 2;">
-                            <li>קיבולת: 48-80 אורחים</li>
-                            <li>12 חדרים פרטיים</li>
-                            <li>מתחם של 2 דונם</li>
-                            <li>ציבור דתי וחרדי</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accessibility Statement -->
-            <div id="accessibility" style="background: #2a3441; margin-bottom: 2rem; padding: 2rem; border-radius: 15px; text-align: right;">
-                <h3 style="color: #81e6d9; margin-bottom: 1.5rem;">הצהרת נגישות</h3>
-                <p style="margin-bottom: 1rem; line-height: 1.8;">
-                    מגדל של חיים מחויב לספק נגישות דיגיטלית לכל המשתמשים, כולל אנשים עם מוגבלויות. 
-                    אנו פועלים לשיפור מתמיד של נגישות האתר שלנו ומקפידים על עמידה בתקן הישראלי ת"י 5568.
-                </p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">מה עשינו לנגישות:</h4>
-                        <ul style="color: white; line-height: 1.8;">
-                            <li>ניגודיות צבעים מתאימה</li>
-                            <li>תגים סמנטיים נכונים</li>
-                            <li>תמיכה בקוראי מסך</li>
-                            <li>ניווט במקלדת</li>
-                            <li>טקסט חלופי לכל התמונות</li>
-                            <li>כותרות היררכיות</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">פרטי קשר לנגישות:</h4>
-                        <p style="color: white; line-height: 1.8;">
-                            אם נתקלתם בבעיית נגישות באתר או שיש לכם הצעות לשיפור, 
-                            אנא צרו קשר איתנו:
-                        </p>
-                        <p style="color: white; margin-top: 1rem;">
-                            <strong>אימייל:</strong> accessibility@migdal-chaim.com<br>
-                            <strong>טלפון:</strong> 072-3311083<br>
-                            <strong>זמני מענה:</strong> ראשון-חמישי 9:00-17:00
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Privacy Policy -->
-            <div id="privacy" style="background: #2a3441; margin-bottom: 2rem; padding: 2rem; border-radius: 15px; text-align: right;">
-                <h3 style="color: #81e6d9; margin-bottom: 1.5rem;">מדיניות פרטיות</h3>
-                <p style="margin-bottom: 1rem; line-height: 1.8; color: white;">
-                    אנו מכבדים את פרטיותכם ומחויבים להגן על המידע האישי שלכם. המידע שאתם משתפים איתנו משמש אך ורק לצורך מתן השירות והתקשרות איתכם.
-                </p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">איזה מידע אנו אוספים:</h4>
-                        <ul style="color: white; line-height: 1.8;">
-                            <li>שם מלא ומספר טלפון</li>
-                            <li>תאריכי האירוח המבוקשים</li>
-                            <li>מספר האורחים</li>
-                            <li>פרטים נוספים שתבחרו לשתף</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">איך אנו משתמשים במידע:</h4>
-                        <ul style="color: white; line-height: 1.8;">
-                            <li>יצירת קשר לאישור הזמנות</li>
-                            <li>מתן מידע על השירותים</li>
-                            <li>שיפור השירות שלנו</li>
-                            <li>התקשרות בעניינים דחופים</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="margin-top: 1rem; color: white; font-size: 0.9rem;">
-                    המידע שלכם לא יועבר לצדדים שלישיים ללא הסכמתכם המפורשת. 
-                    לשאלות נוספות צרו קשר בטלפון 072-3311083.
-                </p>
-            </div>
-
-            <!-- Terms of Use -->
-            <div id="terms" style="background: #2a3441; margin-bottom: 2rem; padding: 2rem; border-radius: 15px; text-align: right;">
-                <h3 style="color: #81e6d9; margin-bottom: 1.5rem;">תקנון השימוש</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">הזמנות וביטולים:</h4>
-                        <ul style="color: white; line-height: 1.8; font-size: 0.95rem;">
-                            <li>הזמנה מחייבת אישור טלפוני</li>
-                            <li>דרוש מקדמה לאישור ההזמנה</li>
-                            <li>ביטול עד 48 שעות ללא עלות</li>
-                            <li>ביטול מאוחר יחויב בעלות</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">כללי בית:</h4>
-                        <ul style="color: white; line-height: 1.8; font-size: 0.95rem;">
-                            <li>כניסה: 15:00, יציאה: 11:00</li>
-                            <li>שמירה על נקיון המתחם</li>
-                            <li>שמירה על רכוש הבית</li>
-                            <li>איסור עישון בחדרים</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="margin-top: 1rem; color: white; font-size: 0.9rem;">
-                    השימוש באתר ובשירותים מהווה הסכמה לתקנון זה. 
-                    התקנון המלא זמין בבקשה בטלפון 072-3311083.
-                </p>
-            </div>
-
-            <!-- Copyright -->
-            <p>&copy; 2025 מגדל של חיים - ריזורט משפחתי יוקרתי. כל הזכויות שמורות.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">עוצב ופותח במיוחד עבור משפחות הציבור הדתי והחרדי</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">
-                האתר נבנה בהתאם לתקן הנגישות הישראלי ת"י 5568 ותומך בדפדפנים מובילים
-            </p>
-        </div>
-    </footer>
-
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/972523983394" class="whatsapp-btn" target="_blank" title="WhatsApp" aria-label="פתח צ'אט בוואטסאפ">
-            💬
-        </a>
-        <!-- Accessibility button -->
-        <button class="accessibility-btn" id="accessibilityBtn" title="אפשרויות נגישות" aria-label="פתח תפריט נגישות">
-            ♿
-        </button>
-        <button class="back-to-top" id="backToTop" title="חזור למעלה" aria-label="חזור לראש העמוד">
-            ↑
-        </button>
-    </div>
-
-    <!-- Accessibility Menu -->
-    <div class="accessibility-menu" id="accessibilityMenu" style="display: none;">
-        <div class="accessibility-content">
-            <h3>אפשרויות נגישות</h3>
-            <button class="accessibility-option" onclick="increaseFontSize()" aria-label="הגדל גופן">
-                🔍+ הגדל גופן
-            </button>
-            <button class="accessibility-option" onclick="decreaseFontSize()" aria-label="הקטן גופן">
-                🔍- הקטן גופן
-            </button>
-            <button class="accessibility-option" onclick="toggleHighContrast()" aria-label="מצב ניגודיות גבוהה">
-                🎨 ניגודיות גבוהה
-            </button>
-            <button class="accessibility-option" onclick="resetAccessibility()" aria-label="איפוס הגדרות נגישות">
-                🔄 איפוס הגדרות
-            </button>
-            <button class="close-accessibility" onclick="closeAccessibilityMenu()" aria-label="סגור תפריט נגישות">
-                ✕ סגור
-            </button>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <img id="modalImage" src="" alt="">
-        </div>
-    </div>
-
-    <script>
-        // Navigation scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle with accessibility
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileToggle.addEventListener('click', function() {
-            const isOpen = navMenu.classList.contains('active');
-            navMenu.classList.toggle('active');
-            
-            // Update ARIA attributes
-            mobileToggle.setAttribute('aria-expanded', !isOpen);
-            mobileToggle.setAttribute('aria-label', !isOpen ? 'סגור תפריט ניווט' : 'פתח תפריט ניווט');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
-                }
-            });
-        });
-
-        // Animated counters
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const current = parseInt(counter.textContent);
-                const increment = target / 100;
-                
-                if (current < target) {
-                    counter.textContent = Math.ceil(current + increment);
-                    setTimeout(() => animateCounters(), 30);
-                } else {
-                    counter.textContent = target;
-                }
-            });
-        }
-
-        // Trigger counter animation when stats section is visible
-        const statsSection = document.querySelector('.stats');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        observer.observe(statsSection);
-
-        // Gallery modal (simplified for preview gallery)
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.getElementById('closeModal');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                modal.style.display = 'block';
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-            });
-        });
-
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Contact form WhatsApp integration
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const dates = document.getElementById('dates').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
-            
-            const whatsappMessage = `שלום, אני מעוניין/ת להזמין את מגדל של חיים:
-            
-שם: ${name}
-טלפון: ${phone}
-תאריכים: ${dates}
-מספר אורחים: ${guests}
-הודעה: ${message}
-
-תודה!`;
-            
-            const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Keyboard navigation for accessibility
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                if (modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                }
-                if (document.getElementById('accessibilityMenu').style.display === 'block') {
-                    closeAccessibilityMenu();
-                }
-            }
-        });
-
-        // Accessibility menu functions
-        function openAccessibilityMenu() {
-            document.getElementById('accessibilityMenu').style.display = 'block';
-        }
-
-        function closeAccessibilityMenu() {
-            document.getElementById('accessibilityMenu').style.display = 'none';
-        }
-
-        function increaseFontSize() {
-            document.body.classList.remove('large-font');
-            document.body.classList.add('large-font');
-        }
-
-        function decreaseFontSize() {
-            document.body.classList.remove('large-font');
-        }
-
-        function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-        }
-
-        function resetAccessibility() {
-            document.body.classList.remove('large-font', 'high-contrast');
-        }
-
-        // Accessibility button event listener
-        document.getElementById('accessibilityBtn').addEventListener('click', openAccessibilityMenu);
-    </script>
-</body>
-</html>
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-xl);
