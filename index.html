@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>גלריה - מגדל של חיים</title>
+    <title>מגדל של חיים - ריזורט משפחתי ליד הכינרת</title>
+    <meta name="description" content="ריזורט משפחתי יוקרתי ליד הכינרת - בריכה פרטית, מתחם מרווח עד 50 אורחים. מושלם לשבתות חתן ואירועי משפחה">
+    
     <style>
         * {
             margin: 0;
@@ -13,163 +15,341 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #38b2ac 0%, #4299e1 50%, #0ea5e9 100%);
-            min-height: 100vh;
+            line-height: 1.6;
+            color: #1a365d;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(26, 54, 93, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(45, 135, 174, 0.8)),
+                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-location {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #81e6d9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            color: white;
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(45, 135, 174, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            padding: 5rem 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        .header {
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
             text-align: center;
-            margin-bottom: 40px;
         }
 
-        .header h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .back-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
+        .stat-item {
+            background: white;
+            padding: 3rem 2rem;
             border-radius: 25px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 135, 174, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2d87ae;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .filter-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .filter-btn {
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            border-radius: 25px;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #e6fffa, #b2f5ea);
+            color: #1a365d;
+            border: 2px solid transparent;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: rgba(255, 255, 255, 0.9);
-            color: #38b2ac;
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.3);
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .gallery-item {
-            background: white;
-            border-radius: 15px;
+            position: relative;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.2);
+            transition: all 0.4s ease;
             cursor: pointer;
+            aspect-ratio: 4/3;
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.3);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .gallery-item .info {
-            padding: 20px;
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
         }
 
         .gallery-item .title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #38b2ac;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
 
         .gallery-item .description {
-            color: #666;
             font-size: 0.9rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 90%;
-            max-width: 900px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: #ccc;
-        }
-
-        .modal-info {
-            background: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .modal-info .title {
-            font-size: 1.5rem;
-            color: #38b2ac;
-            margin-bottom: 10px;
+            opacity: 0.9;
         }
 
         /* Hidden class for filtering */
@@ -177,365 +357,446 @@
             display: none !important;
         }
 
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%);
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #81e6d9;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: #81e6d9;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #81e6d9;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(129, 230, 217, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn {
+            display: block;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .back-to-top {
+            display: none;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(45, 135, 174, 0.6);
+        }
+
+        .back-to-top.visible {
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1000px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #81e6d9;
+            transform: scale(1.2);
+        }
+
+        .modal-info {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(45, 135, 174, 0.9));
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .modal-info .title {
+            font-size: 1.8rem;
+            color: #81e6d9;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .modal-info .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .mobile-toggle {
+                display: block;
             }
 
-            .header h1 {
-                font-size: 2rem;
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 54, 93, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                border-radius: 0 0 15px 15px;
             }
 
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 15px;
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .whatsapp-btn, .back-to-top {
+                width: 60px;
+                height: 60px;
             }
 
             .filter-buttons {
-                gap: 5px;
+                gap: 0.5rem;
             }
 
             .filter-btn {
-                padding: 8px 16px;
+                padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="index.html" class="back-btn">← חזרה לאתר הראשי</a>
-            <h1>גלריית תמונות</h1>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">מגדל של חיים</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#contact">יצירת קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>מגדל של חיים</h1>
+            <p class="hero-subtitle">ריזורט משפחתי יוקרתי בצפון</p>
+            <p class="hero-location">מיקום מושלם ליד הכינרת - חוויה בלתי נשכחת</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
+                <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
+            </div>
         </div>
+    </section>
 
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">הכל</button>
-            <button class="filter-btn" data-filter="pool">בריכה</button>
-            <button class="filter-btn" data-filter="rooms">חדרים</button>
-            <button class="filter-btn" data-filter="kitchen">חדר אוכל ומטבח</button>
-            <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
-            <button class="filter-btn" data-filter="exterior">אזורי חוץ</button>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- בריכה -->
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/5.jpg" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=בריכה+ונוף'">
-                <div class="info">
-                    <div class="title">בריכה ונוף</div>
-                    <div class="description">בריכה פרטית עם נוף מדהים</div>
+    <!-- Stats Section -->
+    <section class="stats" id="about">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">מקומות לינה</div>
                 </div>
-            </div>
-
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/14.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=בריכה'">
-                <div class="info">
-                    <div class="title">בריכה</div>
-                    <div class="description">בריכה מחוממת ומטופחת</div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1000">0</div>
+                    <div class="stat-label">מ"ר שטח</div>
                 </div>
-            </div>
-
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/2.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=בריכה'">
-                <div class="info">
-                    <div class="title">בריכה</div>
-                    <div class="description">מים נקיים וצלולים</div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="10">0</div>
+                    <div class="stat-label">דקות מהכינרת</div>
                 </div>
-            </div>
-
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/30.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=בריכה'">
-                <div class="info">
-                    <div class="title">בריכה</div>
-                    <div class="description">אזור בריכה מרווח</div>
-                </div>
-            </div>
-
-            <!-- חדרים -->
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/11.jpg" alt="חדר 1" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=חדר+1'">
-                <div class="info">
-                    <div class="title">חדר 1</div>
-                    <div class="description">חדר שינה נוח ומרווח</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/7.jpg" alt="חדר 2" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=חדר+2'">
-                <div class="info">
-                    <div class="title">חדר 2</div>
-                    <div class="description">חדר שינה עם נוף יפה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/6.jpg" alt="חדר 3" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=חדר+3'">
-                <div class="info">
-                    <div class="title">חדר 3</div>
-                    <div class="description">חדר שינה משפחתי</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/8.jpg" alt="חדר 4" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=חדר+4'">
-                <div class="info">
-                    <div class="title">חדר 4</div>
-                    <div class="description">חדר שינה עם חלון גדול</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/17.jpg" alt="חדר 5" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=חדר+5'">
-                <div class="info">
-                    <div class="title">חדר 5</div>
-                    <div class="description">חדר שינה יוקרתי</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/9.jpg" alt="מקלחת ושירותים" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=מקלחת'">
-                <div class="info">
-                    <div class="title">מקלחת ושירותים</div>
-                    <div class="description">מקלחת מודרנית ונקייה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/4.jpg" alt="שירותים" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=שירותים'">
-                <div class="info">
-                    <div class="title">שירותים</div>
-                    <div class="description">שירותים נקיים ומטופחים</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/19.jpg" alt="מקלחת" onerror="this.src='https://via.placeholder.com/400x250/a855f7/white?text=מקלחת'">
-                <div class="info">
-                    <div class="title">מקלחת</div>
-                    <div class="description">מקלחת נוספת</div>
-                </div>
-            </div>
-
-            <!-- מטבח -->
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/13.jpg" alt="מטבח 1" onerror="this.src='https://via.placeholder.com/400x250/ec4899/white?text=מטבח+1'">
-                <div class="info">
-                    <div class="title">מטבח 1</div>
-                    <div class="description">מטבח מאובזר במלואו</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/24.jpg" alt="מטבח 2" onerror="this.src='https://via.placeholder.com/400x250/ec4899/white?text=מטבח+2'">
-                <div class="info">
-                    <div class="title">מטבח 2</div>
-                    <div class="description">אזור בישול נוסף</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/18.jpg" alt="חדר אוכל 1" onerror="this.src='https://via.placeholder.com/400x250/ec4899/white?text=חדר+אוכל+1'">
-                <div class="info">
-                    <div class="title">חדר אוכל 1</div>
-                    <div class="description">פינת אוכל גדולה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/12.jpg" alt="חדר אוכל 2" onerror="this.src='https://via.placeholder.com/400x250/ec4899/white?text=חדר+אוכל+2'">
-                <div class="info">
-                    <div class="title">חדר אוכל 2</div>
-                    <div class="description">אזור אוכל נוסף</div>
-                </div>
-            </div>
-
-            <!-- פנאי ומשחקים -->
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/34.jpg" alt="משחקים" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=משחקים'">
-                <div class="info">
-                    <div class="title">משחקים</div>
-                    <div class="description">אזור משחקים לילדים</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/35.jpg" alt="משחקים" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=משחקים'">
-                <div class="info">
-                    <div class="title">משחקים</div>
-                    <div class="description">אזור פעילויות</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/15.jpg" alt="משחקים" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=משחקים'">
-                <div class="info">
-                    <div class="title">משחקים</div>
-                    <div class="description">פינת משחקים</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/20.jpg" alt="משחקים" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=משחקים'">
-                <div class="info">
-                    <div class="title">משחקים</div>
-                    <div class="description">משחקים לכל המשפחה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/3.jpg" alt="פינת ישיבה 1" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=פינת+ישיבה+1'">
-                <div class="info">
-                    <div class="title">פינת ישיבה 1</div>
-                    <div class="description">מקום נוח לישיבה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/22.jpg" alt="פינת ישיבה 2" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=פינת+ישיבה+2'">
-                <div class="info">
-                    <div class="title">פינת ישיבה 2</div>
-                    <div class="description">ישיבה בצל</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/21.jpg" alt="פינת ישיבה 3" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=פינת+ישיבה+3'">
-                <div class="info">
-                    <div class="title">פינת ישיבה 3</div>
-                    <div class="description">זווית ישיבה נעימה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/28.jpg" alt="פינת ישיבה 4" onerror="this.src='https://via.placeholder.com/400x250/dc2626/white?text=פינת+ישיבה+4'">
-                <div class="info">
-                    <div class="title">פינת ישיבה 4</div>
-                    <div class="description">מקום לפגישה חברתית</div>
-                </div>
-            </div>
-
-            <!-- אזורי חוץ -->
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/31.jpg" alt="רחבה" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=רחבה'">
-                <div class="info">
-                    <div class="title">רחבה</div>
-                    <div class="description">רחבה מרכזית גדולה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/33.jpg" alt="רחבה 1" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=רחבה+1'">
-                <div class="info">
-                    <div class="title">רחבה 1</div>
-                    <div class="description">רחבה עם צמחייה</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/26.jpg" alt="רחבה 2" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=רחבה+2'">
-                <div class="info">
-                    <div class="title">רחבה 2</div>
-                    <div class="description">אזור חיצוני מרווח</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/25.jpg" alt="רחבה 3" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=רחבה+3'">
-                <div class="info">
-                    <div class="title">רחבה 3</div>
-                    <div class="description">מרחב פתוח ואוורירי</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/magdalresort/magdalresort.github.io/main/gallery/36.jpg" alt="רחבה 4" onerror="this.src='https://via.placeholder.com/400x250/7c3aed/white?text=רחבה+4'">
-                <div class="info">
-                    <div class="title">רחבה 4</div>
-                    <div class="description">אזור נוסף לפעילויות</div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">% שביעות רצון</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Modal -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modalImage" src="" alt="">
-            <div class="modal-info">
-                <div class="title" id="modalTitle"></div>
-                <div class="description" id="modalDescription"></div>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">גלריית המתחם</h2>
+            <p class="section-subtitle">גלו את הקסם שמחכה לכם במגדל של חיים</p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">הכל</button>
+                <button class="filter-btn" data-filter="pool">בריכה</button>
+                <button class="filter-btn" data-filter="rooms">חדרים</button>
+                <button class="filter-btn" data-filter="kitchen">מטבח ואוכל</button>
+                <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
+                <button class="filter-btn" data-filter="exterior">אזורי חוץ</button>
             </div>
-        </div>
-    </div>
 
-    <script>
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- בריכה -->
+                <div class="gallery-item" data-category="pool">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה+ונוף'">
+                    <div class="overlay">
+                        <div class="title">בריכה ונוף מדהים</div>
+                        <div class="description">בריכה פרטית עם נוף פנורמי לכינרת</div>
+                    </div>
+                </div>
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
+                <div class="gallery-item" data-category="pool">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה'">
+                    <div class="overlay">
+                        <div class="title">בריכה מחוממת</div>
+                        <div class="description">מים נקיים וצלולים לכל השנה</div>
+                    </div>
+                </div>
 
-                const filterValue = btn.getAttribute('data-filter');
+                <div class="gallery-item" data-category="pool">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה'">
+                    <div class="overlay">
+                        <div class="title">אזור בריכה</div>
+                        <div class="description">מרחב רחב ומרווח לכל המשפחה</div>
+                    </div>
+                </div>
 
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all') {
-                        item.classList.remove('hidden');
-                    } else {
-                        const itemCategory = item.getAttribute('data-category');
-                        if (itemCategory === filterValue) {
-                            item.classList.remove('hidden');
-                        } else {
-                            item.classList.add('hidden');
-                        }
-                    }
-                });
-            });
-        });
+                <div class="gallery-item" data-category="pool">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="בריכה" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה'">
+                    <div class="overlay">
+                        <div class="title">בריכה בשעות הערב</div>
+                        <div class="description">אווירה קסומה עם תאורה מיוחדת</div>
+                    </div>
+                </div>
 
-        // Modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const closeBtn = document.querySelector('.close');
+                <!-- חדרים -->
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר שינה 1" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+1'">
+                    <div class="overlay">
+                        <div class="title">חדר שינה ראשי</div>
+                        <div class="description">חדר מרווח ונוח עם נוף יפה</div>
+                    </div>
+                </div>
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                const title = item.querySelector('.title').textContent;
-                const description = item.querySelector('.description').textContent;
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדר שינה 2" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+2'">
+                    <div class="overlay">
+                        <div class="title">חדר שינה משפחתי</div>
+                        <div class="description">מושלם עבור משפחות עם ילדים</div>
+                    </div>
+                </div>
 
-                modalImage.src = img.src;
-                modalTitle.textContent = title;
-                modalDescription.textContent = description;
-                modal.style.display = 'block';
-            });
-        });
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדר שינה 3" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+3'">
+                    <div class="overlay">
+                        <div class="title">חדר שינה נוסף</div>
+                        <div class="description">חדר נוח ושקט לשנה מושלמת</div>
+                    </div>
+                </div>
 
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדר שינה 4" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+4'">
+                    <div class="overlay">
+                        <div class="title">חדר אורחים</div>
+                        <div class="description">חדר מעוצב באלגנטיות</div>
+                    </div>
+                </div>
 
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/17.jpg" alt="חדר שינה 5" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+5'">
+                    <div class="overlay">
+                        <div class="title">סוויטה יוקרתית</div>
+                        <div class="description">חדר מרווח במיוחד עם חלון פנורמי</div>
+                    </div>
+                </div>
 
-        // Close modal with ESC key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                modal.style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="מקלחת ושירותים" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=מקלחת'">
+                    <div class="overlay">
+                        <div class="title">חדר רחצה מודרני</div>
+                        <div class="description">מקלחת ושירותים מעוצבים</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="שירותים" onerror="this.src='https://via.placeholder.com/400x300/4299e1/
