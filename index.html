@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל</title>
+    <meta name="description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 12 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי, שבתות חתן ואירועי משפחה">
+    <meta name="keywords" content="מגדל של חיים, ריזורט דתי, שבתות חתן, אירוח חרדי, בריכה פרטית, מושבה מגדל, ציבור דתי, אירועי משפחה">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a365d;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(26, 54, 93, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(1.2) contrast(1.3) saturate(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.4), rgba(45, 135, 174, 0.4));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 3rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 10px rgba(0,0,0,0.9), 2px 2px 6px rgba(0,0,0,1), 0px 0px 20px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 1;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
+            color: #e0f7fa;
+        }
+
+        .hero-location {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #81e6d9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            font-weight: 600;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            color: white;
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(45, 135, 174, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 135, 174, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2d87ae;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(45, 135, 174, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.2);
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+        }
+
+        .feature-card .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #2d87ae;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e6fffa 100%);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #e6fffa, #b2f5ea);
+            color: #1a365d;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(26, 54, 93, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hidden class for filtering */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%);
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #81e6d9;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-details h4 {
+            color: #81e6d9;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            margin-left: 1rem;
+            color: #81e6d9;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: #81e6d9;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #81e6d9;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(129, 230, 217, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn {
+            display: block;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        .back-to-top {
+            display: none;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #2d87ae, #4299e1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(45, 135, 174, 0.6);
+        }
+
+        .back-to-top.visible {
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1000px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #81e6d9;
+            transform: scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 54, 93, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                border-radius: 0 0 15px 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .whatsapp-btn, .back-to-top {
+                width: 60px;
+                height: 60px;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">מגדל של חיים</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#features">מתקנים</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#contact">יצירת קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>מגדל של חיים</h1>
+            <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושבה מגדל</p>
+            <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
+                <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="80">0</div>
+                    <div class="stat-label">אורחים מקסימום</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="12">0</div>
+                    <div class="stat-label">חדרים פרטיים</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="2">0</div>
+                    <div class="stat-label">דונם שטח</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="2025">2020</div>
+                    <div class="stat-label">שנת הקמה</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">מה מייחד אותנו</h2>
+            <p class="section-subtitle">מתחם יוקרתי עם כל המתקנים שאתם צריכים לחוויה מושלמת</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה פרטית" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>בריכה פרטית מחוממת</h3>
+                    <p>בריכה גדולה ומטופחת עם נוף פנורמי לכינרת והר הארבל. מתאימה לכל הגילאים עם אזור רדוד לילדים וחלק עמוק למבוגרים.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדרים פרטיים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>12 חדרים פרטיים</h3>
+                    <p>כל חדר עם מקלחת ושירותים פרטיים. חדרים מרווחים ונוחים המתאימים למשפחות וקבוצות. עיצוב מודרני עם אווירה חמה ומזמינה.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/28.jpg" alt="ציבור דתי וחרדי" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>ציבור דתי וחרדי</h3>
+                    <p>התמחות מלאה באירוח הציבור הדתי והחרדי. סביבה מתאימה לשמירת מסורת ומנהגים, עם הבנה מלאה של הצרכים המיוחדים.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="שבתות חתן ואירועים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>שבתות חתן ואירועים</h3>
+                    <p>מתמחים בשבתות חתן רחבים ואירועי משפחה. מתחם מרווח של 2 דונם המאפשר אירוח כיד המלך עם כל הנוחות והפרטיות.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח מאובזר" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>מטבח מאובזר במלואו</h3>
+                    <p>מטבח גדול ומעוצב עם כיריים אינדוקציה, מקררים גדולים וכל הציוד הדרוש לבישול לקבוצות גדולות. כולל חדר אוכל פרטי.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="אזורי פנאי ומשחקים" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1.5rem;">
+                    <h3>אזורי פנאי ומשחקים</h3>
+                    <p>חדר משחקים עם שולחן סנוקר, פינג פונג, הוקי אוויר ועוד. בריכת דגי נוי ומתחם חיצוני מרווח לפעילויות משפחתיות.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">הסיפור מאחורי מגדל של חיים</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem;">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: #1a365d; margin-bottom: 1.5rem;">מקום עם נשמה</h3>
+                    <p style="margin-bottom: 1.5rem; color: #4a5568; line-height: 1.8;">
+                        כאשר החלטנו להקים את המתחם בשנת 2025, לא ידענו שהדרך תהיה כה מאתגרת. 
+                        בכל פעם שנתקלנו בקושי - הבירוקרטיה, הקבלנים, האישורים - פנינו בלב שלם אל הצדיק האור החיים הקדוש.
+                        כל פעם הגיעה הישועה במיוחד בזמן הנכון.
+                    </p>
+                    <p style="margin-bottom: 1.5rem; color: #4a5568; line-height: 1.8;">
+                        השם "מגדל של חיים" נולד מתוך הכרת הטוב עמוקה. הצדיק שלא זכה לילדים בעולם הזה, 
+                        זוכה עכשיו לבנים רוחניים שיוצרים מקום של שמחה ואחדות לעם ישראל.
+                        כל משפחה שמגיעה הנה היא חלק מהמשפחה הגדולה הזו.
+                    </p>
+                    <p style="color: #4a5568; line-height: 1.8;">
+                        אנחנו, הבעלים, גדלנו כיתומים וחוינו את הקושי של חיים ללא יציבות משפחתית. 
+                        המקום הזה נבנה מתוך הרצון העמוק ליצור את הבית שתמיד חלמנו עליו - 
+                        מקום שבו כל משפחה מרגישה בטוחה, אהובה ומוגנת.
+                    </p>
+                </div>
+                
+                <div>
+                    <div style="background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); padding: 2.5rem; border-radius: 20px; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.6rem; color: #1a365d; margin-bottom: 1rem;">החזון שלנו</h3>
+                        <p style="margin-bottom: 1rem; color: #2c5282; line-height: 1.6;">
+                            ליצור מקום שבו משפחות דתיות וחרדיות יכולות לחגוג את השמחות הגדולות בחיים
+                            בסביבה שמכבדת את הערכים והמסורת שלהם.
+                        </p>
+                        <p style="color: #2c5282; line-height: 1.6;">
+                            כל שבת חתן שנערכת כאן, כל חגיגת הולדת וכל התקהלות משפחתית
+                            מוסיפה חיים ונשמה למקום הזה.
+                        </p>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%); padding: 2.5rem; border-radius: 20px;">
+                        <h3 style="font-size: 1.6rem; color: #1a365d; margin-bottom: 1rem;">מה שמנחה אותנו</h3>
+                        <ul style="color: #2c5282; line-height: 1.8; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
+                                כל אורח הוא חלק מהמשפחה שלנו
+                            </li>
+                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
+                                שמירה קפדנית על הלכה ומסורת
+                            </li>
+                            <li style="margin-bottom: 0.8rem; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
+                                איכות ונקיון ללא פשרות
+                            </li>
+                            <li style="position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: #2d87ae; font-weight: bold;">✓</span>
+                                יצירת זיכרונות שישארו לנצח
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem; text-align: center; background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%); padding: 4rem; border-radius: 20px; color: white;">
+                <h3 style="font-size: 2.5rem; margin-bottom: 3rem;">למה דווקא מושבה מגדל?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">המיקום המושלם</h4>
+                        <p style="line-height: 1.8; font-size: 1.1rem;">
+                            במושבה ההיסטורית מגדל, רק 2 דקות נסיעה מהכינרת, אתם מוצאים את השילוב המושלם 
+                            בין נגישות לשקט. הסביבה הפסטורלית והירוקה מאפשרת ניתוק אמיתי מהמולת העיר, 
+                            בזמן שכל האטרקציות של הצפון נמצאות במרחק נגיעה. זהו המקום שבו אפשר באמת להרגיש 
+                            שאתם בחופשה, רחוק מכל הרעש והלחצים של החיים היומיומיים.
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">הנוף המיוחד</h4>
+                        <p style="line-height: 1.8; font-size: 1.1rem;">
+                            נוף פנורמי מרהיב אל הכינרת והר הארבל שמשתנה לאורך היום ויוצר אווירות שונות. 
+                            בשעות הבוקר תוכלו לראות את הזריחה מעל המים הכחולים, בצהריים את השמש משתקפת 
+                            בכינרת, ובערב את השקיעה הצובעת את ההרים בגוונים של זהב וכתום. 
+                            הנוף לא רק יפה, הוא מרגיע את הנפש ומחבר אתכם לטבע ולבורא עולם.
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: #81e6d9; margin-bottom: 1.2rem; font-size: 1.4rem;">האווירה הייחודית</h4>
+                        <p style="line-height: 1.8; font-size: 1.1rem;">
+                            מושבה שקטה ומכבדת שמציעה סביבה טבעית ונעימה לכל המשפחה. 
+                            המקום מאפשר לכם ליהנות מחופשה באווירה רגועה ופתוחה, 
+                            עם שכנים ידידותיים ותושבים מקומיים שמכבדים את האורחים. 
+                            הילדים יכולים לשחק בחופשיות במרחב הפתוח והבטוח, 
+                            והמבוגרים יכולים להירגע ולהנות מהשקט והיופי של הגליל העליון.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עדויות לקוחות -->
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; font-size: 2rem; color: #1a365d; margin-bottom: 3rem;">מה הלקוחות שלנו אומרים</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
+                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
+                            "עשינו שבת חתן למאה איש. המקום מושלם - כל החדרים נקיים ומאובזרים, 
+                            הבריכה מדהימה והצוות עזר בכל מה שצריך. חוויה בלתי נשכחת!"
+                        </p>
+                        <div style="font-weight: bold; color: #2d87ae;">- משפחת כהן, ירושלים</div>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
+                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
+                            "המתחם מתאים בדיוק לציבור שלנו. השקט, הנוף והאווירה הדתית יצרו 
+                            את האירוע המושלם לבן שלנו. בהחלט נחזור!"
+                        </p>
+                        <div style="font-weight: bold; color: #2d87ae;">- משפחת לוי, בני ברק</div>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1); border-right: 4px solid #2d87ae;">
+                        <p style="color: #4a5568; line-height: 1.7; font-style: italic; margin-bottom: 1rem;">
+                            "החדרים מרווחים, המטבח מצוין והילדים נהנו מכל רגע. 
+                            המקום הזה באמת מרגיש כמו בית. תודה על הארוח המיוחד!"
+                        </p>
+                        <div style="font-weight: bold; color: #2d87ae;">- משפחת שוורץ, מודיעין עילית</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">טעימה מהגלריה</h2>
+            <p class="section-subtitle">כמה תמונות נבחרות מהמתחם המיוחד שלנו</p>
+            
+            <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <!-- תמונות נבחרות -->
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/white?text=בריכה+ונוף'">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדר שינה" onerror="this.src='https://via.placeholder.com/400x300/4299e1/white?text=חדר+שינה'">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח" onerror="this.src='https://via.placeholder.com/400x300/68d391/white?text=מטבח'">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="סנוקר" onerror="this.src='https://via.placeholder.com/400x300/f687b3/white?text=סנוקר'">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="מתחם חיצוני" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/white?text=מתחם+חיצוני'">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/white?text=נוף'">
+                </div>
+            </div>
+
+            <!-- כפתור לגלריה המלאה -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="gallery.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
+                    צפו בגלריה המלאה - 50+ תמונות
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>צרו קשר עמנו</h3>
+                    <p>מגדל של חיים - המקום המושלם לשבתות חתן, אירועי משפחה וחופשות בלתי נשכחות בצפון.</p>
+                    <p>אנו מתמחים באירוח הציבור הדתי והחרדי ומספקים חוויה מותאמת אישית לכל משפחה.</p>
+                    
+                    <div class="contact-details">
+                        <h4>פרטי יצירת קשר</h4>
+                        <div class="contact-item">
+                            <i>📞</i>
+                            <span>טלפון להזמנות: 072-3311083</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📱</i>
+                            <span>WhatsApp: 052-398-3394</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>🏠</i>
+                            <span>מושבה מגדל, הגליל העליון</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>👥</i>
+                            <span>קיבולת: 48-80 אורחים</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>🛏️</i>
+                            <span>12 חדרים עם מקלחת פרטית</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>🏊‍♂️</i>
+                            <span>בריכה פרטית מחוממת</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>🎯</i>
+                            <span>התמחות: ציבור דתי וחרדי</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="color: #81e6d9; margin-bottom: 2rem; font-size: 1.8rem;">שלחו הודעה</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">שם מלא</label>
+                            <input type="text" id="name" name="name" placeholder="הכניסו את שמכם המלא" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dates">תאריכים מבוקשים</label>
+                            <input type="text" id="dates" name="dates" placeholder="מתי אתם מעוניינים להגיע?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">מספר אורחים</label>
+                            <input type="number" id="guests" name="guests" placeholder="כמה אורחים צפויים?" min="1" max="80">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">הודעה</label>
+                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם ועל הדרישות המיוחדות"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח הודעה לוואטסאפ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 מגדל של חיים - ריזורט משפחתי יוקרתי. כל הזכויות שמורות.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">עוצב ופותח במיוחד עבור משפחות הציבור הדתי והחרדי</p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/972523983394" class="whatsapp-btn" target="_blank" title="WhatsApp">
+            💬
+        </a>
+        <button class="back-to-top" id="backToTop" title="חזור למעלה">
+            ↑
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const current = parseInt(counter.textContent);
+                const increment = target / 100;
+                
+                if (current < target) {
+                    counter.textContent = Math.ceil(current + increment);
+                    setTimeout(() => animateCounters(), 30);
+                } else {
+                    counter.textContent = target;
+                }
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(statsSection);
+
+        // Gallery modal (simplified for preview gallery)
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Contact form WhatsApp integration
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const dates = document.getElementById('dates').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `שלום, אני מעוניין/ת להזמין את מגדל של חיים:
+            
+שם: ${name}
+טלפון: ${phone}
+תאריכים: ${dates}
+מספר אורחים: ${guests}
+הודעה: ${message}
+
+תודה!`;
+            
+            const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Keyboard navigation for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
