@@ -1,875 +1,19 @@
-<script>
-        // Enhanced JavaScript with full accessibility support
-        
-        // Global variables
-        let accessibilitySettings = {
-            fontSize: 'normal',
-            highContrast: false,
-            darkMode: false,
-            focusMode: false,
-            readingGuide: false
-        };
-
-        // Navigation scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            // Update reading guide position
-            updateReadingGuide();
-        });
-
-        // Mobile menu toggle with enhanced accessibility
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (mobileToggle && navMenu) {
-            mobileToggle.addEventListener('click', function() {
-                const isOpen = navMenu.classList.contains('active');
-                navMenu.classList.toggle('active');
-                
-                // Update ARIA attributes
-                mobileToggle.setAttribute('aria-expanded', !isOpen);
-                
-                // Manage focus
-                if (!isOpen) {
-                    const firstMenuItem = navMenu.querySelector('a');
-                    if (firstMenuItem) {
-                        firstMenuItem.focus();
-                    }
-                } else {
-                    mobileToggle.focus();
-                }
-            });
-
-            // Close menu on Escape key
-            navMenu.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    navMenu.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    mobileToggle.focus();
-                }
-            });
-        }
-
-        // Enhanced smooth scrolling with accessibility
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Announce to screen readers
-                    announceToScreenReader(`נווט לקטע ${target.getAttribute('aria-label') || this.textContent}`);
-                    
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Set focus to target for keyboard users
-                    target.setAttribute('tabindex', '-1');
-                    target.focus();
-                    
-                    // Close mobile menu if open
-                    if (navMenu) {
-                        navMenu.classList.remove('active');
-                        if (mobileToggle) {
-                            mobileToggle.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                }
-            });
-        });
-
-        // Enhanced counter animation with reduced motion support
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                
-                if (prefersReducedMotion) {
-                    counter.textContent = target;
-                    return;
-                }
-                
-                const current = parseInt(counter.textContent);
-                const increment = Math.ceil(target / 50);
-                
-                if (current < target) {
-                    counter.textContent = Math.min(current + increment, target);
-                    setTimeout(animateCounters, 50);
-                } else {
-                    counter.textContent = target;
-                }
-            });
-        }
-
-        // Intersection Observer for counter animation
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.5,
-                rootMargin: '0px 0px -100px 0px'
-            });
-            observer.observe(statsSection);
-        }
-
-        // Enhanced gallery interactions
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        galleryItems.forEach((item, index) => {
-            // Make gallery items focusable
-            item.setAttribute('tabindex', '0');
-            item.setAttribute('role', 'button');
-            item.setAttribute('aria-label', `תמונה ${index + 1} - לחץ להגדלה`);
-            
-            const handleActivation = function() {
-                const img = this.querySelector('img');
-                if (img) {
-                    announceToScreenReader('תמונה הוגדלה');
-                    img.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        img.style.transform = 'scale(1)';
-                    }, 300);
-                }
-            };
-
-            item.addEventListener('click', handleActivation);
-            item.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleActivation.call(this);
-                }
-            });
-        });
-
-        // Enhanced form submission with WhatsApp automation
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            // Add ARIA labels to form elements
-            contactForm.querySelectorAll('input, textarea').forEach(element => {
-                const label = contactForm.querySelector(`label[for="${element.id}"]`);
-                if (label) {
-                    element.setAttribute('aria-describedby', element.id + '-desc');
-                }
-            });
-
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const dates = document.getElementById('dates').value;
-                const guests = document.getElementById('guests').value;
-                const message = document.getElementById('message').value;
-                
-                // Form validation with accessibility
-                if (!name || !phone) {
-                    announceToScreenReader('שגיאה: יש למלא שם וטלפון');
-                    const firstEmpty = !name ? document.getElementById('name') : document.getElementById('phone');
-                    firstEmpty.focus();
-                    firstEmpty.setAttribute('aria-invalid', 'true');
-                    return;
-                }
-                
-                const submitBtn = e.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'שולח...';
-                submitBtn.disabled = true;
-                submitBtn.setAttribute('aria-busy', 'true');
-                
-                // Create formatted WhatsApp message
-                const timestamp = new Date().toLocaleString('he-IL');
-                const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
-
-👤 שם: ${name}
-📞 טלפון: ${phone}
-📅 תאריכים: ${dates}
-👥 מספר אורחים: ${guests}
-💬 הודעה: ${message}
-
-⏰ זמן הפנייה: ${timestamp}
-🌐 מקור: אתר האינטרנט
-
-לחיצה כאן להתקשרות ללקוח:
-https://wa.me/${phone.replace(/[^\d]/g, '')}`;
-                
-                try {
-                    // Direct WhatsApp integration
-                    const encodedMessage = encodeURIComponent(whatsappMessage);
-                    window.open(`https://wa.me/972523983394?text=${encodedMessage}`, '_blank');
-                    
-                    // Save to local storage as backup
-                    saveContactToStorage({
-                        name, phone, dates, guests, message, timestamp
-                    });
-                    
-                    // Success feedback
-                    setTimeout(() => {
-                        announceToScreenReader('הפנייה נשלחה בהצלחה לוואטסאפ');
-                        alert('הפנייה נשלחה לוואטסאפ! בדקו את הוואטסאפ שלכם.');
-                        contactForm.reset();
-                        
-                        // Clear validation states
-                        contactForm.querySelectorAll('[aria-invalid]').forEach(el => {
-                            el.removeAttribute('aria-invalid');
-                        });
-                    }, 500);
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    announceToScreenReader('יש בעיה טכנית. הוואטסאפ נפתח ידנית');
-                    alert('יש בעיה טכנית. הוואטסאפ נפתח ידנית.');
-                } finally {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.removeAttribute('aria-busy');
-                }
-            });
-        }
-
-        // Back to top functionality
-        const backToTop = document.getElementById('backToTop');
-        if (backToTop) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    backToTop.style.display = 'flex';
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.style.display = 'none';
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', function() {
-                announceToScreenReader('חוזר לראש העמוד');
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                
-                // Focus on main heading
-                setTimeout(() => {
-                    const mainHeading = document.querySelector('h1');
-                    if (mainHeading) {
-                        mainHeading.focus();
-                    }
-                }, 500);
-            });
-        }
-
-        // Accessibility Menu Functions
-        const accessibilityBtn = document.getElementById('accessibilityBtn');
-        const accessibilityMenu = document.getElementById('accessibilityMenu');
-        const closeAccessibilityBtn = document.getElementById('closeAccessibilityBtn');
-
-        function openAccessibilityMenu() {
-            accessibilityMenu.classList.add('show');
-            accessibilityMenu.setAttribute('aria-hidden', 'false');
-            
-            // Focus first option
-            const firstOption = accessibilityMenu.querySelector('.accessibility-option');
-            if (firstOption) {
-                firstOption.focus();
-            }
-            
-            // Trap focus in menu
-            trapFocus(accessibilityMenu);
-            announceToScreenReader('תפריט נגישות נפתח');
-        }
-
-        function closeAccessibilityMenu() {
-            accessibilityMenu.classList.remove('show');
-            accessibilityMenu.setAttribute('aria-hidden', 'true');
-            accessibilityBtn.focus();
-            announceToScreenReader('תפריט נגישות נסגר');
-        }
-
-        accessibilityBtn.addEventListener('click', openAccessibilityMenu);
-        closeAccessibilityBtn.addEventListener('click', closeAccessibilityMenu);
-
-        // Accessibility Features
-        document.getElementById('increaseFontBtn').addEventListener('click', function() {
-            document.body.classList.remove('large-font');
-            document.body.classList.add('large-font');
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            document.getElementById('decreaseFontBtn').classList.remove('active');
-            document.getElementById('decreaseFontBtn').setAttribute('aria-pressed', 'false');
-            accessibilitySettings.fontSize = 'large';
-            saveAccessibilitySettings();
-            announceToScreenReader('גופן הוגדל');
-        });
-
-        document.getElementById('decreaseFontBtn').addEventListener('click', function() {
-            document.body.classList.remove('large-font');
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            document.getElementById('increaseFontBtn').classList.remove('active');
-            document.getElementById('increaseFontBtn').setAttribute('aria-pressed', 'false');
-            accessibilitySettings.fontSize = 'small';
-            saveAccessibilitySettings();
-            announceToScreenReader('גופן הוקטן');
-        });
-
-        document.getElementById('highContrastBtn').addEventListener('click', function() {
-            document.body.classList.toggle('high-contrast');
-            const isActive = document.body.classList.contains('high-contrast');
-            this.classList.toggle('active', isActive);
-        document.getElementById('readingGuideBtn').addEventListener('click', function() {
-            document.body.classList.toggle('reading-guide-active');
-            const isActive = document.body.classList.contains('reading-guide-active');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.readingGuide = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'מדריך קריאה הופעל' : 'מדריך קריאה כובה');
-        });
-
-        document.getElementById('resetAccessibilityBtn').addEventListener('click', function() {
-            // Reset all accessibility settings
-            document.body.className = document.body.className.replace(/high-contrast|large-font|dark-mode|focus-mode|reading-guide-active/g, '').trim();
-            
-            // Reset all buttons
-            document.querySelectorAll('.accessibility-option').forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            
-            // Reset settings object
-            accessibilitySettings = {
-                fontSize: 'normal',
-                highContrast: false,
-                darkMode: false,
-                focusMode: false,
-                readingGuide: false
-            };
-            
-            saveAccessibilitySettings();
-            announceToScreenReader('כל הגדרות הנגישות אופסו');
-        });
-
-        // Reading Guide functionality
-        function updateReadingGuide() {
-            if (!document.body.classList.contains('reading-guide-active')) return;
-            
-            const readingGuide = document.getElementById('readingGuide');
-            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-            readingGuide.style.transform = `translateX(${scrollPercent - 100}%)`;
-        }
-
-        // Focus trap function
-        function trapFocus(element) {
-            const focusableElements = element.querySelectorAll(
-                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-            );
-            const firstFocusableElement = focusableElements[0];
-            const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-            element.addEventListener('keydown', function(e) {
-                const isTabPressed = e.key === 'Tab';
-
-                if (!isTabPressed) {
-                    if (e.key === 'Escape') {
-                        closeAccessibilityMenu();
-                    }
-                    return;
-                }
-
-                if (e.shiftKey) {
-                    if (document.activeElement === firstFocusableElement) {
-                        lastFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                } else {
-                    if (document.activeElement === lastFocusableElement) {
-                        firstFocusableElement.focus();
-                        e.preventDefault();
-                    }
-                }
-            });
-        }
-
-        // Screen reader announcements
-        function announceToScreenReader(message) {
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.setAttribute('aria-atomic', 'true');
-            announcement.className = 'sr-only';
-            announcement.textContent = message;
-            
-            document.body.appendChild(announcement);
-            
-            setTimeout(() => {
-                document.body.removeChild(announcement);
-            }, 1000);
-        }
-
-        // Save/Load accessibility settings
-        function saveAccessibilitySettings() {
-            localStorage.setItem('migdal_accessibility', JSON.stringify(accessibilitySettings));
-        }
-
-        function loadAccessibilitySettings() {
-            const saved = localStorage.getItem('migdal_accessibility');
-            if (saved) {
-                const settings = JSON.parse(saved);
-                
-                if (settings.fontSize === 'large') {
-                    document.body.classList.add('large-font');
-                    document.getElementById('increaseFontBtn').classList.add('active');
-                    document.getElementById('increaseFontBtn').setAttribute('aria-pressed', 'true');
-                }
-                
-                if (settings.highContrast) {
-                    document.body.classList.add('high-contrast');
-                    document.getElementById('highContrastBtn').classList.add('active');
-                    document.getElementById('highContrastBtn').setAttribute('aria-pressed', 'true');
-                }
-                
-                if (settings.darkMode) {
-                    document.body.classList.add('dark-mode');
-                    document.getElementById('darkModeBtn').classList.add('active');
-                    document.getElementById('darkModeBtn').setAttribute('aria-pressed', 'true');
-                }
-                
-                if (settings.focusMode) {
-                    document.body.classList.add('focus-mode');
-                    document.getElementById('focusModeBtn').classList.add('active');
-                    document.getElementById('focusModeBtn').setAttribute('aria-pressed', 'true');
-                }
-                
-                if (settings.readingGuide) {
-                    document.body.classList.add('reading-guide-active');
-                    document.getElementById('readingGuideBtn').classList.add('active');
-                    document.getElementById('readingGuideBtn').setAttribute('aria-pressed', 'true');
-                }
-                
-                accessibilitySettings = settings;
-            }
-        }
-
-        // Save contact to local storage
-        function saveContactToStorage(data) {
-            try {
-                const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-                contacts.push(data);
-                localStorage.setItem('migdal_contacts', JSON.stringify(contacts));
-            } catch (error) {
-                console.log('Local storage not available');
-            }
-        }
-
-        // Export contacts function
-        function exportContacts() {
-            try {
-                const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-                if (contacts.length === 0) {
-                    alert('אין פניות שמורות');
-                    return;
-                }
-                
-                const csv = 'שם,טלפון,תאריכים,אורחים,הודעה,זמן\n' + 
-                    contacts.map(c => `"${c.name}","${c.phone}","${c.dates}","${c.guests}","${c.message}","${c.timestamp}"`).join('\n');
-                
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'migdal_contacts.csv';
-                link.click();
-                
-                announceToScreenReader('קובץ הפניות יוצא להורדה');
-            } catch (error) {
-                console.log('Export not available');
-            }
-        }
-
-        // Keyboard navigation enhancements
-        document.addEventListener('keydown', function(e) {
-            // Alt + A opens accessibility menu
-            if (e.altKey && e.key === 'a') {
-                e.preventDefault();
-                openAccessibilityMenu();
-            }
-            
-            // Alt + M opens main menu
-            if (e.altKey && e.key === 'm') {
-                e.preventDefault();
-                if (mobileToggle) {
-                    mobileToggle.click();
-                }
-            }
-        });
-
-        // Error handling for images with accessibility
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                this.style.background = 'linear-gradient(45deg, #f0f0f0, #e0e0e0)';
-                this.style.display = 'flex';
-                this.style.alignItems = 'center';
-                this.style.justifyContent = 'center';
-                this.innerHTML = '<span style="color: #666; font-size: 14px; padding: 20px;">תמונה לא זמינה</span>';
-                this.setAttribute('aria-label', 'תמונה לא זמינה');
-            });
-        });
-
-        // Performance monitoring with accessibility considerations
-        if ('performance' in window) {
-            window.addEventListener('load', function() {
-                setTimeout(() => {
-                    const perfData = performance.getEntriesByType('navigation')[0];
-                    const loadTime = perfData.loadEventEnd - perfData.fetchStart;
-                    
-                    // Announce long load times to screen readers
-                    if (loadTime > 5000) {
-                        setTimeout(() => {
-                            announceToScreenReader('העמוד נטען בהצלחה');
-                        }, 1000);
-                    }
-                }, 0);
-            });
-        }
-
-        // Initialize accessibility settings on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadAccessibilitySettings();
-            
-            // Set initial ARIA attributes
-            accessibilityMenu.setAttribute('aria-hidden', 'true');
-            
-            // Add admin export functionality
-            if (window.location.hash === '#admin') {
-                const adminBtn = document.createElement('button');
-                adminBtn.textContent = 'ייצוא פניות';
-                adminBtn.style.cssText = 'position:fixed;top:10px;right:10px;z-index:9999;padding:10px;background:#2d87ae;color:white;border:none;border-radius:5px;cursor:pointer;';
-                adminBtn.onclick = exportContacts;
-                document.body.appendChild(adminBtn);
-            }
-            
-            announceToScreenReader('עמוד מגדל של חיים נטען. אתר נגיש עם תמיכה מלאה בקוראי מסך');
-        });
-
-        // Service Worker registration for offline functionality
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                // Uncomment when service worker is ready
-                // navigator.serviceWorker.register('/sw.js')
-                //     .then(reg => console.log('SW registered'))
-                //     .catch(err => console.log('SW registration failed'));
-            });
-        }
-    </script>
-
-    <!-- Footer with full policies -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <!-- Site Map -->
-            <div class="footer-section">
-                <h3>מפת האתר</h3>
-                <div class="footer-grid">
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">ניווט ראשי</h4>
-                        <ul class="footer-links">
-                            <li><a href="#home">בית</a></li>
-                            <li><a href="#about">אודות</a></li>
-                            <li><a href="#features">מתקנים</a></li>
-                            <li><a href="#gallery">גלריה</a></li>
-                            <li><a href="#contact">יצירת קשר</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">מידע נוסף</h4>
-                        <ul class="footer-links">
-                            <li><span>קיבולת: 48-80 אורחים</span></li>
-                            <li><span>21 חדרים פרטיים</span></li>
-                            <li><span>מתחם של 2 דונם</span></li>
-                            <li><span>ציבור דתי וחרדי</span></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="color: #81e6d9; margin-bottom: 1rem;">יצירת קשר</h4>
-                        <ul class="footer-links">
-                            <li><a href="tel:+972723311083">טלפון: 072-3311083</a></li>
-                            <li><a href="https://wa.me/972523983394">WhatsApp: 052-398-3394</a></li>
-                            <li><span>מושבה מגדל, הגליל העליון</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accessibility Statement -->
-            <div class="footer-section">
-                <h3>הצהרת נגישות</h3>
-                <div class="policy-content">
-                    <p>מגדל של חיים מחויב לספק נגישות דיגיטלית לכל המשתמשים, כולל אנשים עם מוגבלויות. אנו פועלים לשיפור מתמיד של נגישות האתר שלנו ומקפידים על עמידה בתקן הישראלי ת"י 5568 ובהנחיות WCAG 2.1 ברמה AA.</p>
-                    
-                    <h4>תכונות הנגישות באתר:</h4>
-                    <ul>
-                        <li>תמיכה מלאה בקוראי מסך</li>
-                        <li>ניווט במקלדת בלבד</li>
-                        <li>ניגודיות צבעים גבוהה</li>
-                        <li>אפשרות להגדלת וקטנת גופן</li>
-                        <li>מצב לילה למזעור עייפות עיניים</li>
-                        <li>מדריך קריאה לעזרה בעקיבה אחר הטקסט</li>
-                        <li>כותרות היררכיות ונקודות ציון</li>
-                        <li>תיאור חלופי לכל התמונות</li>
-                        <li>הודעות סטטוס למשתמשי קוראי מסך</li>
-                        <li>קיצורי מקלדת (Alt+A לתפריט נגישות, Alt+M לתפריט ניווט)</li>
-                    </ul>
-                    
-                    <h4>פרטי קשר לנגישות:</h4>
-                    <p>אם נתקלתם בבעיית נגישות באתר או שיש לכם הצעות לשיפור, אנא צרו קשר איתנו:</p>
-                    <p><strong>אימייל נגישות:</strong> accessibility@migdal-chaim.com<br>
-                    <strong>טלפון:</strong> 072-3311083<br>
-                    <strong>זמני מענה:</strong> ראשון-חמישי 9:00-17:00</p>
-                    
-                    <p><strong>תאריך עדכון אחרון:</strong> ינואר 2025</p>
-                </div>
-            </div>
-
-            <!-- Privacy Policy -->
-            <div class="footer-section">
-                <h3>מדיניות פרטיות</h3>
-                <div class="policy-content">
-                    <p>אנו מכבדים את פרטיותכם ומחויבים להגן על המידע האישי שלכם. מדיניות פרטיות זו מסבירה איך אנו אוספים, משתמשים ומגנים על המידע שלכם.</p>
-                    
-                    <h4>איזה מידע אנו אוספים:</h4>
-                    <ul>
-                        <li>מידע שאתם מספקים בטופס יצירת הקשר: שם, טלפון, אימייל, תאריכים מבוקשים</li>
-                        <li>מידע טכני: כתובת IP, סוג דפדפן, זמן ביקור (ללא זיהוי אישי)</li>
-                        <li>העדפות נגישות שלכם (נשמרות במכשיר שלכם בלבד)</li>
-                    </ul>
-                    
-                    <h4>איך אנו משתמשים במידע:</h4>
-                    <ul>
-                        <li>יצירת קשר לאישור הזמנות ומתן מידע על השירותים</li>
-                        <li>שיפור השירות והאתר שלנו</li>
-                        <li>התקשרות בעניינים דחופים הקשורים להזמנה</li>
-                        <li>שליחת מידע רלוונטי על השירותים (רק בהסכמתכם)</li>
-                    </ul>
-                    
-                    <h4>איך אנו מגנים על המידע:</h4>
-                    <ul>
-                        <li>המידע מועבר בצורה מוצפנת (HTTPS)</li>
-                        <li>גישה למידע רק לצוות מורשה</li>
-                        <li>המידע לא נמכר או מועבר לצדדים שלישיים</li>
-                        <li>גיבוי מאובטח של המידע</li>
-                    </ul>
-                    
-                    <h4>הזכויות שלכם:</h4>
-                    <ul>
-                        <li>זכות עיון במידע האישי שלכם</li>
-                        <li>זכות לתיקון מידע שגוי</li>
-                        <li>זכות למחיקת המידע</li>
-                        <li>זכות לחדול מקבלת הודעות שיווקיות</li>
-                    </ul>
-                    
-                    <p>לשאלות נוספות או לממש את זכויותכם, צרו קשר בטלפון 072-3311083 או באימייל privacy@migdal-chaim.com</p>
-                </div>
-            </div>
-
-            <!-- Terms of Use -->
-            <div class="footer-section">
-                <h3>תקנון השימוש</h3>
-                <div class="policy-content">
-                    <h4>תנאים כלליים:</h4>
-                    <p>השימוש באתר מהווה הסכמה לתקנון זה. אנו שומרים על הזכות לעדכן את התקנון מעת לעת.</p>
-                    
-                    <h4>הזמנות וביטולים:</h4>
-                    <ul>
-                        <li>הזמנה מחייבת אישור טלפוני או בכתב</li>
-                        <li>נדרשת הפקדת מקדמה לאישור ההזמנה</li>
-                        <li>ביטול עד 48 שעות לפני המועד - ללא עלות נוספת</li>
-                        <li>ביטול פחות מ-48 שעות - חיוב של 50% מעלות ההזמנה</li>
-                        <li>ביטול פחות מ-24 שעות - חיוב מלא</li>
-                    </ul>
-                    
-                    <h4>כללי בית וזמני אירוח:</h4>
-                    <ul>
-                        <li>כניסה: החל מהשעה 15:00</li>
-                        <li>יציאה: עד השעה 11:00</li>
-                        <li>שמירה על נקיון המתחם והחדרים</li>
-                        <li>שמירה על רכוש הבית ודיווח על כל נזק</li>
-                        <li>איסור מוחלט על עישון בחדרים</li>
-                        <li>שמירה על שקט בשעות 22:00-08:00</li>
-                        <li>כיבוד הוראות הבטיחות סביב הבריכה</li>
-                    </ul>
-                    
-                    <h4>אחריות וביטוח:</h4>
-                    <ul>
-                        <li>האורחים אחראים לרכושם האישי</li>
-                        <li>חובת דיווח מיידי על תאונות או נזקים</li>
-                        <li>המתחם מבוטח - פרטים זמינים בפנייה</li>
-                        <li>מומלץ לאורחים לבדוק את הביטוח האישי שלהם</li>
-                    </ul>
-                    
-                    <h4>תשלומים:</h4>
-                    <ul>
-                        <li>מקדמה של 30% נדרשת לאישור הזמנה</li>
-                        <li>יתרת התשלום - שבוע לפני הגעה</li>
-                        <li>תשלום במזומן, העברה בנקאית או אשראי</li>
-                        <li>פיקדון להבטחת המתחם - יוחזר בתום האירוח</li>
-                    </ul>
-                    
-                    <p>התקנון המלא זמין בבקשה. לשאלות: 072-3311083</p>
-                </div>
-            </div>
-
-            <!-- Copyright -->
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #4a5568;">
-                <p>&copy; 2025 מגדל של חיים - ריזורט משפחתי יוקרתי. כל הזכויות שמורות.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">עוצב ופותח במיוחד עבור משפחות הציבור הדתי והחרדי</p>
-                <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">
-                    האתר נבנה בהתאם לתקן הנגישות הישראלי ת"י 5568 ותומך בדפדפנים מובילים
-                </p>
-            </div>
-        </div>
-    </footer>Active.toString());
-            accessibilitySettings.highContrast = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'ניגודיות גבוהה הופעלה' : 'ניגודיות גבוהה כובתה');
-        });
-
-        document.getElementById('darkModeBtn').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const isActive = document.body.classList.contains('dark-mode');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.darkMode = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'מצב לילה הופעל' : 'מצב לילה כובה');
-        });
-
-        document.getElementById('focusModeBtn').addEventListener('click', function() {
-            document.body.classList.toggle('focus-mode');
-            const isActive = document.body.classList.contains('focus-mode');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.focusMode = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'מיקוד משופר הופעל' : 'מיקוד משופר כובה');
-        });
-
-        document.getElementById('readingGuideBtn').addEventListener('click', function() {
-            document.body.classList.toggle('reading-guide-active');
-            const isActive = document.body.classList.contains('reading-guide-active');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', is        // Contact form automation with n8n webhook
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const dates = document.getElementById('dates').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
-            
-            // Show loading state
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'שולח...';
-            submitBtn.disabled = true;
-            
-            // Prepare data for n8n webhook
-            const formData = {
-                name: name,
-                phone: phone,
-                dates: dates,
-                guests: guests,
-                message: message,
-                timestamp: new Date().toISOString(),
-                source: 'website',
-                page_url: window.location.href,
-                user_agent: navigator.userAgent
-            };
-            
-            // Send to n8n webhook - החלף את ה-URL בכתובת האמיתית מ-n8n
-            fetch('https://your-n8n-instance.com/webhook/migdal-contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    // Show success message
-                    alert('ההודעה נשלחה בהצלחה! נחזור אליכם בהקדם.');
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    console.log('Form submitted successfully:', data);
-                } else {
-                    throw new Error(data.message || 'Unknown error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // Fallback - direct WhatsApp link
-                const whatsappMessage = `שלום, אני מעוניין/ת להזמין את מגדל של חיים:
-
-שם: ${name}
-טלפון: ${phone}
-תאריכים: ${dates}
-מספר אורחים: ${guests}
-הודעה: ${message}
-
-תודה!`;
-                
-                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
-                
-                alert('נפתח ווטסאפ עבורכם. אם זה לא קרה, אנא צרו קשר ישירות.');
-            })
-            .finally(() => {
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-        });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל</title>
-    <meta name="description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי, שבתות חתן ואירועי משפחה">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
+    <title>מגדל של חיים - ריזורט משפחתי יוקרתי בצפון</title>
     
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:;">
-    
-    <!-- Open Graph Meta Tags for Social Media Sharing -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל">
-    <meta property="og:description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/2d87ae/ffffff?text=מגדל+של+חיים">
+    <!-- Open Graph -->
+    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי">
+    <meta property="og:description" content="21 חדרים עם בריכה פרטית ונוף מדהים לכינרת והר הארבל">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=630&fit=crop&crop=center&q=80">
     <meta property="og:url" content="https://migdal-chaim.com">
     
-    <!-- Schema.org markup for Google -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LodgingBusiness",
-        "name": "מגדל של חיים",
-        "description": "ריזורט משפחתי יוקרתי במושבה מגדל",
-        "numberOfRooms": "21"
-    }
-    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -878,27 +22,35 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #d69e2e;
+            --text: #2d3748;
+            --light: #f7fafc;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Assistant', Arial, sans-serif;
             line-height: 1.6;
-            color: #1a365d;
-            overflow-x: hidden;
+            color: var(--text);
+            scroll-behavior: smooth;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
 
         /* Header */
         .header {
-            background: rgba(26, 54, 93, 0.95);
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(26, 54, 93, 0.95);
             z-index: 1000;
-            padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
@@ -906,12 +58,13 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
             text-decoration: none;
         }
 
@@ -922,1115 +75,857 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
         }
 
         .nav-menu a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            transition: color 0.3s ease;
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            color: var(--accent);
         }
 
         .mobile-toggle {
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--white);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             height: 100vh;
+            background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(44, 82, 130, 0.6)), 
+                        url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&h=1080&fit=crop&crop=center&q=85') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            color: var(--white);
         }
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.4), rgba(45, 135, 174, 0.4));
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 3rem;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 4px 4px 10px rgba(0,0,0,0.9);
-            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .hero-location {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            color: #81e6d9;
-            font-weight: 600;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            opacity: 0.9;
         }
 
         .btn {
-            padding: 1.2rem 2.5rem;
-            border: none;
-            border-radius: 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
             display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            box-shadow: 0 8px 25px rgba(45, 135, 174, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px) scale(1.05);
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
-            padding: 5rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
-            transition: all 0.4s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-15px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #2d87ae;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            color: #4a5568;
-            font-weight: 500;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 0;
-            background: white;
+        /* Sections */
+        .section {
+            padding: 4rem 0;
         }
 
         .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
             text-align: center;
-            font-size: 3rem;
-            color: #1a365d;
             margin-bottom: 1rem;
         }
 
         .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
             text-align: center;
-            font-size: 1.3rem;
-            color: #4a5568;
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 3rem;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
-            transition: all 0.4s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px);
-            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
-        }
-
-        .feature-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.8rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            color: #4a5568;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        /* About Section */
+        /* About */
         .about {
-            background: white;
-            padding: 6rem 0;
+            background: var(--white);
         }
 
-        .about-grid {
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: start;
+            align-items: center;
             margin-top: 3rem;
         }
 
-        .about-text {
-            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
-            padding: 2.5rem;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-        }
-
         .about-text h3 {
-            font-size: 1.6rem;
-            color: #1a365d;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 2rem 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Facilities */
+        .facilities {
+            background: var(--light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: #2c5282;
+        }
+
+        .facility-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .facility-card p {
+            color: #666;
             line-height: 1.6;
         }
 
-        /* Gallery Section */
+        /* Gallery */
         .gallery {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e6fffa 100%);
+            background: var(--white);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
             margin-top: 3rem;
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            height: 250px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(26, 54, 93, 0.2);
-            transition: all 0.4s ease;
+            border-radius: 12px;
             cursor: pointer;
-            aspect-ratio: 4/3;
+            transition: transform 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: translateY(-15px);
+            transform: scale(1.05);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 54, 93, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Contact Section */
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Contact */
         .contact {
-            background: linear-gradient(135deg, #1a365d 0%, #2d87ae 100%);
-            padding: 6rem 0;
-            color: white;
+            background: var(--light);
         }
 
-        .contact-grid {
+        .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #81e6d9;
-        }
-
-        .contact-info p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .contact-details {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            margin-top: 2rem;
-        }
-
-        .contact-details h4 {
-            color: #81e6d9;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-item i {
-            margin-left: 1rem;
-            color: #81e6d9;
-            font-size: 1.2rem;
+            margin-top: 3rem;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-            border-radius: 25px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: #81e6d9;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1.2rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #81e6d9;
+            border-color: var(--primary);
         }
 
         .form-group textarea {
-            height: 150px;
+            height: 120px;
             resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        .contact-details h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent);
         }
 
         /* Footer */
         .footer {
-            background: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        /* Floating Buttons */
-        .floating-buttons {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1000;
-        }
-
-        .whatsapp-btn {
-            display: block;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .back-to-top {
-            display: none;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        /* Accessibility Menu */
-        .accessibility-menu {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-            z-index: 2000;
-            padding: 0;
-            border: 3px solid #2d87ae;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            max-width: 90vw;
-            width: 400px;
-        }
-
-        .accessibility-menu.show {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .accessibility-header {
-            background: linear-gradient(135deg, #1a365d, #2d87ae);
-            color: white;
-            padding: 20px;
-            border-radius: 17px 17px 0 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 0 2rem;
             text-align: center;
         }
 
-        .accessibility-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .accessibility-header p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
-        .accessibility-content {
-            padding: 25px;
-        }
-
-        .accessibility-option {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #f7fafc, #edf2f7);
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            color: #1a365d;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            text-align: right;
-        }
-
-        .accessibility-option:hover,
-        .accessibility-option:focus {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(45, 135, 174, 0.3);
-        }
-
-        .accessibility-option .icon {
-            margin-left: 12px;
-            font-size: 1.3rem;
-        }
-
-        .accessibility-option.active {
-            background: linear-gradient(45deg, #10b981, #059669);
-            color: white;
-            border-color: #10b981;
-        }
-
-        .close-accessibility {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-weight: 600;
-            width: 100%;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .close-accessibility:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-
-        /* Accessibility Modes */
-        body.high-contrast {
-            filter: contrast(150%) brightness(120%);
-        }
-
-        body.large-font * {
-            font-size: 120% !important;
-            line-height: 1.8 !important;
-        }
-
-        body.large-font h1 {
-            font-size: 140% !important;
-        }
-
-        body.large-font h2 {
-            font-size: 130% !important;
-        }
-
-        body.large-font .btn {
-            padding: 1.5rem 3rem !important;
-            font-size: 1.3rem !important;
-        }
-
-        body.dark-mode {
-            background: #1a202c !important;
-            color: #f7fafc !important;
-        }
-
-        body.dark-mode .header {
-            background: rgba(45, 55, 72, 0.95) !important;
-        }
-
-        body.dark-mode .feature-card,
-        body.dark-mode .stat-item,
-        body.dark-mode .about-text {
-            background: #2d3748 !important;
-            color: #f7fafc !important;
-        }
-
-        body.focus-mode *:focus {
-            outline: 4px solid #fbbf24 !important;
-            outline-offset: 4px !important;
-        }
-
-        /* Reading Guide */
-        .reading-guide {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(251, 191, 36, 0.8);
-            z-index: 1500;
-            display: none;
-            pointer-events: none;
-        }
-
-        body.reading-guide-active .reading-guide {
-            display: block;
-        }
-
-        /* Skip Links */
-        .skip-links {
-            position: absolute;
-            top: -100px;
-            left: 0;
-            z-index: 2000;
-            display: flex;
-            gap: 10px;
-        }
-
-        .skip-link {
-            background: #1a365d;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 0 0 8px 8px;
-            transition: all 0.3s ease;
-        }
-
-        .skip-link:focus {
-            top: 0;
-            outline: 3px solid #fbbf24;
-        }
-
-        /* Footer Sections */
-        .footer {
-            background: #1a202c;
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-section {
-            background: #2d3748;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: right;
-        }
-
-        .footer-section h3 {
-            color: #81e6d9;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            border-bottom: 2px solid #4a5568;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-grid {
+        .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
-        .footer-links {
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
             list-style: none;
-            padding: 0;
         }
 
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #cbd5e0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 0.3rem 0;
-        }
-
-        .footer-links a:hover {
-            color: #81e6d9;
-        }
-
-        .policy-content {
-            background: #2d3748;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .policy-content h4 {
-            color: #81e6d9;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.2rem;
-        }
-
-        .policy-content ul {
-            padding-right: 2rem;
-        }
-
-        .policy-content li {
+        .footer-section ul li {
             margin-bottom: 0.5rem;
         }
 
-        /* Responsive Accessibility */
-        @media (max-width: 768px) {
-            .accessibility-menu {
-                width: 95vw;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-
-            .accessibility-content {
-                padding: 20px;
-            }
-
-            .accessibility-option {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .footer-section {
-                padding: 1.5rem;
-            }
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        /* Enhanced Focus Indicators */
-        :focus-visible {
-            outline: 3px solid #fbbf24;
-            outline-offset: 2px;
-            border-radius: 4px;
+        .footer-section ul li a:hover {
+            color: var(--accent);
         }
 
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            .accessibility-menu {
-                transition: none;
-            }
-            
-            .accessibility-option {
-                transition: none;
-            }
-            
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
         }
 
-        /* Mobile Responsive */
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* Accessibility */
+        .accessibility-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* High contrast mode */
+        body.high-contrast {
+            background: black !important;
+            color: white !important;
+        }
+
+        body.high-contrast .section {
+            background: black !important;
+        }
+
+        body.high-contrast .facility-card,
+        body.high-contrast .contact-form,
+        body.high-contrast .contact-item {
+            background: #333 !important;
+            color: white !important;
+        }
+
+        /* Large font mode */
+        body.large-font {
+            font-size: 1.2rem;
+        }
+
+        body.large-font .section-title {
+            font-size: 3rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
             }
 
             .nav-menu {
-                display: none;
-                position: absolute;
+                position: fixed;
                 top: 100%;
                 left: 0;
-                right: 0;
-                background: rgba(26, 54, 93, 0.98);
+                width: 100%;
+                background: var(--primary);
                 flex-direction: column;
-                padding: 2rem;
+                padding: 2rem 0;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
             }
 
             .nav-menu.active {
-                display: flex;
+                transform: translateX(0);
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: clamp(2.5rem, 8vw, 4rem);
             }
 
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .contact-grid {
+            .about-content,
+            .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
             }
 
-            .features-grid {
+            .facilities-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .floating-buttons {
-                bottom: 20px;
-                left: 20px;
-            }
-
-            .whatsapp-btn {
-                width: 60px;
-                height: 60px;
             }
 
             .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+            .container {
+                padding: 0 0.5rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
 
-            .floating-buttons {
-                bottom: 15px;
-                left: 15px;
-            }
-
-            .whatsapp-btn {
+            .floating-whatsapp {
                 width: 50px;
                 height: 50px;
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Skip Links for Accessibility -->
-    <div class="skip-links">
-        <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
-        <a href="#nav-menu" class="skip-link">דלג לתפריט הניווט</a>
-        <a href="#contact" class="skip-link">דלג ליצירת קשר</a>
-    </div>
-
-    <!-- Reading Guide -->
-    <div class="reading-guide" id="readingGuide"></div>
+    <!-- Accessibility Button -->
+    <button class="accessibility-btn" onclick="toggleAccessibility()" title="נגישות">
+        ♿
+    </button>
 
     <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu" id="navMenu" role="menubar">
-                <li role="none"><a href="#home" role="menuitem" tabindex="0">בית</a></li>
-                <li role="none"><a href="#about" role="menuitem" tabindex="0">אודות</a></li>
-                <li role="none"><a href="#features" role="menuitem" tabindex="0">מתקנים</a></li>
-                <li role="none"><a href="#gallery" role="menuitem" tabindex="0">גלריה</a></li>
-                <li role="none"><a href="#contact" role="menuitem" tabindex="0">יצירת קשר</a></li>
-            </ul>
-            <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navMenu" aria-label="פתח תפריט ניווט">☰</button>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#home" class="logo">מגדל של חיים</a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">בית</a></li>
+                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#facilities">מתקנים</a></li>
+                    <li><a href="#gallery">גלריה</a></li>
+                    <li><a href="#contact">יצירת קשר</a></li>
+                </ul>
+                <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop playsinline style="display:none;">
-            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
-        </video>
-        <!-- Fallback background image instead of video -->
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(45, 135, 174, 0.7)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&h=1080&fit=crop&auto=format') center/cover; z-index: -2;"></div>
-        <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(26, 54, 93, 0.3), rgba(45, 135, 174, 0.3));"></div>
         <div class="hero-content">
             <h1>מגדל של חיים</h1>
-            <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושבה מגדל</p>
+            <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושב מגדל</p>
             <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
-            <div class="hero-buttons">
+            <div>
                 <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
                 <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">אודות מגדל של חיים</h2>
+            <p class="section-subtitle">
+                חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף
+            </p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>הסיפור שלנו</h3>
+                    <p>
+                        חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף. 
+                        המתחם משתרע על פני שני דונם רחבי ידיים, מתוכם דונם וחצי בנוי, ומציע שילוב מושלם בין מרחב, נוחות ואסתטיקה מוקפדת.
+                    </p>
+                    <p>
+                        המתחם מחולק לשתי יחידות אירוח גדולות: יחידה אחת במפלס אחד הכוללת 12 חדרים מרווחים עם שירותים ומקלחות צמודים, 
+                        ויחידה שנייה הבנויה על מפלסים ובה 9 חדרים נוספים מתוכם 2 עם שירותים פרטיים.
+                    </p>
+                    <p>
+                        בסך הכול המקום מאפשר אירוח נוח לכ־80 נופשים בשני מבנים איכותיים ומאובזרים, 
+                        כאשר המרחבים הרבים מבטיחים תחושת חופש גם באירוח קבוצות גדולות ומשפחות ברוכות ילדים.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&crop=center&q=85" 
+                         alt="נוף מתחם מגדל של חיים">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
-    <section class="stats" id="stats">
+    <section class="section stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number" data-count="80">0</div>
-                    <div class="stat-label">אורחים מקסימום</div>
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">חדרים מרווחים</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="21">0</div>
-                    <div class="stat-label">חדרים פרטיים</div>
+                    <div class="stat-number">80</div>
+                    <div class="stat-label">מקומות אירוח</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="2">0</div>
+                    <div class="stat-number">2</div>
                     <div class="stat-label">דונם שטח</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="2025">2020</div>
-                    <div class="stat-label">שנת הקמה</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">שביעות רצון</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Facilities Section -->
+    <section class="section facilities" id="facilities">
         <div class="container">
-            <h2 class="section-title">מה מייחד אותנו</h2>
-            <p class="section-subtitle">מתחם יוקרתי עם כל המתקנים שאתם צריכים לחוויה מושלמת</p>
+            <h2 class="section-title">המתקנים שלנו</h2>
+            <p class="section-subtitle">
+                כל מה שאתם צריכים לחופשה מושלמת - במקום אחד
+            </p>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop&auto=format" alt="בריכה פרטית" onerror="this.src='https://via.placeholder.com/400x200/2d87ae/ffffff?text=בריכה+פרטית'">
-                    <h3>בריכה פרטית מחוממת</h3>
-                    <p>בריכה גדולה ומטופחת עם נוף פנורמי לכינרת והר הארבל. מתאימה לכל הגילאים עם אזור רדוד לילדים וחלק עמוק למבוגרים.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop&auto=format" alt="חדרים פרטיים" onerror="this.src='https://via.placeholder.com/400x200/4299e1/ffffff?text=21+חדרים+פרטיים'">
-                    <h3>21 חדרים פרטיים</h3>
-                    <p>כל חדר עם מקלחת ושירותים פרטיים. חדרים מרווחים ונוחים המתאימים למשפחות וקבוצות. עיצוב מודרני עם אווירה חמה ומזמינה.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=200&fit=crop&auto=format" alt="ציבור דתי וחרדי" onerror="this.src='https://via.placeholder.com/400x200/68d391/ffffff?text=ציבור+דתי+וחרדי'">
-                    <h3>ציבור דתי וחרדי</h3>
-                    <p>התמחות מלאה באירוח הציבור הדתי והחרדי. סביבה מתאימה לשמירת מסורת ומנהגים, עם הבנה מלאה של הצרכים המיוחדים.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&h=200&fit=crop&auto=format" alt="שבתות חתן ואירועים" onerror="this.src='https://via.placeholder.com/400x200/f687b3/ffffff?text=שבתות+חתן'">
-                    <h3>שבתות חתן ואירועים</h3>
-                    <p>מתמחים בשבתות חתן רחבים ואירועי משפחה. מתחם מרווח של 2 דונם המאפשר אירוח כיד המלך עם כל הנוחות והפרטיות.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=200&fit=crop&auto=format" alt="מטבח מאובזר" onerror="this.src='https://via.placeholder.com/400x200/fbbf24/ffffff?text=מטבח+מאובזר'">
-                    <h3>מטבח מאובזר במלואו</h3>
-                    <p>מטבח גדול ומעוצב עם כיריים אינדוקציה, מקררים גדולים וכל הציוד הדרוש לבישול לקבוצות גדולות. כולל חדר אוכל פרטי.</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop&auto=format" alt="אזורי פנאי ומשחקים" onerror="this.src='https://via.placeholder.com/400x200/8b5cf6/ffffff?text=אזורי+פנאי'">
-                    <h3>אזורי פנאי ומשחקים</h3>
-                    <p>חדר משחקים עם שולחן סנוקר, פינג פונג, הוקי אוויר ועוד. בריכת דגי נוי ומתחם חיצוני מרווח לפעילויות משפחתיות.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">הסיפור מאחורי מגדל של חיים</h2>
-            
-            <div class="about-grid">
-                <div>
-                    <div class="about-text">
-                        <h3>חוויית אירוח ייחודית</h3>
-                        <p>חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף. המתחם משתרע על פני שני דונם רחבי ידיים, מתוכם דונם וחצי בנוי, ומציע שילוב מושלם בין מרחב, נוחות ואסתטיקה מוקפדת.</p>
-                        <p>המתחם מחולק לשתי יחידות אירוח גדולות: יחידה אחת במפלס אחד הכוללת 12 חדרים מרווחים עם שירותים ומקלחות צמודים, ויחידה שנייה הבנויה על מפלסים ובה 9 חדרים נוספים.</p>
-                    </div>
-
-                    <div class="about-text">
-                        <h3>מרחבי אירוח מגוונים</h3>
-                        <p>בסך הכול המקום מאפשר אירוח נוח לכ-80 נופשים בשני מבנים איכותיים ומאובזרים, כאשר המרחבים הרבים מבטיחים תחושת חופש גם באירוח קבוצות גדולות ומשפחות ברוכות ילדים.</p>
-                        <p>בכל חדר תמצאו ארון מסודר ומיטות נוחות. בכל מתחם ישנו סלון רחב עם ספות רבות, שירותי אורחים, כיסאות תינוק ושולחנות גדולים.</p>
-                    </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">🏊‍♀️</div>
+                    <h3>בריכת שחייה</h3>
+                    <p>בריכת שחייה גדולה ומטופחת, מגודרת ובטיחותית, המעניקה מקום מושלם להנאה לקטנים ולגדולים כאחד</p>
                 </div>
                 
-                <div>
-                    <div class="about-text">
-                        <h3>מתקנים ופעילויות</h3>
-                        <p>המטבח מצויד במקררים ובכיריים אינדוקציה גדולים, ומותאם להכנת סעודות בנוחות מלאה. בחצר מחכה לכם בריכת שחייה גדולה ומטופחת מגודרת ובטיחותית, המעניקה מקום מושלם להנאה לקטנים ולגדולים כאחד.</p>
-                        <p>לצידה בריכת דגי נוי מרשימה, משחקייה צבעונית, שולחן סנוקר, פינג פונג והוקי אוויר. פינות ישיבה רבות ומוצלות פרוסות סביב המתחם, והמרפסת הפתוחה משקיפה לנוף עוצר נשימה של הכנרת.</p>
-                    </div>
-
-                    <div class="about-text">
-                        <h3>מה שמנחה אותנו</h3>
-                        <p>השם "מגדל של חיים" נולד מתוך הכרת הטוב עמוקה לצדיק האור החיים הקדוש. המקום נבנה מתוך הרצון העמוק ליצור בית שבו כל משפחה מרגישה בטוחה, אהובה ומוגנת.</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ כל אורח הוא חלק מהמשפחה שלנו</li>
-                            <li style="margin-bottom: 0.5rem;">✓ שמירה קפדנית על הלכה ומסורת</li>
-                            <li style="margin-bottom: 0.5rem;">✓ איכות ונקיון ללא פשרות</li>
-                            <li>✓ יצירת זיכרונות שישארו לנצח</li>
-                        </ul>
-                    </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🛏️</div>
+                    <h3>21 חדרים פרטיים</h3>
+                    <p>חדרים מרווחים ונוחים עם מיטות איכותיות, ארונות מסודרים ושירותים צמודים ברוב החדרים</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">🍳</div>
+                    <h3>מטבח מאובזר</h3>
+                    <p>מטבח גדול ומודרני עם כיריים אינדוקציה, מקררים גדולים וכל הכלים הדרושים להכנת סעודות</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">🎮</div>
+                    <h3>אזור משחקים</h3>
+                    <p>משחקייה צבעונית לילדים, שולחן סנוקר, פינג פונג והוקי אוויר לבילוי משפחתי מהנה</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">🐠</div>
+                    <h3>בריכת דגי נוי</h3>
+                    <p>בריכת דגי נוי מרשימה המוסיפה אווירה רגועה ופסטורלית למתחם</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">🌅</div>
+                    <h3>נוף עוצר נשימה</h3>
+                    <p>מרפסת פתוחה המשקיפה לנוף מדהים של הכינרת והר הארבל - חוויה בלתי נשכחת</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
+    <section class="section gallery" id="gallery">
         <div class="container">
-            <h2 class="section-title">טעימה מהגלריה</h2>
-            <p class="section-subtitle">כמה תמונות נבחרות מהמתחם המיוחד שלנו</p>
+            <h2 class="section-title">גלריית תמונות</h2>
+            <p class="section-subtitle">
+                הציצו אל תוך המתחם המדהים שלנו
+            </p>
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop&auto=format" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/ffffff?text=בריכה+ונוף'">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="בריכת השחייה">
+                    <div class="gallery-overlay">
+                        <span>בריכת השחייה</span>
+                    </div>
                 </div>
-
+                
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&auto=format" alt="חדר שינה" onerror="this.src='https://via.placeholder.com/400x300/4299e1/ffffff?text=חדר+שינה'">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="חדר שינה">
+                    <div class="gallery-overlay">
+                        <span>חדרי השינה</span>
+                    </div>
                 </div>
-
+                
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format" alt="מטבח" onerror="this.src='https://via.placeholder.com/400x300/68d391/ffffff?text=מטבח'">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="המטבח">
+                    <div class="gallery-overlay">
+                        <span>המטבח המאובזר</span>
+                    </div>
                 </div>
-
+                
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format" alt="פנאי" onerror="this.src='https://via.placeholder.com/400x300/f687b3/ffffff?text=פנאי'">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="סלון משפחתי">
+                    <div class="gallery-overlay">
+                        <span>הסלון המשפחתי</span>
+                    </div>
                 </div>
-
+                
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&auto=format" alt="מתחם חיצוני" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/ffffff?text=מתחם+חיצוני'">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="נוף החצר">
+                    <div class="gallery-overlay">
+                        <span>נוף החצר והגן</span>
+                    </div>
                 </div>
-
+                
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&h=300&fit=crop&auto=format" alt="נוף" onerror="this.src='https://via.placeholder.com/400x300/8b5cf6/ffffff?text=נוף'">
+                    <img src="https://images.unsplash.com/photo-1464822759844-d150baec22b1?w=400&h=300&fit=crop&crop=center&q=85" 
+                         alt="נוף הכינרת">
+                    <div class="gallery-overlay">
+                        <span>נוף הכינרת</span>
+                    </div>
                 </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#" class="btn btn-primary">צפו בגלריה המלאה - 50+ תמונות</a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="section contact" id="contact">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>צרו קשר עמנו</h3>
-                    <p>מגדל של חיים - המקום המושלם לשבתות חתן, אירועי משפחה וחופשות בלתי נשכחות בצפון.</p>
-                    <p>אנו מתמחים באירוח הציבור הדתי והחרדי ומספקים חוויה מותאמת אישית לכל משפחה.</p>
-                    
-                    <div class="contact-details">
-                        <h4>פרטי יצירת קשר</h4>
-                        <div class="contact-item">
-                            <i>📞</i>
-                            <span>טלפון להזמנות: 072-3311083</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>📱</i>
-                            <span>WhatsApp: 052-398-3394</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🏠</i>
-                            <span>מושבה מגדל, הגליל העליון</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>👥</i>
-                            <span>קיבולת: 48-80 אורחים</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🛏️</i>
-                            <span>21 חדרים עם מקלחת פרטית</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🏊‍♂️</i>
-                            <span>בריכה פרטית מחוממת</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🎯</i>
-                            <span>התמחות: ציבור דתי וחרדי</span>
-                        </div>
-                    </div>
-                </div>
-
+            <h2 class="section-title">יצירת קשר והזמנות</h2>
+            <p class="section-subtitle">
+                מוכנים לחופשה בלתי נשכחת? צרו קשר עכשיו
+            </p>
+            
+            <div class="contact-content">
                 <div class="contact-form">
-                    <h3 style="color: #81e6d9; margin-bottom: 2rem; font-size: 1.8rem;">שלחו הודעה</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">שלחו פנייה</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">שם מלא</label>
-                            <input type="text" id="name" name="name" placeholder="הכניסו את שמכם המלא" required>
+                            <label for="name">שם מלא *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">טלפון</label>
-                            <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
+                            <label for="phone">טלפון *</label>
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="dates">תאריכים מבוקשים</label>
-                            <input type="text" id="dates" name="dates" placeholder="מתי אתם מעוניינים להגיע?">
+                            <label for="dates">תאריכי האירוח הרצויים</label>
+                            <input type="text" id="dates" name="dates" placeholder="למשל: 15-17 במרץ">
                         </div>
                         
                         <div class="form-group">
                             <label for="guests">מספר אורחים</label>
-                            <input type="number" id="guests" name="guests" placeholder="כמה אורחים צפויים?" min="1" max="80">
+                            <input type="number" id="guests" name="guests" min="1" max="80" placeholder="כמה אורחים?">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">הודעה</label>
-                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם ועל הדרישות המיוחדות"></textarea>
+                            <label for="message">הודעה נוספת</label>
+                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח הודעה לוואטסאפ</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פנייה</button>
                     </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>טלפון</h4>
+                            <p>
+                                <a href="tel:+972523983394">052-398-3394</a><br>
+                                זמינים לשירותכם 24/7
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>
+                                <a href="https://wa.me/972523983394" target="_blank">שלחו הודעה ישירה</a><br>
+                                תגובה מהירה ומיידית
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>אימייל</h4>
+                            <p>
+                                <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a><br>
+                                נחזור אליכם תוך 24 שעות
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>כתובת</h4>
+                            <p>
+                                מושב מגדל, הגליל העליון<br>
+                                21 חדרים עם מקלחת פרטית<br>
+                                נוף מדהים לכינרת
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2039,37 +934,139 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 מגדל של חיים - ריזורט משפחתי יוקרתי. כל הזכויות שמורות.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">עוצב ופותח במיוחד עבור משפחות הציבור הדתי והחרדי</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>מגדל של חיים</h4>
+                    <p>
+                        ריזורט משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים בלתי נשכחים.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/migdalresort" title="פייסבוק" target="_blank">📘</a>
+                        <a href="https://instagram.com/migdalresort" title="אינסטגרם" target="_blank">📷</a>
+                        <a href="https://wa.me/972523983394" title="וואטסאפ" target="_blank">💬</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>קישורים מהירים</h4>
+                    <ul>
+                        <li><a href="#home">בית</a></li>
+                        <li><a href="#about">אודות</a></li>
+                        <li><a href="#facilities">מתקנים</a></li>
+                        <li><a href="#gallery">גלריה</a></li>
+                        <li><a href="#contact">יצירת קשר</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>יצירת קשר</h4>
+                    <ul>
+                        <li><strong>טלפון:</strong> <a href="tel:+972523983394">052-398-3394</a></li>
+                        <li><strong>אימייל:</strong> <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a></li>
+                        <li><strong>כתובת:</strong> מושב מגדל, הגליל העליון</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>מידע משפטי</h4>
+                    <ul>
+                        <li><a href="policies.html">מדיניות פרטיות</a></li>
+                        <li><a href="policies.html#accessibility">הצהרת נגישות</a></li>
+                        <li><a href="policies.html#terms">תקנון</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+                <p>עוצב ופותח במיוחד לריזורט מגדל של חיים</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/972523983394" class="whatsapp-btn" target="_blank" title="WhatsApp">💬</a>
-        <button class="back-to-top" id="backToTop" title="חזור למעלה">↑</button>
-    </div>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/972523983394" class="floating-whatsapp" title="צור קשר בוואטסאפ" target="_blank">
+        💬
+    </a>
 
+    <!-- JavaScript -->
     <script>
-        // Navigation scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Mobile Navigation
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            navMenu.classList.toggle('active');
+            mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        }
+
+        // Close menu when clicking on a link
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.closest('.nav-menu')) {
+                const navMenu = document.getElementById('navMenu');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                navMenu.classList.remove('active');
+                mobileToggle.textContent = '☰';
             }
         });
 
-        // Mobile menu toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                dates: document.getElementById('dates').value,
+                guests: document.getElementById('guests').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toLocaleString('he-IL'),
+                source: 'אתר האינטרנט'
+            };
+
+            // Create WhatsApp message
+            const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
+
+👤 שם: ${formData.name}
+📞 טלפון: ${formData.phone}
+📅 תאריכים: ${formData.dates || 'לא צוין'}
+👥 מספר אורחים: ${formData.guests || 'לא צוין'}
+💬 הודעה: ${formData.message || 'אין הודעה נוספת'}
+
+⏰ זמן הפנייה: ${formData.timestamp}
+🌐 מקור: ${formData.source}
+
+לחצו כאן כדי להתקשר ללקוח:
+https://wa.me/972${formData.phone.replace(/^0/, '')}`;
+
+            try {
+                // Save to local storage as backup
+                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+                leads.push(formData);
+                localStorage.setItem('leads', JSON.stringify(leads));
+
+                // Open WhatsApp
+                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+
+                // Show success message
+                alert('הפנייה נשלחה בהצלחה! אנחנו נחזור אליכם בהקדם.');
+                
+                // Reset form
+                this.reset();
+
+            } catch (error) {
+                console.error('Error sending form:', error);
+                
+                // Fallback - still open WhatsApp
+                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                alert('הפנייה נשלחה! אנחנו נחזור אליכם בהקדם.');
+            }
         });
 
-        // Smooth scrolling for navigation links
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2079,191 +1076,236 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    navMenu.classList.remove('active');
                 }
             });
         });
 
-        // Animated counters
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const current = parseInt(counter.textContent);
-                const increment = target / 100;
-                
-                if (current < target) {
-                    counter.textContent = Math.ceil(current + increment);
-                    setTimeout(animateCounters, 30);
-                } else {
-                    counter.textContent = target;
-                }
-            });
-        }
-
-        // Trigger counter animation when stats section is visible
-        const statsSection = document.querySelector('.stats');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        observer.observe(statsSection);
-
-        // Direct WhatsApp automation - works immediately
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const dates = document.getElementById('dates').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
-            
-            // Show loading state
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'שולח...';
-            submitBtn.disabled = true;
-            
-            // Create formatted message
-            const timestamp = new Date().toLocaleString('he-IL');
-            const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
-
-👤 שם: ${name}
-📞 טלפון: ${phone}
-📅 תאריכים: ${dates}
-👥 מספר אורחים: ${guests}
-💬 הודעה: ${message}
-
-⏰ זמן הפנייה: ${timestamp}
-🌐 מקור: אתר האינטרנט
-
-לחצו כאן כדי להתקשר ללקוח:
-https://wa.me/${phone.replace(/[^\d]/g, '')}`;
-            
-            // Multiple WhatsApp delivery methods for reliability
-            const methods = [
-                // Method 1: Direct WhatsApp Web link (most reliable)
-                () => {
-                    const encodedMessage = encodeURIComponent(whatsappMessage);
-                    window.open(`https://wa.me/972523983394?text=${encodedMessage}`, '_blank');
-                },
-                
-                // Method 2: WhatsApp API call (backup)
-                () => {
-                    fetch('https://api.whatsapp.com/send', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            phone: '972523983394',
-                            text: whatsappMessage
-                        })
-                    }).catch(console.error);
-                },
-                
-                // Method 3: Telegram as backup notification
-                () => {
-                    // Using a public telegram bot service (replace with your bot token if you have one)
-                    const telegramMessage = `פנייה חדשה: ${name} - ${phone}`;
-                    fetch(`https://api.telegram.org/bot6842091769:AAGv8Q_example/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: '@migdalchaim', // Your channel
-                            text: telegramMessage
-                        })
-                    }).catch(console.error);
-                }
-            ];
-            
-            // Execute primary method
-            try {
-                methods[0](); // Direct WhatsApp
-                
-                // Also try saving to simple storage
-                saveToLocalStorage({
-                    name, phone, dates, guests, message, timestamp
-                });
-                
-                // Show success
-                setTimeout(() => {
-                    alert('הפנייה נשלחה לווטסאפ! בדקו את הווטסאפ שלכם.');
-                    contactForm.reset();
-                }, 500);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                alert('יש בעיה טכנית. הווטסאפ נפתח ידנית.');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-        
-        // Save contact to browser storage as backup
-        function saveToLocalStorage(data) {
-            const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-            contacts.push(data);
-            localStorage.setItem('migdal_contacts', JSON.stringify(contacts));
-        }
-        
-        // Function to export stored contacts (for your records)
-        function exportContacts() {
-            const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-            if (contacts.length === 0) {
-                alert('אין פניות שמורות');
-                return;
-            }
-            
-            const csv = 'שם,טלפון,תאריכים,אורחים,הודעה,זמן\n' + 
-                contacts.map(c => `"${c.name}","${c.phone}","${c.dates}","${c.guests}","${c.message}","${c.timestamp}"`).join('\n');
-            
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'migdal_contacts.csv';
-            link.click();
-        }
-        
-        // Add export button functionality (you can add this button to your admin area)
-        if (window.location.hash === '#admin') {
-            document.body.innerHTML += '<button onclick="exportContacts()" style="position:fixed;top:10px;right:10px;z-index:9999;">ייצוא פניות</button>';
-        }
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        
+        // Header scroll effect
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 54, 93, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             } else {
-                backToTop.classList.remove('visible');
+                header.style.background = 'rgba(26, 54, 93, 0.95)';
+                header.style.boxShadow = 'none';
             }
         });
 
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        // Accessibility Features
+        let accessibilityOpen = false;
+
+        function toggleAccessibility() {
+            accessibilityOpen = !accessibilityOpen;
+            
+            if (accessibilityOpen) {
+                showAccessibilityMenu();
+            } else {
+                hideAccessibilityMenu();
+            }
+        }
+
+        function showAccessibilityMenu() {
+            const existingMenu = document.getElementById('accessibilityMenu');
+            if (existingMenu) {
+                existingMenu.remove();
+            }
+
+            const menu = document.createElement('div');
+            menu.id = 'accessibilityMenu';
+            menu.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 20px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                padding: 1rem;
+                z-index: 1002;
+                min-width: 200px;
+                direction: rtl;
+            `;
+            
+            menu.innerHTML = `
+                <button onclick="toggleHighContrast()" style="display: block; width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">ניגודיות גבוהה</button>
+                <button onclick="toggleLargeFont()" style="display: block; width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">הגדל גופן</button>
+                <button onclick="resetAccessibility()" style="display: block; width: 100%; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">איפוס הגדרות</button>
+            `;
+            
+            document.body.appendChild(menu);
+        }
+
+        function hideAccessibilityMenu() {
+            const menu = document.getElementById('accessibilityMenu');
+            if (menu) {
+                menu.remove();
+            }
+        }
+
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+        }
+
+        function toggleLargeFont() {
+            document.body.classList.toggle('large-font');
+            localStorage.setItem('largeFont', document.body.classList.contains('large-font'));
+        }
+
+        function resetAccessibility() {
+            document.body.classList.remove('high-contrast', 'large-font');
+            localStorage.removeItem('highContrast');
+            localStorage.removeItem('largeFont');
+        }
+
+        // Load saved accessibility settings
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+            if (localStorage.getItem('largeFont') === 'true') {
+                document.body.classList.add('large-font');
+            }
         });
 
-        // Gallery item click effects
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                img.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    img.style.transform = 'scale(1)';
-                }, 300);
-            });
+        // Close accessibility menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.accessibility-btn') && !e.target.closest('#accessibilityMenu')) {
+                hideAccessibilityMenu();
+                accessibilityOpen = false;
+            }
         });
+
+        // Admin Panel
+        if (window.location.hash === '#admin') {
+            const password = prompt('הכנס סיסמת מנהל:');
+            if (password === 'migdal2025') {
+                showAdminPanel();
+            }
+        }
+
+        function showAdminPanel() {
+            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+            const adminPanel = document.createElement('div');
+            adminPanel.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                max-width: 800px;
+                max-height: 80vh;
+                overflow-y: auto;
+                direction: rtl;
+            `;
+            
+            adminPanel.innerHTML = `
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">פאנל ניהול - פניות לקוחות</h3>
+                <p>סה"כ פניות: ${leads.length}</p>
+                <button onclick="exportLeads()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">ייצא לאקסל</button>
+                <button onclick="closeAdmin()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer; margin-right: 1rem;">סגור</button>
+                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 1rem; margin-top: 1rem;">
+                    ${leads.map(lead => `
+                        <div style="border-bottom: 1px solid #eee; padding: 1rem 0;">
+                            <strong>${lead.name}</strong> - ${lead.phone}<br>
+                            תאריכים: ${lead.dates || 'לא צוין'}<br>
+                            אורחים: ${lead.guests || 'לא צוין'}<br>
+                            זמן: ${lead.timestamp}<br>
+                            הודעה: ${lead.message || 'אין'}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.body.appendChild(adminPanel);
+            
+            // Add global functions
+            window.exportLeads = () => {
+                const csv = ['שם,טלפון,תאריכים,אורחים,הודעה,זמן'].concat(
+                    leads.map(lead => 
+                        `"${lead.name}","${lead.phone}","${lead.dates || ''}","${lead.guests || ''}","${lead.message || ''}","${lead.timestamp}"`
+                    )
+                ).join('\n');
+                
+                const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `leads_${new Date().toISOString().split('T')[0]}.csv`;
+                link.click();
+            };
+            
+            window.closeAdmin = () => {
+                adminPanel.remove();
+                delete window.exportLeads;
+                delete window.closeAdmin;
+            };
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Alt + A for accessibility
+            if (e.altKey && e.key.toLowerCase() === 'a') {
+                e.preventDefault();
+                toggleAccessibility();
+            }
+            
+            // Alt + M for menu
+            if (e.altKey && e.key.toLowerCase() === 'm') {
+                e.preventDefault();
+                toggleMenu();
+            }
+            
+            // Escape to close menus
+            if (e.key === 'Escape') {
+                hideAccessibilityMenu();
+                accessibilityOpen = false;
+                const navMenu = document.getElementById('navMenu');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                navMenu.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            }
+        });
+
+        console.log('🏔️ מגדל של חיים - האתר טעון בהצלחה!');
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Resort",
+        "name": "מגדל של חיים",
+        "description": "ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל",
+        "url": "https://migdal-chaim.com",
+        "telephone": "+972-52-398-3394",
+        "email": "info@migdalresort.co.il",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "מושב מגדל",
+            "addressRegion": "הגליל העליון",
+            "addressCountry": "IL"
+        },
+        "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "בריכת שחייה",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification", 
+                "name": "מטבח מאובזר",
+                "value": true
+            }
+        ],
+        "numberOfRooms": 21,
+        "maximumAttendeeCapacity": 80,
+        "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=630&fit=crop&crop=center&q=85",
+        "priceRange": "$$"
+    }
     </script>
 </body>
 </html>
