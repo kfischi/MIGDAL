@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדיניות ונגישות - מגדל של חיים</title>
+    <meta name="description" content="מדיניות פרטיות, תקנון שימוש והצהרת נגישות - מגדל של חיים ריזורט משפחתי">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #1a365d;
+            background: linear-gradient(135deg, #f8fafc, #e6fffa);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a365d, #2d87ae);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+            border-radius: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #2d87ae;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(45deg, #e0f7fa, #b2f5ea);
+            padding: 2rem;
+            border-bottom: 3px solid #2d87ae;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+
+        .section-content {
+            padding: 2.5rem;
+        }
+
+        .section-content h3 {
+            color: #2d87ae;
+            margin: 2rem 0 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0f7fa;
+        }
+
+        .section-content h4 {
+            color: #1a365d;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .section-content ul {
+            margin: 1.5rem 0;
+            padding-right: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, #fff5f5, #fed7d7);
+            border: 2px solid #f687b3;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #c53030;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box {
+            background: linear-gradient(45deg, #e6fffa, #b2f5ea);
+            border: 2px solid #2d87ae;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-box h4 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .date-updated {
+            background: #2d87ae;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .toc {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            border: 2px solid #e0f7fa;
+        }
+
+        .toc h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: #2d87ae;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .toc a:hover {
+            background: #e0f7fa;
+            color: #1a365d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                margin-bottom: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        :focus {
+            outline: 3px solid #fbbf24;
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link" aria-label="חזרה לדף הבית">← חזרה לדף הבית</a>
+        
+        <div class="header">
+            <h1>מדיניות ונגישות</h1>
+            <p>מגדל של חיים - ריזורט משפחתי יוקרתי</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <nav class="toc" role="navigation" aria-labelledby="toc-heading">
+            <h3 id="toc-heading">תוכן עניינים</h3>
+            <ul>
+                <li><a href="#accessibility">הצהרת נגישות</a></li>
+                <li><a href="#privacy">מדיניות פרטיות</a></li>
+                <li><a href="#terms">תקנון השימוש</a></li>
+                <li><a href="#booking">תנאי הזמנה</a></li>
+                <li><a href="#house-rules">כללי בית</a></li>
+                <li><a href="#contact-info">פרטי יצירת קשר</a></li>
+            </ul>
+        </nav>
+
+        <!-- Accessibility Statement -->
+        <section class="section" id="accessibility">
+            <div class="section-header">
+                <h2>הצהרת נגישות</h2>
+                <p>מחויבותנו לנגישות דיגיטלית מלאה</p>
+            </div>
+            <div class="section-content">
+                <p>מגדל של חיים מחויב לספק נגישות דיגיטלית לכל המשתמשים, כולל אנשים עם מוגבלויות. אנו פועלים לשיפור מתמיד של נגישות האתר שלנו ומקפידים על עמידה בתקן הישראלי ת"י 5568 ובהנחיות WCAG 2.1 ברמה AA.</p>
+                
+                <h3>תכונות הנגישות באתר</h3>
+                <ul>
+                    <li><strong>תמיכה מלאה בקוראי מסך:</strong> תאימות עם NVDA, JAWS, VoiceOver ו-TalkBack</li>
+                    <li><strong>ניווט במקלדת בלבד:</strong> כל הפונקציות זמינות ללא עכבר</li>
+                    <li><strong>ניגודיות צבעים גבוהה:</strong> עמידה ביחס ניגודיות 4.5:1 לכל הטקסט</li>
+                    <li><strong>אפשרות להגדלת וקטנת גופן:</strong> עד 200% ללא אובדן פונקציונליות</li>
+                    <li><strong>מצב לילה:</strong> צבעים כהים למזעור עייפות עיניים</li>
+                    <li><strong>מדריך קריאה:</strong> פס עוקב לעזרה בעקיבה אחר הטקסט</li>
+                    <li><strong>כותרות היררכיות:</strong> מבנה H1-H6 תקין לניווט קל</li>
+                    <li><strong>תיאור חלופי לתמונות:</strong> alt text מפורט לכל תמונה</li>
+                    <li><strong>הודעות סטטוס:</strong> עדכונים אוטומטיים למשתמשי קוראי מסך</li>
+                    <li><strong>קיצורי מקלדת:</strong> Alt+A לתפריט נגישות, Alt+M לתפריט ניווט</li>
+                    <li><strong>טפסים נגישים:</strong> תיוג מלא ושגיאות ברורות</li>
+                    <li><strong>תמיכה בזום:</strong> עד 400% ללא גלילה אופקית</li>
+                </ul>
+
+                <h3>תקנים והנחיות</h3>
+                <p>האתר נבנה בהתאם לתקנים הבאים:</p>
+                <ul>
+                    <li>התקן הישראלי ת"י 5568 לנגישות אתרי אינטרנט</li>
+                    <li>הנחיות WCAG 2.1 ברמה AA</li>
+                    <li>Section 508 (ארה"ב)</li>
+                    <li>EN 301 549 (האיחוד האירופי)</li>
+                </ul>
+
+                <h3>טכנולוגיות מסייעות נתמכות</h3>
+                <ul>
+                    <li>קוראי מסך: NVDA, JAWS, VoiceOver, TalkBack</li>
+                    <li>תוכנות זיהוי קול: Dragon NaturallySpeaking</li>
+                    <li>דפדפני טקסט: Lynx</li>
+                    <li>תוכנות הגדלה: ZoomText, MAGic</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>מגבלות ידועות</h4>
+                    <ul>
+                        <li>סרטוני רקע עשויים להפריע למשתמשים עם הפרעות קשב - ניתן לכבות בהגדרות הנגישות</li>
+                        <li>תמונות ישנות עשויות להיות ללא תיאור מלא - אנו עובדים על שדרוג</li>
+                    </ul>
+                </div>
+
+                <div class="contact-box">
+                    <h4>פרטי קשר לנגישות</h4>
+                    <p>אם נתקלתם בבעיית נגישות באתר או שיש לכם הצעות לשיפור, אנא צרו קשר איתנו:</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>אימייל נגישות:</strong><br>
+                            accessibility@migdal-chaim.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>טלפון:</strong><br>
+                            072-3311083
+                        </div>
+                        <div class="contact-item">
+                            <strong>זמני מענה:</strong><br>
+                            ראשון-חמישי 9:00-17:00
+                        </div>
+                    </div>
+                </div>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- Privacy Policy -->
+        <section class="section" id="privacy">
+            <div class="section-header">
+                <h2>מדיניות פרטיות</h2>
+                <p>איך אנו שומרים על הפרטיות שלכם</p>
+            </div>
+            <div class="section-content">
+                <p>אנו מכבדים את פרטיותכם ומחויבים להגן על המידע האישי שלכם. מדיניות פרטיות זו מסבירה איך אנו אוספים, משתמשים ומגנים על המידע שלכם בהתאם לחוק הגנת הפרטיות התשמ"א-1981 ולתקנות הגנת הפרטיות (אבטחת מידע) התשע"ז-2017.</p>
+                
+                <h3>איזה מידע אנו אוספים</h3>
+                <h4>מידע שאתם מספקים באופן יזום:</h4>
+                <ul>
+                    <li><strong>טופס יצירת קשר:</strong> שם מלא, מספר טלפון, כתובת דואר אלקטרוני</li>
+                    <li><strong>פרטי הזמנה:</strong> תאריכים מבוקשים, מספר אורחים, דרישות מיוחדות</li>
+                    <li><strong>תקשורת:</strong> הודעות והערות שאתם שולחים אלינו</li>
+                    <li><strong>העדפות:</strong> העדפות נגישות ותצוגה (נשמרות מקומית במכשיר שלכם)</li>
+                </ul>
+
+                <h4>מידע שנאסף באופן אוטומטי:</h4>
+                <ul>
+                    <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, מערכת הפעלה</li>
+                    <li><strong>נתוני שימוש:</strong> עמודים שביקרתם, זמן ביקור, מקור הגעה</li>
+                    <li><strong>עוגיות טכניות:</strong> לשיפור ביצועי האתר (ללא מידע אישי)</li>
+                </ul>
+
+                <h3>איך אנו משתמשים במידע</h3>
+                <ul>
+                    <li><strong>מתן שירות:</strong> טיפול בפניות, אישור הזמנות, תיאום פגישות</li>
+                    <li><strong>תקשורת:</strong> מענה לשאלות, עדכונים על הזמנות, שירות לקוחות</li>
+                    <li><strong>שיפור השירות:</strong> ניתוח דפוסי שימוש לשיפור האתר והשירות</li>
+                    <li><strong>חובות חוקיות:</strong> ציות לדרישות רגולטוריות ומשפטיות</li>
+                    <li><strong>אבטחה:</strong> מניעת הונאות ושמירה על אבטחת המערכות</li>
+                </ul>
+
+                <h3>איך אנו מגנים על המידע</h3>
+                <ul>
+                    <li><strong>הצפנה:</strong> כל המידע מועבר בחיבור מוצפן (HTTPS/SSL)</li>
+                    <li><strong>אחסון מאובטח:</strong> שרתים מאובטחים עם גישה מוגבלת</li>
+                    <li><strong>הרשאות מוגבלות:</strong> גישה למידע רק לצוות מורשה הדרוש לעבודה</li>
+                    <li><strong>גיבויים:</strong> גיבוי קבוע ומוצפן של המידע</li>
+                    <li><strong>עדכוני אבטחה:</strong> עדכון שוטף של מערכות האבטחה</li>
+                </ul>
+
+                <h3>שיתוף מידע עם צדדים שלישיים</h3>
+                <p><strong>איננו מוכרים או מעבירים את המידע האישי שלכם לצדדים שלישיים</strong>, פרט למקרים הבאים:</p>
+                <ul>
+                    <li>בהסכמתכם המפורשת</li>
+                    <li>לספקי שירות הנדרשים למתן השירות (עם הסכמי סודיות)</li>
+                    <li>כאשר נדרש על פי חוק או צו בית משפט</li>
+                    <li>להגנה על זכויותינו או בטחון המשתמשים</li>
+                </ul>
+
+                <h3>הזכויות שלכם</h3>
+                <p>בהתאם לחוק הגנת הפרטיות, יש לכם הזכויות הבאות:</p>
+                <ul>
+                    <li><strong>זכות עיון:</strong> לדעת איזה מידע אנו מחזיקים עליכם</li>
+                    <li><strong>זכות תיקון:</strong> לתקן מידע שגוי או לא מעודכן</li>
+                    <li><strong>זכות מחיקה:</strong> למחוק את המידע שלכם (בכפוף להגבלות חוקיות)</li>
+                    <li><strong>זכות להגבלת עיבוד:</strong> להגביל את השימוש במידע שלכם</li>
+                    <li><strong>זכות ניידות:</strong> לקבל עותק של המידע שלכם</li>
+                    <li><strong>זכות התנגדות:</strong> להתנגד לשיווק ישיר</li>
+                </ul>
+
+                <h3>תקופת שמירה</h3>
+                <ul>
+                    <li><strong>פניות כלליות:</strong> שנתיים מתאריך הפנייה</li>
+                    <li><strong>הזמנות:</strong> 7 שנים (דרישה חוקית לצרכי מיסוי)</li>
+                    <li><strong>נתוני שימוש:</strong> 13 חודשים</li>
+                    <li><strong>התכתבות:</strong> שנתיים או עד סיום הטיפול</li>
+                </ul>
+
+                <h3>קשר עם קטינים</h3>
+                <p>איננו אוספים מידע מקטינים מתחת לגיל 13 ללא הסכמת הורים. אם נודע לנו על איסוף כזה, נמחק את המידע מיידית.</p>
+
+                <div class="contact-box">
+                    <h4>פרטי קשר למדיניות פרטיות</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>אימייל:</strong><br>
+                            privacy@migdal-chaim.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>טלפון:</strong><br>
+                            072-3311083
+                        </div>
+                        <div class="contact-item">
+                            <strong>כתובת:</strong><br>
+                            מושבה מגדל, הגליל העליון
+                        </div>
+                    </div>
+                </div>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- Terms of Use -->
+        <section class="section" id="terms">
+            <div class="section-header">
+                <h2>תקנון השימוש באתר</h2>
+                <p>תנאים כלליים לשימוש באתר</p>
+            </div>
+            <div class="section-content">
+                <h3>תנאים כלליים</h3>
+                <p>השימוש באתר מגדל של חיים מהווה הסכמה לתקנון זה. אנו שומרים על הזכות לעדכן את התקנון מעת לעת. שינויים יפורסמו באתר ויכנסו לתוקף מיידית.</p>
+
+                <h3>זכויות יוצרים וקניין רוחני</h3>
+                <ul>
+                    <li>כל התכנים באתר מוגנים בזכויות יוצרים</li>
+                    <li>אסור להעתיק, להפיץ או להשתמש בתכנים ללא הרשאה</li>
+                    <li>השימוש באתר מותר לצרכים אישיים ולא מסחריים בלבד</li>
+                    <li>הלוגו ושם "מגדל של חיים" הם סימנים מסחריים רשומים</li>
+                </ul>
+
+                <h3>אחריות והגבלות</h3>
+                <ul>
+                    <li>המידע באתר מוצג "כמו שהוא" ללא אחריות למדויק או שלמות</li>
+                    <li>איננו אחראים לנזקים הנובעים משימוש באתר</li>
+                    <li>איננו אחראים לתכנים באתרי צד שלישי המקושרים מהאתר</li>
+                    <li>השימוש באתר הוא באחריות המשתמש בלבד</li>
+                </ul>
+
+                <h3>התנהגות נאותה</h3>
+                <p>המשתמשים מתחייבים:</p>
+                <ul>
+                    <li>לא להשתמש באתר למטרות בלתי חוקיות</li>
+                    <li>לא לפרסם תכנים פוגעניים או בלתי הולמים</li>
+                    <li>לא לנסות לחדור למערכות או להפריע לפעולת האתר</li>
+                    <li>לא לשלוח וירוסים או קוד זדוני</li>
+                </ul>
+
+                <h3>קישורים לאתרי צד שלישי</h3>
+                <p>האתר עשוי להכיל קישורים לאתרים אחרים. איננו אחראים לתכנים או למדיניות הפרטיות של אתרים אלה.</p>
+
+                <h3>שינויים בשירות</h3>
+                <p>אנו שומרים על הזכות לשנות, להשעות או להפסיק את השירות בכל עת ללא הודעה מוקדמת.</p>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- Booking Terms -->
+        <section class="section" id="booking">
+            <div class="section-header">
+                <h2>תנאי הזמנה</h2>
+                <p>כל מה שצריך לדעת לפני ההזמנה</p>
+            </div>
+            <div class="section-content">
+                <h3>תהליך הזמנה</h3>
+                <ol>
+                    <li><strong>פנייה ראשונית:</strong> דרך האתר, טלפון או WhatsApp</li>
+                    <li><strong>בדיקת זמינות:</strong> נבדוק זמינות לתאריכים המבוקשים</li>
+                    <li><strong>הצעת מחיר:</strong> נשלח הצעת מחיר מפורטת</li>
+                    <li><strong>אישור הזמנה:</strong> הזמנה מתאשרת רק בכתב או באישור טלפוני</li>
+                    <li><strong>תשלום מקדמה:</strong> נדרש תשלום מקדמה לאישור סופי</li>
+                </ol>
+
+                <h3>מחירים ותשלומים</h3>
+                <ul>
+                    <li><strong>מקדמה:</strong> 30% מסכום ההזמנה</li>
+                    <li><strong>יתרת התשלום:</strong> עד שבוע לפני תאריך ההגעה</li>
+                    <li><strong>אמצעי תשלום:</strong> מזומן, העברה בנקאית, כרטיס אשראי</li>
+                    <li><strong>פיקדון:</strong> ₪500 להבטחת המתחם (מוחזר בתום האירוח)</li>
+                    <li><strong>מע"מ:</strong> כל המחירים כולל מע"מ</li>
+                </ul>
+
+                <h3>מדיניות ביטול</h3>
+                <div class="highlight-box">
+                    <h4>חשוב לדעת - תנאי ביטול</h4>
+                    <ul>
+                        <li><strong>יותר מ-7 ימים לפני ההגעה:</strong> ביטול ללא עלות, החזר מלא של המקדמה</li>
+                        <li><strong>3-7 ימים לפני ההגעה:</strong> חיוב של 50% מעלות ההזמנה</li>
+                        <li><strong>פחות מ-3 ימים:</strong> חיוב מלא של ההזמנה</li>
+                        <li><strong>אי הגעה (No Show):</strong> חיוב מלא ללא זכות להחזר</li>
+                    </ul>
+                </div>
+
+                <h3>שינויים בהזמנה</h3>
+                <ul>
+                    <li>שינויים ניתנים עד 48 שעות לפני ההגעה</li>
+                    <li>שינוי תאריכים בכפוף לזמינות</li>
+                    <li>שינוי מספר אורחים עשוי להשפיע על המחיר</li>
+                    <li>כל שינוי יאושר בכתב</li>
+                </ul>
+
+                <h3>גיל מינימום</h3>
+                <p>ההזמנה מותרת רק למבוגרים מעל גיל 18. הזמנה בשם קטין חייבת להיעשות על ידי הורה או אפוטרופוס.</p>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- House Rules -->
+        <section class="section" id="house-rules">
+            <div class="section-header">
+                <h2>כללי בית</h2>
+                <p>לחוויית אירוח נעימה לכולם</p>
+            </div>
+            <div class="section-content">
+                <h3>זמני כניסה ויציאה</h3>
+                <ul>
+                    <li><strong>כניסה (Check-in):</strong> החל מהשעה 15:00</li>
+                    <li><strong>יציאה (Check-out):</strong> עד השעה 11:00</li>
+                    <li><strong>כניסה מוקדמת/יציאה מאוחרת:</strong> בתיאום מראש (עלות נוספת)</li>
+                    <li><strong>הגעה מאוחרת:</strong> יש לתאם מראש הגעה אחרי 22:00</li>
+                </ul>
+
+                <h3>כללי שהייה</h3>
+                <ul>
+                    <li><strong>מספר אורחים:</strong> עד 80 אורחים (לא יותר מהמוצהר בהזמנה)</li>
+                    <li><strong>זיהוי:</strong> נדרש להציג תעודת זהות בכניסה</li>
+                    <li><strong>מפתחות:</strong> מסירת מפתחות ביציאה</li>
+                    <li><strong>אורחים נוספים:</strong> כניסת אורחים נוספים טעונה אישור מראש</li>
+                </ul>
+
+                <h3>שמירה על השקט</h3>
+                <ul>
+                    <li><strong>שעות שקט:</strong> 22:00-08:00</li>
+                    <li><strong>מוזיקה חזקה:</strong> מותרת עד 22:00 בלבד</li>
+                    <li><strong>כיבוד השכנים:</strong> שמירה על קשרים טובים עם תושבי המושבה</li>
+                    <li><strong>אירועים חיצוניים:</strong> יש להודיע על אירועים גדולים מראש</li>
+                </ul>
+
+                <h3>עישון ושתייה</h3>
+                <ul>
+                    <li><strong>איסור עישון:</strong> בתוך המבנים ובחדרים</li>
+                    <li><strong>עישון מותר:</strong> באזורים חיצוניים מיועדים בלבד</li>
+                    <li><strong>אלכוהול:</strong> שתייה מותרת באחריות ובמתינות</li>
+                    <li><strong>קטינים:</strong> איסור מוחלט על מתן אלכוהול לקטינים</li>
+                </ul>
+
+                <h3>בטיחות בבריכה</h3>
+                <div class="highlight-box">
+                    <h4>חשוב! כללי בטיחות בבריכה</h4>
+                    <ul>
+                        <li><strong>פיקוח על ילדים:</strong> חובה להיות עם ילדים מתחת לגיל 16</li>
+                        <li><strong>שעות פעילות:</strong> 07:00-22:00</li>
+                        <li><strong>איסור קפיצות:</strong> מאזורים לא מיועדים</li>
+                        <li><strong>כלי זכוכית:</strong> אסור להכניס כלי זכוכית לאזור הבריכה</li>
+                        <li><strong>ציוד הצלה:</strong> זמין באזור - יש להכיר את מיקומו</li>
+                        <li><strong>חירום:</strong> במקרה חירום התקשרו למד"א 101</li>
+                    </ul>
+                </div>
+
+                <h3>שמירה על הנכס</h3>
+                <ul>
+                    <li><strong>דיווח נזקים:</strong> יש לדווח מיידית על כל נזק</li>
+                    <li><strong>שמירה על ציוד:</strong> שימוש זהיר בכל הציוד</li>
+                    <li><strong>ניקיון:</strong> שמירה על ניקיון המתחם והחדרים</li>
+                    <li><strong>זבל:</strong> פינוי זבל לפחים המיועדים</li>
+                    <li><strong>חיסכון במים וחשמל:</strong> שימוש חכם במשאבים</li>
+                </ul>
+
+                <h3>מטבח וחדר אוכל</h3>
+                <ul>
+                    <li><strong>כלים וכלי מטבח:</strong> רחיצה לאחר השימוש</li>
+                    <li><strong>מקרר:</strong> סימון מזון אישי</li>
+                    <li><strong>תנור ובישול:</strong> כיבוי מכשירים לאחר השימוש</li>
+                    <li><strong>ניקיון:</strong> ניקיון המטבח לאחר כל שימוש</li>
+                </ul>
+
+                <h3>חניה</h3>
+                <ul>
+                    <li><strong>מקומות חניה:</strong> זמינים במתחם</li>
+                    <li><strong>חניה מסודרת:</strong> לא לחסום דרכים או יציאות חירום</li>
+                    <li><strong>אחריות:</strong> הרכב באחריות הבעלים</li>
+                </ul>
+
+                <h3>חיות מחמד</h3>
+                <ul>
+                    <li><strong>אישור מראש:</strong> חובה לקבל אישור להבאת חיות מחמד</li>
+                    <li><strong>חיסונים:</strong> נדרש אישור וטרינר על חיסונים</li>
+                    <li><strong>פיקוח:</strong> חיות חייבות להיות תחת פיקוח</li>
+                    <li><strong>ניקיון:</strong> הבעלים אחראים לניקיון אחרי החיה</li>
+                </ul>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="section" id="contact-info">
+            <div class="section-header">
+                <h2>פרטי יצירת קשר</h2>
+                <p>כל הדרכים ליצור איתנו קשר</p>
+            </div>
+            <div class="section-content">
+                <div class="contact-box">
+                    <h4>מידע כללי</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <strong>שם העסק:</strong><br>
+                            מגדל של חיים
+                        </div>
+                        <div class="contact-item">
+                            <strong>סוג עסק:</strong><br>
+                            ריזורט משפחתי יוקרתי
+                        </div>
+                        <div class="contact-item">
+                            <strong>התמחות:</strong><br>
+                            ציבור דתי וחרדי
+                        </div>
+                    </div>
+                </div>
+
+                <h3>דרכי התקשרות</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>טלפון ראשי:</strong><br>
+                        <a href="tel:+972723311083">072-3311083</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong><br>
+                        <a href="https://wa.me/972523983394">052-398-3394</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>אימייל כללי:</strong><br>
+                        <a href="mailto:info@migdal-chaim.com">info@migdal-chaim.com</a>
+                    </div>
+                </div>
+
+                <h3>אימיילים מיוחדים</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>הזמנות:</strong><br>
+                        <a href="mailto:bookings@migdal-chaim.com">bookings@migdal-chaim.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>נגישות:</strong><br>
+                        <a href="mailto:accessibility@migdal-chaim.com">accessibility@migdal-chaim.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>פרטיות:</strong><br>
+                        <a href="mailto:privacy@migdal-chaim.com">privacy@migdal-chaim.com</a>
+                    </div>
+                </div>
+
+                <h3>כתובת פיזית</h3>
+                <div class="contact-box">
+                    <h4>מיקום המתחם</h4>
+                    <p><strong>כתובת:</strong> מושבה מגדל, הגליל העליון<br>
+                    <strong>מרחק מכינרת:</strong> 2 דקות נסיעה<br>
+                    <strong>שטח המתחם:</strong> 2 דונם<br>
+                    <strong>נוף:</strong> כינרת והר הארבל</p>
+                </div>
+
+                <h3>שעות פעילות</h3>
+                <ul>
+                    <li><strong>מענה טלפוני:</strong> ראשון-חמישי 9:00-17:00</li>
+                    <li><strong>WhatsApp:</strong> 24/7 (מענה עד 22:00)</li>
+                    <li><strong>אימייל:</strong> מענה תוך 24 שעות</li>
+                    <li><strong>שבת וחגים:</strong> מענה לחירום בלבד</li>
+                </ul>
+
+                <h3>מפה והגעה</h3>
+                <p>הנחיות הגעה מפורטות יישלחו עם אישור ההזמנה. המתחם נמצא במושבה ההיסטורית מגדל, במרחק נגיעה מכל האטרקציות הראשיות של הצפון.</p>
+
+                <div class="highlight-box">
+                    <h4>במקרה חירום</h4>
+                    <ul>
+                        <li><strong>משטרה:</strong> 100</li>
+                        <li><strong>מד"א:</strong> 101</li>
+                        <li><strong>כבאות:</strong> 102</li>
+                        <li><strong>בעלי המקום:</strong> 052-398-3394</li>
+                    </ul>
+                </div>
+
+                <span class="date-updated">עדכון אחרון: ינואר 2025</span>
+            </div>
+        </section>
+
+        <!-- Back to top -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="back-link">← חזרה לדף הבית</a>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add accessibility support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Add focus styles for keyboard navigation
+        const style = document.createElement('style');
+        style.textContent = `
+            .keyboard-navigation *:focus {
+                outline: 3px solid #fbbf24 !important;
+                outline-offset: 2px !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
