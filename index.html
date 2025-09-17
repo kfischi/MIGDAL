@@ -1,440 +1,4 @@
-<script>
-        // Enhanced JavaScript with full accessibility support
-        
-        // Global variables
-        let accessibilitySettings = {
-            fontSize: 'normal',
-            highContrast: false,
-            darkMode: false,
-            focusMode: false,
-            readingGuide: false
-        };
-
-        // Navigation scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            // Update reading guide position
-            updateReadingGuide();
-        });
-
-        // Mobile menu toggle with enhanced accessibility
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (mobileToggle && navMenu) {
-            mobileToggle.addEventListener('click', function() {
-                const isOpen = navMenu.classList.contains('active');
-                navMenu.classList.toggle('active');
-                
-                // Update ARIA attributes
-                mobileToggle.setAttribute('aria-expanded', !isOpen);
-                
-                // Manage focus
-                if (!isOpen) {
-                    const firstMenuItem = navMenu.querySelector('a');
-                    if (firstMenuItem) {
-                        firstMenuItem.focus();
-                    }
-                } else {
-                    mobileToggle.focus();
-                }
-            });
-
-            // Close menu on Escape key
-            navMenu.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    navMenu.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    mobileToggle.focus();
-                }
-            });
-        }
-
-        // Enhanced smooth scrolling with accessibility
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Announce to screen readers
-                    announceToScreenReader(`נווט לקטע ${target.getAttribute('aria-label') || this.textContent}`);
-                    
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Set focus to target for keyboard users
-                    target.setAttribute('tabindex', '-1');
-                    target.focus();
-                    
-                    // Close mobile menu if open
-                    if (navMenu) {
-                        navMenu.classList.remove('active');
-                        if (mobileToggle) {
-                            mobileToggle.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                }
-            });
-        });
-
-        // Enhanced counter animation with reduced motion support
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                
-                if (prefersReducedMotion) {
-                    counter.textContent = target;
-                    return;
-                }
-                
-                const current = parseInt(counter.textContent);
-                const increment = Math.ceil(target / 50);
-                
-                if (current < target) {
-                    counter.textContent = Math.min(current + increment, target);
-                    setTimeout(animateCounters, 50);
-                } else {
-                    counter.textContent = target;
-                }
-            });
-        }
-
-        // Intersection Observer for counter animation
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.5,
-                rootMargin: '0px 0px -100px 0px'
-            });
-            observer.observe(statsSection);
-        }
-
-        // Enhanced gallery interactions
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        galleryItems.forEach((item, index) => {
-            // Make gallery items focusable
-            item.setAttribute('tabindex', '0');
-            item.setAttribute('role', 'button');
-            item.setAttribute('aria-label', `תמונה ${index + 1} - לחץ להגדלה`);
-            
-            const handleActivation = function() {
-                const img = this.querySelector('img');
-                if (img) {
-                    announceToScreenReader('תמונה הוגדלה');
-                    img.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        img.style.transform = 'scale(1)';
-                    }, 300);
-                }
-            };
-
-            item.addEventListener('click', handleActivation);
-            item.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleActivation.call(this);
-                }
-            });
-        });
-
-        // Enhanced form submission with WhatsApp automation
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            // Add ARIA labels to form elements
-            contactForm.querySelectorAll('input, textarea').forEach(element => {
-                const label = contactForm.querySelector(`label[for="${element.id}"]`);
-                if (label) {
-                    element.setAttribute('aria-describedby', element.id + '-desc');
-                }
-            });
-
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const dates = document.getElementById('dates').value;
-                const guests = document.getElementById('guests').value;
-                const message = document.getElementById('message').value;
-                
-                // Form validation with accessibility
-                if (!name || !phone) {
-                    announceToScreenReader('שגיאה: יש למלא שם וטלפון');
-                    const firstEmpty = !name ? document.getElementById('name') : document.getElementById('phone');
-                    firstEmpty.focus();
-                    firstEmpty.setAttribute('aria-invalid', 'true');
-                    return;
-                }
-                
-                const submitBtn = e.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'שולח...';
-                submitBtn.disabled = true;
-                submitBtn.setAttribute('aria-busy', 'true');
-                
-                // Create formatted WhatsApp message
-                const timestamp = new Date().toLocaleString('he-IL');
-                const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
-
-👤 שם: ${name}
-📞 טלפון: ${phone}
-📅 תאריכים: ${dates}
-👥 מספר אורחים: ${guests}
-💬 הודעה: ${message}
-
-⏰ זמן הפנייה: ${timestamp}
-🌐 מקור: אתר האינטרנט
-
-לחיצה כאן להתקשרות ללקוח:
-https://wa.me/${phone.replace(/[^\d]/g, '')}`;
-                
-                try {
-                    // Direct WhatsApp integration
-                    const encodedMessage = encodeURIComponent(whatsappMessage);
-                    window.open(`https://wa.me/972523983394?text=${encodedMessage}`, '_blank');
-                    
-                    // Save to local storage as backup
-                    saveContactToStorage({
-                        name, phone, dates, guests, message, timestamp
-                    });
-                    
-                    // Success feedback
-                    setTimeout(() => {
-                        announceToScreenReader('הפנייה נשלחה בהצלחה לוואטסאפ');
-                        alert('הפנייה נשלחה לוואטסאפ! בדקו את הוואטסאפ שלכם.');
-                        contactForm.reset();
-                        
-                        // Clear validation states
-                        contactForm.querySelectorAll('[aria-invalid]').forEach(el => {
-                            el.removeAttribute('aria-invalid');
-                        });
-                    }, 500);
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    announceToScreenReader('יש בעיה טכנית. הוואטסאפ נפתח ידנית');
-                    alert('יש בעיה טכנית. הוואטסאפ נפתח ידנית.');
-                } finally {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.removeAttribute('aria-busy');
-                }
-            });
-        }
-
-        // Back to top functionality
-        const backToTop = document.getElementById('backToTop');
-        if (backToTop) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    backToTop.style.display = 'flex';
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.style.display = 'none';
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', function() {
-                announceToScreenReader('חוזר לראש העמוד');
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                
-                // Focus on main heading
-                setTimeout(() => {
-                    const mainHeading = document.querySelector('h1');
-                    if (mainHeading) {
-                        mainHeading.focus();
-                    }
-                }, 500);
-            });
-        }
-
-        // Accessibility Menu Functions
-        const accessibilityBtn = document.getElementById('accessibilityBtn');
-        const accessibilityMenu = document.getElementById('accessibilityMenu');
-        const closeAccessibilityBtn = document.getElementById('closeAccessibilityBtn');
-
-        function openAccessibilityMenu() {
-            accessibilityMenu.classList.add('show');
-            accessibilityMenu.setAttribute('aria-hidden', 'false');
-            
-            // Focus first option
-            const firstOption = accessibilityMenu.querySelector('.accessibility-option');
-            if (firstOption) {
-                firstOption.focus();
-            }
-            
-            // Trap focus in menu
-            trapFocus(accessibilityMenu);
-            announceToScreenReader('תפריט נגישות נפתח');
-        }
-
-        function closeAccessibilityMenu() {
-            accessibilityMenu.classList.remove('show');
-            accessibilityMenu.setAttribute('aria-hidden', 'true');
-            accessibilityBtn.focus();
-            announceToScreenReader('תפריט נגישות נסגר');
-        }
-
-        accessibilityBtn.addEventListener('click', openAccessibilityMenu);
-        closeAccessibilityBtn.addEventListener('click', closeAccessibilityMenu);
-
-        // Accessibility Features
-        document.getElementById('increaseFontBtn').addEventListener('click', function() {
-            document.body.classList.remove('large-font');
-            document.body.classList.add('large-font');
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            document.getElementById('decreaseFontBtn').classList.remove('active');
-            document.getElementById('decreaseFontBtn').setAttribute('aria-pressed', 'false');
-            accessibilitySettings.fontSize = 'large';
-            saveAccessibilitySettings();
-            announceToScreenReader('גופן הוגדל');
-        });
-
-        document.getElementById('decreaseFontBtn').addEventListener('click', function() {
-            document.body.classList.remove('large-font');
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            document.getElementById('increaseFontBtn').classList.remove('active');
-            document.getElementById('increaseFontBtn').setAttribute('aria-pressed', 'false');
-            accessibilitySettings.fontSize = 'small';
-            saveAccessibilitySettings();
-            announceToScreenReader('גופן הוקטן');
-        });
-
-        document.getElementById('highContrastBtn').addEventListener('click', function() {
-            document.body.classList.toggle('high-contrast');
-            const isActive = document.body.classList.contains('high-contrast');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.highContrast = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'ניגודיות גבוהה הופעלה' : 'ניגודיות גבוהה כובתה');
-        });
-
-        document.getElementById('darkModeBtn').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const isActive = document.body.classList.contains('dark-mode');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.darkMode = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'מצב לילה הופעל' : 'מצב לילה כובה');
-        });
-
-        document.getElementById('focusModeBtn').addEventListener('click', function() {
-            document.body.classList.toggle('focus-mode');
-            const isActive = document.body.classList.contains('focus-mode');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', isActive.toString());
-            accessibilitySettings.focusMode = isActive;
-            saveAccessibilitySettings();
-            announceToScreenReader(isActive ? 'מיקוד משופר הופעל' : 'מיקוד משופר כובה');
-        });
-
-        document.getElementById('readingGuideBtn').addEventListener('click', function() {
-            document.body.classList.toggle('reading-guide-active');
-            const isActive = document.body.classList.contains('reading-guide-active');
-            this.classList.toggle('active', isActive);
-            this.setAttribute('aria-pressed', is        // Contact form automation with n8n webhook
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const dates = document.getElementById('dates').value;
-            const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
-            
-            // Show loading state
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'שולח...';
-            submitBtn.disabled = true;
-            
-            // Prepare data for n8n webhook
-            const formData = {
-                name: name,
-                phone: phone,
-                dates: dates,
-                guests: guests,
-                message: message,
-                timestamp: new Date().toISOString(),
-                source: 'website',
-                page_url: window.location.href,
-                user_agent: navigator.userAgent
-            };
-            
-            // Send to n8n webhook - החלף את ה-URL בכתובת האמיתית מ-n8n
-            fetch('https://your-n8n-instance.com/webhook/migdal-contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    // Show success message
-                    alert('ההודעה נשלחה בהצלחה! נחזור אליכם בהקדם.');
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    console.log('Form submitted successfully:', data);
-                } else {
-                    throw new Error(data.message || 'Unknown error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // Fallback - direct WhatsApp link
-                const whatsappMessage = `שלום, אני מעוניין/ת להזמין את מגדל של חיים:
-
-שם: ${name}
-טלפון: ${phone}
-תאריכים: ${dates}
-מספר אורחים: ${guests}
-הודעה: ${message}
-
-תודה!`;
-                
-                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
-                
-                alert('נפתח ווטסאפ עבורכם. אם זה לא קרה, אנא צרו קשר ישירות.');
-            })
-            .finally(() => {
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-        });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -442,14 +6,11 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
     <title>מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל</title>
     <meta name="description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת. מתמחים בציבור דתי וחרדי, שבתות חתן ואירועי משפחה">
     
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:;">
-    
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושבה מגדל">
     <meta property="og:description" content="ריזורט משפחתי יוקרתי במושבה מגדל - מתחם של 2 דונם עם 21 חדרים פרטיים, בריכה מחוממת ונוף לכינרת">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/2d87ae/ffffff?text=מגדל+של+חיים">
+    <meta property="og:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
     <meta property="og:url" content="https://migdal-chaim.com">
     
     <!-- Schema.org markup for Google -->
@@ -954,318 +515,10 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* Accessibility Menu */
-        .accessibility-menu {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-            z-index: 2000;
-            padding: 0;
-            border: 3px solid #2d87ae;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            max-width: 90vw;
-            width: 400px;
-        }
-
-        .accessibility-menu.show {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .accessibility-header {
-            background: linear-gradient(135deg, #1a365d, #2d87ae);
-            color: white;
-            padding: 20px;
-            border-radius: 17px 17px 0 0;
-            text-align: center;
-        }
-
-        .accessibility-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .accessibility-header p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
-        .accessibility-content {
-            padding: 25px;
-        }
-
-        .accessibility-option {
+        .back-to-top.visible {
             display: flex;
             align-items: center;
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #f7fafc, #edf2f7);
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            color: #1a365d;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            text-align: right;
-        }
-
-        .accessibility-option:hover,
-        .accessibility-option:focus {
-            background: linear-gradient(45deg, #2d87ae, #4299e1);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(45, 135, 174, 0.3);
-        }
-
-        .accessibility-option .icon {
-            margin-left: 12px;
-            font-size: 1.3rem;
-        }
-
-        .accessibility-option.active {
-            background: linear-gradient(45deg, #10b981, #059669);
-            color: white;
-            border-color: #10b981;
-        }
-
-        .close-accessibility {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-weight: 600;
-            width: 100%;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .close-accessibility:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-
-        /* Accessibility Modes */
-        body.high-contrast {
-            filter: contrast(150%) brightness(120%);
-        }
-
-        body.large-font * {
-            font-size: 120% !important;
-            line-height: 1.8 !important;
-        }
-
-        body.large-font h1 {
-            font-size: 140% !important;
-        }
-
-        body.large-font h2 {
-            font-size: 130% !important;
-        }
-
-        body.large-font .btn {
-            padding: 1.5rem 3rem !important;
-            font-size: 1.3rem !important;
-        }
-
-        body.dark-mode {
-            background: #1a202c !important;
-            color: #f7fafc !important;
-        }
-
-        body.dark-mode .header {
-            background: rgba(45, 55, 72, 0.95) !important;
-        }
-
-        body.dark-mode .feature-card,
-        body.dark-mode .stat-item,
-        body.dark-mode .about-text {
-            background: #2d3748 !important;
-            color: #f7fafc !important;
-        }
-
-        body.focus-mode *:focus {
-            outline: 4px solid #fbbf24 !important;
-            outline-offset: 4px !important;
-        }
-
-        /* Reading Guide */
-        .reading-guide {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(251, 191, 36, 0.8);
-            z-index: 1500;
-            display: none;
-            pointer-events: none;
-        }
-
-        body.reading-guide-active .reading-guide {
-            display: block;
-        }
-
-        /* Skip Links */
-        .skip-links {
-            position: absolute;
-            top: -100px;
-            left: 0;
-            z-index: 2000;
-            display: flex;
-            gap: 10px;
-        }
-
-        .skip-link {
-            background: #1a365d;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 0 0 8px 8px;
-            transition: all 0.3s ease;
-        }
-
-        .skip-link:focus {
-            top: 0;
-            outline: 3px solid #fbbf24;
-        }
-
-        /* Footer Sections */
-        .footer {
-            background: #1a202c;
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-section {
-            background: #2d3748;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: right;
-        }
-
-        .footer-section h3 {
-            color: #81e6d9;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            border-bottom: 2px solid #4a5568;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #cbd5e0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 0.3rem 0;
-        }
-
-        .footer-links a:hover {
-            color: #81e6d9;
-        }
-
-        .policy-content {
-            background: #2d3748;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .policy-content h4 {
-            color: #81e6d9;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.2rem;
-        }
-
-        .policy-content ul {
-            padding-right: 2rem;
-        }
-
-        .policy-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive Accessibility */
-        @media (max-width: 768px) {
-            .accessibility-menu {
-                width: 95vw;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-
-            .accessibility-content {
-                padding: 20px;
-            }
-
-            .accessibility-option {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .footer-section {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Enhanced Focus Indicators */
-        :focus-visible {
-            outline: 3px solid #fbbf24;
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            .accessibility-menu {
-                transition: none;
-            }
-            
-            .accessibility-option {
-                transition: none;
-            }
-            
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+            justify-content: center;
         }
 
         /* Mobile Responsive */
@@ -1357,39 +610,27 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
     </style>
 </head>
 <body>
-    <!-- Skip Links for Accessibility -->
-    <div class="skip-links">
-        <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
-        <a href="#nav-menu" class="skip-link">דלג לתפריט הניווט</a>
-        <a href="#contact" class="skip-link">דלג ליצירת קשר</a>
-    </div>
-
-    <!-- Reading Guide -->
-    <div class="reading-guide" id="readingGuide"></div>
-
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu" id="navMenu" role="menubar">
-                <li role="none"><a href="#home" role="menuitem" tabindex="0">בית</a></li>
-                <li role="none"><a href="#about" role="menuitem" tabindex="0">אודות</a></li>
-                <li role="none"><a href="#features" role="menuitem" tabindex="0">מתקנים</a></li>
-                <li role="none"><a href="#gallery" role="menuitem" tabindex="0">גלריה</a></li>
-                <li role="none"><a href="#contact" role="menuitem" tabindex="0">יצירת קשר</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#features">מתקנים</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#contact">יצירת קשר</a></li>
             </ul>
-            <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navMenu" aria-label="פתח תפריט ניווט">☰</button>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop playsinline style="display:none;">
+        <video class="hero-video" autoplay muted loop playsinline>
             <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
         </video>
-        <!-- Fallback background image instead of video -->
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(45, 135, 174, 0.7)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&h=1080&fit=crop&auto=format') center/cover; z-index: -2;"></div>
-        <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(26, 54, 93, 0.3), rgba(45, 135, 174, 0.3));"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>מגדל של חיים</h1>
             <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושבה מגדל</p>
@@ -1433,37 +674,37 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=200&fit=crop&auto=format" alt="בריכה פרטית" onerror="this.src='https://via.placeholder.com/400x200/2d87ae/ffffff?text=בריכה+פרטית'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה פרטית">
                     <h3>בריכה פרטית מחוממת</h3>
                     <p>בריכה גדולה ומטופחת עם נוף פנורמי לכינרת והר הארבל. מתאימה לכל הגילאים עם אזור רדוד לילדים וחלק עמוק למבוגרים.</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=200&fit=crop&auto=format" alt="חדרים פרטיים" onerror="this.src='https://via.placeholder.com/400x200/4299e1/ffffff?text=21+חדרים+פרטיים'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדרים פרטיים">
                     <h3>21 חדרים פרטיים</h3>
                     <p>כל חדר עם מקלחת ושירותים פרטיים. חדרים מרווחים ונוחים המתאימים למשפחות וקבוצות. עיצוב מודרני עם אווירה חמה ומזמינה.</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=200&fit=crop&auto=format" alt="ציבור דתי וחרדי" onerror="this.src='https://via.placeholder.com/400x200/68d391/ffffff?text=ציבור+דתי+וחרדי'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/28.jpg" alt="ציבור דתי וחרדי">
                     <h3>ציבור דתי וחרדי</h3>
                     <p>התמחות מלאה באירוח הציבור הדתי והחרדי. סביבה מתאימה לשמירת מסורת ומנהגים, עם הבנה מלאה של הצרכים המיוחדים.</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&h=200&fit=crop&auto=format" alt="שבתות חתן ואירועים" onerror="this.src='https://via.placeholder.com/400x200/f687b3/ffffff?text=שבתות+חתן'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="שבתות חתן ואירועים">
                     <h3>שבתות חתן ואירועים</h3>
                     <p>מתמחים בשבתות חתן רחבים ואירועי משפחה. מתחם מרווח של 2 דונם המאפשר אירוח כיד המלך עם כל הנוחות והפרטיות.</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=200&fit=crop&auto=format" alt="מטבח מאובזר" onerror="this.src='https://via.placeholder.com/400x200/fbbf24/ffffff?text=מטבח+מאובזר'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/24.jpg" alt="מטבח מאובזר">
                     <h3>מטבח מאובזר במלואו</h3>
                     <p>מטבח גדול ומעוצב עם כיריים אינדוקציה, מקררים גדולים וכל הציוד הדרוש לבישול לקבוצות גדולות. כולל חדר אוכל פרטי.</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop&auto=format" alt="אזורי פנאי ומשחקים" onerror="this.src='https://via.placeholder.com/400x200/8b5cf6/ffffff?text=אזורי+פנאי'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="אזורי פנאי ומשחקים">
                     <h3>אזורי פנאי ומשחקים</h3>
                     <p>חדר משחקים עם שולחן סנוקר, פינג פונג, הוקי אוויר ועוד. בריכת דגי נוי ומתחם חיצוני מרווח לפעילויות משפחתיות.</p>
                 </div>
@@ -1521,27 +762,27 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop&auto=format" alt="בריכה ונוף" onerror="this.src='https://via.placeholder.com/400x300/2d87ae/ffffff?text=בריכה+ונוף'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&auto=format" alt="חדר שינה" onerror="this.src='https://via.placeholder.com/400x300/4299e1/ffffff?text=חדר+שינה'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדר שינה">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format" alt="מטבח" onerror="this.src='https://via.placeholder.com/400x300/68d391/ffffff?text=מטבח'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format" alt="פנאי" onerror="this.src='https://via.placeholder.com/400x300/f687b3/ffffff?text=פנאי'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="פנאי">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&auto=format" alt="מתחם חיצוני" onerror="this.src='https://via.placeholder.com/400x300/fbbf24/ffffff?text=מתחם+חיצוני'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="מתחם חיצוני">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=400&h=300&fit=crop&auto=format" alt="נוף" onerror="this.src='https://via.placeholder.com/400x300/8b5cf6/ffffff?text=נוף'">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף">
                 </div>
             </div>
 
@@ -1706,7 +947,7 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
         });
         observer.observe(statsSection);
 
-        // Direct WhatsApp automation - works immediately
+        // Contact form automation with direct WhatsApp integration
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1723,110 +964,64 @@ https://wa.me/${phone.replace(/[^\d]/g, '')}`;
             submitBtn.textContent = 'שולח...';
             submitBtn.disabled = true;
             
-            // Create formatted message
-            const timestamp = new Date().toLocaleString('he-IL');
-            const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
-
-👤 שם: ${name}
-📞 טלפון: ${phone}
-📅 תאריכים: ${dates}
-👥 מספר אורחים: ${guests}
-💬 הודעה: ${message}
-
-⏰ זמן הפנייה: ${timestamp}
-🌐 מקור: אתר האינטרנט
-
-לחצו כאן כדי להתקשר ללקוח:
-https://wa.me/${phone.replace(/[^\d]/g, '')}`;
+            // Prepare data for webhook
+            const formData = {
+                name: name,
+                phone: phone,
+                dates: dates,
+                guests: guests,
+                message: message,
+                timestamp: new Date().toISOString(),
+                source: 'website',
+                page: 'contact-form'
+            };
             
-            // Multiple WhatsApp delivery methods for reliability
-            const methods = [
-                // Method 1: Direct WhatsApp Web link (most reliable)
-                () => {
-                    const encodedMessage = encodeURIComponent(whatsappMessage);
-                    window.open(`https://wa.me/972523983394?text=${encodedMessage}`, '_blank');
+            // Send to automation webhook (replace with your webhook URL)
+            fetch('https://hook.eu1.make.com/YOUR_WEBHOOK_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show success message
+                alert('ההודעה נשלחה בהצלחה! נחזור אליכם בהקדם.');
                 
-                // Method 2: WhatsApp API call (backup)
-                () => {
-                    fetch('https://api.whatsapp.com/send', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            phone: '972523983394',
-                            text: whatsappMessage
-                        })
-                    }).catch(console.error);
-                },
+                // Reset form
+                contactForm.reset();
                 
-                // Method 3: Telegram as backup notification
-                () => {
-                    // Using a public telegram bot service (replace with your bot token if you have one)
-                    const telegramMessage = `פנייה חדשה: ${name} - ${phone}`;
-                    fetch(`https://api.telegram.org/bot6842091769:AAGv8Q_example/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: '@migdalchaim', // Your channel
-                            text: telegramMessage
-                        })
-                    }).catch(console.error);
-                }
-            ];
-            
-            // Execute primary method
-            try {
-                methods[0](); // Direct WhatsApp
-                
-                // Also try saving to simple storage
-                saveToLocalStorage({
-                    name, phone, dates, guests, message, timestamp
-                });
-                
-                // Show success
-                setTimeout(() => {
-                    alert('הפנייה נשלחה לווטסאפ! בדקו את הווטסאפ שלכם.');
-                    contactForm.reset();
-                }, 500);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                alert('יש בעיה טכנית. הווטסאפ נפתח ידנית.');
-            } finally {
+                // Reset button
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }
+                
+                console.log('Form submitted successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Fallback - direct WhatsApp link
+                const whatsappMessage = `שלום, אני מעוניין/ת להזמין את מגדל של חיים:
+
+שם: ${name}
+טלפון: ${phone}
+תאריכים: ${dates}
+מספר אורחים: ${guests}
+הודעה: ${message}
+
+תודה!`;
+                
+                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                alert('נפתח וואטסאפ עבורכם. אם זה לא קרה, אנא צרו קשר ישירות.');
+            });
         });
-        
-        // Save contact to browser storage as backup
-        function saveToLocalStorage(data) {
-            const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-            contacts.push(data);
-            localStorage.setItem('migdal_contacts', JSON.stringify(contacts));
-        }
-        
-        // Function to export stored contacts (for your records)
-        function exportContacts() {
-            const contacts = JSON.parse(localStorage.getItem('migdal_contacts') || '[]');
-            if (contacts.length === 0) {
-                alert('אין פניות שמורות');
-                return;
-            }
-            
-            const csv = 'שם,טלפון,תאריכים,אורחים,הודעה,זמן\n' + 
-                contacts.map(c => `"${c.name}","${c.phone}","${c.dates}","${c.guests}","${c.message}","${c.timestamp}"`).join('\n');
-            
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'migdal_contacts.csv';
-            link.click();
-        }
-        
-        // Add export button functionality (you can add this button to your admin area)
-        if (window.location.hash === '#admin') {
-            document.body.innerHTML += '<button onclick="exportContacts()" style="position:fixed;top:10px;right:10px;z-index:9999;">ייצוא פניות</button>';
-        }
 
         // Back to top button
         const backToTop = document.getElementById('backToTop');
