@@ -1,653 +1,103 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
-    <title>מגדל של חיים - ריזורט משפחתי יוקרתי בצפון</title>
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי">
-    <meta property="og:description" content="21 חדרים עם בריכה פרטית ונוף מדהים לכינרת והר הארבל">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=630&fit=crop&crop=center&q=80">
-    <meta property="og:url" content="https://migdal-chaim.com">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a365d;
-            --secondary: #2c5282;
-            --accent: #d69e2e;
-            --text: #2d3748;
-            --light: #f7fafc;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Assistant', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 54, 93, 0.95);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(44, 82, 130, 0.6)), 
-                        url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&h=1080&fit=crop&crop=center&q=85') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-location {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            margin: 0.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* About */
-        .about {
-            background: var(--white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            color: #666;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Stats */
-        .stats {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            padding: 2rem 1rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Facilities */
-        .facilities {
-            background: var(--light);
-        }
-
-        .facilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .facility-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .facility-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .facility-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .facility-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Gallery */
-        .gallery {
-            background: var(--white);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 54, 93, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay span {
-            color: var(--white);
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        /* Contact */
-        .contact {
-            background: var(--light);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        .contact-details h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .contact-details a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            color: var(--accent);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p,
-        .footer-section ul {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Floating WhatsApp */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-        }
-
-        /* Accessibility */
-        .accessibility-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
+.loading-spinner {
             width: 50px;
             height: 50px;
-            background: var(--primary);
-            border: none;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
             border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Skip Links */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-color);
             color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            z-index: 1001;
-            transition: all 0.3s ease;
+            padding: 8px;
+            text-decoration: none;
+            transition: top 0.3s;
+            z-index: 10000;
         }
 
-        .accessibility-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
+        .skip-link:focus {
+            top: 6px;
         }
 
-        /* High contrast mode */
-        body.high-contrast {
-            background: black !important;
-            color: white !important;
+        /* Focus Styles */
+        *:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
         }
 
-        body.high-contrast .section {
-            background: black !important;
-        }
-
-        body.high-contrast .facility-card,
-        body.high-contrast .contact-form,
-        body.high-contrast .contact-item {
-            background: #333 !important;
-            color: white !important;
-        }
-
-        /* Large font mode */
-        body.large-font {
-            font-size: 1.2rem;
-        }
-
-        body.large-font .section-title {
-            font-size: 3rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
+        /* Print Styles */
+        @media print {
+            .header,
+            .floating-whatsapp,
+            .scroll-top,
+            .accessibility-toolbar {
+                display: none !important;
             }
 
-            .nav-menu {
-                position: fixed;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary);
-                flex-direction: column;
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+
+            .hero {
+                height: auto;
                 padding: 2rem 0;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-            }
-
-            .nav-menu.active {
-                transform: translateX(0);
-            }
-
-            .hero h1 {
-                font-size: clamp(2.5rem, 8vw, 4rem);
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .facilities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 18pt;
+                color: black;
             }
 
             .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 0.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .floating-whatsapp {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Accessibility Button -->
-    <button class="accessibility-btn" onclick="toggleAccessibility()" title="נגישות">
-        ♿
-    </button>
+    <!-- Skip Links -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+    <a href="#nav-menu" class="skip-link">דלג לתפריט הניווט</a>
+
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>טוען את האתר...</p>
+    </div>
+
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar">
+        <button class="accessibility-btn" id="accessibilityBtn" aria-label="פתח תפריט נגישות" type="button">
+            ♿
+        </button>
+        <div class="accessibility-menu" id="accessibilityMenu">
+            <button class="accessibility-option" id="highContrastBtn" type="button">ניגודיות גבוהה</button>
+            <button class="accessibility-option" id="largeFontBtn" type="button">הגדל גופן</button>
+            <button class="accessibility-option" id="readingGuideBtn" type="button">מדריך קריאה</button>
+            <button class="accessibility-option" id="focusBtn" type="button">הדגש מיקוד</button>
+            <button class="accessibility-option" id="resetBtn" type="button">איפוס הגדרות</button>
+        </div>
+    </div>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <div class="container">
             <nav class="nav">
                 <a href="#home" class="logo">מגדל של חיים</a>
@@ -658,278 +108,370 @@
                     <li><a href="#gallery">גלריה</a></li>
                     <li><a href="#contact">יצירת קשר</a></li>
                 </ul>
-                <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="פתח תפריט ניווט">☰</button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>מגדל של חיים</h1>
-            <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושב מגדל</p>
-            <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
-            <div>
-                <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
-                <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <h2 class="section-title">אודות מגדל של חיים</h2>
-            <p class="section-subtitle">
-                חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף
-            </p>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>הסיפור שלנו</h3>
-                    <p>
-                        חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף. 
-                        המתחם משתרע על פני שני דונם רחבי ידיים, מתוכם דונם וחצי בנוי, ומציע שילוב מושלם בין מרחב, נוחות ואסתטיקה מוקפדת.
-                    </p>
-                    <p>
-                        המתחם מחולק לשתי יחידות אירוח גדולות: יחידה אחת במפלס אחד הכוללת 12 חדרים מרווחים עם שירותים ומקלחות צמודים, 
-                        ויחידה שנייה הבנויה על מפלסים ובה 9 חדרים נוספים מתוכם 2 עם שירותים פרטיים.
-                    </p>
-                    <p>
-                        בסך הכול המקום מאפשר אירוח נוח לכ־80 נופשים בשני מבנים איכותיים ומאובזרים, 
-                        כאשר המרחבים הרבים מבטיחים תחושת חופש גם באירוח קבוצות גדולות ומשפחות ברוכות ילדים.
-                    </p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&crop=center&q=85" 
-                         alt="נוף מתחם מגדל של חיים">
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <video class="hero-video" autoplay muted loop playsinline poster="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+                <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1>מגדל של חיים</h1>
+                <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושב מגדל</p>
+                <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
+                    <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="section stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">21</div>
-                    <div class="stat-label">חדרים מרווחים</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">80</div>
-                    <div class="stat-label">מקומות אירוח</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">דונם שטח</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">שביעות רצון</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Facilities Section -->
-    <section class="section facilities" id="facilities">
-        <div class="container">
-            <h2 class="section-title">המתקנים שלנו</h2>
-            <p class="section-subtitle">
-                כל מה שאתם צריכים לחופשה מושלמת - במקום אחד
-            </p>
-            
-            <div class="facilities-grid">
-                <div class="facility-card">
-                    <div class="facility-icon">🏊‍♀️</div>
-                    <h3>בריכת שחייה</h3>
-                    <p>בריכת שחייה גדולה ומטופחת, מגודרת ובטיחותית, המעניקה מקום מושלם להנאה לקטנים ולגדולים כאחד</p>
-                </div>
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">אודות מגדל של חיים</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף
+                </p>
                 
-                <div class="facility-card">
-                    <div class="facility-icon">🛏️</div>
-                    <h3>21 חדרים פרטיים</h3>
-                    <p>חדרים מרווחים ונוחים עם מיטות איכותיות, ארונות מסודרים ושירותים צמודים ברוב החדרים</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🍳</div>
-                    <h3>מטבח מאובזר</h3>
-                    <p>מטבח גדול ומודרני עם כיריים אינדוקציה, מקררים גדולים וכל הכלים הדרושים להכנת סעודות</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🎮</div>
-                    <h3>אזור משחקים</h3>
-                    <p>משחקייה צבעונית לילדים, שולחן סנוקר, פינג פונג והוקי אוויר לבילוי משפחתי מהנה</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🐠</div>
-                    <h3>בריכת דגי נוי</h3>
-                    <p>בריכת דגי נוי מרשימה המוסיפה אווירה רגועה ופסטורלית למתחם</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🌅</div>
-                    <h3>נוף עוצר נשימה</h3>
-                    <p>מרפסת פתוחה המשקיפה לנוף מדהים של הכינרת והר הארבל - חוויה בלתי נשכחת</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="section gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">גלריית תמונות</h2>
-            <p class="section-subtitle">
-                הציצו אל תוך המתחם המדהים שלנו
-            </p>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="בריכת השחייה">
-                    <div class="gallery-overlay">
-                        <span>בריכת השחייה</span>
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right" data-aos-delay="200">
+                        <h3>הסיפור שלנו</h3>
+                        <p>
+                            "מגדל של חיים" הוא לא רק מתחם - הוא בית. המקום הוקם מתוך אהבה גדולה לאירוח ומתוך רצון לספק חופשה משפחתית וקבוצתית אמיתית, כזו שמתאימה לכל משפחה, לכל כיס ובכל זמן.
+                        </p>
+                        <p>
+                            ברוכים הבאים למתחם "מגדל של חיים", פנינה ירוקה ורחבת ידיים מול נוף עוצר נשימה של הכנרת והר הארבל. המתחם שלנו, המשתרע על פני שני דונם נדיבים, נועד להציע לכם חוויה פסטורלית ורגועה, במרחק נגיעה מהאטרקציות המרכזיות של הצפון, אך עם כל השקט והפרטיות הדרושים לחופשה מושלמת.
+                        </p>
+                        <p>
+                            אנו מאמינים כי אירוח אמיתי מתבטא בשילוב של נוחות, ניקיון ואסתטיקה, וכל זאת במחיר נגיש. המתחם שלנו הוא הפתרון המושלם למשפחות ברוכות ילדים, קבוצות גדולות, שבתות חתן ואירועים משפחתיים קטנים, עם מרחבים רבים המבטיחים תחושת חופש ומרגוע לכל אורח.
+                        </p>
                     </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="חדר שינה">
-                    <div class="gallery-overlay">
-                        <span>חדרי השינה</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="המטבח">
-                    <div class="gallery-overlay">
-                        <span>המטבח המאובזר</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="סלון משפחתי">
-                    <div class="gallery-overlay">
-                        <span>הסלון המשפחתי</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="נוף החצר">
-                    <div class="gallery-overlay">
-                        <span>נוף החצר והגן</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1464822759844-d150baec22b1?w=400&h=300&fit=crop&crop=center&q=85" 
-                         alt="נוף הכינרת">
-                    <div class="gallery-overlay">
-                        <span>נוף הכינרת</span>
+                    <div class="about-image" data-aos="fade-left" data-aos-delay="400">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" 
+                             alt="נוף מתחם מגדל של חיים" loading="lazy">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">יצירת קשר והזמנות</h2>
-            <p class="section-subtitle">
-                מוכנים לחופשה בלתי נשכחת? צרו קשר עכשיו
-            </p>
-            
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">שלחו פנייה</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">שם מלא *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">טלפון *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="dates">תאריכי האירוח הרצויים</label>
-                            <input type="text" id="dates" name="dates" placeholder="למשל: 15-17 במרץ">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="guests">מספר אורחים</label>
-                            <input type="number" id="guests" name="guests" min="1" max="80" placeholder="כמה אורחים?">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">הודעה נוספת</label>
-                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פנייה</button>
-                    </form>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number" data-count="21">0</div>
+                        <div class="stat-label">חדרים מרווחים</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number" data-count="80">0</div>
+                        <div class="stat-label">מקומות אירוח</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">דונם שטח</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-number" data-count="100">0</div>
+                        <div class="stat-label">% שביעות רצון</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section class="facilities" id="facilities">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">המתקנים שלנו</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    כל מה שאתם צריכים לחופשה מושלמת - במקום אחד
+                </p>
+                
+                <div class="facilities-grid">
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="facility-icon">🏊‍♀️</div>
+                        <h3>בריכת שחייה</h3>
+                        <p>בריכת שחייה גדולה ומטופחת, מגודרת ובטיחותית, המעניקה מקום מושלם להנאה לקטנים ולגדולים כאחד</p>
+                    </div>
+                    
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="facility-icon">🛏️</div>
+                        <h3>21 חדרים פרטיים</h3>
+                        <p>חדרים מרווחים ונוחים עם מיטות איכותיות, ארונות מסודרים ושירותים צמודים ברוב החדרים</p>
+                    </div>
+                    
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="facility-icon">🍳</div>
+                        <h3>מטבח מאובזר</h3>
+                        <p>מטבח גדול ומודרני עם כיריים אינדוקציה, מקררים גדולים וכל הכלים הדרושים להכנת סעודות</p>
+                    </div>
+                    
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="facility-icon">🎮</div>
+                        <h3>אזור משחקים</h3>
+                        <p>משחקייה צבעונית לילדים, שולחן סנוקר, פינג פונג והוקי אוויר לבילוי משפחתי מהנה</p>
+                    </div>
+                    
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="facility-icon">🐠</div>
+                        <h3>בריכת דגי נוי</h3>
+                        <p>בריכת דגי נוי מרשימה המוסיפה אווירה רגועה ופסטורלית למתחם</p>
+                    </div>
+                    
+                    <div class="facility-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="facility-icon">🌅</div>
+                        <h3>נוף עוצר נשימה</h3>
+                        <p>מרפסת פתוחה המשקיפה לנוף מדהים של הכינרת והר הארבל - חוויה בלתי נשכחת</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">גלריית תמונות</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    הציצו אל תוך המתחם המדהים שלנו
+                </p>
+                
+                <!-- Gallery Filter -->
+                <div class="gallery-filter" data-aos="fade-up" data-aos-delay="200">
+                    <button class="filter-btn active" data-filter="all">הכל</button>
+                    <button class="filter-btn" data-filter="exterior">חזית ונוף</button>
+                    <button class="filter-btn" data-filter="pool">בריכה</button>
+                    <button class="filter-btn" data-filter="rooms">חדרים</button>
+                    <button class="filter-btn" data-filter="kitchen">מטבח</button>
+                    <button class="filter-btn" data-filter="garden">גינה</button>
                 </div>
                 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h4>טלפון</h4>
-                            <p>
-                                <a href="tel:+972523983394">052-398-3394</a><br>
-                                זמינים לשירותכם 24/7
-                            </p>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- חזית ונוף -->
+                    <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" alt="חזית המתחם" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>חזית המתחם</span>
+                            <small>כניסה ראשית ונוף כללי</small>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">💬</div>
-                        <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>
-                                <a href="https://wa.me/972523983394" target="_blank">שלחו הודעה ישירה</a><br>
-                                תגובה מהירה ומיידית
-                            </p>
+                    <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="150">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="נוף חיצוני" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>נוף חיצוני</span>
+                            <small>המתחם מבחוץ</small>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
-                            <h4>אימייל</h4>
-                            <p>
-                                <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a><br>
-                                נחזור אליכם תוך 24 שעות
-                            </p>
+                    <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" alt="נוף כללי" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>נוף כללי</span>
+                            <small>תצפית על המתחם</small>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>כתובת</h4>
-                            <p>
-                                מושב מגדל, הגליל העליון<br>
-                                21 חדרים עם מקלחת פרטית<br>
-                                נוף מדהים לכינרת
-                            </p>
+                    <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="250">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="נוף מרהיב" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>נוף מרהיב</span>
+                            <small>נוף מהמתחם אל הסביבה</small>
+                        </div>
+                    </div>
+                    
+                    <!-- בריכה -->
+                    <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="בריכת השחייה" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>בריכת השחייה</span>
+                            <small>בריכה גדולה ומטופחת</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="350">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="אזור הבריכה" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>אזור הבריכה</span>
+                            <small>פינות ישיבה ונוח</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="בריכה ומרפסת" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>בריכה ומרפסת</span>
+                            <small>מבט כללי על אזור הבריכה</small>
+                        </div>
+                    </div>
+                    
+                    <!-- חדרים -->
+                    <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="450">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="חדר שינה" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>חדר שינה</span>
+                            <small>חדר מרווח ונוח</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="500">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="סלון משפחתי" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>סלון משפחתי</span>
+                            <small>אזור מגורים נוח</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="550">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר נוסף" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>חדר נוסף</span>
+                            <small>מגוון אפשרויות אירוח</small>
+                        </div>
+                    </div>
+                    
+                    <!-- מטבח -->
+                    <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="600">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="המטבח" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>המטבח</span>
+                            <small>מטבח מאובזר ומרווח</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="650">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="פינת אוכל" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>פינת אוכל</span>
+                            <small>שולחן גדול למשפחות</small>
+                        </div>
+                    </div>
+                    
+                    <!-- גינה -->
+                    <div class="gallery-item" data-category="garden" data-aos="fade-up" data-aos-delay="700">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="הגינה" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>הגינה</span>
+                            <small>שטחים ירוקים מטופחים</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="garden" data-aos="fade-up" data-aos-delay="750">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="פינות ישיבה" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>פינות ישיבה</span>
+                            <small>אזורי מנוחה בגינה</small>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="garden" data-aos="fade-up" data-aos-delay="800">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/16.jpg" alt="אזור משחקים" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span>אזור משחקים</span>
+                            <small>משחקייה לילדים</small>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">יצירת קשר והזמנות</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    מוכנים לחופשה בלתי נשכחת? צרו קשר עכשיו
+                </p>
+                
+                <div class="contact-content">
+                    <div class="contact-form" data-aos="fade-right" data-aos-delay="200">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">שלחו פנייה</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">שם מלא *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">טלפון *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dates">תאריכי האירוח הרצויים</label>
+                                <input type="text" id="dates" name="dates" placeholder="למשל: 15-17 במרץ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">מספר אורחים</label>
+                                <input type="number" id="guests" name="guests" min="1" max="80" placeholder="כמה אורחים?">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">הודעה נוספת</label>
+                                <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פנייה</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info" data-aos="fade-left" data-aos-delay="400">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>טלפון</h4>
+                                <p>
+                                    <a href="tel:+972523983394">052-398-3394</a><br>
+                                    זמינים לשירותכם 24/7
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h4>WhatsApp</h4>
+                                <p>
+                                    <a href="https://wa.me/972523983394" target="_blank">שלחו הודעה ישירה</a><br>
+                                    תגובה מהירה ומיידית
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>אימייל</h4>
+                                <p>
+                                    <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a><br>
+                                    נחזור אליכם תוך 24 שעות
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>כתובת</h4>
+                                <p>
+                                    מושב מגדל, הגליל העליון<br>
+                                    21 חדרים עם מקלחת פרטית<br>
+                                    נוף מדהים לכינרת
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -941,9 +483,9 @@
                         ריזורט משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים בלתי נשכחים.
                     </p>
                     <div class="footer-social">
-                        <a href="https://facebook.com/migdalresort" title="פייסבוק" target="_blank">📘</a>
-                        <a href="https://instagram.com/migdalresort" title="אינסטגרם" target="_blank">📷</a>
-                        <a href="https://wa.me/972523983394" title="וואטסאפ" target="_blank">💬</a>
+                        <a href="https://facebook.com/migdalresort" aria-label="עמוד הפייסבוק שלנו" target="_blank">📘</a>
+                        <a href="https://instagram.com/migdalresort" aria-label="עמוד האינסטגרם שלנו" target="_blank">📷</a>
+                        <a href="https://wa.me/972523983394" aria-label="שלח הודעת וואטסאפ" target="_blank">💬</a>
                     </div>
                 </div>
                 
@@ -984,48 +526,121 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/972523983394" class="floating-whatsapp" title="צור קשר בוואטסאפ" target="_blank">
+    <!-- Floating Elements -->
+    <a href="https://wa.me/972523983394" class="floating-whatsapp" aria-label="צור קשר בוואטסאפ" target="_blank">
         💬
     </a>
 
-    <!-- JavaScript -->
-    <script>
-        // Mobile Navigation
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            
-            navMenu.classList.toggle('active');
-            mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        }
+    <button class="scroll-top" id="scrollTop" aria-label="חזור למעלה" type="button">
+        ↑
+    </button>
 
-        // Close menu when clicking on a link
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' && e.target.closest('.nav-menu')) {
-                const navMenu = document.getElementById('navMenu');
-                const mobileToggle = document.querySelector('.mobile-toggle');
-                navMenu.classList.remove('active');
-                mobileToggle.textContent = '☰';
-            }
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <div class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</div>
+            <img id="lightboxImg" src="" alt="">
+            <div class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Configuration
+        const CONFIG = {
+            whatsappNumber: '972523983394',
+            autoHideLoading: 1500,
+            scrollThreshold: 300
+        };
+
+        // Gallery images array for lightbox
+        let galleryImages = [];
+        let currentImageIndex = 0;
+
+        // DOM Elements
+        const elements = {
+            header: document.getElementById('header'),
+            mobileToggle: document.getElementById('mobileToggle'),
+            navMenu: document.getElementById('navMenu'),
+            contactForm: document.getElementById('contactForm'),
+            scrollTop: document.getElementById('scrollTop'),
+            loadingIndicator: document.getElementById('loading-indicator'),
+            accessibilityBtn: document.getElementById('accessibilityBtn'),
+            accessibilityMenu: document.getElementById('accessibilityMenu'),
+            highContrastBtn: document.getElementById('highContrastBtn'),
+            largeFontBtn: document.getElementById('largeFontBtn'),
+            resetBtn: document.getElementById('resetBtn'),
+            lightbox: document.getElementById('lightbox'),
+            lightboxImg: document.getElementById('lightboxImg'),
+            lightboxClose: document.getElementById('lightboxClose'),
+            lightboxPrev: document.getElementById('lightboxPrev'),
+            lightboxNext: document.getElementById('lightboxNext'),
+            galleryGrid: document.getElementById('galleryGrid')
+        };
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
         });
 
-        // Contact Form Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                dates: document.getElementById('dates').value,
-                guests: document.getElementById('guests').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toLocaleString('he-IL'),
-                source: 'אתר האינטרנט'
-            };
+        // Loading Handler
+        function handleLoading() {
+            setTimeout(() => {
+                elements.loadingIndicator.classList.add('hidden');
+            }, CONFIG.autoHideLoading);
+        }
 
-            // Create WhatsApp message
-            const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
+        // Header Scroll Effect
+        function handleHeaderScroll() {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    elements.header.classList.add('scrolled');
+                    elements.scrollTop.classList.add('visible');
+                } else {
+                    elements.header.classList.remove('scrolled');
+                    elements.scrollTop.classList.remove('visible');
+                }
+            });
+        }
+
+        // Mobile Navigation
+        function handleMobileNav() {
+            elements.mobileToggle.addEventListener('click', () => {
+                elements.navMenu.classList.toggle('active');
+                elements.mobileToggle.textContent = elements.navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when clicking on a link
+            elements.navMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    elements.navMenu.classList.remove('active');
+                    elements.mobileToggle.textContent = '☰';
+                }
+            });
+        }
+
+        // Contact Form Handler
+        function handleContactForm() {
+            elements.contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    dates: document.getElementById('dates').value,
+                    guests: document.getElementById('guests').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toLocaleString('he-IL'),
+                    source: 'אתר האינטרנט'
+                };
+
+                // Create WhatsApp message
+                const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
 
 👤 שם: ${formData.name}
 📞 טלפון: ${formData.phone}
@@ -1039,148 +654,258 @@
 לחצו כאן כדי להתקשר ללקוח:
 https://wa.me/972${formData.phone.replace(/^0/, '')}`;
 
-            try {
-                // Save to local storage as backup
-                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                leads.push(formData);
-                localStorage.setItem('leads', JSON.stringify(leads));
+                try {
+                    // Save to local storage as backup
+                    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+                    leads.push(formData);
+                    localStorage.setItem('leads', JSON.stringify(leads));
 
-                // Open WhatsApp
-                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
+                    // Open WhatsApp
+                    const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappUrl, '_blank');
 
-                // Show success message
-                alert('הפנייה נשלחה בהצלחה! אנחנו נחזור אליכם בהקדם.');
-                
-                // Reset form
-                this.reset();
+                    // Show success message
+                    alert('הפנייה נשלחה בהצלחה! אנחנו נחזור אליכם בהקדם.');
+                    
+                    // Reset form
+                    elements.contactForm.reset();
 
-            } catch (error) {
-                console.error('Error sending form:', error);
-                
-                // Fallback - still open WhatsApp
-                const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappUrl, '_blank');
-                
-                alert('הפנייה נשלחה! אנחנו נחזור אליכם בהקדם.');
-            }
-        });
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                } catch (error) {
+                    console.error('Error sending form:', error);
+                    
+                    // Fallback - still open WhatsApp
+                    const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    alert('הפנייה נשלחה! אנחנו נחזור אליכם בהקדם.');
                 }
             });
-        });
+        }
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 54, 93, 0.98)';
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(26, 54, 93, 0.95)';
-                header.style.boxShadow = 'none';
+        // Stats Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('[data-count]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.dataset.count);
+                        let current = 0;
+                        const increment = target / 30;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                entry.target.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                entry.target.textContent = Math.floor(current);
+                            }
+                        }, 50);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            stats.forEach(stat => observer.observe(stat));
+        }
+
+        // Gallery Filter
+        function handleGalleryFilter() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            // Re-trigger AOS animation
+                            item.classList.add('aos-animate');
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Gallery Lightbox
+        function handleGalleryLightbox() {
+            // Collect all gallery images
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            galleryImages = Array.from(galleryItems).map(img => ({
+                src: img.src,
+                alt: img.alt
+            }));
+
+            // Add click event to gallery items
+            galleryItems.forEach((img, index) => {
+                img.parentElement.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+
+            // Lightbox controls
+            elements.lightboxClose.addEventListener('click', closeLightbox);
+            elements.lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+            elements.lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+            // Close lightbox on background click
+            elements.lightbox.addEventListener('click', (e) => {
+                if (e.target === elements.lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (elements.lightbox.classList.contains('active')) {
+                    switch (e.key) {
+                        case 'Escape':
+                            closeLightbox();
+                            break;
+                        case 'ArrowLeft':
+                            navigateLightbox(-1);
+                            break;
+                        case 'ArrowRight':
+                            navigateLightbox(1);
+                            break;
+                    }
+                }
+            });
+        }
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            elements.lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            elements.lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
             }
-        });
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            const currentImage = galleryImages[currentImageIndex];
+            elements.lightboxImg.src = currentImage.src;
+            elements.lightboxImg.alt = currentImage.alt;
+        }
+
+        // Smooth Scrolling
+        function handleSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Scroll to Top
+        function handleScrollToTop() {
+            elements.scrollTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         // Accessibility Features
-        let accessibilityOpen = false;
+        function handleAccessibility() {
+            // Toggle accessibility menu
+            elements.accessibilityBtn.addEventListener('click', () => {
+                elements.accessibilityMenu.classList.toggle('active');
+            });
 
-        function toggleAccessibility() {
-            accessibilityOpen = !accessibilityOpen;
-            
-            if (accessibilityOpen) {
-                showAccessibilityMenu();
-            } else {
-                hideAccessibilityMenu();
-            }
-        }
+            // High contrast mode
+            elements.highContrastBtn.addEventListener('click', () => {
+                document.body.classList.toggle('high-contrast');
+                elements.highContrastBtn.classList.toggle('active');
+                localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+            });
 
-        function showAccessibilityMenu() {
-            const existingMenu = document.getElementById('accessibilityMenu');
-            if (existingMenu) {
-                existingMenu.remove();
-            }
+            // Large font mode
+            elements.largeFontBtn.addEventListener('click', () => {
+                document.body.classList.toggle('large-font');
+                elements.largeFontBtn.classList.toggle('active');
+                localStorage.setItem('largeFont', document.body.classList.contains('large-font'));
+            });
 
-            const menu = document.createElement('div');
-            menu.id = 'accessibilityMenu';
-            menu.style.cssText = `
-                position: fixed;
-                top: 80px;
-                left: 20px;
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-                padding: 1rem;
-                z-index: 1002;
-                min-width: 200px;
-                direction: rtl;
-            `;
-            
-            menu.innerHTML = `
-                <button onclick="toggleHighContrast()" style="display: block; width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">ניגודיות גבוהה</button>
-                <button onclick="toggleLargeFont()" style="display: block; width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">הגדל גופן</button>
-                <button onclick="resetAccessibility()" style="display: block; width: 100%; padding: 0.5rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; text-align: right;">איפוס הגדרות</button>
-            `;
-            
-            document.body.appendChild(menu);
-        }
+            // Reset accessibility settings
+            elements.resetBtn.addEventListener('click', () => {
+                document.body.classList.remove('high-contrast', 'large-font');
+                document.querySelectorAll('.accessibility-option').forEach(btn => btn.classList.remove('active'));
+                localStorage.removeItem('highContrast');
+                localStorage.removeItem('largeFont');
+            });
 
-        function hideAccessibilityMenu() {
-            const menu = document.getElementById('accessibilityMenu');
-            if (menu) {
-                menu.remove();
-            }
-        }
-
-        function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-            localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
-        }
-
-        function toggleLargeFont() {
-            document.body.classList.toggle('large-font');
-            localStorage.setItem('largeFont', document.body.classList.contains('large-font'));
-        }
-
-        function resetAccessibility() {
-            document.body.classList.remove('high-contrast', 'large-font');
-            localStorage.removeItem('highContrast');
-            localStorage.removeItem('largeFont');
-        }
-
-        // Load saved accessibility settings
-        window.addEventListener('load', function() {
+            // Load saved accessibility settings
             if (localStorage.getItem('highContrast') === 'true') {
                 document.body.classList.add('high-contrast');
+                elements.highContrastBtn.classList.add('active');
             }
             if (localStorage.getItem('largeFont') === 'true') {
                 document.body.classList.add('large-font');
+                elements.largeFontBtn.classList.add('active');
             }
-        });
 
-        // Close accessibility menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.accessibility-btn') && !e.target.closest('#accessibilityMenu')) {
-                hideAccessibilityMenu();
-                accessibilityOpen = false;
-            }
-        });
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                // Alt + A for accessibility menu
+                if (e.altKey && e.key.toLowerCase() === 'a') {
+                    e.preventDefault();
+                    elements.accessibilityBtn.click();
+                }
+                
+                // Alt + M for main menu
+                if (e.altKey && e.key.toLowerCase() === 'm') {
+                    e.preventDefault();
+                    elements.mobileToggle.click();
+                }
+                
+                // Escape to close menus
+                if (e.key === 'Escape') {
+                    elements.accessibilityMenu.classList.remove('active');
+                    elements.navMenu.classList.remove('active');
+                    elements.mobileToggle.textContent = '☰';
+                }
+            });
+        }
 
-        // Admin Panel
-        if (window.location.hash === '#admin') {
-            const password = prompt('הכנס סיסמת מנהל:');
-            if (password === 'migdal2025') {
-                showAdminPanel();
+        // Admin Panel for Leads Export
+        function handleAdmin() {
+            if (window.location.hash === '#admin') {
+                const password = prompt('הכנס סיסמת מנהל:');
+                if (password === 'migdal2025') {
+                    showAdminPanel();
+                }
             }
         }
 
@@ -1204,9 +929,9 @@ https://wa.me/972${formData.phone.replace(/^0/, '')}`;
             `;
             
             adminPanel.innerHTML = `
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">פאנל ניהול - פניות לקוחות</h3>
+                <h3 style="margin-bottom: 1rem; color: var(--primary-color);">פאנל ניהול - פניות לקוחות</h3>
                 <p>סה"כ פניות: ${leads.length}</p>
-                <button onclick="exportLeads()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">ייצא לאקסל</button>
+                <button onclick="exportLeads()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer;">ייצא לאקסל</button>
                 <button onclick="closeAdmin()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer; margin-right: 1rem;">סגור</button>
                 <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 1rem; margin-top: 1rem;">
                     ${leads.map(lead => `
@@ -1245,32 +970,74 @@ https://wa.me/972${formData.phone.replace(/^0/, '')}`;
             };
         }
 
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Alt + A for accessibility
-            if (e.altKey && e.key.toLowerCase() === 'a') {
-                e.preventDefault();
-                toggleAccessibility();
-            }
+        // Error Handling
+        function handleErrors() {
+            window.addEventListener('error', (e) => {
+                console.error('JavaScript Error:', e.error);
+            });
             
-            // Alt + M for menu
-            if (e.altKey && e.key.toLowerCase() === 'm') {
-                e.preventDefault();
-                toggleMenu();
-            }
-            
-            // Escape to close menus
-            if (e.key === 'Escape') {
-                hideAccessibilityMenu();
-                accessibilityOpen = false;
-                const navMenu = document.getElementById('navMenu');
-                const mobileToggle = document.querySelector('.mobile-toggle');
-                navMenu.classList.remove('active');
-                mobileToggle.textContent = '☰';
-            }
-        });
+            // Handle image loading errors
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.backgroundColor = '#f0f0f0';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.innerHTML = '<span style="color: #666;">🖼️ תמונה לא זמינה</span>';
+                });
+            });
 
-        console.log('🏔️ מגדל של חיים - האתר טעון בהצלחה!');
+            // Handle video loading errors
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                heroVideo.addEventListener('error', function() {
+                    console.log('Video failed to load, showing fallback image');
+                    this.style.display = 'none';
+                    const fallbackDiv = document.createElement('div');
+                    fallbackDiv.style.cssText = `
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg');
+                        background-size: cover;
+                        background-position: center;
+                        z-index: 1;
+                    `;
+                    this.parentElement.insertBefore(fallbackDiv, this);
+                });
+            }
+        }
+
+        // Initialize Application
+        function initApp() {
+            try {
+                handleLoading();
+                handleHeaderScroll();
+                handleMobileNav();
+                handleContactForm();
+                handleSmoothScroll();
+                handleScrollToTop();
+                handleAccessibility();
+                handleGalleryFilter();
+                handleGalleryLightbox();
+                handleAdmin();
+                handleErrors();
+                animateStats();
+                
+                console.log('🏔️ מגדל של חיים - האתר המלא טעון בהצלחה!');
+            } catch (error) {
+                console.error('Error initializing app:', error);
+            }
+        }
+
+        // Start the application when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
     </script>
 
     <!-- Schema.org Structured Data -->
@@ -1289,6 +1056,11 @@ https://wa.me/972${formData.phone.replace(/^0/, '')}`;
             "addressRegion": "הגליל העליון",
             "addressCountry": "IL"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 32.8157,
+            "longitude": 35.5281
+        },
         "amenityFeature": [
             {
                 "@type": "LocationFeatureSpecification",
@@ -1299,13 +1071,1036 @@ https://wa.me/972${formData.phone.replace(/^0/, '')}`;
                 "@type": "LocationFeatureSpecification", 
                 "name": "מטבח מאובזר",
                 "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "חניה חינמית",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "WiFi חינמי",
+                "value": true
             }
         ],
         "numberOfRooms": 21,
         "maximumAttendeeCapacity": 80,
-        "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=630&fit=crop&crop=center&q=85",
-        "priceRange": "$$"
+        "image": [
+            "https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg",
+            "https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg"
+        ],
+        "priceRange": "$$",
+        "openingHours": "Mo-Su 00:00-24:00",
+        "sameAs": [
+            "https://facebook.com/migdalresort",
+            "https://instagram.com/migdalresort"
+        ]
     }
     </script>
 </body>
-</html>
+</html><!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
+    <meta name="keywords" content="ריזורט בצפון, שבתות חתן, אירוח משפחתי, בריכה פרטית, מושב מגדל, 21 חדרים">
+    <meta name="author" content="מגדל של חיים">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי">
+    <meta property="og:description" content="ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
+    <meta property="og:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+    <meta property="og:url" content="https://migdal-chaim.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי">
+    <meta name="twitter:description" content="ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+    
+    <title>מגדל של חיים - ריזורט משפחתי יוקרתי בצפון</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #d69e2e;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            --gradient-secondary: linear-gradient(135deg, #d69e2e 0%, #ed8936 100%);
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 8px 30px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            --font-primary: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-family: var(--font-secondary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-accent {
+            background: var(--gradient-secondary);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: var(--font-secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26, 54, 93, 0.8), rgba(44, 82, 130, 0.6));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: var(--white);
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: var(--font-secondary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-location {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-secondary);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Facilities Section */
+        .facilities {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .facility-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .facility-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: var(--font-secondary);
+        }
+
+        .facility-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26, 54, 93, 0.8), rgba(44, 82, 130, 0.6));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay small {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: var(--font-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .contact-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-secondary);
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-family: var(--font-secondary);
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Floating Elements */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-heavy);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Accessibility */
+        .accessibility-toolbar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+        }
+
+        .accessibility-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+        }
+
+        .accessibility-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .accessibility-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-heavy);
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+        }
+
+        .accessibility-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .accessibility-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: right;
+        }
+
+        .accessibility-option:hover {
+            background: var(--bg-light);
+        }
+
+        .accessibility-option.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* High Contrast Mode */
+        body.high-contrast {
+            background: black !important;
+            color: white !important;
+        }
+
+        body.high-contrast .header {
+            background: black !important;
+        }
+
+        body.high-contrast .btn-primary {
+            background: white !important;
+            color: black !important;
+        }
+
+        /* Large Font Mode */
+        body.large-font {
+            font-size: 1.2rem;
+        }
+
+        body.large-font .section-title {
+            font-size: 3rem;
+        }
+
+        body.large-font .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem 0;
+                transform: translateX(-100%);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-prev {
+                left: -50px;
+            }
+
+            .lightbox-next {
+                right: -50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .scroll-top {
+                bottom: 80px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .gallery-filter {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 54, 93, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin
