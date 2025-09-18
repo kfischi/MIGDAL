@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ליצירת קשר והזמנות - מגדל של חיים</title>
+    <title>הסיפור שלנו - מגדל של חיים</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #d69e2e;
-            --accent-color: #2d87ae;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --primary-color: #0a1628;
+            --secondary-color: #d4af37;
+            --accent-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
             --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+            --gradient-gold: linear-gradient(135deg, #fbbf24, #d97706);
+            --gradient-blue: linear-gradient(135deg, #1e40af, #0ea5e9);
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --shadow-xl: 0 25px 80px rgba(0,0,0,0.25);
         }
         
         * {
@@ -27,13 +30,14 @@
         
         body {
             font-family: 'Assistant', sans-serif;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--text-dark);
-            background: var(--bg-light);
+            background: var(--white);
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -42,24 +46,39 @@
         .header {
             background: var(--primary-color);
             padding: 1rem 0;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
         
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
             font-family: 'Heebo', sans-serif;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 1px;
         }
         
         .nav-links {
@@ -73,310 +92,498 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            position: relative;
         }
         
         .nav-links a:hover {
             color: var(--secondary-color);
             background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
         
         .btn-home {
-            background: var(--secondary-color);
+            background: var(--gradient-gold);
             color: var(--white);
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         .btn-home:hover {
-            background: #b8860b;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
         
         /* Hero Section */
         .hero {
             position: relative;
-            height: 60vh;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.4), rgba(45, 135, 174, 0.3)), 
-                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg');
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.4), rgba(30, 64, 175, 0.3)), 
+                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
             text-align: center;
-            filter: brightness(1.3) contrast(1.1);
+            overflow: hidden;
+            filter: brightness(1.2) contrast(1.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-family: 'Heebo', sans-serif;
             text-shadow: 3px 3px 12px rgba(0,0,0,0.8);
-            color: #ffffff;
-            filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.9));
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
         }
         
         .hero-content p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            opacity: 1;
+            margin-bottom: 3rem;
+            line-height: 1.6;
             color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
             font-weight: 500;
         }
         
-        /* Main Content */
-        .main-content {
-            padding: 6rem 0;
-        }
-        
-        .contact-section {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 4rem;
-            margin-bottom: 4rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        
-        .contact-form h3 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: border-color 0.3s ease;
-            font-family: 'Assistant', sans-serif;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(45, 135, 174, 0.2);
-        }
-        
-        .contact-info h3 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .contact-item .icon {
-            font-size: 2rem;
-            margin-left: 1.5rem;
-            color: var(--accent-color);
-            min-width: 50px;
-        }
-        
-        .contact-item .text {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-        
-        .contact-item h4 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        .hero-cta {
+            display: inline-block;
+            background: var(--gradient-gold);
             color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .btn-whatsapp {
-            background: #25d366;
-            color: var(--white);
-            padding: 1rem 2rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
-            display: inline-block;
-            text-align: center;
             transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .btn-whatsapp:hover {
-            background: #1da851;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-        
-        /* Info Cards */
-        .info-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .info-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
         
-        .info-card h4 {
-            font-size: 1.5rem;
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            background: var(--white);
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 10rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+        
+        .story-text {
+            position: relative;
+        }
+        
+        .story-text::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            right: -1rem;
+            font-size: 10rem;
+            color: var(--secondary-color);
+            opacity: 0.1;
+            font-family: serif;
+        }
+        
+        .story-text h2 {
+            font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .story-text p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .story-text .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 600;
         }
         
-        .info-card ul {
-            list-style: none;
-            text-align: right;
-        }
-        
-        .info-card li {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            color: var(--text-light);
+        .story-image {
             position: relative;
-            padding-right: 1.5rem;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
         }
         
-        .info-card li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: #48bb78;
-            font-weight: bold;
+        .story-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
         }
         
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            color: var(--white);
+        .story-image img {
+            width: 100%;
             border-radius: 20px;
-            padding: 4rem;
+            box-shadow: var(--shadow-xl);
+            filter: brightness(1.3) contrast(1.2) saturate(1.1);
+        }
+        
+        .story-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), transparent);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+        
+        /* Vision Section */
+        .vision-section {
+            padding: 10rem 0;
+            background: var(--primary-color);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+        
+        .section-title {
+            font-size: 4rem;
             text-align: center;
             margin-bottom: 4rem;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
         }
         
-        .cta-section h2 {
-            font-size: 2.5rem;
+        .vision-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .vision-text {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+            opacity: 0.95;
+        }
+        
+        .vision-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 6rem;
+        }
+        
+        .vision-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .vision-item:hover::before {
+            left: 100%;
+        }
+        
+        .vision-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .vision-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .vision-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .vision-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Experience Section */
+        .experience-section {
+            padding: 10rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 6rem;
+        }
+        
+        .experience-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .experience-card .number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
             font-family: 'Heebo', sans-serif;
         }
         
-        .cta-section p {
-            font-size: 1.4rem;
+        .experience-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .experience-card p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 0;
+            background: var(--gradient-blue);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" width="100" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 Q25 0 50 10 T100 10 V20 H0 Z" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 3.5rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-cta {
+            background: var(--white);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary-cta {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary-cta:hover {
+            background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
         }
         
         /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--white);
-            padding: 3rem 0 1rem;
+            padding: 4rem 0 2rem;
             text-align: center;
+        }
+        
+        .footer-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .footer-content p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
         .footer-links a {
             color: var(--white);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
         
         .footer-links a:hover {
             color: var(--secondary-color);
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
-            opacity: 0.8;
+            padding-top: 2rem;
+            opacity: 0.7;
             font-size: 1rem;
         }
         
@@ -387,25 +594,47 @@
             left: 2rem;
             background: #25d366;
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-decoration: none;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .whatsapp-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
+                gap: 1.5rem;
+                padding: 1.5rem;
             }
             
             .nav-links {
@@ -415,28 +644,50 @@
             }
             
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .story-content,
+            .experience-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .story-section,
+            .vision-section,
+            .experience-section,
+            .cta-section {
+                padding: 6rem 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .story-text h2 {
+                font-size: 2.5rem;
+            }
+            
+            .story-text p {
                 font-size: 1.2rem;
             }
             
-            .contact-content,
-            .info-cards {
+            .vision-text {
+                font-size: 1.3rem;
+            }
+            
+            .vision-highlights {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .contact-section,
-            .cta-section {
-                padding: 2rem;
-                margin-bottom: 2rem;
-            }
-            
-            .contact-form h3,
-            .contact-info h3 {
-                font-size: 1.8rem;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
             
             .footer-links {
@@ -452,8 +703,8 @@
         <nav class="nav">
             <a href="index.html" class="logo">מגדל של חיים</a>
             <div class="nav-links">
-                <a href="about.html">הסיפור שלנו</a>
                 <a href="index.html#gallery">גלריה</a>
+                <a href="contact.html">ליצירת קשר</a>
                 <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
             </div>
         </nav>
@@ -462,146 +713,131 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>ליצירת קשר והזמנות</h1>
-            <p>נשמח לעמוד לשירותכם ולעזור לכם לתכנן את החופשה המושלמת במגדל של חיים</p>
+            <h1>הסיפור שלנו</h1>
+            <p>מסע מרגש של חזון, אמונה וברכה שהוביל ליצירת המתחם המיוחד ביותר בצפון</p>
+            <a href="#story" class="hero-cta">גלו את הסיפור ✨</a>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <!-- Contact Section -->
-            <section class="contact-section">
-                <div class="contact-content">
-                    <!-- Contact Form -->
-                    <div class="contact-form">
-                        <h3>שלחו פרטים ונחזור אליכם מיד</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">שם מלא *</label>
-                                <input type="text" id="name" name="name" required placeholder="הזינו את השם המלא">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">כתובת אימייל *</label>
-                                <input type="email" id="email" name="email" required placeholder="example@email.com">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">טלפון *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="050-123-4567">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="dates">תאריכי הגעה *</label>
-                                <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="guests">מספר אורחים *</label>
-                                <select id="guests" name="guests" required>
-                                    <option value="">בחרו מספר אורחים</option>
-                                    <option value="עד 15 אורחים">עד 15 אורחים</option>
-                                    <option value="16-30 אורחים">16-30 אורחים</option>
-                                    <option value="31-50 אורחים">31-50 אורחים</option>
-                                    <option value="51-70 אורחים">51-70 אורחים</option>
-                                    <option value="71-80 אורחים">71-80 אורחים</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="event">סוג האירוע</label>
-                                <select id="event" name="event">
-                                    <option value="">בחרו סוג אירוע</option>
-                                    <option value="שבת חתן">שבת חתן</option>
-                                    <option value="חופשה משפחתית">חופשה משפחתית</option>
-                                    <option value="אירוע משפחתי">אירוע משפחתי</option>
-                                    <option value="סמינר/כנס">סמינר/כנס</option>
-                                    <option value="אחר">אחר</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">הודעה נוספת</label>
-                                <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים, בקשות מיוחדות או שאלות"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary">📱 שלח פנייה לווטסאפ</button>
-                        </form>
+        <!-- Story Section -->
+        <section class="story-section" id="story">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>ברכת הצדיק<br>מלווה אותנו</h2>
+                        <p>
+                            מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק <span class="highlight">האור החיים הקדוש זיע"א</span>. 
+                            מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
+                        </p>
+                        <p>
+                            היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה <span class="highlight">הצדיק מיד נענה וסייע בכל הבעיות</span>. 
+                            לכן הוחלט שהמקום יקרא על שמו - האור החיים הקדוש.
+                        </p>
+                        <p>
+                            ידוע שלצדיק לא היו ילדים, ולכן החלטנו ש<span class="highlight">אנחנו בניו של הצדיק</span>. 
+                            המקום הזה נבנה כדי לקיים את הרצון שלו - להביא שמחה ואושר למשפחות יהודיות.
+                        </p>
                     </div>
+                    <div class="story-image floating">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="גינות ונוף מגדל של חיים">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Contact Info -->
-                    <div class="contact-info">
-                        <h3>פרטי קשר</h3>
-                        
-                        <div class="contact-item">
-                            <div class="icon">📞</div>
-                            <div>
-                                <h4>טלפון</h4>
-                                <div class="text">050-123-4567</div>
-                            </div>
+        <!-- Vision Section -->
+        <section class="vision-section">
+            <div class="container">
+                <h2 class="section-title">החזון שלנו</h2>
+                <div class="vision-content">
+                    <p class="vision-text">
+                        ליצור מקום שבו כל משפחה יהודית תוכל לחוות רגעים של שמחה אמיתית, 
+                        קדושה ואחדות במקום יפה ומכובד, תחת ברכתו של הצדיק האור החיים הקדוש
+                    </p>
+                    
+                    <div class="vision-highlights">
+                        <div class="vision-item">
+                            <span class="icon">🏠</span>
+                            <h3>בית יהודי חם</h3>
+                            <p>אווירה משפחתית אמיתית שגורמת לכל אורח להרגיש כמו בבית</p>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="icon">📧</div>
-                            <div>
-                                <h4>אימייל</h4>
-                                <div class="text">info@magdalresort.co.il</div>
-                            </div>
+                        <div class="vision-item">
+                            <span class="icon">✨</span>
+                            <h3>חוויה יוצאת דופן</h3>
+                            <p>כל פרט מתוכנן בקפידה ליצור זיכרונות בלתי נשכחים</p>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="icon">📍</div>
-                            <div>
-                                <h4>כתובת</h4>
-                                <div class="text">מושב מגדל, צפון הארץ</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="icon" style="color: #25d366;">💬</div>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" 
-                                   target="_blank" class="btn-whatsapp" style="width: 100%; margin-top: 0.5rem;">
-                                    שלח הודעה בווטסאפ עכשיו
-                                </a>
-                            </div>
+                        <div class="vision-item">
+                            <span class="icon">🌟</span>
+                            <h3>מעולות בכל רמה</h3>
+                            <p>רמת שירות, נקיון ואירוח ברמה הגבוהה ביותר</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- CTA Section -->
-            <section class="cta-section">
-                <h2>🏆 למה לבחור במגדל של חיים?</h2>
-                <p>✨ המתחם היחיד בצפון המשלב יוקרה, נוחות ואמינות במחיר הוגן</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                    <a href="https://wa.me/972501234567?text=שלום, אני רוצה לבדוק זמינות למתחם מגדל של חיים" 
-                       target="_blank" 
-                       style="background: var(--white); color: var(--primary-color); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
-                        💬 בדקו זמינות בווטסאפ
-                    </a>
-                    <a href="tel:050-123-4567" 
-                       style="background: transparent; color: var(--white); border: 2px solid var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
-                        📞 חייגו עכשיו
-                    </a>
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <h2 class="section-title">מה עושה אותנו מיוחדים</h2>
+                
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="number">21</div>
+                        <h3>חדרי שינה מרווחים</h3>
+                        <p>כל חדר עוצב בקפידה עם תשומת לב לנוחות ולפרטיות, יכול להכיל עד 80 אורחים במקביל</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="number">2</div>
+                        <h3>דונם של גן עדן</h3>
+                        <p>שטח ירוק מטופח עם בריכה פרטית, פינות ישיבה מוצלות ואזורי משחק לכל הגילאים</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="number">100%</div>
+                        <h3>מחויבות למעולות</h3>
+                        <p>כל אורח זוכה לחוויה מושלמת - משירות אישי ועד לניקיון ברמה הגבוהה ביותר</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="number">24/7</div>
+                        <h3>שירות ללא פשרות</h3>
+                        <p>צוות מקצועי זמין בכל עת לכל בעיה או בקשה, עם ניסיון עשיר באירוח משפחות</p>
+                    </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>בואו להיות חלק מהסיפור</h2>
+                    <p>הזמינו עכשיו וחוו בעצמכם את הקסם והברכה של מגדל של חיים</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn-cta btn-primary-cta">בדקו זמינות והזמינו</a>
+                        <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="btn-cta btn-secondary-cta">שלחו הודעה עכשיו</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
                 <h3>מגדל של חיים</h3>
                 <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
                 
                 <div class="footer-links">
                     <a href="index.html">בית</a>
-                    <a href="about.html">הסיפור שלנו</a>
                     <a href="index.html#gallery">גלריה</a>
+                    <a href="contact.html">ליצירת קשר</a>
                 </div>
             </div>
             
@@ -617,158 +853,72 @@
     </a>
 
     <script>
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Create WhatsApp message
-            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
-            message += `👤 *שם:* ${data.name}\n`;
-            message += `📧 *אימייל:* ${data.email}\n`;
-            message += `📞 *טלפון:* ${data.phone}\n`;
-            message += `📅 *תאריכים:* ${data.dates}\n`;
-            message += `👥 *מספר אורחים:* ${data.guests}\n`;
-            
-            if (data.event) {
-                message += `🎉 *סוג אירוע:* ${data.event}\n`;
-            }
-            
-            if (data.message) {
-                message += `💬 *הודעה נוספת:* ${data.message}\n`;
-            }
-            
-            message += `\n📲 *נשלח דרך האתר ב-${new Date().toLocaleString('he-IL')}*`;
-            
-            // Save to localStorage for admin panel
-            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
-            bookings.push({
-                ...data,
-                timestamp: new Date().toISOString(),
-                id: Date.now()
-            });
-            localStorage.setItem('migdal_bookings', JSON.stringify(bookings));
-            
-            // Open WhatsApp
-            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Show success message
-            alert('✅ תודה רבה! הפנייה נשלחה בהצלחה לווטסאפ. נחזור אליכם בהקדם האפשרי.');
-            this.reset();
-        });
-
-        // Admin Panel Access
-        if (window.location.hash === '#admin') {
-            const password = prompt('הכנס סיסמת מנהל:');
-            if (password === 'migdal2025') {
-                showAdminPanel();
-            }
-        }
-
-        function showAdminPanel() {
-            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
-            
-            let adminHTML = `
-                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; padding: 2rem; overflow-y: auto;">
-                    <div style="background: white; max-width: 1200px; margin: 0 auto; padding: 2rem; border-radius: 10px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                            <h2>פאנל מנהל - מגדל של חיים</h2>
-                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #e53e3e; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">סגור</button>
-                        </div>
-                        
-                        <div style="margin-bottom: 2rem;">
-                            <button onclick="exportToCSV()" style="background: #38a169; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; margin-left: 1rem;">ייצא ל-CSV</button>
-                            <button onclick="clearAllBookings()" style="background: #e53e3e; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer;">נקה הכל</button>
-                        </div>
-                        
-                        <div style="overflow-x: auto;">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <thead>
-                                    <tr style="background: #f7fafc;">
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריך</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">שם</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">טלפון</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אימייל</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריכי הגעה</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אורחים</th>
-                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אירוע</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-            `;
-            
-            bookings.reverse().forEach(booking => {
-                const date = new Date(booking.timestamp).toLocaleString('he-IL');
-                adminHTML += `
-                    <tr>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${date}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.name}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.phone}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.email}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.dates}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.guests}</td>
-                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.event || '-'}</td>
-                    </tr>
-                `;
-            });
-            
-            adminHTML += `
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <div style="margin-top: 2rem; text-align: center; color: #718096;">
-                            סך הכל: ${bookings.length} הזמנות
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.insertAdjacentHTML('beforeend', adminHTML);
-        }
-
-        function exportToCSV() {
-            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
-            
-            let csv = 'תאריך,שם,טלפון,אימייל,תאריכי הגעה,מספר אורחים,סוג אירוע,הודעה\n';
-            
-            bookings.forEach(booking => {
-                const date = new Date(booking.timestamp).toLocaleString('he-IL');
-                csv += `"${date}","${booking.name}","${booking.phone}","${booking.email}","${booking.dates}","${booking.guests}","${booking.event || ''}","${booking.message || ''}"\n`;
-            });
-            
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', `migdal_bookings_${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function clearAllBookings() {
-            if (confirm('האם אתה בטוח שברצונך למחוק את כל ההזמנות?')) {
-                localStorage.removeItem('migdal_bookings');
-                location.reload();
-            }
-        }
-
-        // Smooth hover effects for buttons
-        document.querySelectorAll('.btn-primary, .btn-whatsapp').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.experience-card, .vision-item, .story-text, .story-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.experience-card, .vision-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+        });
+
+        // Initialize page
+        document.body.style.opacity = '0';
+        document.body.style.transform = 'translateY(20px)';
+        document.body.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     </script>
 </body>
 </html>
