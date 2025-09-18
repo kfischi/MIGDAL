@@ -1,235 +1,9 @@
-<body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">מגדל של חיים</a>
-            <div class="nav-links">
-                <a href="about.html">אודות</a>
-                <a href="index.html#gallery">גלריה</a>
-                <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>יצירת קשר והזמנות</h1>
-            <p>נשמח לעמוד לשירותכם ולעזור לכם לתכנן את החופשה המושלמת במגדל של חיים</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Contact Section -->
-            <section class="contact-section">
-                <div class="contact-content">
-                    <!-- Contact Form -->
-                    <div class="contact-form">
-                        <h3>שלחו פרטים ונחזור אליכם מיד</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">שם מלא *</label>
-                                <input type="text" id="name" name="name" required placeholder="הזינו את השם המלא">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">כתובת אימייל *</label>
-                                <input type="email" id="email" name="email" required placeholder="example@email.com">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">טלפון *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="050-123-4567">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="dates">תאריכי הגעה *</label>
-                                <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="guests">מספר אורחים *</label>
-                                <select id="guests" name="guests" required>
-                                    <option value="">בחרו מספר אורחים</option>
-                                    <option value="עד 15 אורחים">עד 15 אורחים</option>
-                                    <option value="16-30 אורחים">16-30 אורחים</option>
-                                    <option value="31-50 אורחים">31-50 אורחים</option>
-                                    <option value="51-70 אורחים">51-70 אורחים</option>
-                                    <option value="71-80 אורחים">71-80 אורחים</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="event">סוג האירוע</label>
-                                <select id="event" name="event">
-                                    <option value="">בחרו סוג אירוע</option>
-                                    <option value="שבת חתן">שבת חתן</option>
-                                    <option value="חופשה משפחתית">חופשה משפחתית</option>
-                                    <option value="אירוע משפחתי">אירוע משפחתי</option>
-                                    <option value="סמינר/כנס">סמינר/כנס</option>
-                                    <option value="אחר">אחר</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">הודעה נוספת</label>
-                                <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים, בקשות מיוחדות או שאלות"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn-primary">📱 שלח פנייה לווטסאפ</button>
-                        </form>
-                    </div>
-
-                    <!-- Contact Info -->
-                    <div class="contact-info">
-                        <h3>פרטי קשר</h3>
-                        
-                        <div class="contact-item">
-                            <div class="icon">📞</div>
-                            <div>
-                                <h4>טלפון</h4>
-                                <div class="text">050-123-4567</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="icon">📧</div>
-                            <div>
-                                <h4>אימייל</h4>
-                                <div class="text">info@magdalresort.co.il</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="icon">📍</div>
-                            <div>
-                                <h4>כתובת</h4>
-                                <div class="text">מושב מגדל, צפון הארץ</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="icon" style="color: #25d366;">💬</div>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" 
-                                   target="_blank" class="btn-whatsapp" style="width: 100%; margin-top: 0.5rem;">
-                                    שלח הודעה בווטסאפ עכשיו
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Info Cards -->
-            <section class="info-cards">
-                <div class="info-card">
-                    <h4>🏨 מה כלול במחיר?</h4>
-                    <ul>
-                        <li>21 חדרי שינה מרווחים</li>
-                        <li>בריכה פרטית מחוממת</li>
-                        <li>מטבח כשר מאובזר במלואו</li>
-                        <li>2 דונם גינה מטופחת</li>
-                        <li>משחקייה לכל הגילאים</li>
-                        <li>חניה פרטית מוצלת</li>
-                        <li>WiFi מהיר בכל המתחם</li>
-                        <li>שירות ניקיון יומי</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h4>💰 מחירים ותנאים</h4>
-                    <ul>
-                        <li>מחירים משתנים לפי עונה</li>
-                        <li>הנחות לקבוצות גדולות</li>
-                        <li>הנחות למשפחות חוזרות</li>
-                        <li>כולל חשמל ומים</li>
-                        <li>ללא עמלות נסתרות</li>
-                        <li>תשלום מקדמה 50%</li>
-                        <li>ביטול עד 7 ימים מראש</li>
-                        <li>הצעת מחיר תוך 24 שעות</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h4>⏰ זמינות ושירות</h4>
-                    <ul>
-                        <li>פתוח כל השנה</li>
-                        <li>צ'ק-אין 16:00</li>
-                        <li>צ'ק-אאוט 11:00</li>
-                        <li>שירות לקוחות 24/7</li>
-                        <li>תגובה מהירה לפניות</li>
-                        <li>ליווי אישי מהזמנה</li>
-                        <li>צוות מקצועי זמין</li>
-                        <li>תחזוקה שוטפת יומית</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="cta-section">
-                <h2>🏆 למה לבחור במגדל של חיים?</h2>
-                <p>✨ המתחם היחיד בצפון המשלב יוקרה, נוחות ואמינות במחיר הוגן</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                    <a href="https://wa.me/972501234567?text=שלום, אני רוצה לבדוק זמינות למתחם מגדל של חיים" 
-                       target="_blank" 
-                       style="background: var(--white); color: var(--primary-color); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
-                        💬 בדקו זמינות בווטסאפ
-                    </a>
-                    <a href="tel:050-123-4567" 
-                       style="background: transparent; color: var(--white); border: 2px solid var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
-                        📞 חייגו עכשיו
-                    </a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <h3>מגדל של חיים</h3>
-                <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
-                
-                <div class="footer-links">
-                    <a href="index.html">בית</a>
-                    <a href="about.html">אודות</a>
-                    <a href="index.html#gallery">גלריה</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות. | בברכת האור החיים הקדוש זיע"א</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
-        💬
-    </a>
-
-    <script>
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Create WhatsApp message
-            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
-            message += `👤 *שם:* ${data.name}\n<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>יצירת קשר - מגדל של חיים</title>
+    <title>ליצירת קשר והזמנות - מגדל של חיים</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -366,15 +140,6 @@
             padding: 4rem;
             margin-bottom: 4rem;
             box-shadow: var(--shadow);
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
-            text-align: center;
         }
         
         .contact-content {
@@ -664,10 +429,6 @@
                 margin-bottom: 2rem;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
-            
             .contact-form h3,
             .contact-info h3 {
                 font-size: 1.8rem;
@@ -680,202 +441,222 @@
         }
     </style>
 </head>
-<body class="font-sans">
-
-    <!-- Navigation Bar -->
-    <nav class="p-4 flex justify-between items-center bg-gray-900">
-        <a href="index.html" class="text-2xl font-bold text-white transition-colors duration-300 hover:text-gray-300">מגדל של חיים</a>
-        <div class="space-x-4">
-            <a href="index.html" class="text-white hover:text-gray-300">דף הבית</a>
-            <a href="about.html" class="text-white hover:text-gray-300">אודות</a>
-            <a href="index.html#gallery" class="text-white hover:text-gray-300">גלריה</a>
-            <a href="contact.html" class="bg-white text-black py-2 px-4 rounded-full hover:bg-gray-300 transition-colors duration-300">צור קשר</a>
-        </div>
-    </nav>
-
-    <!-- Contact Hero Section -->
-    <header class="py-16 md:py-24 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 section-header" data-aos="fade-down">יצירת קשר והזמנות</h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-            נשמח לעמוד לשירותכם ולעזור לכם לתכנן את החופשה המושלמת במגדל של חיים
-        </p>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">מגדל של חיים</a>
+            <div class="nav-links">
+                <a href="about.html">הסיפור שלנו</a>
+                <a href="index.html#gallery">גלריה</a>
+                <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main Contact Section -->
-    <section class="container mx-auto px-4 pb-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Contact Form -->
-            <div data-aos="fade-right">
-                <div class="contact-card">
-                    <h2 class="text-3xl font-bold mb-6" style="color:var(--secondary-color);">שלחו פרטים ונחזור אליכם</h2>
-                    <form id="contactForm" class="space-y-6">
-                        <div>
-                            <label for="name" class="block mb-2 font-semibold">שם מלא *</label>
-                            <input type="text" id="name" name="name" required class="form-input w-full">
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block mb-2 font-semibold">כתובת אימייל *</label>
-                            <input type="email" id="email" name="email" required class="form-input w-full">
-                        </div>
-                        
-                        <div>
-                            <label for="phone" class="block mb-2 font-semibold">טלפון *</label>
-                            <input type="tel" id="phone" name="phone" required class="form-input w-full">
-                        </div>
-                        
-                        <div>
-                            <label for="dates" class="block mb-2 font-semibold">תאריכי הגעה *</label>
-                            <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required class="form-input w-full">
-                        </div>
-                        
-                        <div>
-                            <label for="guests" class="block mb-2 font-semibold">מספר אורחים *</label>
-                            <select id="guests" name="guests" required class="form-input w-full">
-                                <option value="">בחרו מספר אורחים</option>
-                                <option value="עד 20 אורחים">עד 20 אורחים</option>
-                                <option value="21-40 אורחים">21-40 אורחים</option>
-                                <option value="41-60 אורחים">41-60 אורחים</option>
-                                <option value="61-80 אורחים">61-80 אורחים</option>
-                                <option value="81-100 אורחים">81-100 אורחים</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="event" class="block mb-2 font-semibold">סוג האירוע</label>
-                            <select id="event" name="event" class="form-input w-full">
-                                <option value="">בחרו סוג אירוע</option>
-                                <option value="שבת חתן">שבת חתן</option>
-                                <option value="חופשה משפחתית">חופשה משפחתית</option>
-                                <option value="אירוע משפחתי">אירוע משפחתי</option>
-                                <option value="סמינר/כנס">סמינר/כנס</option>
-                                <option value="אחר">אחר</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block mb-2 font-semibold">הודעה נוספת</label>
-                            <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים או בקשות מיוחדות" class="form-input w-full"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary w-full text-lg">שלח פנייה</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div data-aos="fade-left">
-                <h2 class="text-3xl font-bold mb-6 section-header">פרטי קשר</h2>
-                
-                <div class="space-y-6">
-                    <div class="contact-card flex items-center">
-                        <div class="text-3xl ml-4" style="color:var(--secondary-color);">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">טלפון</h3>
-                            <p class="text-lg">050-123-4567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card flex items-center">
-                        <div class="text-3xl ml-4" style="color:var(--secondary-color);">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">אימייל</h3>
-                            <p class="text-lg">info@magdalresort.co.il</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card flex items-center">
-                        <div class="text-3xl ml-4" style="color:var(--secondary-color);">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">כתובת</h3>
-                            <p class="text-lg">מושב מגדל, צפון הארץ</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card flex items-center">
-                        <div class="text-3xl ml-4" style="color: #25d366;">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                            <a href="https://wa.me/972501234567" target="_blank" class="text-lg text-green-400 hover:text-green-300 transition-colors">
-                                קשר מהיר בוואטסאפ
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Availability Info -->
-                <div class="mt-8 contact-card" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-2xl font-bold mb-4" style="color:var(--secondary-color);">זמינות ומחירים</h3>
-                    <p class="text-lg leading-relaxed mb-4">
-                        המחירים משתנים בהתאם לעונה, מספר האורחים ומשך השהייה.
-                    </p>
-                    <p class="text-lg leading-relaxed">
-                        צרו קשר לקבלת הצעת מחיר מותאמת אישית ולבדיקת זמינות.
-                    </p>
-                </div>
-
-                <!-- Features Info -->
-                <div class="mt-8 contact-card" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-2xl font-bold mb-4" style="color:var(--secondary-color);">כלול במחיר</h3>
-                    <ul class="space-y-2 text-lg">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 ml-2"></i>
-                            21 חדרי שינה מרווחים
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 ml-2"></i>
-                            בריכה פרטית מחוממת
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 ml-2"></i>
-                            מטבח כשר מאובזר במלואו
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 ml-2"></i>
-                            משחקייה ופעילויות לכל הגילאים
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 ml-2"></i>
-                            5 דונם גינה מטופחת
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ליצירת קשר והזמנות</h1>
+            <p>נשמח לעמוד לשירותכם ולעזור לכם לתכנן את החופשה המושלמת במגדל של חיים</p>
         </div>
     </section>
 
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h3>שלחו פרטים ונחזור אליכם מיד</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">שם מלא *</label>
+                                <input type="text" id="name" name="name" required placeholder="הזינו את השם המלא">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">כתובת אימייל *</label>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">טלפון *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="050-123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dates">תאריכי הגעה *</label>
+                                <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">מספר אורחים *</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">בחרו מספר אורחים</option>
+                                    <option value="עד 15 אורחים">עד 15 אורחים</option>
+                                    <option value="16-30 אורחים">16-30 אורחים</option>
+                                    <option value="31-50 אורחים">31-50 אורחים</option>
+                                    <option value="51-70 אורחים">51-70 אורחים</option>
+                                    <option value="71-80 אורחים">71-80 אורחים</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="event">סוג האירוע</label>
+                                <select id="event" name="event">
+                                    <option value="">בחרו סוג אירוע</option>
+                                    <option value="שבת חתן">שבת חתן</option>
+                                    <option value="חופשה משפחתית">חופשה משפחתית</option>
+                                    <option value="אירוע משפחתי">אירוע משפחתי</option>
+                                    <option value="סמינר/כנס">סמינר/כנס</option>
+                                    <option value="אחר">אחר</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">הודעה נוספת</label>
+                                <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים, בקשות מיוחדות או שאלות"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">📱 שלח פנייה לווטסאפ</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h3>פרטי קשר</h3>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📞</div>
+                            <div>
+                                <h4>טלפון</h4>
+                                <div class="text">050-123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📧</div>
+                            <div>
+                                <h4>אימייל</h4>
+                                <div class="text">info@magdalresort.co.il</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📍</div>
+                            <div>
+                                <h4>כתובת</h4>
+                                <div class="text">מושב מגדל, צפון הארץ</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon" style="color: #25d366;">💬</div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" 
+                                   target="_blank" class="btn-whatsapp" style="width: 100%; margin-top: 0.5rem;">
+                                    שלח הודעה בווטסאפ עכשיו
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Cards -->
+            <section class="info-cards">
+                <div class="info-card">
+                    <h4>🏨 מה כלול במחיר?</h4>
+                    <ul>
+                        <li>21 חדרי שינה מרווחים</li>
+                        <li>בריכה פרטית מחוממת</li>
+                        <li>מטבח כשר מאובזר במלואו</li>
+                        <li>2 דונם גינה מטופחת</li>
+                        <li>משחקייה לכל הגילאים</li>
+                        <li>חניה פרטית מוצלת</li>
+                        <li>WiFi מהיר בכל המתחם</li>
+                        <li>שירות ניקיון יומי</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4>💰 מחירים ותנאים</h4>
+                    <ul>
+                        <li>מחירים משתנים לפי עונה</li>
+                        <li>הנחות לקבוצות גדולות</li>
+                        <li>הנחות למשפחות חוזרות</li>
+                        <li>כולל חשמל ומים</li>
+                        <li>ללא עמלות נסתרות</li>
+                        <li>תשלום מקדמה 50%</li>
+                        <li>ביטול עד 7 ימים מראש</li>
+                        <li>הצעת מחיר תוך 24 שעות</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4>⏰ זמינות ושירות</h4>
+                    <ul>
+                        <li>פתוח כל השנה</li>
+                        <li>צ'ק-אין 16:00</li>
+                        <li>צ'ק-אאוט 11:00</li>
+                        <li>שירות לקוחות 24/7</li>
+                        <li>תגובה מהירה לפניות</li>
+                        <li>ליווי אישי מהזמנה</li>
+                        <li>צוות מקצועי זמין</li>
+                        <li>תחזוקה שוטפת יומית</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>🏆 למה לבחור במגדל של חיים?</h2>
+                <p>✨ המתחם היחיד בצפון המשלב יוקרה, נוחות ואמינות במחיר הוגן</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="https://wa.me/972501234567?text=שלום, אני רוצה לבדוק זמינות למתחם מגדל של חיים" 
+                       target="_blank" 
+                       style="background: var(--white); color: var(--primary-color); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
+                        💬 בדקו זמינות בווטסאפ
+                    </a>
+                    <a href="tel:050-123-4567" 
+                       style="background: transparent; color: var(--white); border: 2px solid var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
+                        📞 חייגו עכשיו
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right">
-            <div class="mb-4 md:mb-0">
-                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
-                <p class="text-sm mt-1">בברכת האור החיים הקדוש זיע"א</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>מגדל של חיים</h3>
+                <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
+                
+                <div class="footer-links">
+                    <a href="index.html">בית</a>
+                    <a href="about.html">הסיפור שלנו</a>
+                    <a href="index.html#gallery">גלריה</a>
+                </div>
             </div>
-            <div class="flex space-x-4 space-x-reverse">
-                <a href="https://wa.me/972501234567" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-whatsapp text-2xl"></i></a>
-                <a href="tel:050-123-4567" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fas fa-phone text-2xl"></i></a>
-                <a href="mailto:info@magdalresort.co.il" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fas fa-envelope text-2xl"></i></a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות. | בברכת האור החיים הקדוש זיע"א</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/972501234567" target="_blank" 
-       class="fixed bottom-6 left-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-50">
-        <i class="fab fa-whatsapp text-2xl"></i>
+    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
+        💬
     </a>
 
     <script>
-        AOS.init();
-
         // Contact Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -884,6 +665,9 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
+            // Create WhatsApp message
+            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
+            message += `👤 *שם:* ${data.name}\n`;
             message += `📧 *אימייל:* ${data.email}\n`;
             message += `📞 *טלפון:* ${data.phone}\n`;
             message += `📅 *תאריכים:* ${data.dates}\n`;
@@ -1016,7 +800,7 @@
         }
 
         // Smooth hover effects for buttons
-        document.querySelectorAll('.btn-primary, .btn-whatsapp, .btn-cta').forEach(btn => {
+        document.querySelectorAll('.btn-primary, .btn-whatsapp').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-2px)';
             });
@@ -1024,41 +808,6 @@
             btn.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
             });
-        });
-    </script>
-</body>
-</html>
-            message += `📧 *אימייל:* ${data.email}\n`;
-            message += `📞 *טלפון:* ${data.phone}\n`;
-            message += `📅 *תאריכים:* ${data.dates}\n`;
-            message += `👥 *מספר אורחים:* ${data.guests}\n`;
-            
-            if (data.event) {
-                message += `🎉 *סוג אירוע:* ${data.event}\n`;
-            }
-            
-            if (data.message) {
-                message += `💬 *הודעה נוספת:* ${data.message}\n`;
-            }
-            
-            message += `\n📲 *נשלח דרך האתר ב-${new Date().toLocaleString('he-IL')}*`;
-            
-            // Save to localStorage for admin panel
-            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
-            bookings.push({
-                ...data,
-                timestamp: new Date().toISOString(),
-                id: Date.now()
-            });
-            localStorage.setItem('migdal_bookings', JSON.stringify(bookings));
-            
-            // Open WhatsApp
-            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Show success message
-            alert('תודה! הפנייה נשלחה בהצלחה. נחזור אליכם בהקדם.');
-            this.reset();
         });
     </script>
 </body>
