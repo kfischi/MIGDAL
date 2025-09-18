@@ -4,174 +4,697 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אודות - מגדל של חיים</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-bg: #0B192A;
-            --secondary-color: #4C72B0;
-            --text-color: #E0E0E0;
-            --font-family: 'Playfair Display', serif;
-        }
-
-        body {
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-            font-family: var(--font-family);
+            --primary-color: #1a365d;
+            --secondary-color: #d69e2e;
+            --accent-color: #2d87ae;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
         }
         
-        .section-header {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Assistant', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
             color: var(--secondary-color);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.1);
         }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            bottom: -5px;
+        
+        .btn-home {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home:hover {
+            background: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(45, 135, 174, 0.7)), 
+                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Heebo', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 6rem 0;
+        }
+        
+        .story-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+        
+        .story-text h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .story-text p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .story-text p:first-of-type {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .story-image {
+            position: relative;
+        }
+        
+        .story-image img {
             width: 100%;
-            height: 2px;
-            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
         }
-
-        .shine-effect {
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .feature-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0;
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        
+        /* Highlights Section */
+        .highlights-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-item {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 10px;
+            border-right: 4px solid var(--secondary-color);
+        }
+        
+        .highlight-item h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-item p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            margin-bottom: 4rem;
             position: relative;
-            overflow: hidden;
         }
-
-        .shine-effect::after {
-            content: '';
+        
+        .quote-section::before {
+            content: '"';
+            font-size: 6rem;
+            opacity: 0.3;
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(30deg);
-            animation: shine 5s infinite;
-            opacity: 0;
-            transition: opacity 0.3s;
+            top: 1rem;
+            right: 2rem;
+            font-family: serif;
         }
-
-        .shine-effect:hover::after {
-            opacity: 1;
-            animation: none;
+        
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .quote-author {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: #25d366;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .story-content,
+            .features-grid,
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .story-section,
+            .highlights-section,
+            .cta-section,
+            .quote-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .story-text h3 {
+                font-size: 2rem;
+            }
+            
+            .story-text p {
+                font-size: 1.2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
-<body class="font-sans">
-
-    <!-- Navigation Bar -->
-    <nav class="p-4 flex justify-between items-center bg-gray-900">
-        <a href="index.html" class="text-2xl font-bold text-white transition-colors duration-300 hover:text-gray-300">מגדל של חיים</a>
-        <div class="space-x-4">
-            <a href="index.html" class="text-white hover:text-gray-300">דף הבית</a>
-            <a href="index.html#gallery" class="text-white hover:text-gray-300">גלריה</a>
-            <a href="index.html#contact" class="bg-white text-black py-2 px-4 rounded-full hover:bg-gray-300 transition-colors duration-300">צור קשר</a>
-        </div>
-    </nav>
-
-    <!-- About Hero Section -->
-    <header class="py-16 md:py-24 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 section-header" data-aos="fade-down">הסיפור שלנו</h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-            מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק האור החיים הקדוש זיע"א. מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
-        </p>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">מגדל של חיים</a>
+            <div class="nav-links">
+                <a href="index.html#gallery">גלריה</a>
+                <a href="contact.html">יצירת קשר</a>
+                <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main Content Section -->
-    <section class="container mx-auto px-4 pb-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div data-aos="fade-right">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color:var(--secondary-color);">ברכת הצדיק מלווה אותנו</h2>
-                <p class="text-lg leading-relaxed mb-6">
-                    מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק האור החיים הקדוש זיע"א. 
-                    מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
-                </p>
-                <p class="text-lg leading-relaxed mb-6">
-                    היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה הצדיק מיד נענה וסייע בכל הבעיות. 
-                    לכן הוחלט שהמקום יקרא על שמו - האור החיים הקדוש.
-                </p>
-                <p class="text-lg leading-relaxed mb-6">
-                    ידוע שלצדיק לא היו ילדים, ולכן החלטנו שאנחנו בניו של הצדיק. 
-                    המקום הזה נבנה כדי לקיים את הרצון שלו - להביא שמחה ואושר למשפחות יהודיות.
-                </p>
-            </div>
-
-            <!-- Image -->
-            <div data-aos="fade-left">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAfACoEASIAAhEBAxEB/8QAGwAAAwEBAAMAAAAAAAAAAAAAAAYHBQMEAf/EADgQAAEDBAAEBAMGBQEJAAAAAAECAwQABQYREiExQVETImFxBxSBkaEygYKxwdFCUqLh8CQzRGJygpL/xAAbEAEAAgMBAQAAAAAAAAAAAAAFAQMEBgAC/8QALhEAAgEEAAMGBQUBAAAAAAAAAAECAwQRBSExBhITQVFhgZEUIjKhsRVxwdHh/9oADAMBAAIRAxEAPwDm9vtbNvsNz+IM27T47YdZuBULQa9NekAb1vr1pP8ApB9qGaRs2sO5q6UPvZL6I+XLiOKNKqJ42oKa5BPGQvYVvRSNddEVVMY+zlvxGmC05Iyfs3+8pSHOmJTR8vHXrWdsWo8+tnk1JGiYKl8hfUk4qI62iDLcRJiOIbU042DhRSfEJSdkAb5jrXGz2G73tE7u/VJ6+fNS73qXqHCtpntuTyYTkiPEAePNSDsLMQHqD15n862b++w7hKLxaI7MxiZPNBMFYltLaS6EkcKxvy+FdMo9LLUhvUiXTUJwMN96wqrm2LsHZSUo8FxyOIKOQFoKi7wbHA5Hca8UOSfJCo4I4/FXTqJHCOHSgdnp6inWvJfF9R7/AIr/2Q==" onerror="this.src='https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg'" alt="בריכה עם נוף לכינרת" class="w-full h-auto rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500">
-            </div>
-        </div>
-
-        <div class="mt-16 md:mt-24 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 section-header" data-aos="fade-up">כל מה שצריך לחופשה מושלמת</h2>
-            <p class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-10">
-                המתחם תוכנן בקפידה כדי לספק לכם את כל הצרכים, החל מהחדרים הנוחים ועד לבריכה עם הנוף המדהים של הכינרת.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Facility Item 1 -->
-                <div class="flex flex-col items-center" data-aos="fade-up">
-                    <div class="text-5xl mb-4" style="color:var(--secondary-color);">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <p class="text-lg font-bold">21 חדרי אירוח</p>
-                    <p class="text-gray-300">חדרים מרווחים לעד 100 אורחים בו-זמנית, חלק עם שירותים פרטיים</p>
-                </div>
-                <!-- Facility Item 2 -->
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-5xl mb-4" style="color:var(--secondary-color);">
-                        <i class="fas fa-kitchen-set"></i>
-                    </div>
-                    <p class="text-lg font-bold">מטבח כשר מאובזר</p>
-                    <p class="text-gray-300">מקררים גדולים, כיריים אינדוקציה ושולחנות רחבים להכנת סעודות בקלות</p>
-                </div>
-                <!-- Facility Item 3 -->
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-5xl mb-4" style="color:var(--secondary-color);">
-                        <i class="fas fa-swimming-pool"></i>
-                    </div>
-                    <p class="text-lg font-bold">בריכה עם נוף לכינרת</p>
-                    <p class="text-gray-300">בריכת שחייה פרטית מחוממת עם נוף עוצר נשימה לכינרת והר הארבל</p>
-                </div>
-                <!-- Facility Item 4 -->
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-5xl mb-4" style="color:var(--secondary-color);">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <p class="text-lg font-bold">משחקייה ופינוקים</p>
-                    <p class="text-gray-300">שולחן סנוקר, פינג פונג, הוקי אוויר ומשחקייה לילדים</p>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>הסיפור שלנו</h1>
+            <p>גלו את הסיפור המיוחד מאחורי מגדל של חיים - מתחם אירוח משפחתי יוקרתי בלב הגליל</p>
         </div>
     </section>
 
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Story Section -->
+            <section class="story-section">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h3>ברכת הצדיק מלווה אותנו</h3>
+                        <p>
+                            מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק האור החיים הקדוש זיע"א. 
+                            מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
+                        </p>
+                        <p>
+                            היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה הצדיק מיד נענה וסייע בכל הבעיות. 
+                            לכן הוחלט שהמקום יקרא על שמו - האור החיים הקדוש.
+                        </p>
+                        <p>
+                            ידוע שלצדיק לא היו ילדים, ולכן החלטנו שאנחנו בניו של הצדיק. 
+                            המקום הזה נבנה כדי לקיים את הרצון שלו - להביא שמחה ואושר למשפחות יהודיות.
+                        </p>
+                    </div>
+                    <div class="story-image">
+                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="גינות ונוף מגדל של חיים">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Section -->
+            <section class="quote-section">
+                <div class="quote">
+                    המקום הזה נבנה מתוך אמונה עמוקה שכל משפחה יהודית ראויה לחוות רגעים של שמחה, קדושה ואחדות במקום יפה ומכובד
+                </div>
+                <div class="quote-author">- בעלי מגדל של חיים</div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">21</span>
+                            <span class="stat-label">חדרי שינה</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">80</span>
+                            <span class="stat-label">אורחים בו-זמנית</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">דונם שטח</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2025</span>
+                            <span class="stat-label">שנת הקמה</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="highlights-section">
+                <h2 class="section-title">המתקנים שלנו</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🏊‍♂️</span>
+                        <h3 class="feature-title">בריכה פרטית מחוממת</h3>
+                        <p class="feature-description">בריכה גדולה ונקייה עם אזור רדוד לילדים ואזור עמוק למבוגרים, מחוממת בעונות הקרות</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-icon">🏠</span>
+                        <h3 class="feature-title">21 חדרי שינה מרווחים</h3>
+                        <p class="feature-description">חדרים נוחים ומעוצבים עד 80 אורחים, חלק עם שירותים פרטיים וחלק עם שירותים משותפים נקיים ומטופחים</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-icon">🍽️</span>
+                        <h3 class="feature-title">מטבח כשר מאובזר</h3>
+                        <p class="feature-description">מטבח גדול ומקצועי עם מקררים תעשייתיים, כיריים גז ואינדוקציה, כלי בישול מלאים</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-icon">🌳</span>
+                        <h3 class="feature-title">2 דונם גינה מטופחת</h3>
+                        <p class="feature-description">שטחי דשא רחבים, עצים מבוגרים המספקים צל טבעי, פינות ישיבה מוצלות ואזורי משחק בטוחים לילדים</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-icon">🎮</span>
+                        <h3 class="feature-title">משחקייה משפחתית</h3>
+                        <p class="feature-description">שולחן סנוקר מקצועי, פינג פונג, הוקי אוויר, כדורגל שולחן ומבחר משחקי קופסה המתאימים לכל הגילאים</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="feature-icon">🏔️</span>
+                        <h3 class="feature-title">נוף מרהיב לכינרת</h3>
+                        <p class="feature-description">מיקום יוצא דופן במושב מגדל עם נוף פנורמי עוצר נשימה לכינרת, הר הארבל ונופי הגליל הקסומים</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Highlights Section -->
+            <section class="highlights-section">
+                <h2 class="section-title">למה משפחות בוחרות בנו?</h2>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>מיקום מושלם</h4>
+                        <p>במושב מגדל בלב הגליל, קרוב לאטרקציות הצפון אבל רחוק מהרעש, עם נוף מרהיב לכינרת</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <h4>מתחם פרטי ובטוח</h4>
+                        <p>מתחם סגור ומבודד עם פרטיות מלאה, חניה פנימית ושער אלקטרוני לבטיחות המשפחות</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <h4>מתאים למשפחות דתיות</h4>
+                        <p>מטבח כשר, אווירה יהודית חמה ושירות המותאם לצרכים של המשפחה הדתית</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <h4>שירות 24/7</h4>
+                        <p>צוות זמין בכל עת לכל בעיה או בקשה, תחזוקה שוטפת וניקיון יומי ברמה הגבוהה ביותר</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <h4>מחיר הוגן ושקוף</h4>
+                        <p>ללא עמלות נסתרות, מחיר כולל ניקיון וחשמל, הנחות לקבוצות גדולות ומשפחות חוזרות</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <h4>ניסיון עשיר</h4>
+                        <p>מאות משפחות מרוצות, התמחות בשבתות חתן ואירועים משפחתיים, שירות מקצועי ואמין</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>בואו ליצור זיכרונות בלתי נשכחים</h2>
+                <p>הזמינו עכשיו וחוו בעצמכם את הקסם והברכה של מגדל של חיים</p>
+                <div>
+                    <a href="contact.html" class="btn-cta">בדקו זמינות והזמינו</a>
+                    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים לשבת חתן/חופשה משפחתית" target="_blank" class="btn-cta btn-secondary">שלחו הודעה עכשיו</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-right">
-            <div class="mb-4 md:mb-0">
-                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
-                <p class="text-sm mt-1">בברכת האור החיים הקדוש זיע"א</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>מגדל של חיים</h3>
+                <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
+                
+                <div class="footer-links">
+                    <a href="index.html">בית</a>
+                    <a href="index.html#gallery">גלריה</a>
+                    <a href="contact.html">יצירת קשר</a>
+                </div>
             </div>
-            <div class="flex space-x-4 space-x-reverse">
-                <a href="https://wa.me/972501234567" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-whatsapp text-2xl"></i></a>
-                <a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fas fa-phone text-2xl"></i></a>
-                <a href="index.html#gallery" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fas fa-images text-2xl"></i></a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות. | בברכת האור החיים הקדוש זיע"א</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        AOS.init();
-    </script>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
+        💬
+    </a>
 </body>
 </html>
