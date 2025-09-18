@@ -1,89 +1,682 @@
-<!DOCTYPE html>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">מגדל של חיים</a>
+            <div class="nav-links">
+                <a href="about.html">אודות</a>
+                <a href="index.html#gallery">גלריה</a>
+                <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>יצירת קשר והזמנות</h1>
+            <p>נשמח לעמוד לשירותכם ולעזור לכם לתכנן את החופשה המושלמת במגדל של חיים</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h3>שלחו פרטים ונחזור אליכם מיד</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">שם מלא *</label>
+                                <input type="text" id="name" name="name" required placeholder="הזינו את השם המלא">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">כתובת אימייל *</label>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">טלפון *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="050-123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dates">תאריכי הגעה *</label>
+                                <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">מספר אורחים *</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">בחרו מספר אורחים</option>
+                                    <option value="עד 15 אורחים">עד 15 אורחים</option>
+                                    <option value="16-30 אורחים">16-30 אורחים</option>
+                                    <option value="31-50 אורחים">31-50 אורחים</option>
+                                    <option value="51-70 אורחים">51-70 אורחים</option>
+                                    <option value="71-80 אורחים">71-80 אורחים</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="event">סוג האירוע</label>
+                                <select id="event" name="event">
+                                    <option value="">בחרו סוג אירוע</option>
+                                    <option value="שבת חתן">שבת חתן</option>
+                                    <option value="חופשה משפחתית">חופשה משפחתית</option>
+                                    <option value="אירוע משפחתי">אירוע משפחתי</option>
+                                    <option value="סמינר/כנס">סמינר/כנס</option>
+                                    <option value="אחר">אחר</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">הודעה נוספת</label>
+                                <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים, בקשות מיוחדות או שאלות"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary">📱 שלח פנייה לווטסאפ</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h3>פרטי קשר</h3>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📞</div>
+                            <div>
+                                <h4>טלפון</h4>
+                                <div class="text">050-123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📧</div>
+                            <div>
+                                <h4>אימייל</h4>
+                                <div class="text">info@magdalresort.co.il</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon">📍</div>
+                            <div>
+                                <h4>כתובת</h4>
+                                <div class="text">מושב מגדל, צפון הארץ</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon" style="color: #25d366;">💬</div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" 
+                                   target="_blank" class="btn-whatsapp" style="width: 100%; margin-top: 0.5rem;">
+                                    שלח הודעה בווטסאפ עכשיו
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Cards -->
+            <section class="info-cards">
+                <div class="info-card">
+                    <h4>🏨 מה כלול במחיר?</h4>
+                    <ul>
+                        <li>21 חדרי שינה מרווחים</li>
+                        <li>בריכה פרטית מחוממת</li>
+                        <li>מטבח כשר מאובזר במלואו</li>
+                        <li>2 דונם גינה מטופחת</li>
+                        <li>משחקייה לכל הגילאים</li>
+                        <li>חניה פרטית מוצלת</li>
+                        <li>WiFi מהיר בכל המתחם</li>
+                        <li>שירות ניקיון יומי</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4>💰 מחירים ותנאים</h4>
+                    <ul>
+                        <li>מחירים משתנים לפי עונה</li>
+                        <li>הנחות לקבוצות גדולות</li>
+                        <li>הנחות למשפחות חוזרות</li>
+                        <li>כולל חשמל ומים</li>
+                        <li>ללא עמלות נסתרות</li>
+                        <li>תשלום מקדמה 50%</li>
+                        <li>ביטול עד 7 ימים מראש</li>
+                        <li>הצעת מחיר תוך 24 שעות</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4>⏰ זמינות ושירות</h4>
+                    <ul>
+                        <li>פתוח כל השנה</li>
+                        <li>צ'ק-אין 16:00</li>
+                        <li>צ'ק-אאוט 11:00</li>
+                        <li>שירות לקוחות 24/7</li>
+                        <li>תגובה מהירה לפניות</li>
+                        <li>ליווי אישי מהזמנה</li>
+                        <li>צוות מקצועי זמין</li>
+                        <li>תחזוקה שוטפת יומית</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>🏆 למה לבחור במגדל של חיים?</h2>
+                <p>✨ המתחם היחיד בצפון המשלב יוקרה, נוחות ואמינות במחיר הוגן</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="https://wa.me/972501234567?text=שלום, אני רוצה לבדוק זמינות למתחם מגדל של חיים" 
+                       target="_blank" 
+                       style="background: var(--white); color: var(--primary-color); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
+                        💬 בדקו זמינות בווטסאפ
+                    </a>
+                    <a href="tel:050-123-4567" 
+                       style="background: transparent; color: var(--white); border: 2px solid var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: all 0.3s ease;">
+                        📞 חייגו עכשיו
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>מגדל של חיים</h3>
+                <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
+                
+                <div class="footer-links">
+                    <a href="index.html">בית</a>
+                    <a href="about.html">אודות</a>
+                    <a href="index.html#gallery">גלריה</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות. | בברכת האור החיים הקדוש זיע"א</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
+        💬
+    </a>
+
+    <script>
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create WhatsApp message
+            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
+            message += `👤 *שם:* ${data.name}\n<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>יצירת קשר - מגדל של חיים</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-bg: #0B192A;
-            --secondary-color: #4C72B0;
-            --text-color: #E0E0E0;
-            --font-family: 'Playfair Display', serif;
-        }
-
-        body {
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-            font-family: var(--font-family);
+            --primary-color: #1a365d;
+            --secondary-color: #d69e2e;
+            --accent-color: #2d87ae;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
         }
         
-        .section-header {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Assistant', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
             color: var(--secondary-color);
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .btn-home {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home:hover {
+            background: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Hero Section */
+        .hero {
             position: relative;
-            display: inline-block;
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(45, 135, 174, 0.7)), 
+                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Heebo', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 6rem 0;
+        }
+        
+        .contact-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-form h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .form-group {
             margin-bottom: 1.5rem;
         }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            bottom: -5px;
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            height: 2px;
-            background-color: var(--secondary-color);
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Assistant', sans-serif;
         }
-
-        .form-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(76, 114, 176, 0.3);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 10px rgba(76, 114, 176, 0.3);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(45, 135, 174, 0.2);
         }
-
-        .contact-card {
-            background: rgba(76, 114, 176, 0.1);
-            border: 1px solid rgba(76, 114, 176, 0.3);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s ease;
+        
+        .contact-info h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
         }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(76, 114, 176, 0.2);
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
         }
-
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-left: 1.5rem;
+            color: var(--accent-color);
+            min-width: 50px;
+        }
+        
+        .contact-item .text {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .contact-item h4 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
         .btn-primary {
-            background: linear-gradient(135deg, var(--secondary-color), #5a7cc0);
-            color: white;
-            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white);
+            padding: 1rem 2rem;
             border-radius: 50px;
             border: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
         }
-
+        
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(76, 114, 176, 0.4);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-whatsapp {
+            background: #25d366;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .info-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .info-card ul {
+            list-style: none;
+            text-align: right;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .info-card li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: #25d366;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .contact-content,
+            .info-cards {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-section,
+            .cta-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-form h3,
+            .contact-info h3 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -291,9 +884,150 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Create WhatsApp message
-            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
-            message += `👤 *שם:* ${data.name}\n`;
+            message += `📧 *אימייל:* ${data.email}\n`;
+            message += `📞 *טלפון:* ${data.phone}\n`;
+            message += `📅 *תאריכים:* ${data.dates}\n`;
+            message += `👥 *מספר אורחים:* ${data.guests}\n`;
+            
+            if (data.event) {
+                message += `🎉 *סוג אירוע:* ${data.event}\n`;
+            }
+            
+            if (data.message) {
+                message += `💬 *הודעה נוספת:* ${data.message}\n`;
+            }
+            
+            message += `\n📲 *נשלח דרך האתר ב-${new Date().toLocaleString('he-IL')}*`;
+            
+            // Save to localStorage for admin panel
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            bookings.push({
+                ...data,
+                timestamp: new Date().toISOString(),
+                id: Date.now()
+            });
+            localStorage.setItem('migdal_bookings', JSON.stringify(bookings));
+            
+            // Open WhatsApp
+            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('✅ תודה רבה! הפנייה נשלחה בהצלחה לווטסאפ. נחזור אליכם בהקדם האפשרי.');
+            this.reset();
+        });
+
+        // Admin Panel Access
+        if (window.location.hash === '#admin') {
+            const password = prompt('הכנס סיסמת מנהל:');
+            if (password === 'migdal2025') {
+                showAdminPanel();
+            }
+        }
+
+        function showAdminPanel() {
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            
+            let adminHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; padding: 2rem; overflow-y: auto;">
+                    <div style="background: white; max-width: 1200px; margin: 0 auto; padding: 2rem; border-radius: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h2>פאנל מנהל - מגדל של חיים</h2>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #e53e3e; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">סגור</button>
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <button onclick="exportToCSV()" style="background: #38a169; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; margin-left: 1rem;">ייצא ל-CSV</button>
+                            <button onclick="clearAllBookings()" style="background: #e53e3e; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer;">נקה הכל</button>
+                        </div>
+                        
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: #f7fafc;">
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריך</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">שם</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">טלפון</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אימייל</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריכי הגעה</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אורחים</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אירוע</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            `;
+            
+            bookings.reverse().forEach(booking => {
+                const date = new Date(booking.timestamp).toLocaleString('he-IL');
+                adminHTML += `
+                    <tr>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${date}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.name}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.phone}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.email}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.dates}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.guests}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.event || '-'}</td>
+                    </tr>
+                `;
+            });
+            
+            adminHTML += `
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 2rem; text-align: center; color: #718096;">
+                            סך הכל: ${bookings.length} הזמנות
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', adminHTML);
+        }
+
+        function exportToCSV() {
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            
+            let csv = 'תאריך,שם,טלפון,אימייל,תאריכי הגעה,מספר אורחים,סוג אירוע,הודעה\n';
+            
+            bookings.forEach(booking => {
+                const date = new Date(booking.timestamp).toLocaleString('he-IL');
+                csv += `"${date}","${booking.name}","${booking.phone}","${booking.email}","${booking.dates}","${booking.guests}","${booking.event || ''}","${booking.message || ''}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `migdal_bookings_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function clearAllBookings() {
+            if (confirm('האם אתה בטוח שברצונך למחוק את כל ההזמנות?')) {
+                localStorage.removeItem('migdal_bookings');
+                location.reload();
+            }
+        }
+
+        // Smooth hover effects for buttons
+        document.querySelectorAll('.btn-primary, .btn-whatsapp, .btn-cta').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
             message += `📧 *אימייל:* ${data.email}\n`;
             message += `📞 *טלפון:* ${data.phone}\n`;
             message += `📅 *תאריכים:* ${data.dates}\n`;
