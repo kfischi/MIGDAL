@@ -3,90 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="מגדל של חיים - ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
-    <meta name="keywords" content="ריזורט בצפון, שבתות חתן, אירוח משפחתי, בריכה פרטית, מושב מגדל, 21 חדרים">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי">
-    <meta property="og:description" content="ריזורט משפחתי יוקרתי במושב מגדל עם 21 חדרים, בריכה פרטית ונוף מדהים לכינרת והר הארבל">
-    <meta property="og:image" content="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
-    <meta property="og:url" content="https://migdal-chaim.com">
-    
     <title>מגדל של חיים - ריזורט משפחתי יוקרתי בצפון</title>
+    <meta name="description" content="ריזורט משפחתי יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #1a365d;
-            --secondary: #2c5282;
-            --accent: #d69e2e;
-            --text: #2d3748;
-            --light: #f7fafc;
+            --primary-color: #1a365d;
+            --secondary-color: #d69e2e;
+            --accent-color: #2d87ae;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
             --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Assistant', Arial, sans-serif;
+            font-family: 'Assistant', sans-serif;
             line-height: 1.6;
-            color: var(--text);
-            scroll-behavior: smooth;
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
         }
-
+        
         /* Header */
         .header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             background: rgba(26, 54, 93, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
-
+        
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-
+        
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
+            font-family: 'Heebo', sans-serif;
         }
-
+        
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-
+        
         .nav-menu a {
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
         }
-
+        
         .nav-menu a:hover {
-            color: var(--accent);
+            color: var(--secondary-color);
         }
-
+        
         .mobile-toggle {
             display: none;
             background: none;
@@ -95,108 +96,17 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-
-        /* Accessibility Button */
-        .accessibility-btn {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            z-index: 1001;
-            transition: all 0.3s;
-        }
-
-        .accessibility-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-        }
-
-        .accessibility-menu {
-            position: fixed;
-            top: 140px;
-            left: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            padding: 1rem;
-            min-width: 200px;
-            display: none;
-            z-index: 1002;
-        }
-
-        .accessibility-menu.active {
-            display: block;
-        }
-
-        .accessibility-option {
-            display: block;
-            width: 100%;
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-            background: none;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: right;
-        }
-
-        .accessibility-option:hover {
-            background: var(--light);
-        }
-
-        .accessibility-option.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* High contrast mode */
-        body.high-contrast {
-            background: black !important;
-            color: white !important;
-        }
-
-        body.high-contrast .section {
-            background: black !important;
-        }
-
-        body.high-contrast .card,
-        body.high-contrast .form,
-        body.high-contrast .contact-item {
-            background: #333 !important;
-            color: white !important;
-        }
-
-        /* Large font mode */
-        body.large-font {
-            font-size: 1.2rem;
-        }
-
-        body.large-font .section-title {
-            font-size: 3rem;
-        }
-
-        /* Hero */
+        
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(44, 82, 130, 0.6)), 
-                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg') center/cover;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--white);
         }
-
+        
         .hero-video {
             position: absolute;
             top: 0;
@@ -204,100 +114,105 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1;
+            z-index: -2;
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(26, 54, 93, 0.8), rgba(44, 82, 130, 0.6));
-            z-index: 2;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(45, 135, 174, 0.6));
+            z-index: -1;
         }
-
+        
         .hero-content {
-            position: relative;
-            z-index: 3;
+            text-align: center;
+            color: var(--white);
             max-width: 800px;
-            padding: 0 1rem;
+            padding: 0 2rem;
         }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+        
+        .hero-content h1 {
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            font-family: 'Heebo', sans-serif;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
+        
         .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            font-weight: 300;
         }
-
+        
         .hero-location {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
-
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            margin: 0.5rem;
-            border-radius: 8px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
         }
-
+        
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--secondary-color);
             color: var(--white);
+            border-color: var(--secondary-color);
         }
-
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
         .btn-secondary {
             background: transparent;
             color: var(--white);
-            border: 2px solid var(--white);
+            border-color: var(--white);
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* About */
-        .about {
+        
+        .btn-secondary:hover {
             background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-2px);
         }
-
+        
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+            padding: 8rem 0;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-family: 'Heebo', sans-serif;
+        }
+        
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -305,732 +220,602 @@
             align-items: center;
             margin-top: 3rem;
         }
-
+        
         .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
+            font-size: 2.2rem;
+            color: var(--primary-color);
             margin-bottom: 1.5rem;
+            font-weight: 600;
         }
-
+        
         .about-text p {
+            font-size: 1.2rem;
             margin-bottom: 1.5rem;
+            color: var(--text-light);
             line-height: 1.8;
-            color: #666;
         }
-
+        
+        .about-image {
+            position: relative;
+        }
+        
         .about-image img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
         }
-
-        /* Stats */
-        .stats {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            padding: 2rem 1rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Facilities */
-        .facilities {
-            background: var(--light);
-        }
-
-        .facilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .facility-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .facility-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .facility-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .facility-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Gallery */
+        
+        /* Gallery Section */
         .gallery {
+            padding: 8rem 0;
             background: var(--white);
         }
-
-        .gallery-filter {
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        
+        .filter-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-
+        
         .filter-btn {
-            padding: 0.8rem 1.5rem;
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            border-radius: 25px;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 1rem;
         }
-
+        
         .filter-btn.active,
         .filter-btn:hover {
-            background: var(--primary);
+            background: var(--accent-color);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
-
+        
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-
+        
         .gallery-item {
             position: relative;
-            height: 250px;
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+            aspect-ratio: 4/3;
         }
-
+        
         .gallery-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
-
+        
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
-
-        .gallery-overlay {
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .overlay {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 54, 93, 0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
         }
-
-        .gallery-overlay span {
-            color: var(--white);
+        
+        .overlay .title {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
-
-        .gallery-overlay small {
-            color: rgba(255, 255, 255, 0.8);
+        
+        .overlay .description {
             font-size: 0.9rem;
+            opacity: 0.9;
         }
-
-        /* Contact */
+        
+        /* Stats Section */
+        .stats {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
         .contact {
-            background: var(--light);
+            padding: 8rem 0;
+            background: var(--bg-light);
         }
-
+        
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            margin-top: 3rem;
+            align-items: start;
         }
-
+        
         .contact-form {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
         }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text);
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-dark);
         }
-
+        
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 1rem;
             border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: inherit;
+            transition: border-color 0.3s ease;
         }
-
+        
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--accent-color);
         }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
+        
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            padding: 2rem;
         }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        .contact-details h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .contact-details a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            color: var(--accent);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
             margin-bottom: 2rem;
         }
-
-        .footer-section h4 {
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p,
-        .footer-section ul {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .footer-social a {
+        
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
-
-        .footer-social a:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
+        
+        .contact-item .icon {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            color: var(--accent-color);
         }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.8);
+        
+        .contact-item .text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
         }
-
-        /* Floating WhatsApp */
-        .floating-whatsapp {
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 2rem;
+            left: 2rem;
             background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: white;
+            padding: 1rem;
+            border-radius: 50%;
             font-size: 1.5rem;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-lg);
             z-index: 1000;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
-
-        .floating-whatsapp:hover {
+        
+        .whatsapp-float:hover {
             transform: scale(1.1);
         }
-
-        /* Responsive */
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
             }
-
+            
             .nav-menu {
                 position: fixed;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--primary);
+                background: var(--primary-color);
                 flex-direction: column;
-                padding: 2rem 0;
+                padding: 2rem;
                 transform: translateX(-100%);
-                transition: transform 0.3s;
+                transition: transform 0.3s ease;
             }
-
+            
             .nav-menu.active {
                 transform: translateX(0);
             }
-
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-location {
+                font-size: 1rem;
+            }
+            
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .facilities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
+            
             .section-title {
                 font-size: 2rem;
             }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 0.5rem;
-            }
-
+            
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
-
-            .floating-whatsapp {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+            
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Accessibility Button -->
-    <button class="accessibility-btn" id="accessibilityBtn" aria-label="פתח תפריט נגישות">
-        ♿
-    </button>
-    
-    <div class="accessibility-menu" id="accessibilityMenu">
-        <button class="accessibility-option" id="highContrastBtn">ניגודיות גבוהה</button>
-        <button class="accessibility-option" id="largeFontBtn">הגדל גופן</button>
-        <button class="accessibility-option" id="resetBtn">איפוס הגדרות</button>
-    </div>
-
     <!-- Header -->
     <header class="header" id="header">
-        <div class="container">
-            <nav class="nav">
-                <a href="#home" class="logo">מגדל של חיים</a>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home">בית</a></li>
-                    <li><a href="#about">אודות</a></li>
-                    <li><a href="#facilities">מתקנים</a></li>
-                    <li><a href="#gallery">גלריה</a></li>
-                    <li><a href="#contact">יצירת קשר</a></li>
-                </ul>
-                <button class="mobile-toggle" id="mobileToggle">☰</button>
-            </nav>
-        </div>
+        <nav class="nav">
+            <a href="#" class="logo">מגדל של חיים</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">בית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="contact.html">יצירת קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop playsinline poster="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg">
+        <video class="hero-video" autoplay muted loop playsinline>
             <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+            <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="מגדל של חיים" style="width: 100%; height: 100%; object-fit: cover;">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>מגדל של חיים</h1>
             <p class="hero-subtitle">ריזורט משפחתי יוקרתי במושב מגדל</p>
             <p class="hero-location">נוף מדהים של הכינרת והר הארבל - אווירה פסטורלית ייחודית</p>
-            <div>
-                <a href="#contact" class="btn btn-primary">הזמינו עכשיו</a>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-primary">הזמינו עכשיו</a>
                 <a href="#gallery" class="btn btn-secondary">גלו את המתחם</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="section about" id="about">
+    <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">אודות מגדל של חיים</h2>
-            <p class="section-subtitle">
-                חוויית אירוח ייחודית מול נופי הכנרת והר הארבל, עם אווירה פסטורלית שאין לה תחליף
-            </p>
             
             <div class="about-content">
                 <div class="about-text">
                     <h3>הסיפור שלנו</h3>
                     <p>
-                        "מגדל של חיים" הוא לא רק מתחם - הוא בית. המקום הוקם מתוך אהבה גדולה לאירוח ומתוך רצון לספק חופשה משפחתית וקבוצתית אמיתית, כזו שמתאימה לכל משפחה, לכל כיס ובכל זמן.
+                        מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק האור החיים הקדוש זיע"א. 
+                        מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
                     </p>
                     <p>
-                        ברוכים הבאים למתחם "מגדל של חיים", פנינה ירוקה ורחבת ידיים מול נוף עוצר נשימה של הכנרת והר הארבל. המתחם שלנו, המשתרע על פני שני דונם נדיבים, נועד להציע לכם חוויה פסטורלית ורגועה.
+                        היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה הצדיק מיד נענה וסייע בכל הבעיות. 
+                        לכן הוחלט שהמקום יקרא על שמו - האור החיים הקדוש.
                     </p>
                     <p>
-                        אנו מאמינים כי אירוח אמיתי מתבטא בשילוב של נוחות, ניקיון ואסתטיקה, וכל זאת במחיר נגיש. המתחם שלנו הוא הפתרון המושלם למשפחות ברוכות ילדים, קבוצות גדולות, שבתות חתן ואירועים משפחתיים קטנים.
+                        ידוע שלצדיק לא היו ילדים, ולכן החלטנו שאנחנו בניו של הצדיק. 
+                        המקום הזה נבנה כדי לקיים את הרצון שלו - להביא שמחה ואושר למשפחות יהודיות.
                     </p>
                 </div>
                 <div class="about-image">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" 
-                         alt="נוף מרהיב של מתחם מגדל של חיים">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="נוף מגדל של חיים">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="section stats">
+    <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">21</div>
-                    <div class="stat-label">חדרים מרווחים</div>
+                    <div class="stat-number" data-count="21">21</div>
+                    <div class="stat-label">חדרי שינה</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">80</div>
-                    <div class="stat-label">מקומות אירוח</div>
+                    <div class="stat-number" data-count="100">100</div>
+                    <div class="stat-label">אורחים בו-זמנית</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">2</div>
+                    <div class="stat-number" data-count="5">5</div>
                     <div class="stat-label">דונם שטח</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">שביעות רצון</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Facilities Section -->
-    <section class="section facilities" id="facilities">
-        <div class="container">
-            <h2 class="section-title">המתקנים שלנו</h2>
-            <p class="section-subtitle">
-                כל מה שאתם צריכים לחופשה מושלמת - במקום אחד
-            </p>
-            
-            <div class="facilities-grid">
-                <div class="facility-card">
-                    <div class="facility-icon">🏊‍♀️</div>
-                    <h3>בריכת שחייה</h3>
-                    <p>בריכת שחייה גדולה ומטופחת, מגודרת ובטיחותית, המעניקה מקום מושלם להנאה לקטנים ולגדולים כאחד</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🛏️</div>
-                    <h3>21 חדרים פרטיים</h3>
-                    <p>חדרים מרווחים ונוחים עם מיטות איכותיות, ארונות מסודרים ושירותים צמודים ברוב החדרים</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🍳</div>
-                    <h3>מטבח מאובזר</h3>
-                    <p>מטבח גדול ומודרני עם כיריים אינדוקציה, מקררים גדולים וכל הכלים הדרושים להכנת סעודות</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🎮</div>
-                    <h3>אזור משחקים</h3>
-                    <p>משחקייה צבעונית לילדים, שולחן סנוקר, פינג פונג והוקי אוויר לבילוי משפחתי מהנה</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🐠</div>
-                    <h3>בריכת דגי נוי</h3>
-                    <p>בריכת דגי נוי מרשימה המוסיפה אווירה רגועה ופסטורלית למתחם</p>
-                </div>
-                
-                <div class="facility-card">
-                    <div class="facility-icon">🌅</div>
-                    <h3>נוף עוצר נשימה</h3>
-                    <p>מרפסת פתוחה המשקיפה לנוף מדהים של הכינרת והר הארבל - חוויה בלתי נשכחת</p>
+                    <div class="stat-number" data-count="2025">2025</div>
+                    <div class="stat-label">שנת הקמה</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="section gallery" id="gallery">
+    <section class="gallery" id="gallery">
         <div class="container">
-            <h2 class="section-title">גלריית תמונות</h2>
-            <p class="section-subtitle">
-                הציצו אל תוך המתחם המדהים שלנו
-            </p>
+            <h2 class="section-title">גלריית המתחם</h2>
+            <p class="section-subtitle">גלו את הקסם שמחכה לכם במגדל של חיים</p>
             
-            <!-- Gallery Filter -->
-            <div class="gallery-filter">
+            <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">הכל</button>
-                <button class="filter-btn" data-filter="exterior">חזית ונוף</button>
                 <button class="filter-btn" data-filter="pool">בריכה</button>
                 <button class="filter-btn" data-filter="rooms">חדרים</button>
-                <button class="filter-btn" data-filter="kitchen">מטבח</button>
-                <button class="filter-btn" data-filter="garden">גינה</button>
+                <button class="filter-btn" data-filter="kitchen">מטבח ואוכל</button>
+                <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
+                <button class="filter-btn" data-filter="exterior">אזורי חוץ</button>
             </div>
-            
+
             <div class="gallery-grid" id="galleryGrid">
-                <!-- חזית ונוף -->
-                <div class="gallery-item" data-category="exterior">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" alt="חזית המתחם">
-                    <div class="gallery-overlay">
-                        <span>חזית המתחם</span>
-                        <small>כניסה ראשית ונוף כללי</small>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="exterior">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="נוף חיצוני">
-                    <div class="gallery-overlay">
-                        <span>נוף חיצוני</span>
-                        <small>המתחם מבחוץ</small>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="exterior">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" alt="נוף כללי">
-                    <div class="gallery-overlay">
-                        <span>נוף כללי</span>
-                        <small>תצפית על המתחם</small>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="exterior">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="נוף מרהיב">
-                    <div class="gallery-overlay">
-                        <span>נוף מרהיב</span>
-                        <small>נוף מהמתחם אל הסביבה</small>
-                    </div>
-                </div>
-                
                 <!-- בריכה -->
                 <div class="gallery-item" data-category="pool">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="בריכת השחייה">
-                    <div class="gallery-overlay">
-                        <span>בריכת השחייה</span>
-                        <small>בריכה גדולה ומטופחת</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף">
+                    <div class="overlay">
+                        <div class="title">בריכה פרטית מחוממת</div>
+                        <div class="description">בריכה יוקרתית עם נוף מדהים לכינרת</div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="pool">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="אזור הבריכה">
-                    <div class="gallery-overlay">
-                        <span>אזור הבריכה</span>
-                        <small>פינות ישיבה ונוח</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="בריכה">
+                    <div class="overlay">
+                        <div class="title">אזור הבריכה</div>
+                        <div class="description">מרחב רחב וצלול למשפחות</div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="pool">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="בריכה ומרפסת">
-                    <div class="gallery-overlay">
-                        <span>בריכה ומרפסת</span>
-                        <small>מבט כללי על אזור הבריכה</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה">
+                    <div class="overlay">
+                        <div class="title">זווית נוספת של הבריכה</div>
+                        <div class="description">מים צלולים ואווירה רגועה</div>
                     </div>
                 </div>
-                
+
+                <div class="gallery-item" data-category="pool">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="בריכה">
+                    <div class="overlay">
+                        <div class="title">בריכה בשעות הערב</div>
+                        <div class="description">אווירה קסומה לרגעי רוגע</div>
+                    </div>
+                </div>
+
                 <!-- חדרים -->
                 <div class="gallery-item" data-category="rooms">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="חדר שינה">
-                    <div class="gallery-overlay">
-                        <span>חדר שינה</span>
-                        <small>חדר מרווח ונוח</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר שינה 1">
+                    <div class="overlay">
+                        <div class="title">חדר שינה ראשי</div>
+                        <div class="description">חדר מרווח ונוח עם נוף יפה</div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="rooms">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="סלון משפחתי">
-                    <div class="gallery-overlay">
-                        <span>סלון משפחתי</span>
-                        <small>אזור מגורים נוח</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדר שינה 2">
+                    <div class="overlay">
+                        <div class="title">חדר שינה משפחתי</div>
+                        <div class="description">מושלם עבור משפחות עם ילדים</div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="rooms">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדר נוסף">
-                    <div class="gallery-overlay">
-                        <span>חדר נוסף</span>
-                        <small>מגוון אפשרויות אירוח</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדר שינה 3">
+                    <div class="overlay">
+                        <div class="title">חדר שינה נוסף</div>
+                        <div class="description">חדר נוח ושקט לשינה מושלמת</div>
                     </div>
                 </div>
-                
-                <!-- מטבח -->
+
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדר שינה 4">
+                    <div class="overlay">
+                        <div class="title">חדר אורחים</div>
+                        <div class="description">חדר מעוצב באלגנטיות</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/17.jpg" alt="חדר שינה 5">
+                    <div class="overlay">
+                        <div class="title">סוויטה יוקרתית</div>
+                        <div class="description">חדר מרווח במיוחד עם חלון פנורמי</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="מקלחת ושירותים">
+                    <div class="overlay">
+                        <div class="title">חדר רחצה מודרני</div>
+                        <div class="description">מקלחת ושירותים מעוצבים</div>
+                    </div>
+                </div>
+
+                <!-- מטבח ואוכל -->
                 <div class="gallery-item" data-category="kitchen">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="המטבח">
-                    <div class="gallery-overlay">
-                        <span>המטבח</span>
-                        <small>מטבח מאובזר ומרווח</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח">
+                    <div class="overlay">
+                        <div class="title">מטבח מרכזי</div>
+                        <div class="description">מטבח גדול ומאובזר במלואו</div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="kitchen">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="פינת אוכל">
-                    <div class="gallery-overlay">
-                        <span>פינת אוכל</span>
-                        <small>שולחן גדול למשפחות</small>
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" alt="פינת אוכל">
+                    <div class="overlay">
+                        <div class="title">פינת אוכל מרכזית</div>
+                        <div class="description">שולחן גדול לכל המשפחה</div>
                     </div>
                 </div>
-                
-                <!-- גינה -->
-                <div class="gallery-item" data-category="garden">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="הגינה">
-                    <div class="gallery-overlay">
-                        <span>הגינה</span>
-                        <small>שטחים ירוקים מטופחים</small>
+
+                <div class="gallery-item" data-category="kitchen">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="מטבח נוסף">
+                    <div class="overlay">
+                        <div class="title">מטבח משני</div>
+                        <div class="description">מטבח נוסף לנוחות מירבית</div>
                     </div>
                 </div>
-                
-                <div class="gallery-item" data-category="garden">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="פינות ישיבה">
-                    <div class="gallery-overlay">
-                        <span>פינות ישיבה</span>
-                        <small>אזורי מנוחה בגינה</small>
+
+                <!-- פנאי ומשחקים -->
+                <div class="gallery-item" data-category="entertainment">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="סלון">
+                    <div class="overlay">
+                        <div class="title">סלון מרכזי</div>
+                        <div class="description">מרחב נוח לבילוי משפחתי</div>
                     </div>
                 </div>
-                
-                <div class="gallery-item" data-category="garden">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/16.jpg" alt="אזור משחקים">
-                    <div class="gallery-overlay">
-                        <span>אזור משחקים</span>
-                        <small>משחקייה לילדים</small>
+
+                <div class="gallery-item" data-category="entertainment">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/16.jpg" alt="אזור פנאי">
+                    <div class="overlay">
+                        <div class="title">אזור פנאי</div>
+                        <div class="description">מקום מושלם למשחקים ובילוי</div>
+                    </div>
+                </div>
+
+                <!-- אזורי חוץ -->
+                <div class="gallery-item" data-category="exterior">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="גינה">
+                    <div class="overlay">
+                        <div class="title">גינה ירוקה</div>
+                        <div class="description">שטחי דשא רחבים ומטופחים</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" alt="מרפסת">
+                    <div class="overlay">
+                        <div class="title">מרפסת עם נוף</div>
+                        <div class="description">מרפסת מרווחת עם נוף לכינרת</div>
                     </div>
                 </div>
             </div>
@@ -1038,20 +823,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">יצירת קשר והזמנות</h2>
-            <p class="section-subtitle">
-                מוכנים לחופשה בלתי נשכחת? צרו קשר עכשיו
-            </p>
             
             <div class="contact-content">
                 <div class="contact-form">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">שלחו פנייה</h3>
+                    <h3>שלחו פרטים ונחזור אליכם</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">שם מלא *</label>
                             <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">כתובת אימייל *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         
                         <div class="form-group">
@@ -1060,73 +847,86 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">אימייל</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com">
+                            <label for="dates">תאריכי הגעה *</label>
+                            <input type="text" id="dates" name="dates" placeholder="לדוגמה: 15-17/3/2025" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="dates">תאריכי האירוח הרצויים</label>
-                            <input type="text" id="dates" name="dates" placeholder="למשל: 15-17 במרץ">
+                            <label for="guests">מספר אורחים *</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">בחרו מספר אורחים</option>
+                                <option value="עד 20 אורחים">עד 20 אורחים</option>
+                                <option value="21-40 אורחים">21-40 אורחים</option>
+                                <option value="41-60 אורחים">41-60 אורחים</option>
+                                <option value="61-80 אורחים">61-80 אורחים</option>
+                                <option value="81-100 אורחים">81-100 אורחים</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="guests">מספר אורחים</label>
-                            <input type="number" id="guests" name="guests" min="1" max="80" placeholder="כמה אורחים?">
+                            <label for="event">סוג האירוע</label>
+                            <select id="event" name="event">
+                                <option value="">בחרו סוג אירוע</option>
+                                <option value="שבת חתן">שבת חתן</option>
+                                <option value="חופשה משפחתית">חופשה משפחתית</option>
+                                <option value="אירוע משפחתי">אירוע משפחתי</option>
+                                <option value="סמינר/כנס">סמינר/כנס</option>
+                                <option value="אחר">אחר</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">הודעה נוספת</label>
-                            <textarea id="message" name="message" placeholder="ספרו לנו על האירוע שלכם..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="פרטים נוספים או בקשות מיוחדות"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פנייה</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">שלח פנייה לווטסאפ</button>
                     </form>
                 </div>
                 
                 <div class="contact-info">
+                    <h3>פרטי קשר</h3>
+                    
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h4>טלפון</h4>
-                            <p>
-                                <a href="tel:+972523983394">052-398-3394</a><br>
-                                זמינים לשירותכם 24/7
-                            </p>
-                        </div>
+                        <div class="icon">📞</div>
+                        <div class="text">050-123-4567</div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">💬</div>
-                        <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>
-                                <a href="https://wa.me/972523983394" target="_blank">שלחו הודעה ישירה</a><br>
-                                תגובה מהירה ומיידית
-                            </p>
-                        </div>
+                        <div class="icon">📧</div>
+                        <div class="text">info@magdalresort.co.il</div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
-                            <h4>אימייל</h4>
-                            <p>
-                                <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a><br>
-                                נחזור אליכם תוך 24 שעות
-                            </p>
-                        </div>
+                        <div class="icon">📍</div>
+                        <div class="text">מושב מגדל, צפון הארץ</div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>כתובת</h4>
-                            <p>
-                                מושב מגדל, הגליל העליון<br>
-                                21 חדרים עם מקלחת פרטית<br>
-                                נוף מדהים לכינרת
-                            </p>
+                        <div class="icon">💬</div>
+                        <div class="text">
+                            <a href="https://wa.me/972501234567" target="_blank" style="color: #25d366; text-decoration: none;">
+                                WhatsApp - קשר מהיר
+                            </a>
                         </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">זמינות ומחירים</h4>
+                        <p style="color: var(--text-light); line-height: 1.6;">
+                            המחירים משתנים בהתאם לעונה, מספר האורחים ומשך השהייה. 
+                            צרו קשר לקבלת הצעת מחיר מותאמת אישית.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick WhatsApp Button -->
+                    <div style="margin-top: 2rem;">
+                        <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל פרטים על מגדל של חיים" 
+                           target="_blank" 
+                           class="btn btn-primary"
+                           style="width: 100%; background: #25d366; text-align: center; text-decoration: none; display: inline-block;">
+                            💬 פנו אלינו בווטסאפ עכשיו
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1137,370 +937,283 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>מגדל של חיים</h4>
-                    <p>
-                        ריזורט משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים בלתי נשכחים.
-                    </p>
-                    <div class="footer-social">
-                        <a href="https://facebook.com/migdalresort" target="_blank">📘</a>
-                        <a href="https://instagram.com/migdalresort" target="_blank">📷</a>
-                        <a href="https://wa.me/972523983394" target="_blank">💬</a>
-                    </div>
-                </div>
+                <h3>מגדל של חיים</h3>
+                <p>ריזורט משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים בלתי נשכחים.</p>
                 
-                <div class="footer-section">
-                    <h4>קישורים מהירים</h4>
-                    <ul>
-                        <li><a href="#home">בית</a></li>
-                        <li><a href="#about">אודות</a></li>
-                        <li><a href="#facilities">מתקנים</a></li>
-                        <li><a href="#gallery">גלריה</a></li>
-                        <li><a href="#contact">יצירת קשר</a></li>
-                        <li><a href="about.html">הסיפור שלנו</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>יצירת קשר</h4>
-                    <ul>
-                        <li><strong>טלפון:</strong> <a href="tel:+972523983394">052-398-3394</a></li>
-                        <li><strong>אימייל:</strong> <a href="mailto:info@migdalresort.co.il">info@migdalresort.co.il</a></li>
-                        <li><strong>כתובת:</strong> מושב מגדל, הגליל העליון</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>מידע משפטי</h4>
-                    <ul>
-                        <li><a href="policies.html">מדיניות פרטיות</a></li>
-                        <li><a href="policies.html#accessibility">הצהרת נגישות</a></li>
-                        <li><a href="policies.html#terms">תקנון</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <a href="#home">בית</a>
+                    <a href="about.html">אודות</a>
+                    <a href="#gallery">גלריה</a>
+                    <a href="contact.html">יצירת קשר</a>
+                    <a href="policies.html">מדיניות פרטיות</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
-                <p>עוצב ופותח במיוחד לריזורט מגדל של חיים</p>
+                <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות. | עוצב ופותח במיוחד לריזורט מגדל של חיים</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/972523983394" class="floating-whatsapp" target="_blank">
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/972501234567" class="whatsapp-float" target="_blank" title="צרו קשר בוואטסאפ">
         💬
     </a>
 
-    <!-- JavaScript -->
     <script>
-        // Configuration
-        const CONFIG = {
-            whatsappNumber: '972523983394'
-        };
-
-        // DOM Elements
-        const elements = {
-            header: document.getElementById('header'),
-            mobileToggle: document.getElementById('mobileToggle'),
-            navMenu: document.getElementById('navMenu'),
-            contactForm: document.getElementById('contactForm'),
-            accessibilityBtn: document.getElementById('accessibilityBtn'),
-            accessibilityMenu: document.getElementById('accessibilityMenu'),
-            highContrastBtn: document.getElementById('highContrastBtn'),
-            largeFontBtn: document.getElementById('largeFontBtn'),
-            resetBtn: document.getElementById('resetBtn')
-        };
-
         // Mobile Navigation
-        function handleMobileNav() {
-            elements.mobileToggle.addEventListener('click', () => {
-                elements.navMenu.classList.toggle('active');
-                elements.mobileToggle.textContent = elements.navMenu.classList.contains('active') ? '✕' : '☰';
-            });
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
 
-            // Close menu when clicking on a link
-            elements.navMenu.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    elements.navMenu.classList.remove('active');
-                    elements.mobileToggle.textContent = '☰';
-                }
-            });
-        }
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
 
-        // Contact Form Handler
-        function handleContactForm() {
-            elements.contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const formData = {
-                    name: document.getElementById('name').value,
-                    phone: document.getElementById('phone').value,
-                    email: document.getElementById('email').value,
-                    dates: document.getElementById('dates').value,
-                    guests: document.getElementById('guests').value,
-                    message: document.getElementById('message').value,
-                    timestamp: new Date().toLocaleString('he-IL'),
-                    source: 'אתר האינטרנט'
-                };
-
-                // Create WhatsApp message
-                const whatsappMessage = `🏨 פנייה חדשה ממגדל של חיים!
-
-👤 שם: ${formData.name}
-📞 טלפון: ${formData.phone}
-📧 אימייל: ${formData.email || 'לא צוין'}
-📅 תאריכים: ${formData.dates || 'לא צוין'}
-👥 מספר אורחים: ${formData.guests || 'לא צוין'}
-💬 הודעה: ${formData.message || 'אין הודעה נוספת'}
-
-⏰ זמן הפנייה: ${formData.timestamp}
-🌐 מקור: ${formData.source}
-
-לחצו כאן כדי להתקשר ללקוח:
-https://wa.me/972${formData.phone.replace(/^0/, '')}
-
-${formData.email ? `או לשלוח אימייל: mailto:${formData.email}` : ''}`;
-
-                try {
-                    // Save to local storage as backup
-                    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                    leads.push(formData);
-                    localStorage.setItem('leads', JSON.stringify(leads));
-
-                    // Open WhatsApp
-                    const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappUrl, '_blank');
-
-                    // Show success message
-                    alert('הפנייה נשלחה בהצלחה! אנחנו נחזור אליכם בהקדם.');
-                    
-                    // Reset form
-                    elements.contactForm.reset();
-
-                } catch (error) {
-                    console.error('Error sending form:', error);
-                    
-                    // Fallback - still open WhatsApp
-                    const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappUrl, '_blank');
-                    
-                    alert('הפנייה נשלחה! אנחנו נחזור אליכם בהקדם.');
-                }
-            });
-        }
+        // Close mobile menu when clicking on a link
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navMenu.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            }
+        });
 
         // Gallery Filter
-        function handleGalleryFilter() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    btn.classList.add('active');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
 
-                    const filterValue = btn.getAttribute('data-filter');
+                const filter = this.getAttribute('data-filter');
 
-                    galleryItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
                             item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        }
-
-        // Accessibility Features
-        function handleAccessibility() {
-            // Toggle accessibility menu
-            elements.accessibilityBtn.addEventListener('click', () => {
-                elements.accessibilityMenu.classList.toggle('active');
-            });
-
-            // High contrast mode
-            elements.highContrastBtn.addEventListener('click', () => {
-                document.body.classList.toggle('high-contrast');
-                elements.highContrastBtn.classList.toggle('active');
-                localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
-            });
-
-            // Large font mode
-            elements.largeFontBtn.addEventListener('click', () => {
-                document.body.classList.toggle('large-font');
-                elements.largeFontBtn.classList.toggle('active');
-                localStorage.setItem('largeFont', document.body.classList.contains('large-font'));
-            });
-
-            // Reset accessibility settings
-            elements.resetBtn.addEventListener('click', () => {
-                document.body.classList.remove('high-contrast', 'large-font');
-                document.querySelectorAll('.accessibility-option').forEach(btn => btn.classList.remove('active'));
-                localStorage.removeItem('highContrast');
-                localStorage.removeItem('largeFont');
-            });
-
-            // Load saved accessibility settings
-            if (localStorage.getItem('highContrast') === 'true') {
-                document.body.classList.add('high-contrast');
-                elements.highContrastBtn.classList.add('active');
-            }
-            if (localStorage.getItem('largeFont') === 'true') {
-                document.body.classList.add('large-font');
-                elements.largeFontBtn.classList.add('active');
-            }
-
-            // Close accessibility menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.accessibility-btn') && !e.target.closest('.accessibility-menu')) {
-                    elements.accessibilityMenu.classList.remove('active');
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                // Alt + A for accessibility menu
-                if (e.altKey && e.key.toLowerCase() === 'a') {
-                    e.preventDefault();
-                    elements.accessibilityBtn.click();
-                }
-                
-                // Escape to close menus
-                if (e.key === 'Escape') {
-                    elements.accessibilityMenu.classList.remove('active');
-                    elements.navMenu.classList.remove('active');
-                    elements.mobileToggle.textContent = '☰';
-                }
-            });
-        }
-
-        // Smooth Scrolling
-        function handleSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        }, 300);
                     }
                 });
             });
-        }
+        });
 
-        // Header scroll effect
-        function handleHeaderScroll() {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    elements.header.style.background = 'rgba(26, 54, 93, 0.98)';
-                    elements.header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-                } else {
-                    elements.header.style.background = 'rgba(26, 54, 93, 0.95)';
-                    elements.header.style.boxShadow = 'none';
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            });
+        });
+
+        // Header Background on Scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 54, 93, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 54, 93, 0.95)';
+            }
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create WhatsApp message
+            let message = `🏨 *הזמנה חדשה - מגדל של חיים*\n\n`;
+            message += `👤 *שם:* ${data.name}\n`;
+            message += `📧 *אימייל:* ${data.email}\n`;
+            message += `📞 *טלפון:* ${data.phone}\n`;
+            message += `📅 *תאריכים:* ${data.dates}\n`;
+            message += `👥 *מספר אורחים:* ${data.guests}\n`;
+            
+            if (data.event) {
+                message += `🎉 *סוג אירוע:* ${data.event}\n`;
+            }
+            
+            if (data.message) {
+                message += `💬 *הודעה נוספת:* ${data.message}\n`;
+            }
+            
+            message += `\n📲 *נשלח דרך האתר ב-${new Date().toLocaleString('he-IL')}*`;
+            
+            // Save to localStorage for admin panel
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            bookings.push({
+                ...data,
+                timestamp: new Date().toISOString(),
+                id: Date.now()
+            });
+            localStorage.setItem('migdal_bookings', JSON.stringify(bookings));
+            
+            // Open WhatsApp
+            const whatsappUrl = `https://wa.me/972501234567?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('תודה! הפנייה נשלחה בהצלחה. נחזור אליכם בהקדם.');
+            this.reset();
+        });
+
+        // Stats Counter Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 16);
             });
         }
 
-        // Admin Panel
-        function handleAdmin() {
-            if (window.location.hash === '#admin') {
-                const password = prompt('הכנס סיסמת מנהל:');
-                if (password === 'migdal2025') {
-                    showAdminPanel();
+        // Trigger stats animation when in view
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
                 }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Admin Panel Access
+        if (window.location.hash === '#admin') {
+            const password = prompt('הכנס סיסמת מנהל:');
+            if (password === 'migdal2025') {
+                showAdminPanel();
             }
         }
 
         function showAdminPanel() {
-            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-            const adminPanel = document.createElement('div');
-            adminPanel.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 2rem;
-                border-radius: 12px;
-                box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-                z-index: 10000;
-                max-width: 800px;
-                max-height: 80vh;
-                overflow-y: auto;
-                direction: rtl;
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            
+            let adminHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; padding: 2rem; overflow-y: auto;">
+                    <div style="background: white; max-width: 1200px; margin: 0 auto; padding: 2rem; border-radius: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h2>פאנל מנהל - מגדל של חיים</h2>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #e53e3e; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">סגור</button>
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <button onclick="exportToCSV()" style="background: #38a169; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; margin-left: 1rem;">ייצא ל-CSV</button>
+                            <button onclick="clearAllBookings()" style="background: #e53e3e; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer;">נקה הכל</button>
+                        </div>
+                        
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: #f7fafc;">
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריך</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">שם</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">טלפון</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אימייל</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">תאריכי הגעה</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אורחים</th>
+                                        <th style="border: 1px solid #e2e8f0; padding: 1rem;">אירוע</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
             `;
             
-            adminPanel.innerHTML = `
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">פאנל ניהול - פניות לקוחות</h3>
-                <p>סה"כ פניות: ${leads.length}</p>
-                <button onclick="exportLeads()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">ייצא לאקסל</button>
-                <button onclick="closeAdmin()" style="margin: 1rem 0; padding: 0.5rem 1rem; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer; margin-right: 1rem;">סגור</button>
-                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 1rem; margin-top: 1rem;">
-                    ${leads.map(lead => `
-                        <div style="border-bottom: 1px solid #eee; padding: 1rem 0;">
-                            <strong>${lead.name}</strong> - ${lead.phone}<br>
-                            ${lead.email ? `אימייל: ${lead.email}<br>` : ''}
-                            תאריכים: ${lead.dates || 'לא צוין'}<br>
-                            אורחים: ${lead.guests || 'לא צוין'}<br>
-                            זמן: ${lead.timestamp}<br>
-                            הודעה: ${lead.message || 'אין'}
+            bookings.reverse().forEach(booking => {
+                const date = new Date(booking.timestamp).toLocaleString('he-IL');
+                adminHTML += `
+                    <tr>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${date}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.name}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.phone}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.email}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.dates}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.guests}</td>
+                        <td style="border: 1px solid #e2e8f0; padding: 0.8rem;">${booking.event || '-'}</td>
+                    </tr>
+                `;
+            });
+            
+            adminHTML += `
+                                </tbody>
+                            </table>
                         </div>
-                    `).join('')}
+                        
+                        <div style="margin-top: 2rem; text-align: center; color: #718096;">
+                            סך הכל: ${bookings.length} הזמנות
+                        </div>
+                    </div>
                 </div>
             `;
             
-            document.body.appendChild(adminPanel);
-            
-            // Add global functions
-            window.exportLeads = () => {
-                const csv = ['שם,טלפון,אימייל,תאריכים,אורחים,הודעה,זמן'].concat(
-                    leads.map(lead => 
-                        `"${lead.name}","${lead.phone}","${lead.email || ''}","${lead.dates || ''}","${lead.guests || ''}","${lead.message || ''}","${lead.timestamp}"`
-                    )
-                ).join('\n');
-                
-                const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = `leads_${new Date().toISOString().split('T')[0]}.csv`;
-                link.click();
-            };
-            
-            window.closeAdmin = () => {
-                adminPanel.remove();
-                delete window.exportLeads;
-                delete window.closeAdmin;
-            };
+            document.body.insertAdjacentHTML('beforeend', adminHTML);
         }
 
-        // Initialize Application
-        function initApp() {
-            try {
-                handleMobileNav();
-                handleContactForm();
-                handleGalleryFilter();
-                handleAccessibility();
-                handleSmoothScroll();
-                handleHeaderScroll();
-                handleAdmin();
-                
-                console.log('🏔️ מגדל של חיים - האתר טעון בהצלחה!');
-            } catch (error) {
-                console.error('Error initializing app:', error);
+        function exportToCSV() {
+            const bookings = JSON.parse(localStorage.getItem('migdal_bookings') || '[]');
+            
+            let csv = 'תאריך,שם,טלפון,אימייל,תאריכי הגעה,מספר אורחים,סוג אירוע,הודעה\n';
+            
+            bookings.forEach(booking => {
+                const date = new Date(booking.timestamp).toLocaleString('he-IL');
+                csv += `"${date}","${booking.name}","${booking.phone}","${booking.email}","${booking.dates}","${booking.guests}","${booking.event || ''}","${booking.message || ''}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `migdal_bookings_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function clearAllBookings() {
+            if (confirm('האם אתה בטוח שברצונך למחוק את כל ההזמנות?')) {
+                localStorage.removeItem('migdal_bookings');
+                location.reload();
             }
-        }
-
-        // Start the application
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
         }
     </script>
 </body>
