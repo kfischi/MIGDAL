@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אודות - מגדל של חיים</title>
+    <title>הסיפור שלנו - מגדל של חיים</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #d69e2e;
-            --accent-color: #2d87ae;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --primary-color: #0a1628;
+            --secondary-color: #d4af37;
+            --accent-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
             --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+            --gradient-gold: linear-gradient(135deg, #fbbf24, #d97706);
+            --gradient-blue: linear-gradient(135deg, #1e40af, #0ea5e9);
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --shadow-xl: 0 25px 80px rgba(0,0,0,0.25);
         }
         
         * {
@@ -27,13 +30,14 @@
         
         body {
             font-family: 'Assistant', sans-serif;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--text-dark);
-            background: var(--bg-light);
+            background: var(--white);
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -42,24 +46,39 @@
         .header {
             background: var(--primary-color);
             padding: 1rem 0;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
         
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
             font-family: 'Heebo', sans-serif;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 1px;
         }
         
         .nav-links {
@@ -73,97 +92,149 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            position: relative;
         }
         
         .nav-links a:hover {
             color: var(--secondary-color);
             background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
         
         .btn-home {
-            background: var(--secondary-color);
+            background: var(--gradient-gold);
             color: var(--white);
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         .btn-home:hover {
-            background: #b8860b;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
         
         /* Hero Section */
         .hero {
             position: relative;
-            height: 60vh;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(45, 135, 174, 0.7)), 
-                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg');
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.85), rgba(30, 64, 175, 0.7)), 
+                        url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
             text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="90" cy="90" r="0.3" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
         }
         
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             font-family: 'Heebo', sans-serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-content p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             opacity: 0.95;
-            max-width: 800px;
-            margin: 0 auto;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
         
         /* Main Content */
         .main-content {
-            padding: 6rem 0;
-        }
-        
-        .story-section {
+            position: relative;
+            z-index: 10;
             background: var(--white);
-            border-radius: 20px;
-            padding: 4rem;
-            margin-bottom: 4rem;
-            box-shadow: var(--shadow);
         }
         
-        .section-title {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
-            text-align: center;
+        /* Story Section */
+        .story-section {
+            padding: 10rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
         
         .story-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-            margin-bottom: 3rem;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 6rem;
         }
         
-        .story-text h3 {
-            font-size: 2.5rem;
+        .story-text {
+            position: relative;
+        }
+        
+        .story-text::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            right: -1rem;
+            font-size: 10rem;
+            color: var(--secondary-color);
+            opacity: 0.1;
+            font-family: serif;
+        }
+        
+        .story-text h2 {
+            font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-weight: 600;
+            margin-bottom: 2.5rem;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
         }
         
         .story-text p {
@@ -173,249 +244,339 @@
             color: var(--text-dark);
         }
         
-        .story-text p:first-of-type {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--primary-color);
+        .story-text .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
         }
         
         .story-image {
             position: relative;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .story-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
         }
         
         .story-image img {
             width: 100%;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
         }
         
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
+        .story-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), transparent);
+            border-radius: 20px;
+            pointer-events: none;
         }
         
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .feature-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .feature-description {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        /* Stats Section */
-        .stats-section {
+        /* Vision Section */
+        .vision-section {
+            padding: 10rem 0;
             background: var(--primary-color);
             color: var(--white);
-            padding: 4rem 0;
-            margin: 4rem 0;
-            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        .vision-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+        
+        .section-title {
+            font-size: 4rem;
             text-align: center;
-        }
-        
-        .stat-item {
-            padding: 1.5rem;
-        }
-        
-        .stat-number {
-            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            font-family: 'Heebo', sans-serif;
             font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .vision-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .vision-text {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+            opacity: 0.95;
+        }
+        
+        .vision-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 6rem;
+        }
+        
+        .vision-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .vision-item:hover::before {
+            left: 100%;
+        }
+        
+        .vision-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .vision-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             display: block;
         }
         
-        .stat-label {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-        
-        /* Highlights Section */
-        .highlights-section {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 4rem;
-            margin-bottom: 4rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .highlight-item {
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 10px;
-            border-right: 4px solid var(--secondary-color);
-        }
-        
-        .highlight-item h4 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
+        .vision-item h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--secondary-color);
             font-weight: 600;
         }
         
-        .highlight-item p {
-            font-size: 1.2rem;
-            color: var(--text-light);
+        .vision-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
             line-height: 1.6;
         }
         
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            color: var(--white);
-            border-radius: 20px;
-            padding: 4rem;
-            text-align: center;
-            margin-bottom: 4rem;
+        /* Experience Section */
+        .experience-section {
+            padding: 10rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 6rem;
+        }
+        
+        .experience-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
         
-        .quote-section::before {
-            content: '"';
-            font-size: 6rem;
-            opacity: 0.3;
+        .experience-card::before {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 2rem;
-            font-family: serif;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
         }
         
-        .quote {
-            font-size: 1.8rem;
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 2rem;
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .experience-card .number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
             font-family: 'Heebo', sans-serif;
         }
         
-        .quote-author {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .experience-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             font-weight: 600;
+        }
+        
+        .experience-card p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.7;
         }
         
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            padding: 8rem 0;
+            background: var(--gradient-blue);
             color: var(--white);
-            border-radius: 20px;
-            padding: 4rem;
             text-align: center;
-            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" width="100" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 Q25 0 50 10 T100 10 V20 H0 Z" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
         }
         
         .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
             font-family: 'Heebo', sans-serif;
+            font-weight: 700;
         }
         
         .cta-section p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .btn-cta {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--white);
-            color: var(--primary-color);
-            text-decoration: none;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            margin: 0 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn-cta:hover {
-            transform: translateY(-2px);
+        .btn-primary-cta {
+            background: var(--white);
+            color: var(--primary-color);
             box-shadow: var(--shadow-lg);
         }
         
-        .btn-secondary {
+        .btn-primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary-cta {
             background: transparent;
             color: var(--white);
             border: 2px solid var(--white);
         }
         
-        .btn-secondary:hover {
+        .btn-secondary-cta:hover {
             background: var(--white);
             color: var(--primary-color);
+            transform: translateY(-3px);
         }
         
         /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--white);
-            padding: 3rem 0 1rem;
+            padding: 4rem 0 2rem;
             text-align: center;
+        }
+        
+        .footer-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .footer-content p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
         
         .footer-links a {
             color: var(--white);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
         
         .footer-links a:hover {
             color: var(--secondary-color);
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
-            opacity: 0.8;
+            padding-top: 2rem;
+            opacity: 0.7;
             font-size: 1rem;
         }
         
@@ -426,25 +587,47 @@
             left: 2rem;
             background: #25d366;
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-decoration: none;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .whatsapp-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
+                gap: 1.5rem;
+                padding: 1.5rem;
             }
             
             .nav-links {
@@ -454,43 +637,50 @@
             }
             
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .story-content,
-            .features-grid,
-            .highlights-grid {
+            .experience-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 3rem;
             }
             
             .story-section,
-            .highlights-section,
-            .cta-section,
-            .quote-section {
-                padding: 2rem;
-                margin-bottom: 2rem;
+            .vision-section,
+            .experience-section,
+            .cta-section {
+                padding: 6rem 0;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
-            .story-text h3 {
-                font-size: 2rem;
+            .story-text h2 {
+                font-size: 2.5rem;
             }
             
             .story-text p {
                 font-size: 1.2rem;
             }
             
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+            .vision-text {
+                font-size: 1.3rem;
+            }
+            
+            .vision-highlights {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
             
             .footer-links {
@@ -507,7 +697,7 @@
             <a href="index.html" class="logo">מגדל של חיים</a>
             <div class="nav-links">
                 <a href="index.html#gallery">גלריה</a>
-                <a href="contact.html">יצירת קשר</a>
+                <a href="contact.html">ליצירת קשר</a>
                 <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
             </div>
         </nav>
@@ -517,172 +707,130 @@
     <section class="hero">
         <div class="hero-content">
             <h1>הסיפור שלנו</h1>
-            <p>גלו את הסיפור המיוחד מאחורי מגדל של חיים - מתחם אירוח משפחתי יוקרתי בלב הגליל</p>
+            <p>מסע מרגש של חזון, אמונה וברכה שהוביל ליצירת המתחם המיוחד ביותר בצפון</p>
+            <a href="#story" class="hero-cta">גלו את הסיפור ✨</a>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <!-- Story Section -->
-            <section class="story-section">
+        <!-- Story Section -->
+        <section class="story-section" id="story">
+            <div class="container">
                 <div class="story-content">
                     <div class="story-text">
-                        <h3>ברכת הצדיק מלווה אותנו</h3>
+                        <h2>ברכת הצדיק<br>מלווה אותנו</h2>
                         <p>
-                            מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק האור החיים הקדוש זיע"א. 
+                            מגדל של חיים הוקם בשנת 2025 ונקרא על שם הצדיק <span class="highlight">האור החיים הקדוש זיע"א</span>. 
                             מרגע הראשון שהוחלט להקים את המתחם, הצדיק ליווה את הבעלים בכל צעד וצעד.
                         </p>
                         <p>
-                            היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה הצדיק מיד נענה וסייע בכל הבעיות. 
+                            היו קשיים גדולים בהקמה, ומרגע שקראנו לעזרה <span class="highlight">הצדיק מיד נענה וסייע בכל הבעיות</span>. 
                             לכן הוחלט שהמקום יקרא על שמו - האור החיים הקדוש.
                         </p>
                         <p>
-                            ידוע שלצדיק לא היו ילדים, ולכן החלטנו שאנחנו בניו של הצדיק. 
+                            ידוע שלצדיק לא היו ילדים, ולכן החלטנו ש<span class="highlight">אנחנו בניו של הצדיק</span>. 
                             המקום הזה נבנה כדי לקיים את הרצון שלו - להביא שמחה ואושר למשפחות יהודיות.
                         </p>
                     </div>
-                    <div class="story-image">
+                    <div class="story-image floating">
                         <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="גינות ונוף מגדל של חיים">
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Quote Section -->
-            <section class="quote-section">
-                <div class="quote">
-                    המקום הזה נבנה מתוך אמונה עמוקה שכל משפחה יהודית ראויה לחוות רגעים של שמחה, קדושה ואחדות במקום יפה ומכובד
-                </div>
-                <div class="quote-author">- בעלי מגדל של חיים</div>
-            </section>
-
-            <!-- Stats Section -->
-            <section class="stats-section">
-                <div class="container">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number">21</span>
-                            <span class="stat-label">חדרי שינה</span>
+        <!-- Vision Section -->
+        <section class="vision-section">
+            <div class="container">
+                <h2 class="section-title">החזון שלנו</h2>
+                <div class="vision-content">
+                    <p class="vision-text">
+                        ליצור מקום שבו כל משפחה יהודית תוכל לחוות רגעים של שמחה אמיתית, 
+                        קדושה ואחדות במקום יפה ומכובד, תחת ברכתו של הצדיק האור החיים הקדוש
+                    </p>
+                    
+                    <div class="vision-highlights">
+                        <div class="vision-item">
+                            <span class="icon">🏠</span>
+                            <h3>בית יהודי חם</h3>
+                            <p>אווירה משפחתית אמיתית שגורמת לכל אורח להרגיש כמו בבית</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">80</span>
-                            <span class="stat-label">אורחים בו-זמנית</span>
+                        
+                        <div class="vision-item">
+                            <span class="icon">✨</span>
+                            <h3>חוויה יוצאת דופן</h3>
+                            <p>כל פרט מתוכנן בקפידה ליצור זיכרונות בלתי נשכחים</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2</span>
-                            <span class="stat-label">דונם שטח</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2025</span>
-                            <span class="stat-label">שנת הקמה</span>
+                        
+                        <div class="vision-item">
+                            <span class="icon">🌟</span>
+                            <h3>מעולות בכל רמה</h3>
+                            <p>רמת שירות, נקיון ואירוח ברמה הגבוהה ביותר</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Features Section -->
-            <section class="highlights-section">
-                <h2 class="section-title">המתקנים שלנו</h2>
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <h2 class="section-title">מה עושה אותנו מיוחדים</h2>
                 
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-icon">🏊‍♂️</span>
-                        <h3 class="feature-title">בריכה פרטית מחוממת</h3>
-                        <p class="feature-description">בריכה גדולה ונקייה עם אזור רדוד לילדים ואזור עמוק למבוגרים, מחוממת בעונות הקרות</p>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="number">21</div>
+                        <h3>חדרי שינה מרווחים</h3>
+                        <p>כל חדר עוצב בקפידה עם תשומת לב לנוחות ולפרטיות, יכול להכיל עד 80 אורחים במקביל</p>
                     </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🏠</span>
-                        <h3 class="feature-title">21 חדרי שינה מרווחים</h3>
-                        <p class="feature-description">חדרים נוחים ומעוצבים עד 80 אורחים, חלק עם שירותים פרטיים וחלק עם שירותים משותפים נקיים ומטופחים</p>
+                    
+                    <div class="experience-card">
+                        <div class="number">2</div>
+                        <h3>דונם של גן עדן</h3>
+                        <p>שטח ירוק מטופח עם בריכה פרטית, פינות ישיבה מוצלות ואזורי משחק לכל הגילאים</p>
                     </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🍽️</span>
-                        <h3 class="feature-title">מטבח כשר מאובזר</h3>
-                        <p class="feature-description">מטבח גדול ומקצועי עם מקררים תעשייתיים, כיריים גז ואינדוקציה, כלי בישול מלאים</p>
+                    
+                    <div class="experience-card">
+                        <div class="number">100%</div>
+                        <h3>מחויבות למעולות</h3>
+                        <p>כל אורח זוכה לחוויה מושלמת - משירות אישי ועד לניקיון ברמה הגבוהה ביותר</p>
                     </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🌳</span>
-                        <h3 class="feature-title">2 דונם גינה מטופחת</h3>
-                        <p class="feature-description">שטחי דשא רחבים, עצים מבוגרים המספקים צל טבעי, פינות ישיבה מוצלות ואזורי משחק בטוחים לילדים</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🎮</span>
-                        <h3 class="feature-title">משחקייה משפחתית</h3>
-                        <p class="feature-description">שולחן סנוקר מקצועי, פינג פונג, הוקי אוויר, כדורגל שולחן ומבחר משחקי קופסה המתאימים לכל הגילאים</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🏔️</span>
-                        <h3 class="feature-title">נוף מרהיב לכינרת</h3>
-                        <p class="feature-description">מיקום יוצא דופן במושב מגדל עם נוף פנורמי עוצר נשימה לכינרת, הר הארבל ונופי הגליל הקסומים</p>
+                    
+                    <div class="experience-card">
+                        <div class="number">24/7</div>
+                        <h3>שירות ללא פשרות</h3>
+                        <p>צוות מקצועי זמין בכל עת לכל בעיה או בקשה, עם ניסיון עשיר באירוח משפחות</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Highlights Section -->
-            <section class="highlights-section">
-                <h2 class="section-title">למה משפחות בוחרות בנו?</h2>
-                
-                <div class="highlights-grid">
-                    <div class="highlight-item">
-                        <h4>מיקום מושלם</h4>
-                        <p>במושב מגדל בלב הגליל, קרוב לאטרקציות הצפון אבל רחוק מהרעש, עם נוף מרהיב לכינרת</p>
-                    </div>
-
-                    <div class="highlight-item">
-                        <h4>מתחם פרטי ובטוח</h4>
-                        <p>מתחם סגור ומבודד עם פרטיות מלאה, חניה פנימית ושער אלקטרוני לבטיחות המשפחות</p>
-                    </div>
-
-                    <div class="highlight-item">
-                        <h4>מתאים למשפחות דתיות</h4>
-                        <p>מטבח כשר, אווירה יהודית חמה ושירות המותאם לצרכים של המשפחה הדתית</p>
-                    </div>
-
-                    <div class="highlight-item">
-                        <h4>שירות 24/7</h4>
-                        <p>צוות זמין בכל עת לכל בעיה או בקשה, תחזוקה שוטפת וניקיון יומי ברמה הגבוהה ביותר</p>
-                    </div>
-
-                    <div class="highlight-item">
-                        <h4>מחיר הוגן ושקוף</h4>
-                        <p>ללא עמלות נסתרות, מחיר כולל ניקיון וחשמל, הנחות לקבוצות גדולות ומשפחות חוזרות</p>
-                    </div>
-
-                    <div class="highlight-item">
-                        <h4>ניסיון עשיר</h4>
-                        <p>מאות משפחות מרוצות, התמחות בשבתות חתן ואירועים משפחתיים, שירות מקצועי ואמין</p>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>בואו להיות חלק מהסיפור</h2>
+                    <p>הזמינו עכשיו וחוו בעצמכם את הקסם והברכה של מגדל של חיים</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn-cta btn-primary-cta">בדקו זמינות והזמינו</a>
+                        <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="btn-cta btn-secondary-cta">שלחו הודעה עכשיו</a>
                     </div>
                 </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="cta-section">
-                <h2>בואו ליצור זיכרונות בלתי נשכחים</h2>
-                <p>הזמינו עכשיו וחוו בעצמכם את הקסם והברכה של מגדל של חיים</p>
-                <div>
-                    <a href="contact.html" class="btn-cta">בדקו זמינות והזמינו</a>
-                    <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים לשבת חתן/חופשה משפחתית" target="_blank" class="btn-cta btn-secondary">שלחו הודעה עכשיו</a>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
                 <h3>מגדל של חיים</h3>
                 <p>מתחם אירוח משפחתי יוקרתי במושב מגדל - המקום המושלם לחופשות, שבתות חתן ואירועים משפחתיים</p>
                 
                 <div class="footer-links">
                     <a href="index.html">בית</a>
                     <a href="index.html#gallery">גלריה</a>
-                    <a href="contact.html">יצירת קשר</a>
+                    <a href="contact.html">ליצירת קשר</a>
                 </div>
             </div>
             
@@ -696,5 +844,74 @@
     <a href="https://wa.me/972501234567?text=שלום, אני מעוניין לקבל מידע על מתחם מגדל של חיים" target="_blank" class="whatsapp-float" title="צרו קשר בוואטסאפ">
         💬
     </a>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.experience-card, .vision-item, .story-text, .story-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.experience-card, .vision-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+        });
+
+        // Initialize page
+        document.body.style.opacity = '0';
+        document.body.style.transform = 'translateY(20px)';
+        document.body.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    </script>
 </body>
 </html>
