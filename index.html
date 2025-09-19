@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מגדל של חיים - מתחם אירוח משפחתי מתקדם</title>
+    <title>מגדל של חיים - מתחם אירוח משפחתי יוקרתי</title>
+    <meta name="description" content="מתחם אירוח משפחתי יוקרתי במושבה מגדל המותאם לציבור הדתי והחרדי. בריכה מחוממת, 21 חדרים ונוף לכינרת.">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -35,7 +36,6 @@
             line-height: 1.6;
         }
 
-        /* Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -43,7 +43,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #000 0%, #0a0a0a 50%, #000 100%);
+            background: linear-gradient(45deg, #000 0%, #1a202c 50%, #000 100%);
         }
 
         .animated-bg::before {
@@ -68,7 +68,7 @@
             width: 100%;
             height: 100%;
             background: 
-                linear-gradient(90deg, transparent 0%, rgba(0, 102, 255, 0.1) 50%, transparent 100%);
+                linear-gradient(90deg, transparent 0%, rgba(44, 82, 130, 0.1) 50%, transparent 100%);
             animation: scanLine 8s linear infinite;
         }
 
@@ -92,7 +92,6 @@
             }
         }
 
-        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -206,10 +205,9 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(44, 82, 130, 0.4);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -285,12 +283,12 @@
         @keyframes glow {
             0% {
                 filter: brightness(1);
-                text-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+                text-shadow: 0 0 20px rgba(44, 82, 130, 0.5);
             }
             100% {
                 filter: brightness(1.2);
-                text-shadow: 0 0 40px rgba(0, 102, 255, 0.8),
-                             0 0 80px rgba(255, 51, 102, 0.4);
+                text-shadow: 0 0 40px rgba(44, 82, 130, 0.8),
+                             0 0 80px rgba(128, 90, 213, 0.4);
             }
         }
 
@@ -310,46 +308,6 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-            position: relative;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            opacity: 0.7;
-        }
-
-        .stat-number {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            color: var(--primary-color);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            font-weight: 500;
-            letter-spacing: 0.5px;
         }
 
         .hero-actions {
@@ -394,16 +352,15 @@
         }
 
         .btn-primary:hover {
-            box-shadow: 0 12px 30px rgba(0, 102, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(44, 82, 130, 0.4);
         }
 
         .btn-secondary:hover {
             border-color: var(--primary-color);
-            background: rgba(0, 102, 255, 0.1);
-            box-shadow: 0 12px 30px rgba(0, 102, 255, 0.2);
+            background: rgba(44, 82, 130, 0.1);
+            box-shadow: 0 12px 30px rgba(44, 82, 130, 0.2);
         }
 
-        /* Features Grid */
         .features {
             padding: 100px 0;
             position: relative;
@@ -469,8 +426,8 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(0, 102, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.1);
+            border-color: rgba(44, 82, 130, 0.3);
+            box-shadow: 0 20px 40px rgba(44, 82, 130, 0.1);
         }
 
         .feature-icon {
@@ -499,7 +456,6 @@
             font-size: 1rem;
         }
 
-        /* Technical Specs */
         .tech-specs {
             padding: 100px 0;
             background: rgba(0, 0, 0, 0.3);
@@ -556,7 +512,6 @@
             margin-top: 0.3rem;
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav {
                 padding: 15px 20px;
@@ -570,10 +525,6 @@
             .features-container,
             .specs-container {
                 padding: 0 20px;
-            }
-            
-            .hero-stats {
-                gap: 40px;
             }
             
             .hero-actions {
@@ -596,7 +547,6 @@
             }
         }
 
-        /* Scroll Animations */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -608,12 +558,11 @@
             transform: translateY(0);
         }
 
-        /* Cursor Effects */
         .cursor-glow {
             position: fixed;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(44, 82, 130, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
@@ -622,33 +571,26 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="animated-bg"></div>
-    
-    <!-- Cursor Glow Effect -->
     <div class="cursor-glow"></div>
 
-    <!-- Header -->
     <header class="header">
         <nav class="nav">
             <a href="#" class="logo">מגדל של חיים</a>
             <ul class="nav-menu">
                 <li><a href="#features">מתקנים</a></li>
-                <li><a href="#specs">מפרט טכני</a></li>
-                <li><a href="#gallery">גלריה</a></li>
-                <li><a href="#contact">קשר</a></li>
+                <li><a href="#specs">פרטי המתחם</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="contact.html">קשר</a></li>
             </ul>
-            <a href="#contact" class="cta-button">הזמן עכשיו</a>
+            <a href="contact.html" class="cta-button">הזמן עכשיו</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <!-- Hero Video Background -->
         <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="">
             <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
             <source src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
-            הדפדפן שלכם לא תומך בוידאו HTML5
         </video>
         <div class="hero-video-overlay"></div>
         
@@ -661,13 +603,12 @@
             </p>
 
             <div class="hero-actions fade-in-up">
-                <a href="#contact" class="btn-primary">הזמינו עכשיו</a>
+                <a href="contact.html" class="btn-primary">הזמינו עכשיו</a>
                 <a href="#features" class="btn-secondary">גלו את המתחם</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-container">
             <h2 class="section-title fade-in-up">מה מייחד אותנו</h2>
@@ -733,7 +674,6 @@
         </div>
     </section>
 
-    <!-- Technical Specifications -->
     <section class="tech-specs" id="specs">
         <div class="specs-container">
             <h2 class="section-title fade-in-up">פרטי המתחם</h2>
@@ -804,12 +744,10 @@
             });
         }, observerOptions);
 
-        // Observe all fade-in elements
         document.querySelectorAll('.fade-in-up').forEach(el => {
             observer.observe(el);
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -823,64 +761,33 @@
             });
         });
 
-        // Header scroll effect
+        // Enhanced video and parallax effects
         window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroVideo = document.querySelector('.hero-video');
+            const animatedBg = document.querySelector('.animated-bg');
             const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            
+            if (heroVideo && scrolled < window.innerHeight) {
+                heroVideo.style.transform = `scale(1.02) translateY(${scrolled * 0.3}px)`;
+                heroVideo.style.filter = `brightness(${1.4 - scrolled * 0.0005}) contrast(${1.5 + scrolled * 0.0003}) saturate(${1.3 + scrolled * 0.0002}) blur(${scrolled * 0.01}px)`;
+            }
+            
+            if (animatedBg) {
+                animatedBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            if (scrolled > 100) {
+                header.style.background = 'rgba(26, 32, 44, 0.95)';
+                header.style.backdropFilter = 'blur(25px)';
             } else {
                 header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.backdropFilter = 'blur(20px)';
             }
         });
 
-        // Add random particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: fixed;
-                width: 2px;
-                height: 2px;
-                background: rgba(0, 102, 255, 0.6);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 1;
-                left: ${Math.random() * window.innerWidth}px;
-                top: ${window.innerHeight + 10}px;
-                animation: floatUp 8s linear forwards;
-            `;
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 8000);
-        }
-
-        // Add CSS animation for particles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes floatUp {
-                to {
-                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Create particles periodically
-        setInterval(createParticle, 2000);
-
-        // Initialize animations
-        setTimeout(() => {
-            document.querySelectorAll('.fade-in-up').forEach((el, index) => {
-                setTimeout(() => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add('visible');
-                    }
-                }, index * 100);
-            });
-        }, 500);
-    </script>
-</body>
-</html>
+        // Enhanced video optimization
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.hero-video');
+            if (video) {
+                video.setAttribute('play
