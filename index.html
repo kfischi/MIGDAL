@@ -217,6 +217,36 @@
             justify-content: center;
             position: relative;
             padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+            filter: brightness(1.3) contrast(1.4) saturate(1.2) blur(0.5px);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg, 
+                rgba(26, 32, 44, 0.7) 0%, 
+                rgba(44, 82, 130, 0.6) 30%,
+                rgba(128, 90, 213, 0.5) 60%,
+                rgba(26, 32, 44, 0.8) 100%
+            );
+            z-index: -2;
         }
 
         .hero-container {
@@ -605,32 +635,20 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Hero Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+            הדפדפן שלכם לא תומך בוידאו HTML5
+        </video>
+        <div class="hero-video-overlay"></div>
+        
         <div class="hero-container">
             <h1 class="hero-title">מגדל של חיים</h1>
             <p class="hero-subtitle">מתחם אירוח משפחתי יוקרתי במושבה מגדל</p>
             <p class="hero-description">
                 חוויית אירוח חמה ומיוחדת לציבור הדתי והחרדי בלב הגליל.<br>
-                בריכה מחוממת, 21 חדרים נוחים ונוף מרהיב לכינרת והר הארבל.
+                בריכה מחוממת, חדרים נוחים ונוף מרהיב לכינרת והר הארבל.
             </p>
-            
-            <div class="hero-stats">
-                <div class="stat-item fade-in-up">
-                    <div class="stat-number">80</div>
-                    <div class="stat-label">אורחים</div>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <div class="stat-number">21</div>
-                    <div class="stat-label">חדרים</div>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">דונם</div>
-                </div>
-                <div class="stat-item fade-in-up">
-                    <div class="stat-number">2025</div>
-                    <div class="stat-label">יוצר</div>
-                </div>
-            </div>
 
             <div class="hero-actions fade-in-up">
                 <a href="#contact" class="btn-primary">הזמינו עכשיו</a>
