@@ -283,7 +283,7 @@
     <main class="gallery-section">
         <div class="container mx-auto">
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="pool">בריכה</button>
+                <button class="filter-btn" data-filter="pool">בריכה</button>
                 <button class="filter-btn" data-filter="rooms">חדרים</button>
                 <button class="filter-btn" data-filter="kitchen">מטבח וחדר אוכל</button>
                 <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
@@ -292,7 +292,7 @@
             
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Video Item -->
-                <div class="video-container" data-category="pool" data-aos="zoom-in">
+                <div class="video-container" data-category="exterior" data-aos="zoom-in">
                     <video autoplay muted loop playsinline src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/migdal_video2.mp4"></video>
                 </div>
                 
@@ -355,6 +355,13 @@
                         <div class="overlay-description">חדר מעוצב באלגנטיות</div>
                     </div>
                 </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/17.jpg" alt="סוויטה יוקרתית">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">סוויטה יוקרתית</div>
+                        <div class="overlay-description">חדר מרווח במיוחד עם חלון פנורמי</div>
+                    </div>
+                </div>
 
                 <!-- מטבח וחדר אוכל -->
                 <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
@@ -376,6 +383,13 @@
                     <div class="gallery-overlay">
                         <div class="overlay-title">חדר האוכל</div>
                         <div class="overlay-description">פינת אוכל מרווחת למשפחה הגדולה</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/18.jpg" alt="פינת אוכל נוספת">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">פינת אוכל נוספת</div>
+                        <div class="overlay-description">מקום נעים לארוחות קלות</div>
                     </div>
                 </div>
                 
@@ -417,6 +431,20 @@
                         <div class="overlay-description">שטחי דשא ירוקים ומטופחים</div>
                     </div>
                 </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף לכינרת והר הארבל">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">נוף לכינרת והר הארבל</div>
+                        <div class="overlay-description">הנוף המדהים שפותח כל בוקר</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/26.jpg" alt="פינת ישיבה בחוץ">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">פינת ישיבה בחוץ</div>
+                        <div class="overlay-description">פינה נעימה לנוח בחוץ</div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -453,6 +481,11 @@
                     }
                 });
             });
+        });
+        
+        // Initial state: show only the first category
+        document.addEventListener('DOMContentLoaded', () => {
+             document.querySelectorAll('.filter-btn')[0].click();
         });
     </script>
 </body>
