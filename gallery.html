@@ -283,21 +283,20 @@
     <main class="gallery-section">
         <div class="container mx-auto">
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">הכל</button>
-                <button class="filter-btn" data-filter="pool">בריכה</button>
+                <button class="filter-btn active" data-filter="pool">בריכה</button>
                 <button class="filter-btn" data-filter="rooms">חדרים</button>
-                <button class="filter-btn" data-filter="kitchen">מטבח</button>
-                <button class="filter-btn" data-filter="entertainment">פנאי</button>
-                <button class="filter-btn" data-filter="exterior">חוץ</button>
+                <button class="filter-btn" data-filter="kitchen">מטבח וחדר אוכל</button>
+                <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
+                <button class="filter-btn" data-filter="exterior">מתחם חוץ וגינה</button>
             </div>
             
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Video Item -->
-                <div class="video-container" data-category="all exterior" data-aos="zoom-in">
+                <div class="video-container" data-category="pool" data-aos="zoom-in">
                     <video autoplay muted loop playsinline src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/migdal_video2.mp4"></video>
                 </div>
                 
-                <!-- Gallery Items -->
+                <!-- בריכה -->
                 <div class="gallery-item" data-category="pool" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף לכינרת">
                     <div class="gallery-overlay">
@@ -327,6 +326,7 @@
                     </div>
                 </div>
                 
+                <!-- חדרים -->
                 <div class="gallery-item" data-category="rooms" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר שינה ראשי">
                     <div class="gallery-overlay">
@@ -356,6 +356,7 @@
                     </div>
                 </div>
 
+                <!-- מטבח וחדר אוכל -->
                 <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="המטבח הראשי">
                     <div class="gallery-overlay">
@@ -378,6 +379,7 @@
                     </div>
                 </div>
                 
+                <!-- פנאי ומשחקים -->
                 <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="חדר המשחקים">
                     <div class="gallery-overlay">
@@ -392,11 +394,27 @@
                         <div class="overlay-description">בילוי משפחתי מהנה</div>
                     </div>
                 </div>
+                
+                <!-- מתחם חוץ וגינה -->
                 <div class="gallery-item" data-category="exterior" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="הגינה הקדמית">
                     <div class="gallery-overlay">
                         <div class="overlay-title">הגינה הקדמית</div>
                         <div class="overlay-description">כניסה מרשימה ומטופחת</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/23.jpg" alt="שבילי הגינה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">שבילי הגינה</div>
+                        <div class="overlay-description">שבילים מעוצבים ברחבי המתחם</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="דשא וגינה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">דשא וגינה</div>
+                        <div class="overlay-description">שטחי דשא ירוקים ומטופחים</div>
                     </div>
                 </div>
             </div>
@@ -427,7 +445,8 @@
                 
                 const filter = button.dataset.filter;
                 document.querySelectorAll('.gallery-grid > div').forEach(item => {
-                    if (filter === 'all' || item.dataset.category.includes(filter)) {
+                    const categories = item.dataset.category.split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
                         item.style.display = 'block';
                     } else {
                         item.style.display = 'none';
