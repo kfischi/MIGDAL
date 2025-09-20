@@ -49,7 +49,6 @@
             font-weight: 700;
             color: white;
             text-decoration: none;
-            position: relative;
         }
         .nav-menu {
             display: flex;
@@ -63,8 +62,6 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 0;
         }
         .cta-button {
             background: var(--secondary-color);
@@ -77,8 +74,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
         }
         .hero {
             min-height: 60vh;
@@ -88,7 +83,7 @@
             position: relative;
             padding: 120px 0 80px;
             overflow: hidden;
-            background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg');
+            background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
             filter: brightness(0.8);
@@ -159,6 +154,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s;
+            aspect-ratio: 4/3;
         }
         .gallery-item:hover {
             transform: scale(1.05);
@@ -219,7 +215,6 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-            overflow: auto;
         }
         .modal-content {
             position: relative;
@@ -248,12 +243,6 @@
             transition: 0.3s;
             cursor: pointer;
         }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
         @keyframes modalSlideIn {
             from { opacity: 0; transform: translateY(-50%) scale(0.8); }
             to { opacity: 1; transform: translateY(-50%) scale(1); }
@@ -266,7 +255,7 @@
         <nav class="nav-content">
             <a href="index.html" class="logo">מגדל של חיים</a>
             <ul class="nav-menu space-x-4">
-                <li><a href="about.html" class="text-white hover:text-gray-300">אודות</a></li>
+                <li><a href="about.html" class="text-white hover:text-gray-300">הסיפור שלנו</a></li>
                 <li><a href="gallery.html" class="text-white hover:text-gray-300">גלריה</a></li>
                 <li><a href="contact.html" class="cta-button">הזמן עכשיו</a></li>
             </ul>
@@ -282,80 +271,115 @@
 
     <main class="gallery-section">
         <div class="container mx-auto">
+            <!-- וידאו הכניסה -->
+            <div class="video-container" data-category="exterior" data-aos="zoom-in">
+                <video autoplay muted loop playsinline>
+                    <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+                </video>
+            </div>
+            
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="pool">בריכה</button>
-                <button class="filter-btn" data-filter="rooms">חדרים</button>
-                <button class="filter-btn" data-filter="kitchen">מטבח וחדר אוכל</button>
+                <button class="filter-btn active" data-filter="all">הכל</button>
+                <button class="filter-btn" data-filter="pool">בריכה ואזורי מים</button>
+                <button class="filter-btn" data-filter="rooms">חדרי שינה ומגורים</button>
+                <button class="filter-btn" data-filter="kitchen">מטבח ואוכל</button>
                 <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
-                <button class="filter-btn" data-filter="exterior">מתחם חוץ וגינה</button>
+                <button class="filter-btn" data-filter="exterior">אזורי חוץ ונוף</button>
             </div>
             
             <div class="gallery-grid" id="gallery-grid">
-                <!-- Video Item -->
-                <div class="video-container" data-category="exterior" data-aos="zoom-in">
-                    <video autoplay muted loop playsinline src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/migdal_video2.mp4"></video>
+                
+                <!-- בריכה ואזורי מים -->
+                <div class="gallery-item" data-category="pool" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה ואזור השחייה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">בריכה ואזור השחייה</div>
+                        <div class="overlay-description">בריכה מחוממת גדולה ומטופחת</div>
+                    </div>
                 </div>
                 
-                <!-- בריכה -->
-                <div class="gallery-item" data-category="pool" data-aos="fade-up">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ונוף לכינרת">
-                    <div class="gallery-overlay">
-                        <div class="overlay-title">בריכה ונוף לכינרת</div>
-                        <div class="overlay-description">בריכה מחוממת עם נוף פנורמי מדהים</div>
-                    </div>
-                </div>
                 <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="אזור הבריכה">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="נוף הבריכה לכינרת">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">אזור הבריכה</div>
-                        <div class="overlay-description">מתחם הבריכה המרווח והמטופח</div>
+                        <div class="overlay-title">נוף הבריכה לכינרת</div>
+                        <div class="overlay-description">נוף פנורמי מדהים מאזור הבריכה</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה בשעות הערב">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="אזור הבריכה המרווח">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">בריכה בשעות הערב</div>
-                        <div class="overlay-description">אווירה קסומה עם השקיעה</div>
+                        <div class="overlay-title">אזור הבריכה המרווח</div>
+                        <div class="overlay-description">מתחם הבריכה עם פינות ישיבה</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="pool" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="מתחם הבריכה והגינה">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="בריכה עם גינה">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">מתחם הבריכה והגינה</div>
+                        <div class="overlay-title">בריכה עם גינה</div>
                         <div class="overlay-description">שילוב מושלם של מים וירק</div>
                     </div>
                 </div>
                 
-                <!-- חדרים -->
+                <!-- חדרי שינה ומגורים -->
                 <div class="gallery-item" data-category="rooms" data-aos="fade-up">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר שינה ראשי">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדר רחצה מודרני">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">חדר שינה ראשי</div>
-                        <div class="overlay-description">חדר מרווח ונוח עם נוף יפה</div>
+                        <div class="overlay-title">חדר רחצה מודרני</div>
+                        <div class="overlay-description">שירותים ומקלחת מעוצבים</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדר שינה נוח">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">חדר שינה נוח</div>
+                        <div class="overlay-description">חדר שינה מרווח עם נוף יפה</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="200">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדר שינה משפחתי">
                     <div class="gallery-overlay">
                         <div class="overlay-title">חדר שינה משפחתי</div>
                         <div class="overlay-description">מושלם עבור משפחות עם ילדים</div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדר שינה נוסף">
-                    <div class="gallery-overlay">
-                        <div class="overlay-title">חדר שינה נוסף</div>
-                        <div class="overlay-description">חדר נוח ושקט לשנה מושלמת</div>
-                    </div>
-                </div>
+
                 <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדר אורחים">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדר אורחים אלגנטי">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">חדר אורחים</div>
+                        <div class="overlay-title">חדר אורחים אלגנטי</div>
                         <div class="overlay-description">חדר מעוצב באלגנטיות</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="חדר רחצה נוסף">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">חדר רחצה נוסף</div>
+                        <div class="overlay-description">מקלחת ושירותים נוחים</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="פינת ישיבה בחדר">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">פינת ישיבה בחדר</div>
+                        <div class="overlay-description">מקום נוח להרגעה ומנוחה</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדר שינה ראשי">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">חדר שינה ראשי</div>
+                        <div class="overlay-description">החדר הראשי המרווח והנוח</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up" data-aos-delay="700">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/17.jpg" alt="סוויטה יוקרתית">
                     <div class="gallery-overlay">
                         <div class="overlay-title">סוויטה יוקרתית</div>
@@ -363,7 +387,7 @@
                     </div>
                 </div>
 
-                <!-- מטבח וחדר אוכל -->
+                <!-- מטבח ואוכל -->
                 <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="המטבח הראשי">
                     <div class="gallery-overlay">
@@ -371,6 +395,7 @@
                         <div class="overlay-description">מטבח מאובזר במלואו עם כל הציוד</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="אזור הבישול">
                     <div class="gallery-overlay">
@@ -378,18 +403,28 @@
                         <div class="overlay-description">כיריים מודרניים וציוד מקצועי</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/25.jpg" alt="חדר האוכל">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/18.jpg" alt="פינת אוכל">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">חדר האוכל</div>
+                        <div class="overlay-title">פינת אוכל</div>
+                        <div class="overlay-description">מקום נעים לארוחות קלות</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/25.jpg" alt="חדר האוכל הגדול">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">חדר האוכל הגדול</div>
                         <div class="overlay-description">פינת אוכל מרווחת למשפחה הגדולה</div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/18.jpg" alt="פינת אוכל נוספת">
+
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/26.jpg" alt="פינת קפה">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">פינת אוכל נוספת</div>
-                        <div class="overlay-description">מקום נעים לארוחות קלות</div>
+                        <div class="overlay-title">פינת קפה</div>
+                        <div class="overlay-description">מקום נעים לשתיית קפה ונשנושים</div>
                     </div>
                 </div>
                 
@@ -401,6 +436,7 @@
                         <div class="overlay-description">שולחן סנוקר ומשחקים נוספים</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="entertainment" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/16.jpg" alt="שולחן פינג פונג">
                     <div class="gallery-overlay">
@@ -408,15 +444,40 @@
                         <div class="overlay-description">בילוי משפחתי מהנה</div>
                     </div>
                 </div>
-                
-                <!-- מתחם חוץ וגינה -->
-                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="הגינה הקדמית">
+
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/20.jpg" alt="אזור משחקים נוסף">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">הגינה הקדמית</div>
-                        <div class="overlay-description">כניסה מרשימה ומטופחת</div>
+                        <div class="overlay-title">אזור משחקים נוסף</div>
+                        <div class="overlay-description">עוד אפשרויות בילוי לכל המשפחה</div>
                     </div>
                 </div>
+
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/21.jpg" alt="פינת טלוויזיה וישיבה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">פינת טלוויזיה וישיבה</div>
+                        <div class="overlay-description">אזור צפייה נוח ומרגיע</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/29.jpg" alt="אזור בילוי נוסף">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">אזור בילוי נוסף</div>
+                        <div class="overlay-description">עוד פינות נעימות למנוחה</div>
+                    </div>
+                </div>
+                
+                <!-- אזורי חוץ ונוף -->
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="דשא וגינה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">דשא וגינה</div>
+                        <div class="overlay-description">שטחי דשא ירוקים ומטופחים</div>
+                    </div>
+                </div>
+
                 <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/23.jpg" alt="שבילי הגינה">
                     <div class="gallery-overlay">
@@ -424,69 +485,57 @@
                         <div class="overlay-description">שבילים מעוצבים ברחבי המתחם</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="דשא וגינה">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/24.jpg" alt="אזור ברביקיו">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">דשא וגינה</div>
-                        <div class="overlay-description">שטחי דשא ירוקים ומטופחים</div>
+                        <div class="overlay-title">אזור ברביקיו</div>
+                        <div class="overlay-description">מקום מושלם לערבי גריל</div>
                     </div>
                 </div>
+
                 <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/27.jpg" alt="חניה מקורה">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">חניה מקורה</div>
+                        <div class="overlay-description">חניה נוחה ומוגנת לרכבים</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/28.jpg" alt="כניסה למתחם">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">כניסה למתחם</div>
+                        <div class="overlay-description">שער הכניסה המעוצב</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="הגינה הקדמית">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">הגינה הקדמית</div>
+                        <div class="overlay-description">כניסה מרשימה ומטופחת</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/32.jpg" alt="מתחם חיצוני">
+                    <div class="gallery-overlay">
+                        <div class="overlay-title">מתחם חיצוני</div>
+                        <div class="overlay-description">אזור ישיבה בחוץ לערבים נעימים</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="700">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף לכינרת והר הארבל">
                     <div class="gallery-overlay">
                         <div class="overlay-title">נוף לכינרת והר הארבל</div>
                         <div class="overlay-description">הנוף המדהים שפותח כל בוקר</div>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/26.jpg" alt="פינת ישיבה בחוץ">
+
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up" data-aos-delay="800">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/34.jpg" alt="שקיעה מהמתחם">
                     <div class="gallery-overlay">
-                        <div class="overlay-title">פינת ישיבה בחוץ</div>
-                        <div class="overlay-description">פינה נעימה לנוח בחוץ</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
-        <p>&copy; 2024 מגדל של חיים. כל הזכויות שמורות.</p>
-        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
-            <a href="index.html#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
-            <a href="index.html#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
-            <a href="index.html#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
-            <a href="index.html#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
-        </div>
-    </footer>
-
-    <script>
-        AOS.init({
-            duration: 1200,
-            once: true,
-        });
-
-        // Simple filtering logic
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                const filter = button.dataset.filter;
-                document.querySelectorAll('.gallery-grid > div').forEach(item => {
-                    const categories = item.dataset.category.split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Initial state: show only the first category
-        document.addEventListener('DOMContentLoaded', () => {
-             document.querySelectorAll('.filter-btn')[0].click();
-        });
-    </script>
-</body>
-</html>
+                        <div class="overlay-title">שקיעה מהמתחם</div>
+                        <div class="overlay-description">רגעי
