@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מגדל של חיים - הסיפור שלנו</title>
-    <meta name="description" content="מסע מרגש של חזון, אמונה וברכה שהוביל ליצירת המתחם המיוחד ביותר בצפון, לציבור הדתי והחרדי.">
+    <title>נגישות ופרטיות - מגדל של חיים</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary-bg: #0B192A;
@@ -31,10 +28,9 @@
             font-family: var(--font-family-body);
             background: var(--primary-bg);
             color: var(--text-color);
-            overflow-x: hidden;
             line-height: 1.8;
         }
-        
+
         .header-nav {
             position: fixed;
             top: 0;
@@ -43,7 +39,6 @@
             background: rgba(11, 25, 42, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
         }
 
         .nav-content {
@@ -67,447 +62,106 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
-            color: white;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 114, 176, 0.5);
-        }
-
-        .hero {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 120px 0 80px;
-            overflow: hidden;
-            background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(11, 25, 42, 0.8) 0%, rgba(76, 114, 176, 0.4) 100%);
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-title {
-            font-family: var(--font-family-heading);
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            line-height: 1.1;
-            color: white;
-            text-shadow: 
-                0 0 30px rgba(0, 0, 0, 0.9),
-                0 0 50px rgba(76, 114, 176, 0.5);
-            animation: titleFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .content-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #0B192A 0%, #1A2E44 50%, #0B192A 100%);
-        }
-
-        .content-block {
+        .content-wrapper {
             max-width: 1200px;
-            margin: 0 auto 6rem auto;
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(26, 46, 68, 0.4), rgba(15, 31, 49, 0.4));
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(76, 114, 176, 0.1);
-            transition: all 0.5s ease;
-        }
-
-        .content-block:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.2);
-            border-color: var(--secondary-color);
-        }
-
-        .content-block.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .text-content {
-            flex: 1;
-        }
-
-        .text-content h2 {
-            font-family: var(--font-family-heading);
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #FFF, var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            display: inline-block;
-        }
-
-        .text-content h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--secondary-color));
-        }
-
-        .text-content p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: rgba(224, 224, 224, 0.9);
-            margin-bottom: 1.5rem;
-            line-height: 1.9;
-        }
-
-        .image-content {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        .image-content img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.5s ease;
-        }
-
-        .image-content:hover img {
-            transform: scale(1.05);
-        }
-
-        .image-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(76, 114, 176, 0.2));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1;
-            border-radius: 15px;
-        }
-
-        .image-content:hover::before {
-            opacity: 1;
-        }
-
-        .stats-section {
-            background: linear-gradient(135deg, #1A2E44, #0F1F31);
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-            border-radius: 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1000px;
             margin: 0 auto;
+            padding: 150px 40px 80px;
         }
 
-        .stat-item {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-family: var(--font-family-heading);
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FFF, var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            color: rgba(224, 224, 224, 0.8);
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .content-block {
-                flex-direction: column;
-                padding: 2rem;
-            }
-            
-            .content-block.reverse {
-                flex-direction: column;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        .section-title {
+        h1 {
             font-family: var(--font-family-heading);
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 900;
-            text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             background: linear-gradient(135deg, #FFF, var(--secondary-color));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .features-highlight {
-            max-width: 1200px;
-            margin: 6rem auto;
-            padding: 4rem 2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-box {
-            background: linear-gradient(135deg, rgba(26, 46, 68, 0.6), rgba(15, 31, 49, 0.6));
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 1px solid rgba(76, 114, 176, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(76, 114, 176, 0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature-box:hover::before {
-            opacity: 1;
-        }
-
-        .feature-box:hover {
-            transform: translateY(-15px) scale(1.05);
-            border-color: var(--secondary-color);
-            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.3);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        h2 {
+            font-family: var(--font-family-heading);
             font-size: 2rem;
-            color: white;
-            transition: all 0.4s ease;
-        }
-
-        .feature-box:hover .feature-icon {
-            transform: rotateY(360deg) scale(1.1);
-            box-shadow: 0 10px 30px rgba(76, 114, 176, 0.5);
-        }
-
-        .feature-box h3 {
-            font-size: 1.5rem;
             font-weight: 700;
+            color: var(--secondary-color);
+            margin: 3rem 0 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
             color: white;
+            margin: 2rem 0 1rem;
+        }
+
+        p, li {
             margin-bottom: 1rem;
+            line-height: 1.9;
         }
 
-        .feature-box p {
-            color: rgba(224, 224, 224, 0.8);
-            line-height: 1.6;
+        ul {
+            list-style-position: inside;
+            margin-right: 1.5rem;
         }
 
-        .timeline-section {
-            max-width: 900px;
-            margin: 6rem auto;
-            padding: 4rem 2rem;
-        }
-
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            right: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--secondary-color), transparent);
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
+        .section {
+            background: linear-gradient(135deg, rgba(26, 46, 68, 0.4), rgba(15, 31, 49, 0.4));
+            padding: 3rem;
+            border-radius: 20px;
             margin-bottom: 3rem;
-            position: relative;
+            border: 1px solid rgba(76, 114, 176, 0.1);
         }
 
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-            text-align: left;
+        a {
+            color: var(--secondary-color);
+            text-decoration: underline;
         }
 
-        .timeline-item:nth-child(even) {
-            text-align: right;
+        a:hover {
+            color: #6B92D0;
         }
 
-        .timeline-marker {
-            width: 30px;
-            height: 30px;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            border: 5px solid var(--primary-bg);
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(76, 114, 176, 0.6);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(76, 114, 176, 0.6); }
-            50% { box-shadow: 0 0 40px rgba(76, 114, 176, 0.9); }
-        }
-
-        .timeline-content {
-            flex: 1;
-            max-width: 45%;
-            background: linear-gradient(135deg, rgba(26, 46, 68, 0.6), rgba(15, 31, 49, 0.6));
-            padding: 2rem;
+        .accessibility-tools {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 46, 68, 0.95);
+            padding: 1rem;
             border-radius: 15px;
-            border: 1px solid rgba(76, 114, 176, 0.2);
+            border: 1px solid rgba(76, 114, 176, 0.3);
+            z-index: 999;
+        }
+
+        .accessibility-btn {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 10px 0;
+            background: var(--secondary-color);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .timeline-content:hover {
-            transform: scale(1.05);
-            border-color: var(--secondary-color);
-            box-shadow: 0 15px 30px rgba(76, 114, 176, 0.3);
-        }
-
-        .timeline-content h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: rgba(224, 224, 224, 0.9);
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+            background: #6B92D0;
         }
 
         @media (max-width: 768px) {
-            .timeline::before {
-                right: 20px;
+            .accessibility-tools {
+                left: 10px;
+                padding: 0.5rem;
             }
 
-            .timeline-marker {
-                right: 20px;
-                transform: translateX(0);
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                flex-direction: row;
-                text-align: right;
-            }
-
-            .timeline-content {
-                max-width: calc(100% - 60px);
-                margin-right: 60px;
+            .accessibility-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -517,207 +171,199 @@
     <header class="header-nav">
         <nav class="nav-content">
             <a href="index.html" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu">
-                <li><a href="about.html">הסיפור שלנו</a></li>
-                <li><a href="gallery.html">גלריה</a></li>
-                <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
-            </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-container" data-aos="fade-up" data-aos-duration="1500">
-            <h1 class="hero-title">הסיפור שלנו</h1>
+    <div class="accessibility-tools" role="toolbar" aria-label="כלי נגישות">
+        <button class="accessibility-btn" onclick="increaseFontSize()" aria-label="הגדל טקסט">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button class="accessibility-btn" onclick="decreaseFontSize()" aria-label="הקטן טקסט">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button class="accessibility-btn" onclick="toggleContrast()" aria-label="ניגודיות גבוהה">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <button class="accessibility-btn" onclick="resetAccessibility()" aria-label="איפוס נגישות">
+            <i class="fas fa-undo"></i>
+        </button>
+    </div>
+
+    <main class="content-wrapper">
+        <h1>הצהרת נגישות ומדיניות פרטיות</h1>
+
+        <div class="section">
+            <h2>הצהרת נגישות</h2>
+            
+            <h3>מחויבות לנגישות</h3>
+            <p>
+                מתחם "מגדל של חיים" מחויב להנגיש את שירותיו לכלל האוכלוסייה, לרבות אנשים עם מוגבלות. אנו פועלים על פי חוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ותקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.
+            </p>
+
+            <h3>התאמות נגישות באתר</h3>
+            <p>האתר כולל התאמות נגישות הבאות:</p>
+            <ul>
+                <li>ניווט באמצעות מקלדת - ניתן לנווט באתר באמצעות מקשי Tab ו-Enter</li>
+                <li>תמיכה בקוראי מסך - האתר תומך בתוכנות NVDA, JAWS ו-VoiceOver</li>
+                <li>כפתורי הגדלת/הקטנת גופן</li>
+                <li>ניגודיות צבעים מותאמת</li>
+                <li>תיוג תמונות עם טקסט חלופי (Alt text)</li>
+                <li>כותרות מובנות היררכית</li>
+                <li>שפה ברורה ופשוטה</li>
+            </ul>
+
+            <h3>נגישות המתחם הפיזי</h3>
+            <p>המתחם עצמו כולל:</p>
+            <ul>
+                <li>חניית נכים ייעודית</li>
+                <li>כניסה נגישה ללא מדרגות</li>
+                <li>חדרים מותאמים לאנשים עם מוגבלות</li>
+                <li>שירותים נגישים</li>
+                <li>שבילים רחבים ונגישים</li>
+            </ul>
+
+            <h3>פניות והצעות לשיפור</h3>
+            <p>
+                אם נתקלתם בבעיית נגישות באתר או במתחם, נשמח לקבל פנייה למייל: <a href="mailto:accessibility@magdalhayim.co.il">accessibility@magdalhayim.co.il</a><br>
+                רכז נגישות: [שם הרכז]<br>
+                טלפון: 050-123-4567<br>
+                נשתדל לטפל בפנייתכם תוך 7 ימי עסקים.
+            </p>
         </div>
-    </section>
 
-    <main class="content-section">
-        <div class="container">
-            <div class="content-block" data-aos="fade-up" data-aos-duration="1000">
-                <div class="text-content">
-                    <h2>ברכת הצדיק מלווה אותנו</h2>
-                    <p>
-                        מתחם "מגדל של חיים" הוקם מתוך חזון ואמונה, ונקרא על שם הצדיק האור החיים הקדוש זצ"ל. מרגע הרעיון ועד ההקמה, המתחם לווה בהשגחה מיוחדת וקיבלנו סיוע בלתי צפוי בכל קושי.
-                    </p>
-                    <p>
-                        היה ידוע שהצדיק לא זכה לילדים, וכהוקרה על עזרתו, החלטנו שהמתחם ישמש כבית חם ומבורך למשפחות יהודיות. זהו המקום שבו ילדינו וילדיכם יכולים לחוות שמחה, אושר וקדושה תחת ברכתו.
-                    </p>
-                </div>
-                <div class="image-content">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף הכינרת והרי הגליל">
-                </div>
-            </div>
+        <div class="section">
+            <h2>מדיניות פרטיות</h2>
 
-            <div class="stats-section" data-aos="zoom-in">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">21</div>
-                        <div class="stat-label">חדרי אירוח</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">80</div>
-                        <div class="stat-label">אורחים</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">דונם שטח</div>
-                    </div>
-                </div>
-            </div>
+            <h3>איסוף מידע</h3>
+            <p>
+                אנו אוספים מידע אישי רק כאשר אתם בוחרים לספק אותו באופן מרצון, למשל בעת מילוי טופס יצירת קשר או ביצוע הזמנה. המידע שאנו אוספים עשוי לכלול:
+            </p>
+            <ul>
+                <li>שם מלא</li>
+                <li>כתובת דואר אלקטרוני</li>
+                <li>מספר טלפון</li>
+                <li>תאריכי אירוח מבוקשים</li>
+                <li>מספר אורחים</li>
+            </ul>
 
-            <div class="content-block reverse" data-aos="fade-up" data-aos-duration="1000">
-                <div class="text-content">
-                    <h2>נוחות ומרחב לקבוצות ומשפחות</h2>
-                    <p>
-                        המתחם הייחודי שלנו, השוכן על פני שני דונם רחבי ידיים, מציע שילוב מושלם בין מרחב פתוח לנוחות מקסימלית. עם דונם וחצי בנויים, המתחם מכיל שתי יחידות אירוח גדולות המותאמות במיוחד לאירוח קבוצות ומשפחות.
-                    </p>
-                    <p>
-                        ביחידה הראשונה תמצאו 12 חדרים מרווחים עם שירותים ומקלחות צמודים, וביחידה השנייה 8 חדרים נוספים, בנוסף לשני חדרי ילדים. בסך הכל, אנו יכולים לארח עד כ-80 נופשים בנוחות ועם פרטיות מלאה.
-                    </p>
-                </div>
-                <div class="image-content">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/21.jpg" alt="חדרי אירוח">
-                </div>
-            </div>
+            <h3>שימוש במידע</h3>
+            <p>אנו משתמשים במידע שנאסף למטרות הבאות:</p>
+            <ul>
+                <li>טיפול בהזמנות ובקשות</li>
+                <li>יצירת קשר בנוגע לשירותינו</li>
+                <li>שיפור השירות והחוויה באתר</li>
+                <li>משלוח עדכונים ומבצעים (בכפוף להסכמתכם)</li>
+            </ul>
 
-            <div class="content-block" data-aos="fade-up" data-aos-duration="1000">
-                <div class="text-content">
-                    <h2>פינוקים לכל המשפחה</h2>
-                    <p>
-                        בכל חדר מחכים לכם מיטות נוחות, ארון מסודר ופינות ישיבה. בכל אחד משני המתחמים ישנו סלון רחב ידיים, מטבח כשר ומאובזר ושולחנות אוכל גדולים המתאימים לסעודות משותפות.
-                    </p>
-                    <p>
-                        בחצר תמצאו בריכת שחייה גדולה, מגודרת ובטיחותית, פינות ישיבה מוצלות, שולחן סנוקר, פינג פונג, הוקי אוויר ומשחקייה צבעונית לילדים. הכל מול נוף עוצר נשימה של הכינרת.
-                    </p>
-                </div>
-                <div class="image-content">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="מטבח כשר וגדול">
-                </div>
-            </div>
+            <h3>אבטחת מידע</h3>
+            <p>
+                אנו נוקטים באמצעי אבטחה מתקדמים להגנה על המידע האישי שלכם, כולל הצפנת נתונים, גישה מוגבלת למידע, וגיבויים תקופתיים.
+            </p>
 
-            <div class="features-highlight" data-aos="zoom-in">
-                <h2 class="section-title">מה מייחד אותנו?</h2>
-                <div class="features-grid">
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-water"></i>
-                        </div>
-                        <h3>בריכה מחוממת</h3>
-                        <p>בריכת שחייה גדולה ומחוממת, מגודרת לבטיחות מקסימלית</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3>מטבח כשר</h3>
-                        <p>שני מטבחים מאובזרים במלואם עם כשרות מהדרין</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-tree"></i>
-                        </div>
-                        <h3>גינה מטופחת</h3>
-                        <p>2 דונם של שטחים ירוקים עם פינות ישיבה מוצלות</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>משחקייה לילדים</h3>
-                        <p>סנוקר, פינג פונג, הוקי אוויר ומשחקים נוספים</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-mountain"></i>
-                        </div>
-                        <h3>נוף פנורמי</h3>
-                        <p>נוף מדהים לכינרת והרי הגליל מכל פינה במתחם</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>פרטיות מלאה</h3>
-                        <p>מתחם פרטי ומגודר עם שקט וביטחון מלאים</p>
-                    </div>
-                </div>
-            </div>
+            <h3>שיתוף מידע עם צדדים שלישיים</h3>
+            <p>
+                אנו לא מוכרים או משתפים את המידע האישי שלכם עם צדדים שלישיים למטרות שיווקיות. נשתף מידע רק במקרים הבאים:
+            </p>
+            <ul>
+                <li>בהסכמתכם המפורשת</li>
+                <li>עם ספקי שירות הנדרשים לצורך מתן השירות (כגון מערכות הזמנות)</li>
+                <li>כאשר נדרש על פי חוק</li>
+            </ul>
 
-            <div class="content-block reverse" data-aos="fade-up" data-aos-duration="1000">
-                <div class="text-content">
-                    <h2>מתאים במיוחד לשבתות חתן ואירועים</h2>
-                    <p>
-                        המתחם שלנו הוא המקום המושלם לשבתות חתן משפחתיות ואירועים מיוחדים. עם יכולת אירוח של עד 80 אורחים, 21 חדרי שינה, ושני מתחמי אירוח נפרדים, אנו מספקים את כל התנאים לאירוע מושלם.
-                    </p>
-                    <p>
-                        בנוסף לנוחות והאווירה המיוחדת, המתחם מציע שירותי הסעדה כשרה למהדרין, דיי"ט וכל שירות נוסף שתצטרכו. אנו דואגים לכל פרט כדי שהאירוע שלכם יהיה בלתי נשכח.
-                    </p>
-                </div>
-                <div class="image-content">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה ואזור אירוח">
-                </div>
-            </div>
+            <h3>עוגיות (Cookies)</h3>
+            <p>
+                האתר משתמש בעוגיות לשיפור חוויית הגלישה. ניתן להשבית עוגיות בהגדרות הדפדפן, אך פעולה זו עלולה להשפיע על תפקוד האתר.
+            </p>
 
-            <div class="timeline-section" data-aos="fade-up">
-                <h2 class="section-title">המסע שלנו</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>החזון</h3>
-                            <p>חלום ליצור מקום מיוחד לציבור הדתי והחרדי בצפון הארץ</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>התכנון</h3>
-                            <p>עיצוב המתחם עם דגש על פרטיות, נוחות ואווירה ייחודית</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>הבנייה</h3>
-                            <p>הקמת המתחם בליווי השגחה מיוחדת וברכת האור החיים הקדוש</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>היום</h3>
-                            <p>מקום מיוחד שמביא שמחה וברכה לכל משפחה שמגיעה אלינו</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3>זכויותיכם</h3>
+            <p>יש לכם זכות:</p>
+            <ul>
+                <li>לעיין במידע האישי שנאסף אודותיכם</li>
+                <li>לבקש תיקון או מחיקת מידע</li>
+                <li>לבטל הסכמה לקבלת דיוור שיווקי</li>
+                <li>להגיש תלונה לרשות להגנת הפרטיות</li>
+            </ul>
+
+            <h3>יצירת קשר</h3>
+            <p>
+                לשאלות בנוגע למדיניות הפרטיות:<br>
+                דואר אלקטרוני: <a href="mailto:privacy@magdalhayim.co.il">privacy@magdalhayim.co.il</a><br>
+                טלפון: 050-123-4567
+            </p>
+
+            <h3>עדכונים למדיניות</h3>
+            <p>
+                אנו שומרים לעצמנו את הזכות לעדכן מדיניות זו מעת לעת. עדכונים יפורסמו בדף זה עם ציון תאריך העדכון האחרון.
+            </p>
+
+            <p style="margin-top: 2rem; opacity: 0.7;">
+                תאריך עדכון אחרון: ינואר 2025
+            </p>
         </div>
     </main>
 
     <footer class="py-12 text-center" style="background: #0A1628;">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
-                <div class="flex gap-6 text-3xl">
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
             <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+            <div class="mt-4">
+                <a href="index.html" class="text-gray-400 hover:text-white mx-2">דף הבית</a>
+                <a href="about.html" class="text-gray-400 hover:text-white mx-2">הסיפור שלנו</a>
+                <a href="gallery.html" class="text-gray-400 hover:text-white mx-2">גלריה</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white mx-2">יצירת קשר</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1200,
-                    once: true,
-                    easing: 'ease-out-cubic'
-                });
+        let fontSize = 16;
+        let highContrast = false;
+
+        function increaseFontSize() {
+            fontSize += 2;
+            document.body.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        function decreaseFontSize() {
+            if (fontSize > 12) {
+                fontSize -= 2;
+                document.body.style.fontSize = fontSize + 'px';
+                localStorage.setItem('fontSize', fontSize);
+            }
+        }
+
+        function toggleContrast() {
+            highContrast = !highContrast;
+            if (highContrast) {
+                document.body.style.filter = 'contrast(1.5)';
+            } else {
+                document.body.style.filter = 'contrast(1)';
+            }
+            localStorage.setItem('highContrast', highContrast);
+        }
+
+        function resetAccessibility() {
+            fontSize = 16;
+            highContrast = false;
+            document.body.style.fontSize = '16px';
+            document.body.style.filter = 'contrast(1)';
+            localStorage.removeItem('fontSize');
+            localStorage.removeItem('highContrast');
+        }
+
+        // Load saved preferences
+        window.addEventListener('load', () => {
+            const savedFontSize = localStorage.getItem('fontSize');
+            const savedContrast = localStorage.getItem('highContrast');
+            
+            if (savedFontSize) {
+                fontSize = parseInt(savedFontSize);
+                document.body.style.fontSize = fontSize + 'px';
+            }
+            
+            if (savedContrast === 'true') {
+                highContrast = true;
+                document.body.style.filter = 'contrast(1.5)';
             }
         });
     </script>
