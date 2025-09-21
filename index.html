@@ -3,29 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מגדל של חיים - מתחם נופש</title>
-    <meta name="description" content="מתחם אירוח יוקרתי במגדל מול הכנרת והר הארבל, מתאים במיוחד למשפחות, קבוצות ושבתות חתן.">
+    
+    <!-- Title and Meta Tags -->
+    <title>מגדל של חיים - ריזורט משפחתי יוקרתי בצפון</title>
+    <meta name="description" content="ריזורט משפחתי יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון">
+    <meta name="keywords" content="ריזורט בצפון, שבתות חתן, אירוח משפחתי, בריכה פרטית, מושב מגדל, חופשות משפחתיות, אירועים, נופש, גליל">
+    <meta name="author" content="מגדל של חיים">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Hebrew">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://magdalresort.co.il">
+    <meta property="og:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי בצפון">
+    <meta property="og:description" content="ריזורט משפחתי יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון">
+    <meta property="og:image" content="https://magdalresort.co.il/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://magdalresort.co.il">
+    <meta property="twitter:title" content="מגדל של חיים - ריזורט משפחתי יוקרתי בצפון">
+    <meta property="twitter:description" content="ריזורט משפחתי יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון">
+    <meta property="twitter:image" content="https://magdalresort.co.il/images/twitter-image.jpg">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <style>
         :root {
             --primary-bg: #0B192A;
             --secondary-color: #4C72B0;
             --text-color: #E0E0E0;
-            --font-family: 'Playfair Display', serif;
+            --font-family-heading: 'Playfair Display', serif;
+            --font-family-body: 'Heebo', sans-serif;
         }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family-body);
             background: var(--primary-bg);
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
+            direction: rtl; /* Set RTL direction for the body */
         }
+        
         .header-nav {
             position: fixed;
             top: 0;
@@ -36,6 +69,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
         }
+
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -44,20 +78,23 @@
             margin: 0 auto;
             padding: 20px 40px;
         }
+
         .logo {
-            font-family: var(--font-family);
+            font-family: var(--font-family-heading);
             font-size: 1.5rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
             position: relative;
         }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 40px;
             align-items: center;
         }
+
         .nav-menu a {
             color: var(--text-color);
             text-decoration: none;
@@ -67,6 +104,11 @@
             position: relative;
             padding: 8px 0;
         }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+        }
+
         .cta-button {
             background: var(--secondary-color);
             color: white;
@@ -81,16 +123,23 @@
             position: relative;
             overflow: hidden;
         }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.4);
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 120px 0 80px;
             overflow: hidden;
+            background-color: var(--primary-bg);
         }
-        .hero-video {
+
+        .video-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -98,26 +147,25 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            filter: brightness(0.6);
         }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 25, 42, 0.7);
-            z-index: 0;
-        }
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            text-align: center;
+
+        .hero-content {
             position: relative;
             z-index: 10;
+            text-align: center;
+            background: rgba(11, 25, 42, 0.7);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .hero-title {
-            font-family: var(--font-family);
+            font-family: var(--font-family-heading);
             font-size: clamp(3rem, 10vw, 6rem);
             font-weight: 900;
             line-height: 0.9;
@@ -128,214 +176,98 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(76, 114, 176, 0.4);
         }
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 400;
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: var(--secondary-color);
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 16px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-        }
-        .features {
-            padding: 100px 0;
-            position: relative;
-        }
-        .features-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .section-title {
-            font-family: var(--font-family);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: white;
-            letter-spacing: -0.02em;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-color);
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
+
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 40px;
-            transition: all 0.4s ease;
-            position: relative;
+            background: #1A2E44;
+            border-radius: 12px;
             overflow: hidden;
-            backdrop-filter: blur(20px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            padding: 2rem;
         }
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-color);
-            border-radius: 4px;
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(76, 114, 176, 0.2);
+        }
+
+        .feature-card .icon-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(76, 114, 176, 0.2);
+            margin: 0 auto 1rem;
+            color: var(--secondary-color);
         }
-        .feature-title {
-            font-family: var(--font-family);
-            font-size: 1.5rem;
+        
+        .feature-card .icon-container i {
+            font-size: 2.5rem;
+        }
+        
+        .feature-card h3 {
+            font-family: var(--font-family-heading);
             font-weight: 700;
             color: white;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
-        .feature-description {
-            color: var(--text-color);
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-        .tech-specs {
-            padding: 100px 0;
-            background: rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        .specs-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 60px;
-            margin-top: 4rem;
-        }
-        .spec-item {
             text-align: center;
-            position: relative;
         }
-        .spec-value {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
+        
+        .feature-card p {
+            text-align: center;
+            color: #B0B0B0;
         }
-        .spec-label {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        .spec-detail {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 0.3rem;
-        }
+
         .footer {
-            background: var(--primary-bg);
-            color: var(--text-color);
-            padding: 4rem 0 2rem;
-            text-align: center;
+            background-color: #0A1628;
+            color: #E0E0E0;
         }
-        .footer-content h3 {
-            font-family: var(--font-family);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+
+        .footer-socials a {
+            color: #E0E0E0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
             color: var(--secondary-color);
         }
-        .footer-content p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
+
         .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            color: #E0E0E0;
+            transition: color 0.3s ease;
         }
+
         .footer-links a:hover {
             color: var(--secondary-color);
         }
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            opacity: 0.7;
-            font-size: 1rem;
-        }
+
         .floating-whatsapp {
             position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background: #25d366;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
             color: white;
-            padding: 1.2rem;
             border-radius: 50%;
-            font-size: 1.6rem;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
             z-index: 1000;
-            transition: all 0.3s ease;
         }
+        
         .floating-whatsapp:hover {
             transform: scale(1.1);
         }
+
     </style>
 </head>
-<body onload="AOS.init()">
+<body>
 
+    <!-- Header and Navigation -->
     <header class="header-nav">
         <nav class="nav-content">
             <a href="index.html" class="logo">מגדל של חיים</a>
@@ -347,91 +279,109 @@
         </nav>
     </header>
 
-    <section class="hero min-h-screen relative overflow-hidden flex items-center justify-center text-center">
-        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+    <!-- Hero Section with Video Background -->
+    <section class="hero relative flex items-center justify-center text-center">
+        <video autoplay muted loop playsinline class="video-background">
             <source src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/migdal_video.mp4" type="video/mp4">
+            דפדפן זה אינו תומך בווידאו.
         </video>
-        <div class="absolute inset-0 bg-black bg-opacity-50 -z-10"></div>
-        <div class="relative z-10 text-white" data-aos="fade-up" data-aos-duration="1500">
-            <h1 class="text-4xl md:text-7xl font-bold font-['Playfair_Display'] text-white mb-4">מגדל של חיים</h1>
-            <h2 class="text-lg md:text-3xl font-light text-gray-200" data-aos="fade-up" data-aos-delay="500">מתחם נופש ואירועים במגדל</h2>
-            <p class="mt-8 text-xl" data-aos="fade-up" data-aos-delay="800">
-                המקום המושלם לחופשה משפחתית, קבוצתית או אירוע קטן.
-            </p>
-            <a href="contact.html" class="mt-10 inline-block px-8 py-3 rounded-full font-semibold bg-[#4C72B0] text-white text-lg md:text-xl hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="1000">הזמינו עכשיו</a>
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative z-10 text-white" data-aos="fade-up">
+            <div class="hero-content">
+                <h1 class="hero-title">מגדל של חיים</h1>
+                <p class="text-lg md:text-3xl mt-4 font-light tracking-wide" data-aos="fade-up" data-aos-delay="500">חופשה משפחתית ליד הכנרת</p>
+                <a href="contact.html" class="mt-10 inline-block px-8 py-3 rounded-full font-semibold bg-[#4C72B0] hover:bg-[#3C5D90] text-lg md:text-xl transition duration-300" data-aos="zoom-in" data-aos-delay="1000">הזמינו עכשיו</a>
+            </div>
         </div>
     </section>
 
+    <!-- Features Section -->
     <main class="py-20 md:py-32 px-4 bg-gray-900">
-        <!-- About Section -->
-        <section id="about" class="max-w-4xl mx-auto text-center text-white" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl font-bold font-['Playfair_Display'] text-[#4C72B0]">החזון שלנו</h2>
-            <p class="mt-8 text-xl md:text-2xl leading-relaxed text-gray-400">
-                ב"מגדל של חיים" אנו יוצרים מרחב אירוח נקי ונוח, המותאם במיוחד לאירוח משפחות, קבוצות ושבתות חתן. אנו מציעים תמורה מעולה למחיר, עם מתחם פרטי ובריכה, באווירה פשוטה אך מפנקת.
-            </p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="fade-up">
-                    <div class="text-4xl text-[#4C72B0] mb-4">
-                        <i class="fas fa-family"></i>
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-[#4C72B0] mb-12" data-aos="fade-up">מתקנים במתחם</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="icon-container">
+                        <i class="fas fa-swimming-pool"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-[#4C72B0]">אירוח משפחתי</h3>
-                    <p class="text-gray-400">מקום מרווח המתאים למשפחות גדולות וקבוצות, עם פרטיות מוחלטת.</p>
+                    <h3 class="text-xl font-semibold mb-2">בריכה פרטית מחוממת</h3>
+                    <p class="text-gray-400">בריכה גדולה ומטופחת עם מערכת חימום מתקדמת, אזור רדוד לילדים ונוף לכינרת.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl text-[#4C72B0] mb-4">
-                        <i class="fas fa-hand-sparkles"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-container">
+                        <i class="fas fa-bed"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-[#4C72B0]">ניקיון ונוחות</h3>
-                    <p class="text-gray-400">הקפדה בלתי מתפשרת על ניקיון ותחזוקה, לנוחותכם המקסימלית.</p>
+                    <h3 class="text-xl font-semibold mb-2">21 חדרים נוחים</h3>
+                    <p class="text-gray-400">חדרים מרווחים וממוזגים, עם מיטות יהודיות וחדרי רחצה צמודים בחלקם.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl text-[#4C72B0] mb-4">
-                        <i class="fas fa-water"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-container">
+                        <i class="fas fa-utensils"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-[#4C72B0]">בריכה פרטית</h3>
-                    <p class="text-gray-400">בריכה צמודה ופרטית לאורחי המתחם בלבד.</p>
+                    <h3 class="text-xl font-semibold mb-2">מטבח כשר מאובזר</h3>
+                    <p class="text-gray-400">מטבח גדול עם כיריים אינדוקציה, מקררים וכל הציוד הדרוש לקבוצות גדולות.</p>
                 </div>
-            </div>
-        </section>
-        <!-- Gallery Preview Section -->
-        <section id="gallery-preview" class="py-20 md:py-32 px-4 bg-gray-900">
-            <div class="max-w-6xl mx-auto text-white" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-bold text-center font-['Playfair_Display'] text-[#4C72B0] mb-12">גלריית המתחם</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="zoom-in">
-                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="מבט על המתחם והבריכה" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h3 class="text-xl font-semibold text-[#4C72B0]">הבריכה המפנקת</h3>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-container">
+                        <i class="fas fa-tree"></i>
                     </div>
-                    <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="המטבח והסלון" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h3 class="text-xl font-semibold text-[#4C72B0]">מטבח כפרי ומאובזר</h3>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-xl hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="אזור האירוח המרכזי" class="w-full h-48 object-cover rounded-xl mb-4">
-                        <h3 class="text-xl font-semibold text-[#4C72B0]">סלון ופינת אוכל</h3>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2">מתחם חוץ וגינה</h3>
+                    <p class="text-gray-400">2 דונם של מרחב פתוח עם פינות ישיבה מוצלות, בריכת דגי נוי ונוף מרהיב.</p>
                 </div>
-                <div class="mt-12 text-center">
-                    <a href="gallery.html" class="inline-block px-8 py-3 rounded-full font-semibold bg-[#4C72B0] text-white hover:scale-105 transition-transform">לגלריה המלאה</a>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-container">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">אזורי פנאי ומשחקים</h3>
+                    <p class="text-gray-400">שולחנות סנוקר, פינג פונג, הוקי אוויר ומשחקייה צבעונית לילדים.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon-container">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">מתאים לציבור הדתי</h3>
+                    <p class="text-gray-400">אווירה המותאמת לשבתות חתן ואירועים משפחתיים, עם הקפדה על צרכי הקהל.</p>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
-        <p>&copy; 2024 מגדל של חיים. כל הזכויות שמורות.</p>
-        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
-            <a href="about.html#" target="_blank" aria-label="פייסבוק" class="text-gray-400 hover:text-[#4C72B0] transition-colors"><i class="fab fa-facebook"></i></a>
-            <a href="about.html#" target="_blank" aria-label="אינסטגרם" class="text-gray-400 hover:text-[#4C72B0] transition-colors"><i class="fab fa-instagram"></i></a>
-            <a href="about.html#" target="_blank" aria-label="יוטיוב" class="text-gray-400 hover:text-[#4C72B0] transition-colors"><i class="fab fa-youtube"></i></a>
-            <a href="about.html#" target="_blank" aria-label="טיקטוק" class="text-gray-400 hover:text-[#4C72B0] transition-colors"><i class="fab fa-tiktok"></i></a>
+    <!-- Footer -->
+    <footer class="footer py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
+                <div class="flex space-x-6 rtl:space-x-reverse text-2xl footer-socials">
+                    <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-6 rtl:space-x-reverse mb-6 footer-links">
+                <a href="index.html">דף הבית</a>
+                <a href="about.html">הסיפור שלנו</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="contact.html">הזמנות ויצירת קשר</a>
+            </div>
+            <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+            <p class="text-gray-500 mt-2">עוצב ופותח במיוחד לריזורט מגדל של חיים</p>
         </div>
     </footer>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972501234567" class="floating-whatsapp" aria-label="צור קשר בוואטסאפ" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1200,
-            once: true,
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 1200,
+                once: true,
+            });
         });
     </script>
 </body>
