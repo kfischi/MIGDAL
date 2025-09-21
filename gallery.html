@@ -538,4 +538,90 @@
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/34.jpg" alt="שקיעה מהמתחם">
                     <div class="gallery-overlay">
                         <div class="overlay-title">שקיעה מהמתחם</div>
-                        <div class="overlay-description">רגעי
+                        <div class="overlay-description">רגעי קסם בשעות הערב</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for enlarged images -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
+        <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
+            <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS only after it's loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                });
+            }
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.dataset.filter;
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Keyboard support for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
