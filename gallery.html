@@ -76,17 +76,16 @@
             text-decoration: none;
         }
         .hero {
-            min-height: 50vh;
+            min-height: 40vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 100px 0 60px;
+            padding: 120px 0 60px;
             overflow: hidden;
             background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
-            margin-top: 60px;
         }
         .hero::before {
             content: '';
@@ -166,32 +165,10 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            cursor: pointer;
         }
         .gallery-item:hover img {
             transform: scale(1.1);
-        }
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-        .overlay-title {
-            font-family: var(--font-family);
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-        .overlay-description {
-            font-size: 0.9rem;
-            color: #ccc;
         }
         .video-container {
             width: 100%;
@@ -203,9 +180,6 @@
             height: 100%;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        .hidden {
-            display: none;
         }
         .modal {
             display: none;
@@ -244,6 +218,7 @@
             font-weight: bold;
             transition: 0.3s;
             cursor: pointer;
+            z-index: 2001;
         }
         @keyframes modalSlideIn {
             from { opacity: 0; transform: translateY(-50%) scale(0.8); }
@@ -271,20 +246,20 @@
     </section>
 
     <main class="gallery-section">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-4">
             <!-- וידאו הכניסה -->
-            <div class="video-container" data-category="exterior" data-aos="zoom-in">
+            <div class="video-container" data-aos="zoom-in">
                 <video autoplay muted loop playsinline>
                     <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
                 </video>
             </div>
             
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="pool">בריכה ואזורי מים</button>
-                <button class="filter-btn" data-filter="rooms">חדרי שינה ומגורים</button>
-                <button class="filter-btn" data-filter="kitchen">מטבח ואוכל</button>
-                <button class="filter-btn" data-filter="entertainment">פנאי ומשחקים</button>
-                <button class="filter-btn" data-filter="exterior">אזורי חוץ ונוף</button>
+                <button class="filter-btn active" onclick="filterGallery('pool')">בריכה ואזורי מים</button>
+                <button class="filter-btn" onclick="filterGallery('rooms')">חדרי שינה ומגורים</button>
+                <button class="filter-btn" onclick="filterGallery('kitchen')">מטבח ואוכל</button>
+                <button class="filter-btn" onclick="filterGallery('entertainment')">פנאי ומשחקים</button>
+                <button class="filter-btn" onclick="filterGallery('exterior')">אזורי חוץ ונוף</button>
             </div>
             
             <div class="gallery-grid" id="gallery-grid">
@@ -428,8 +403,6 @@
 
                 <div class="gallery-item" data-category="exterior" data-aos="fade-up">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/34.jpg" alt="נוף">
-                </div>רגעי קסם בשעות הערב</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -437,8 +410,8 @@
 
     <!-- Modal for enlarged images -->
     <div id="imageModal" class="modal">
+        <span class="close" id="closeModal">&times;</span>
         <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
             <img id="modalImage" src="" alt="">
         </div>
     </div>
@@ -454,7 +427,7 @@
     </footer>
 
     <script>
-        // Initialize AOS only after it's loaded
+        // Initialize AOS
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof AOS !== 'undefined') {
                 AOS.init({
@@ -465,23 +438,22 @@
         });
 
         // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filter = button.dataset.filter;
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+        function filterGallery(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
-        });
+            event.target.classList.add('active');
+            
+            // Filter items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
         // Modal functionality
         const modal = document.getElementById('imageModal');
@@ -511,6 +483,11 @@
             if (e.key === 'Escape' && modal.style.display === 'block') {
                 modal.style.display = 'none';
             }
+        });
+
+        // Show pool category by default
+        window.addEventListener('load', function() {
+            filterGallery('pool');
         });
     </script>
 </body>
