@@ -317,6 +317,199 @@
                 display: none;
             }
         }
+
+        .section-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-highlight {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, rgba(26, 46, 68, 0.6), rgba(15, 31, 49, 0.6));
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(76, 114, 176, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:hover::before {
+            opacity: 1;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--secondary-color);
+            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .feature-box:hover .feature-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: 0 10px 30px rgba(76, 114, 176, 0.5);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            color: rgba(224, 224, 224, 0.8);
+            line-height: 1.6;
+        }
+
+        .timeline-section {
+            max-width: 900px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary-color), transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .timeline-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 5px solid var(--primary-bg);
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(76, 114, 176, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(76, 114, 176, 0.6); }
+            50% { box-shadow: 0 0 40px rgba(76, 114, 176, 0.9); }
+        }
+
+        .timeline-content {
+            flex: 1;
+            max-width: 45%;
+            background: linear-gradient(135deg, rgba(26, 46, 68, 0.6), rgba(15, 31, 49, 0.6));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(76, 114, 176, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(76, 114, 176, 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: rgba(224, 224, 224, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                right: 20px;
+            }
+
+            .timeline-marker {
+                right: 20px;
+                transform: translateX(0);
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+                text-align: right;
+            }
+
+            .timeline-content {
+                max-width: calc(100% - 60px);
+                margin-right: 60px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -352,7 +545,7 @@
                     </p>
                 </div>
                 <div class="image-content">
-                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="גינות ונוף המתחם">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="נוף הכינרת והרי הגליל">
                 </div>
             </div>
 
@@ -400,6 +593,103 @@
                 </div>
                 <div class="image-content">
                     <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="מטבח כשר וגדול">
+                </div>
+            </div>
+
+            <div class="features-highlight" data-aos="zoom-in">
+                <h2 class="section-title">מה מייחד אותנו?</h2>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>בריכה מחוממת</h3>
+                        <p>בריכת שחייה גדולה ומחוממת, מגודרת לבטיחות מקסימלית</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>מטבח כשר</h3>
+                        <p>שני מטבחים מאובזרים במלואם עם כשרות מהדרין</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>גינה מטופחת</h3>
+                        <p>2 דונם של שטחים ירוקים עם פינות ישיבה מוצלות</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>משחקייה לילדים</h3>
+                        <p>סנוקר, פינג פונג, הוקי אוויר ומשחקים נוספים</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>נוף פנורמי</h3>
+                        <p>נוף מדהים לכינרת והרי הגליל מכל פינה במתחם</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>פרטיות מלאה</h3>
+                        <p>מתחם פרטי ומגודר עם שקט וביטחון מלאים</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block reverse" data-aos="fade-up" data-aos-duration="1000">
+                <div class="text-content">
+                    <h2>מתאים במיוחד לשבתות חתן ואירועים</h2>
+                    <p>
+                        המתחם שלנו הוא המקום המושלם לשבתות חתן משפחתיות ואירועים מיוחדים. עם יכולת אירוח של עד 80 אורחים, 21 חדרי שינה, ושני מתחמי אירוח נפרדים, אנו מספקים את כל התנאים לאירוע מושלם.
+                    </p>
+                    <p>
+                        בנוסף לנוחות והאווירה המיוחדת, המתחם מציע שירותי הסעדה כשרה למהדרין, דיי"ט וכל שירות נוסף שתצטרכו. אנו דואגים לכל פרט כדי שהאירוע שלכם יהיה בלתי נשכח.
+                    </p>
+                </div>
+                <div class="image-content">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה ואזור אירוח">
+                </div>
+            </div>
+
+            <div class="timeline-section" data-aos="fade-up">
+                <h2 class="section-title">המסע שלנו</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>החזון</h3>
+                            <p>חלום ליצור מקום מיוחד לציבור הדתי והחרדי בצפון הארץ</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>התכנון</h3>
+                            <p>עיצוב המתחם עם דגש על פרטיות, נוחות ואווירה ייחודית</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>הבנייה</h3>
+                            <p>הקמת המתחם בליווי השגחה מיוחדת וברכת האור החיים הקדוש</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>היום</h3>
+                            <p>מקום מיוחד שמביא שמחה וברכה לכל משפחה שמגיעה אלינו</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
