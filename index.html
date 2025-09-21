@@ -56,7 +56,7 @@
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            direction: rtl; /* Set RTL direction for the body */
+            direction: rtl;
         }
         
         .header-nav {
@@ -218,6 +218,95 @@
             color: #B0B0B0;
         }
 
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        
+        .section-heading {
+            font-family: var(--font-family-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-section .image-content {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            flex: 1;
+        }
+        
+        .about-section .image-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .about-section .text-content {
+            flex: 1;
+            padding: 1rem;
+        }
+        
+        .about-section h2 {
+            font-family: var(--font-family-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        @media (min-width: 768px) {
+            .about-section {
+                flex-direction: row;
+                align-items: center;
+            }
+            .text-content {
+                order: 1;
+            }
+        }
+        
+        .testimonial-card {
+            background: #1A2E44;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: #B0B0B0;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: white;
+            text-align: left;
+        }
+
+        .contact-cta {
+            background: #1A2E44;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
         .footer {
             background-color: #0A1628;
             color: #E0E0E0;
@@ -295,56 +384,87 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <main class="py-20 md:py-32 px-4 bg-gray-900">
+    <!-- About Section -->
+    <section class="section-padding bg-gray-900">
+        <div class="max-w-7xl mx-auto about-section" data-aos="fade-up">
+            <div class="image-content md:order-2" data-aos="fade-left">
+                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="מטבח כשר וגדול במגדל של חיים">
+            </div>
+            <div class="text-content md:order-1" data-aos="fade-right">
+                <h2 class="section-heading text-right mb-4">הסיפור שלנו</h2>
+                <p class="text-lg mb-4 text-justify">
+                    הכל התחיל מחלום. חלום ליצור מקום שיש בו הכול: נופש, שלווה, טבע וחיבור. לפני מספר שנים החלטנו להגשים את החזון, והתוצאה היא "מגדל של חיים" – ריזורט משפחתי יוקרתי במושב מגדל, המותאם במיוחד למשפחות מהציבור הדתי והחרדי. 
+                </p>
+                <p class="text-lg text-justify">
+                    בכל פינה במתחם תמצאו השקעה ותשומת לב לפרטים הקטנים, מתוך אמונה שהאירוח שלנו הוא שליחות. אנו דואגים לכל הצרכים שלכם, מהמיטות היהודיות ועד המטבח הכשר והמאובזר, כדי שתוכלו ליהנות מחופשה מושלמת בראש שקט.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section-padding bg-gray-900">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-bold text-center text-[#4C72B0] mb-12" data-aos="fade-up">מתקנים במתחם</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card" data-aos="fade-up">
-                    <div class="icon-container">
-                        <i class="fas fa-swimming-pool"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">בריכה פרטית מחוממת</h3>
-                    <p class="text-gray-400">בריכה גדולה ומטופחת עם מערכת חימום מתקדמת, אזור רדוד לילדים ונוף לכינרת.</p>
+            <h2 class="section-heading" data-aos="fade-up">למה לבחור בנו?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
+                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-lock text-4xl text-[#4C72B0] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">פרטיות מוחלטת</h3>
+                    <p class="text-gray-400">מתחם פרטי המבטיח שקט ופרטיות מלאה לאירוע או חופשה משפחתית.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-container">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">21 חדרים נוחים</h3>
-                    <p class="text-gray-400">חדרים מרווחים וממוזגים, עם מיטות יהודיות וחדרי רחצה צמודים בחלקם.</p>
+                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-hand-holding-heart text-4xl text-[#4C72B0] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">שירות אישי</h3>
+                    <p class="text-gray-400">הצוות שלנו זמין עבורכם 24/7 כדי להבטיח שהחופשה שלכם תהיה מושלמת.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-container">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">מטבח כשר מאובזר</h3>
-                    <p class="text-gray-400">מטבח גדול עם כיריים אינדוקציה, מקררים וכל הציוד הדרוש לקבוצות גדולות.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-container">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">מתחם חוץ וגינה</h3>
-                    <p class="text-gray-400">2 דונם של מרחב פתוח עם פינות ישיבה מוצלות, בריכת דגי נוי ונוף מרהיב.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="icon-container">
-                        <i class="fas fa-table-tennis"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">אזורי פנאי ומשחקים</h3>
-                    <p class="text-gray-400">שולחנות סנוקר, פינג פונג, הוקי אוויר ומשחקייה צבעונית לילדים.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="icon-container">
-                        <i class="fas fa-mosque"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">מתאים לציבור הדתי</h3>
-                    <p class="text-gray-400">אווירה המותאמת לשבתות חתן ואירועים משפחתיים, עם הקפדה על צרכי הקהל.</p>
+                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-mountain text-4xl text-[#4C72B0] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">נוף עוצר נשימה</h3>
+                    <p class="text-gray-400">ממוקם מול הכנרת והרי הגליל, לנוף פנורמי מדהים מכל פינה במתחם.</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-heading" data-aos="fade-up">מה האורחים שלנו אומרים?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <blockquote>
+                        "חוויה מושלמת, המתחם מדהים והנוף עוצר נשימה. דאגו לנו לכל מה שצריך. תודה רבה על שבת חתן בלתי נשכחת."
+                    </blockquote>
+                    <p class="author">- משפחת כהן</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <blockquote>
+                        "מקום מדהים ומפנק! הכל מוקפד עד הפרטים הקטנים, מהחדרים ועד הבריכה. נחזור בוודאות לחופשה הבאה."
+                    </blockquote>
+                    <p class="author">- משפחת לוי</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <blockquote>
+                        "הרגשנו כמו בבית, רק יותר טוב! שירות מצוין, אווירה נהדרת והמון מקום לילדים לשחק. המטבח הכשר היה הצלה אמיתית."
+                    </blockquote>
+                    <p class="author">- משפחת מזרחי</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-gray-900">
+        <div class="max-w-4xl mx-auto contact-cta" data-aos="zoom-in">
+            <h2 class="section-heading text-white">החופשה הבאה שלכם מתחילה כאן</h2>
+            <p class="text-lg text-gray-400 mb-8">
+                אנו מחכים לכם לחוויה בלתי נשכחת. צרו קשר עוד היום וקבלו הצעת מחיר מותאמת אישית.
+            </p>
+            <a href="contact.html" class="inline-block px-8 py-4 rounded-full font-semibold bg-[#4C72B0] hover:bg-[#3C5D90] text-xl transition duration-300">
+                הזמינו עכשיו
+            </a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer py-8 text-center">
