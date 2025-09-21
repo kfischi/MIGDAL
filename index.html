@@ -4,43 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Title and Meta Tags -->
     <title>מגדל של חיים - מתחם אירועים ונופש יוקרתי</title>
     <meta name="description" content="מתחם אירועים ונופש יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון.">
-    <meta name="keywords" content="מתחם אירועים, מתחם נופש, שבתות חתן, אירוח משפחתי, בריכה פרטית, מושב מגדל, חופשות, אירועים, נופש, גליל">
-    <meta name="author" content="מגדל של חיים">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Hebrew">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://magdalhayim.co.il">
-    <meta property="og:title" content="מגדל של חיים - מתחם אירועים ונופש יוקרתי">
-    <meta property="og:description" content="מתחם אירועים ונופש יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון.">
-    <meta property="og:image" content="https://magdalhayim.co.il/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://magdalhayim.co.il">
-    <meta property="twitter:title" content="מגדל של חיים - מתחם אירועים ונופש יוקרתי">
-    <meta property="twitter:description" content="מתחם אירועים ונופש יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון.">
-    <meta property="twitter:image" content="https://magdalhayim.co.il/images/twitter-image.jpg">
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- AOS - Animate On Scroll Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
     <style>
         :root {
             --primary-bg: #0B192A;
@@ -50,13 +23,18 @@
             --font-family-body: 'Heebo', sans-serif;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: var(--font-family-body);
             background: var(--primary-bg);
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            direction: rtl;
         }
         
         .header-nav {
@@ -64,9 +42,9 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(11, 25, 42, 0.9);
+            background: rgba(11, 25, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -81,11 +59,14 @@
 
         .logo {
             font-family: var(--font-family-heading);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
-            position: relative;
+            background: linear-gradient(45deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-menu {
@@ -99,34 +80,43 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
             position: relative;
-            padding: 8px 0;
         }
         
-        .nav-menu a:hover {
-            color: var(--secondary-color);
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .cta-button {
-            background: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.3);
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 114, 176, 0.5);
         }
 
         .hero {
@@ -136,372 +126,351 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background-color: var(--primary-bg);
         }
 
         .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(1.1) contrast(1.2) saturate(1.1);
+        }
+
+        .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(0.6);
+            background: linear-gradient(
+                135deg,
+                rgba(11, 25, 42, 0.7) 0%,
+                rgba(76, 114, 176, 0.3) 100%
+            );
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
             text-align: center;
-            background: rgba(11, 25, 42, 0.7);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             max-width: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 3rem;
+            border-radius: 20px;
+            background: rgba(11, 25, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .hero-title {
             font-family: var(--font-family-heading);
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(3rem, 8vw, 7rem);
             font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #FFF 0%, var(--secondary-color) 100%);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFF 0%, var(--secondary-color) 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(76, 114, 176, 0.4);
+            text-shadow: 0 0 30px rgba(76, 114, 176, 0.5);
+            animation: titleGlow 3s ease-in-out infinite;
         }
 
-        .feature-card {
-            background: #1A2E44;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            padding: 2rem;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(76, 114, 176, 0.2);
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(76, 114, 176, 0.3)); }
+            50% { filter: drop-shadow(0 0 40px rgba(76, 114, 176, 0.6)); }
         }
 
-        .feature-card .icon-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(76, 114, 176, 0.2);
-            margin: 0 auto 1rem;
-            color: var(--secondary-color);
-        }
-        
-        .feature-card .icon-container i {
-            font-size: 2.5rem;
-        }
-        
-        .feature-card h3 {
-            font-family: var(--font-family-heading);
-            font-weight: 700;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
             color: white;
-            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
         }
-        
-        .feature-card p {
-            text-align: center;
-            color: #B0B0B0;
+
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(76, 114, 176, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(76, 114, 176, 0.6);
         }
 
         .section-padding {
-            padding: 5rem 1rem;
+            padding: 6rem 1rem;
         }
         
         .section-heading {
             font-family: var(--font-family-heading);
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             color: white;
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--secondary-color);
-        }
-
-        .about-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .about-section .image-content {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            flex: 1;
-        }
-        
-        .about-section .image-content img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .about-section .text-content {
-            flex: 1;
-            padding: 1rem;
-        }
-        
-        .about-section h2 {
-            font-family: var(--font-family-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        @media (min-width: 768px) {
-            .about-section {
-                flex-direction: row;
-                align-items: center;
-            }
-            .text-content {
-                order: 1;
-            }
-        }
-        
-        .testimonial-card {
-            background: #1A2E44;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
+            margin-bottom: 3rem;
             position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 114, 176, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.3);
+            border-color: var(--secondary-color);
+        }
+
+        .icon-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(76, 114, 176, 0.2), rgba(76, 114, 176, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .icon-container {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, rgba(76, 114, 176, 0.3), rgba(76, 114, 176, 0.2));
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            transition: all 0.3s ease;
         }
         
         .testimonial-card:hover {
             transform: translateY(-5px);
-        }
-
-        .testimonial-card blockquote {
-            font-style: italic;
-            color: #B0B0B0;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card .author {
-            font-weight: 600;
-            color: white;
-            text-align: left;
-        }
-
-        .contact-cta {
-            background: #1A2E44;
-            padding: 4rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #0A1628;
-            color: #E0E0E0;
-        }
-
-        .footer-socials a {
-            color: #E0E0E0;
-            transition: color 0.3s ease;
-        }
-
-        .footer-socials a:hover {
-            color: var(--secondary-color);
-        }
-
-        .footer-links a {
-            color: #E0E0E0;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(76, 114, 176, 0.2);
         }
 
         .floating-whatsapp {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
             color: white;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .floating-whatsapp:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content {
+                padding: 2rem 1rem;
+            }
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Header and Navigation -->
     <header class="header-nav">
         <nav class="nav-content">
             <a href="index.html" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu space-x-4">
-                <li><a href="about.html" class="text-white hover:text-gray-300">הסיפור שלנו</a></li>
-                <li><a href="gallery.html" class="text-white hover:text-gray-300">גלריה</a></li>
+            <ul class="nav-menu">
+                <li><a href="about.html">הסיפור שלנו</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
                 <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section with Video Background -->
-    <section class="hero relative flex items-center justify-center text-center">
-        <video autoplay muted loop playsinline class="video-background">
-            <source src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/migdal_video.mp4" type="video/mp4">
-            דפדפן זה אינו תומך בווידאו.
+    <section class="hero">
+        <video autoplay muted loop playsinline class="video-background" id="heroVideo">
+            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div class="relative z-10 text-white" data-aos="fade-up">
-            <div class="hero-content">
-                <h1 class="hero-title">מגדל של חיים</h1>
-                <p class="text-lg md:text-3xl mt-4 font-light tracking-wide" data-aos="fade-up" data-aos-delay="500">מתחם אירועים ונופש יוקרתי</p>
-                <a href="contact.html" class="mt-10 inline-block px-8 py-3 rounded-full font-semibold bg-[#4C72B0] hover:bg-[#3C5D90] text-lg md:text-xl transition duration-300" data-aos="zoom-in" data-aos-delay="1000">הזמינו עכשיו</a>
-            </div>
+        <div class="video-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="hero-title">מגדל של חיים</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">מתחם אירועים ונופש יוקרתי</p>
+            <a href="contact.html" class="hero-cta" data-aos="zoom-in" data-aos-delay="600">הזמינו עכשיו</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section-padding bg-gray-900">
-        <div class="max-w-7xl mx-auto about-section" data-aos="fade-up">
-            <div class="image-content md:order-2" data-aos="fade-left">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="מטבח כשר וגדול במגדל של חיים">
-            </div>
-            <div class="text-content md:order-1" data-aos="fade-right">
-                <h2 class="section-heading text-right mb-4">הסיפור שלנו</h2>
-                <p class="text-lg mb-4 text-justify">
-                    הכל התחיל מחלום. חלום ליצור מקום שיש בו הכול: נופש, שלווה, טבע וחיבור. לפני מספר שנים החלטנו להגשים את החזון, והתוצאה היא "מגדל של חיים" – מתחם אירועים ונופש יוקרתי במושב מגדל, המותאם במיוחד למשפחות מהציבור הדתי והחרדי. 
-                </p>
-                <p class="text-lg text-justify">
-                    בכל פינה במתחם תמצאו השקעה ותשומת לב לפרטים הקטנים, מתוך אמונה שהאירוח שלנו הוא שליחות. אנו דואגים לכל הצרכים שלכם, מהמיטות היהודיות ועד המטבח הכשר והמאובזר, כדי שתוכלו ליהנות מחופשה מושלמת בראש שקט.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us Section -->
-    <section class="section-padding bg-gray-900">
+    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading" data-aos="fade-up">למה לבחור בנו?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
-                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-lock text-4xl text-[#4C72B0] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">פרטיות מוחלטת</h3>
-                    <p class="text-gray-400">מתחם פרטי המבטיח שקט ופרטיות מלאה לאירוע או חופשה משפחתית.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-container">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">פרטיות מוחלטת</h3>
+                    <p class="text-center text-gray-300">מתחם פרטי המבטיח שקט ופרטיות מלאה לאירוע או חופשה משפחתית.</p>
                 </div>
-                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-hand-holding-heart text-4xl text-[#4C72B0] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">שירות אישי</h3>
-                    <p class="text-gray-400">הצוות שלנו זמין עבורכם 24/7 כדי להבטיח שהחופשה שלכם תהיה מושלמת.</p>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-container">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">שירות אישי</h3>
+                    <p class="text-center text-gray-300">הצוות שלנו זמין עבורכם 24/7 כדי להבטיח שהחופשה שלכם תהיה מושלמת.</p>
                 </div>
-                <div class="flex flex-col items-center p-6 bg-[#1A2E44] rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-mountain text-4xl text-[#4C72B0] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">נוף עוצר נשימה</h3>
-                    <p class="text-gray-400">ממוקם מול הכנרת והרי הגליל, לנוף פנורמי מדהים מכל פינה במתחם.</p>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-container">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">נוף עוצר נשימה</h3>
+                    <p class="text-center text-gray-300">ממוקם מול הכנרת והרי הגליל, לנוף פנורמי מדהים מכל פינה במתחם.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section-padding bg-gray-900">
+    <section class="section-padding" style="background: #0B192A;">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-heading" data-aos="fade-up">מה האורחים שלנו אומרים?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <blockquote>
-                        "חוויה מושלמת, המתחם מדהים והנוף עוצר נשימה. דאגו לנו לכל מה שצריך. תודה רבה על שבת חתן בלתי נשכחת."
-                    </blockquote>
-                    <p class="author">- משפחת כהן</p>
+                    <p class="text-lg italic mb-4 text-gray-300">"חוויה מושלמת, המתחם מדהים והנוף עוצר נשימה. דאגו לנו לכל מה שצריך. תודה רבה על שבת חתן בלתי נשכחת."</p>
+                    <p class="font-bold text-white">- משפחת כהן</p>
                 </div>
                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <blockquote>
-                        "מקום מדהים ומפנק! הכל מוקפד עד הפרטים הקטנים, מהחדרים ועד הבריכה. נחזור בוודאות לחופשה הבאה."
-                    </blockquote>
-                    <p class="author">- משפחת לוי</p>
+                    <p class="text-lg italic mb-4 text-gray-300">"מקום מדהים ומפנק! הכל מוקפד עד הפרטים הקטנים, מהחדרים ועד הבריכה. נחזור בוודאות לחופשה הבאה."</p>
+                    <p class="font-bold text-white">- משפחת לוי</p>
                 </div>
                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                    <blockquote>
-                        "הרגשנו כמו בבית, רק יותר טוב! שירות מצוין, אווירה נהדרת והמון מקום לילדים לשחק. המטבח הכשר היה הצלה אמיתית."
-                    </blockquote>
-                    <p class="author">- משפחת מזרחי</p>
+                    <p class="text-lg italic mb-4 text-gray-300">"הרגשנו כמו בבית, רק יותר טוב! שירות מצוין, אווירה נהדרת והמון מקום לילדים לשחק. המטבח הכשר היה הצלה אמיתית."</p>
+                    <p class="font-bold text-white">- משפחת מזרחי</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section-padding bg-gray-900">
-        <div class="max-w-4xl mx-auto contact-cta" data-aos="zoom-in">
+    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
+        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
             <h2 class="section-heading text-white">החופשה הבאה שלכם מתחילה כאן</h2>
-            <p class="text-lg text-gray-400 mb-8">
-                אנו מחכים לכם לחוויה בלתי נשכחת. צרו קשר עוד היום וקבלו הצעת מחיר מותאמת אישית.
-            </p>
-            <a href="contact.html" class="inline-block px-8 py-4 rounded-full font-semibold bg-[#4C72B0] hover:bg-[#3C5D90] text-xl transition duration-300">
-                הזמינו עכשיו
-            </a>
+            <p class="text-xl text-gray-300 mb-10">אנו מחכים לכם לחוויה בלתי נשכחת. צרו קשר עוד היום וקבלו הצעת מחיר מותאמת אישית.</p>
+            <a href="contact.html" class="hero-cta">הזמינו עכשיו</a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer py-8 text-center">
+    <footer class="py-12 text-center" style="background: #0A1628;">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
-                <div class="flex space-x-6 rtl:space-x-reverse text-2xl footer-socials">
-                    <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
-                    <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+                <div class="flex gap-6 text-3xl">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
                 </div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-6 rtl:space-x-reverse mb-6 footer-links">
-                <a href="index.html">דף הבית</a>
-                <a href="about.html">הסיפור שלנו</a>
-                <a href="gallery.html">גלריה</a>
-                <a href="contact.html">הזמנות ויצירת קשר</a>
             </div>
             <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
-            <p class="text-gray-500 mt-2">עוצב ופותח במיוחד לריזורט מגדל של חיים</p>
         </div>
     </footer>
     
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/972501234567" class="floating-whatsapp" aria-label="צור קשר בוואטסאפ" target="_blank" rel="noopener">
+    <a href="https://wa.me/972501234567" class="floating-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 1200,
-                once: true,
-            });
+            // Initialize AOS only if it's loaded
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                    easing: 'ease-out-cubic'
+                });
+            }
+
+            // Video optimization
+            const video = document.getElementById('heroVideo');
+            if (video) {
+                video.playbackRate = 1.0;
+                video.addEventListener('loadeddata', () => {
+                    video.style.opacity = '1';
+                });
+            }
         });
     </script>
 </body>
