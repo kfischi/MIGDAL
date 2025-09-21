@@ -11,31 +11,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-bg: #0B192A;
             --secondary-color: #4C72B0;
             --text-color: #E0E0E0;
-            --font-family: 'Playfair Display', serif;
+            --font-family-heading: 'Playfair Display', serif;
+            --font-family-body: 'Heebo', sans-serif;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family-body);
             background: var(--primary-bg);
             color: var(--text-color);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.8;
         }
+        
         .header-nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(11, 25, 42, 0.9);
+            background: rgba(11, 25, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
+
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -44,44 +54,71 @@
             margin: 0 auto;
             padding: 20px 40px;
         }
+
         .logo {
-            font-size: 1.5rem;
+            font-family: var(--font-family-heading);
+            font-size: 1.8rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
-            position: relative;
+            background: linear-gradient(45deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 40px;
             align-items: center;
         }
+
         .nav-menu a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
             position: relative;
-            padding: 8px 0;
         }
-        .cta-button {
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
             background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.3);
         }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 114, 176, 0.5);
+        }
+
         .hero {
-            min-height: 60vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -91,16 +128,17 @@
             background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.8);
         }
+
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(11, 25, 42, 0.7);
+            background: linear-gradient(135deg, rgba(11, 25, 42, 0.8) 0%, rgba(76, 114, 176, 0.4) 100%);
         }
+
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -109,65 +147,174 @@
             position: relative;
             z-index: 10;
         }
+
         .hero-title {
-            font-family: var(--font-family);
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-family: var(--font-family-heading);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #FFF 0%, var(--secondary-color) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(76, 114, 176, 0.4);
+            line-height: 1.1;
+            color: white;
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.9),
+                0 0 50px rgba(76, 114, 176, 0.5);
+            animation: titleFloat 4s ease-in-out infinite;
         }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         .content-section {
-            padding: 5rem 0;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0B192A 0%, #1A2E44 50%, #0B192A 100%);
         }
+
         .content-block {
-            max-width: 1000px;
-            margin: 0 auto 5rem auto;
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
             display: flex;
-            flex-direction: row-reverse;
             gap: 4rem;
             align-items: center;
-            text-align: right;
+            background: linear-gradient(135deg, rgba(26, 46, 68, 0.4), rgba(15, 31, 49, 0.4));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            transition: all 0.5s ease;
         }
+
+        .content-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.2);
+            border-color: var(--secondary-color);
+        }
+
         .content-block.reverse {
-            flex-direction: row;
-            text-align: left;
+            flex-direction: row-reverse;
         }
+
         .text-content {
             flex: 1;
         }
+
         .text-content h2 {
-            font-family: var(--font-family);
+            font-family: var(--font-family-heading);
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
         }
+
+        .text-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color));
+        }
+
         .text-content p {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            color: rgba(224, 224, 224, 0.8);
-            margin-bottom: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(224, 224, 224, 0.9);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
         }
+
         .image-content {
             flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
         }
+
         .image-content img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease;
         }
+
+        .image-content:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(76, 114, 176, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            border-radius: 15px;
+        }
+
+        .image-content:hover::before {
+            opacity: 1;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #1A2E44, #0F1F31);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-family: var(--font-family-heading);
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(224, 224, 224, 0.8);
+            margin-top: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .content-block {
                 flex-direction: column;
-                text-align: center;
+                padding: 2rem;
             }
+            
             .content-block.reverse {
                 flex-direction: column;
-                text-align: center;
+            }
+
+            .nav-menu {
+                display: none;
             }
         }
     </style>
@@ -177,24 +324,24 @@
     <header class="header-nav">
         <nav class="nav-content">
             <a href="index.html" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu space-x-4">
-                <li><a href="about.html" class="text-white hover:text-gray-300">אודות</a></li>
-                <li><a href="gallery.html" class="text-white hover:text-gray-300">גלריה</a></li>
-                <li><a href="contact.html" class="cta-button">הזמן עכשיו</a></li>
+            <ul class="nav-menu">
+                <li><a href="about.html">הסיפור שלנו</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-container" data-aos="fade-up">
+        <div class="hero-container" data-aos="fade-up" data-aos-duration="1500">
             <h1 class="hero-title">הסיפור שלנו</h1>
         </div>
     </section>
 
     <main class="content-section">
         <div class="container">
-            <div class="content-block" data-aos="fade-up">
+            <div class="content-block" data-aos="fade-up" data-aos-duration="1000">
                 <div class="text-content">
                     <h2>ברכת הצדיק מלווה אותנו</h2>
                     <p>
@@ -209,7 +356,24 @@
                 </div>
             </div>
 
-            <div class="content-block reverse" data-aos="fade-up">
+            <div class="stats-section" data-aos="zoom-in">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">21</div>
+                        <div class="stat-label">חדרי אירוח</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80</div>
+                        <div class="stat-label">אורחים</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">דונם שטח</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block reverse" data-aos="fade-up" data-aos-duration="1000">
                 <div class="text-content">
                     <h2>נוחות ומרחב לקבוצות ומשפחות</h2>
                     <p>
@@ -224,7 +388,7 @@
                 </div>
             </div>
 
-            <div class="content-block" data-aos="fade-up">
+            <div class="content-block" data-aos="fade-up" data-aos-duration="1000">
                 <div class="text-content">
                     <h2>פינוקים לכל המשפחה</h2>
                     <p>
@@ -241,20 +405,30 @@
         </div>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
-        <p>&copy; 2024 מגדל של חיים. כל הזכויות שמורות.</p>
-        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
-            <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
-            <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+    <footer class="py-12 text-center" style="background: #0A1628;">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
+                <div class="flex gap-6 text-3xl">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
         </div>
     </footer>
 
     <script>
-        AOS.init({
-            duration: 1200,
-            once: true,
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                    easing: 'ease-out-cubic'
+                });
+            }
         });
     </script>
 </body>
