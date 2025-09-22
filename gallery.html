@@ -115,12 +115,12 @@
         }
 
         .hero {
-            min-height: 30vh;
+            min-height: 25vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 120px 0 30px;
+            padding: 90px 0 20px;
             overflow: hidden;
             background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
@@ -149,13 +149,12 @@
         
         .hero-title {
             font-family: var(--font-family-heading);
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 2rem;
+            line-height: 1;
+            margin-bottom: 0;
             color: white;
             text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
-            animation: titleFloat 4s ease-in-out infinite;
         }
 
         @keyframes titleFloat {
@@ -164,7 +163,7 @@
         }
 
         .gallery-section {
-            padding: 1.5rem 0 5rem 0;
+            padding: 1rem 0 5rem 0;
             background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);
         }
         
@@ -173,7 +172,8 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            padding-top: 0;
         }
         
         .filter-btn {
