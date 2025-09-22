@@ -3,64 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מגדל של חיים - מתחם אירוח משפחתי</title>
+    
+    <title>מגדל של חיים - מתחם אירועים ונופש יוקרתי</title>
+    <meta name="description" content="מתחם אירועים ונופש יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        :root {
+            --primary-bg: #0B192A;
+            --secondary-color: #4C72B0;
+            --text-color: #E0E0E0;
+            --font-family-heading: 'Playfair Display', serif;
+            --font-family-body: 'Heebo', sans-serif;
         }
 
-        .header {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--primary-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .header-nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
             z-index: 1000;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(11, 25, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: var(--font-family-heading);
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #1e3a5f;
+            color: white;
             text-decoration: none;
+            background: linear-gradient(45deg, #FFF, var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
+            align-items: center;
         }
 
-        .nav-link {
-            color: #333;
+        .nav-menu a {
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
         }
-
-        .nav-link:hover {
-            color: #1e3a5f;
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .cta-button {
-            background: #1e3a5f;
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
+            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 114, 176, 0.5);
         }
 
         .mobile-menu-toggle {
@@ -70,12 +126,13 @@
             background: none;
             border: none;
             cursor: pointer;
+            padding: 10px;
         }
 
         .hamburger-line {
             width: 30px;
             height: 3px;
-            background: #1e3a5f;
+            background: white;
             transition: 0.3s;
         }
 
@@ -91,18 +148,269 @@
             transform: rotate(45deg) translate(-6px, -6px);
         }
 
-        main {
-            margin-top: 70px;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(1.1) contrast(1.2) saturate(1.1);
         }
 
-        h1 { font-size: 3rem; margin-bottom: 20px; }
-        h2 { font-size: 2rem; margin-bottom: 20px; }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(11, 25, 42, 0.7) 0%,
+                rgba(76, 114, 176, 0.3) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(0, 0, 0, 0.7),
+                0 2px 4px rgba(0, 0, 0, 1);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(0, 0, 0, 0.9),
+                    0 0 40px rgba(0, 0, 0, 0.7),
+                    0 2px 4px rgba(0, 0, 0, 1);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(76, 114, 176, 0.8),
+                    0 0 60px rgba(76, 114, 176, 0.6),
+                    0 2px 4px rgba(0, 0, 0, 1);
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 30px rgba(76, 114, 176, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(76, 114, 176, 0.6);
+        }
+
+        .hero-cta:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .section-padding {
+            padding: 6rem 1rem;
+        }
+        
+        .section-heading {
+            font-family: var(--font-family-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 114, 176, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.8);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+            transform: scale(1.2) rotate(180deg);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(76, 114, 176, 0.4);
+            border-color: var(--secondary-color);
+        }
+
+        .icon-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(76, 114, 176, 0.2), rgba(76, 114, 176, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .feature-card:hover .icon-container {
+            transform: rotateY(360deg) scale(1.15);
+            background: linear-gradient(135deg, rgba(76, 114, 176, 0.4), rgba(76, 114, 176, 0.2));
+            box-shadow: 0 0 30px rgba(76, 114, 176, 0.5);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(76, 114, 176, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(76, 114, 176, 0.2);
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
 
         @media (max-width: 768px) {
             .mobile-menu-toggle {
@@ -114,11 +422,10 @@
                 right: -100%;
                 top: 70px;
                 flex-direction: column;
-                background: white;
+                background: rgba(11, 25, 42, 0.98);
                 width: 100%;
                 padding: 20px;
                 transition: 0.3s;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             }
 
             .nav-menu.active {
@@ -127,30 +434,27 @@
 
             .nav-menu li {
                 padding: 15px 0;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                text-align: center;
             }
-
-            .cta-button {
-                display: none;
+            
+            .hero-content {
+                padding: 2rem 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <a href="#home" class="logo">מגדל של חיים</a>
-            
+
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">מגדל של חיים</a>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">בית</a></li>
-                <li><a href="#about" class="nav-link">אודות</a></li>
-                <li><a href="#facilities" class="nav-link">מתקנים</a></li>
-                <li><a href="gallery.html" class="nav-link">גלריה</a></li>
-                <li><a href="#contact" class="nav-link">יצירת קשר</a></li>
+                <li><a href="about.html">הסיפור שלנו</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
             </ul>
-
-            <a href="#contact" class="cta-button">הזמן עכשיו</a>
-
             <button class="mobile-menu-toggle" id="mobileToggle">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -159,42 +463,132 @@
         </nav>
     </header>
 
-    <main>
-        <section id="home">
-            <h1>ברוכים הבאים למגדל של חיים</h1>
-            <p>מתחם אירוח משפחתי יוקרתי בצפון</p>
-        </section>
+    <section class="hero">
+        <video autoplay muted loop playsinline class="video-background" id="heroVideo">
+            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/migdal_video2.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="hero-title">מגדל של חיים</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">מתחם אירועים ונופש יוקרתי</p>
+            <a href="contact.html" class="hero-cta" data-aos="zoom-in" data-aos-delay="600">הזמינו עכשיו</a>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2>אודות</h2>
-            <p>מתחם ייחודי עם 21 חדרים, 80 אורחים, 2 דונם</p>
-        </section>
+    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-heading" data-aos="fade-up">למה לבחור בנו?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-container">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">פרטיות מוחלטת</h3>
+                    <p class="text-center text-gray-300">מתחם פרטי המבטיח שקט ופרטיות מלאה לאירוע או חופשה משפחתית.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-container">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">שירות אישי</h3>
+                    <p class="text-center text-gray-300">הצוות שלנו זמין עבורכם 24/7 כדי להבטיח שהחופשה שלכם תהיה מושלמת.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-container">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-center text-white">נוף עוצר נשימה</h3>
+                    <p class="text-center text-gray-300">ממוקם מול הכנרת והרי הגליל, לנוף פנורמי מדהים מכל פינה במתחם.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="facilities">
-            <h2>מתקנים</h2>
-            <p>בריכה מחוממת, מטבח מאובזר, אזורי פנאי</p>
-        </section>
+    <section class="section-padding" style="background: #0B192A;">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-heading" data-aos="fade-up">מה האורחים שלנו אומרים?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-lg italic mb-4 text-gray-300">"חוויה מושלמת, המתחם מדהים והנוף עוצר נשימה. דאגו לנו לכל מה שצריך. תודה רבה על שבת חתן בלתי נשכחת."</p>
+                    <p class="font-bold text-white">- משפחת כהן</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-lg italic mb-4 text-gray-300">"מקום מדהים ומפנק! הכל מוקפד עד הפרטים הקטנים, מהחדרים ועד הבריכה. נחזור בוודאות לחופשה הבאה."</p>
+                    <p class="font-bold text-white">- משפחת לוי</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <p class="text-lg italic mb-4 text-gray-300">"הרגשנו כמו בבית, רק יותר טוב! שירות מצוין, אווירה נהדרת והמון מקום לילדים לשחק. המטבח הכשר היה הצלה אמיתית."</p>
+                    <p class="font-bold text-white">- משפחת מזרחי</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="contact">
-            <h2>יצירת קשר</h2>
-            <p>טלפון: 050-123-4567</p>
-        </section>
-    </main>
+    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
+        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
+            <h2 class="section-heading text-white">החופשה הבאה שלכם מתחילה כאן</h2>
+            <p class="text-xl text-gray-300 mb-10">אנו מחכים לכם לחוויה בלתי נשכחת. צרו קשר עוד היום וקבלו הצעת מחיר מותאמת אישית.</p>
+            <a href="contact.html" class="hero-cta">הזמינו עכשיו</a>
+        </div>
+    </section>
 
+    <footer class="py-12 text-center" style="background: #0A1628;">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
+                <div class="flex gap-6 text-3xl">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/972501234567" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        const toggle = document.getElementById('mobileToggle');
-        const menu = document.querySelector('.nav-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            // AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                    easing: 'ease-out-cubic'
+                });
+            }
 
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
-            toggle.classList.toggle('active');
-        });
+            // Mobile menu
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('active');
-                toggle.classList.remove('active');
-            });
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.remove('active');
+                        toggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // Video
+            const video = document.getElementById('heroVideo');
+            if (video) {
+                video.playbackRate = 1.0;
+                video.addEventListener('loadeddata', () => {
+                    video.style.opacity = '1';
+                });
+            }
         });
     </script>
 </body>
