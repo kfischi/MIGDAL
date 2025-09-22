@@ -84,15 +84,20 @@
         }
 
         .gallery-section {
-            padding: 0.5rem 0 5rem 0;
+            padding: 0;
             background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
         }
+        
         .filter-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 3rem;
+            padding-top: 3rem;
         }
         .filter-btn {
             background: rgba(255, 255, 255, 0.1);
@@ -199,6 +204,7 @@
 <body>
 
     <section class="hero">
+        <div class="hero::before"></div>
         <div class="hero-container" data-aos="fade-up">
             <h1 class="hero-title">גלריית המתחם</h1>
         </div>
