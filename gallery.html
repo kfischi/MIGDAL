@@ -3,36 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>גלריה - מגדל של חיים</title>
+    <title>גלריית תמונות - מגדל של חיים</title>
+    <meta name="description" content="גלריית תמונות מהמתחם, כולל בריכה, חדרים, מטבח ואזורי חוץ.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0B192A;
-            color: #E0E0E0;
+        :root {
+            --primary-bg: #0B192A;
+            --secondary-color: #4C72B0;
+            --text-color: #E0E0E0;
+            --font-family-heading: 'Playfair Display', serif;
+            --font-family-body: 'Heebo', sans-serif;
         }
 
-        .header {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background: var(--primary-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header-nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(11, 25, 42, 0.95);
             z-index: 1000;
-            padding: 15px 0;
+            background: rgba(11, 25, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: var(--font-family-heading);
+            font-size: 1.8rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
@@ -41,13 +66,23 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
+            align-items: center;
         }
 
-        .nav-link {
-            color: white;
+        .nav-menu a {
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
         }
 
         .mobile-menu-toggle {
@@ -57,6 +92,7 @@
             background: none;
             border: none;
             cursor: pointer;
+            padding: 10px;
         }
 
         .hamburger-line {
@@ -79,66 +115,179 @@
         }
 
         .hero {
-            min-height: 50vh;
+            min-height: 30vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            padding: 120px 0 30px;
+            overflow: hidden;
             background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
-            margin-top: 70px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 25, 42, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-title {
+            font-family: var(--font-family-heading);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
+            animation: titleFloat 4s ease-in-out infinite;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            color: white;
-            text-shadow: 0 0 20px rgba(0,0,0,0.9);
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .gallery-section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 1.5rem 0 5rem 0;
+            background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);
         }
-
+        
         .filter-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
-
+        
         .filter-btn {
             background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             cursor: pointer;
+            font-weight: 600;
         }
-
-        .filter-btn.active {
-            background: #4C72B0;
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
+            color: white;
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 114, 176, 0.3);
         }
-
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 2rem;
         }
-
+        
         .gallery-item {
-            border-radius: 12px;
+            position: relative;
             overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(26, 46, 68, 0.3), rgba(15, 31, 49, 0.3));
         }
-
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(76, 114, 176, 0.4);
+        }
+        
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
             cursor: pointer;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+        
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            width: 90%;
+            max-width: 1200px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 2001;
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50%) scale(0.8); }
+            to { opacity: 1; transform: translateY(-50%) scale(1); }
         }
 
         @media (max-width: 768px) {
@@ -164,31 +313,26 @@
             .nav-menu li {
                 padding: 15px 0;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                text-align: center;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
+            .cta-button {
+                display: inline-block;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">מגדל של חיים</a>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html#home" class="nav-link">בית</a></li>
-                <li><a href="index.html#about" class="nav-link">אודות</a></li>
-                <li><a href="index.html#facilities" class="nav-link">מתקנים</a></li>
-                <li><a href="gallery.html" class="nav-link">גלריה</a></li>
-                <li><a href="index.html#contact" class="nav-link">יצירת קשר</a></li>
-            </ul>
 
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">מגדל של חיים</a>
+            <ul class="nav-menu">
+                <li><a href="about.html">הסיפור שלנו</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
+            </ul>
             <button class="mobile-menu-toggle" id="mobileToggle">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -197,105 +341,235 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <h1>גלריית המתחם</h1>
-    </div>
+    <section class="hero">
+        <div class="hero-container" data-aos="fade-up">
+            <h1 class="hero-title">גלריית המתחם</h1>
+        </div>
+    </section>
 
     <main class="gallery-section">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-category="all">הכל</button>
-            <button class="filter-btn" data-category="pool">בריכה</button>
-            <button class="filter-btn" data-category="rooms">חדרים</button>
-            <button class="filter-btn" data-category="kitchen">מטבח</button>
-            <button class="filter-btn" data-category="entertainment">פנאי</button>
-            <button class="filter-btn" data-category="exterior">חוץ</button>
-        </div>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה">
+        <div class="container mx-auto px-4">
+            <div class="video-container" data-aos="zoom-in">
+                <video autoplay muted loop playsinline>
+                    <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/%D7%9E%D7%92%D7%93%D7%9C%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%99%D7%9D%20(1).mp4" type="video/mp4">
+                </video>
             </div>
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה">
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="pool">בריכה ואזורי מים</button>
+                <button class="filter-btn" data-category="rooms">חדרי שינה ומגורים</button>
+                <button class="filter-btn" data-category="kitchen">מטבח ואוכל</button>
+                <button class="filter-btn" data-category="entertainment">פנאי ומשחקים</button>
+                <button class="filter-btn" data-category="exterior">אזורי חוץ ונוף</button>
             </div>
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="בריכה">
-            </div>
-            <div class="gallery-item" data-category="pool">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="בריכה">
-            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- בריכה ואזורי מים -->
+                <div class="gallery-item" data-category="pool" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/2.jpg" alt="בריכה ואזורי מים">
+                </div>
+                <div class="gallery-item" data-category="pool" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/5.jpg" alt="בריכה ואזורי מים">
+                </div>
+                <div class="gallery-item" data-category="pool" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/14.jpg" alt="בריכה ואזורי מים">
+                </div>
+                <div class="gallery-item" data-category="pool" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/30.jpg" alt="בריכה ואזורי מים">
+                </div>
 
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדרים">
-            </div>
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדרים">
-            </div>
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדרים">
-            </div>
-            <div class="gallery-item" data-category="rooms">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדרים">
-            </div>
+                <!-- חדרי שינה ומגורים -->
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/4.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/6.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/7.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/8.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/9.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/11.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/17.jpg" alt="חדרי שינה ומגורים">
+                </div>
+                <div class="gallery-item" data-category="rooms" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/19.jpg" alt="חדרי שינה ומגורים">
+                </div>
 
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח">
-            </div>
-            <div class="gallery-item" data-category="kitchen">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="מטבח">
-            </div>
+                <!-- מטבח ואוכל -->
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/12.jpg" alt="מטבח ואוכל">
+                </div>
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/13.jpg" alt="מטבח ואוכל">
+                </div>
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/18.jpg" alt="מטבח ואוכל">
+                </div>
+                <div class="gallery-item" data-category="kitchen" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/24.jpg" alt="מטבח ואוכל">
+                </div>
 
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" alt="פנאי">
-            </div>
-            <div class="gallery-item" data-category="entertainment">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="פנאי">
-            </div>
+                <!-- פנאי ומשחקים -->
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/3.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/15.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/20.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/21.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/22.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/28.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/34.jpg" alt="פנאי ומשחקים">
+                </div>
+                <div class="gallery-item" data-category="entertainment" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/35.jpg" alt="פנאי ומשחקים">
+                </div>
 
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" alt="חוץ">
-            </div>
-            <div class="gallery-item" data-category="exterior">
-                <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="חוץ">
+                <!-- אזורי חוץ ונוף -->
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/1.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/10.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/16.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/23.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/25.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/26.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/27.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/29.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/31.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/32.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg" alt="אזורי חוץ ונוף">
+                </div>
+                <div class="gallery-item" data-category="exterior" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/36.jpg" alt="אזורי חוץ ונוף">
+                </div>
             </div>
         </div>
     </main>
 
+    <div id="imageModal" class="modal">
+        <span class="close" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
+        <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
+            <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
     <script>
-        // Mobile menu
-        const toggle = document.getElementById('mobileToggle');
-        const menu = document.querySelector('.nav-menu');
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 1200, once: true });
+            }
 
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
-            toggle.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('active');
-                toggle.classList.remove('active');
-            });
-        });
-
-        // Gallery filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.dataset.category;
-                
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                galleryItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
+            // Mobile menu
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                    toggle.classList.toggle('active');
                 });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.remove('active');
+                        toggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // Filter
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    galleryItems.forEach(item => {
+                        if (item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Start with pool
+            const poolBtn = document.querySelector('.filter-btn[data-category="pool"]');
+            if (poolBtn) poolBtn.click();
+
+            // Modal
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                });
+            });
+
+            closeModal.addEventListener('click', () => modal.style.display = 'none');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') modal.style.display = 'none';
             });
         });
     </script>
