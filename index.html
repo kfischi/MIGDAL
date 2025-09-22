@@ -3,590 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>מגדל של חיים - מתחם אירועים ונופש יוקרתי</title>
-    <meta name="description" content="מתחם אירועים ונופש יוקרתי במושב מגדל - מתחם גדול עם בריכה לשבתות חתן, אירועים משפחתיים וחופשות מושלמות בצפון.">
-    
+    <title>מגדל של חיים - אירוח ונופש ליד הכינרת</title>
+    <meta name="description" content="מתחם אירוח ונופש יוקרתי ליד הכינרת. בריכה, חדרים חלומיים, טבע, שלווה ונוף עוצר נשימה.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-bg: #0B192A;
-            --secondary-color: #4C72B0;
-            --text-color: #E0E0E0;
-            --font-family-heading: 'Playfair Display', serif;
-            --font-family-body: 'Heebo', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-family-body);
-            background: var(--primary-bg);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        .header-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(11, 25, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-        }
-
-        .logo {
-            font-family: var(--font-family-heading);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            background: linear-gradient(45deg, #FFF, var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
-            color: white;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(76, 114, 176, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 114, 176, 0.5);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .hamburger-line {
-            width: 30px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-            transform: rotate(-45deg) translate(-6px, 6px);
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-            transform: rotate(45deg) translate(-6px, -6px);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            object-fit: cover;
-            filter: brightness(1.1) contrast(1.2) saturate(1.1);
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(11, 25, 42, 0.7) 0%,
-                rgba(76, 114, 176, 0.3) 100%
-            );
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .hero-title {
-            font-family: var(--font-family-heading);
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-            color: white;
-            text-shadow: 
-                0 0 20px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(0, 0, 0, 0.7),
-                0 2px 4px rgba(0, 0, 0, 1);
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 20px rgba(0, 0, 0, 0.9),
-                    0 0 40px rgba(0, 0, 0, 0.7),
-                    0 2px 4px rgba(0, 0, 0, 1);
-                transform: scale(1);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 30px rgba(76, 114, 176, 0.8),
-                    0 0 60px rgba(76, 114, 176, 0.6),
-                    0 2px 4px rgba(0, 0, 0, 1);
-                transform: scale(1.02);
-            }
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            font-weight: 600;
-            color: white;
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
-            text-shadow: 
-                0 2px 8px rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(0, 0, 0, 0.8),
-                0 0 30px rgba(0, 0, 0, 0.7);
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 18px 45px;
-            background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 30px rgba(76, 114, 176, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .hero-cta:hover::before {
-            left: 100%;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(76, 114, 176, 0.6);
-        }
-
-        .hero-cta:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .section-padding {
-            padding: 6rem 1rem;
-        }
-        
-        .section-heading {
-            font-family: var(--font-family-heading);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            color: white;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(76, 114, 176, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(76, 114, 176, 0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            transform: scale(0.8);
-        }
-        
-        .feature-card:hover::before {
-            opacity: 1;
-            transform: scale(1.2) rotate(180deg);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(76, 114, 176, 0.4);
-            border-color: var(--secondary-color);
-        }
-
-        .icon-container {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(76, 114, 176, 0.2), rgba(76, 114, 176, 0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: var(--secondary-color);
-            font-size: 2.5rem;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .feature-card:hover .icon-container {
-            transform: rotateY(360deg) scale(1.15);
-            background: linear-gradient(135deg, rgba(76, 114, 176, 0.4), rgba(76, 114, 176, 0.2));
-            box-shadow: 0 0 30px rgba(76, 114, 176, 0.5);
-        }
-
-        .testimonial-card {
-            background: linear-gradient(135deg, #1A2E44 0%, #0F1F31 100%);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(76, 114, 176, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary-color);
-            box-shadow: 0 15px 30px rgba(76, 114, 176, 0.2);
-        }
-
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .floating-whatsapp:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: rgba(11, 25, 42, 0.98);
-                width: 100%;
-                padding: 20px;
-                transition: 0.3s;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu li {
-                padding: 15px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                width: 100%;
-                text-align: center;
-            }
-            
-            .hero-content {
-                padding: 2rem 1rem;
-            }
-        }
+        body { font-family: 'Heebo', sans-serif; background: #0B192A; color: #F2F2F2; }
+        .hero-title { font-family: 'Playfair Display', serif; }
+        .blur-bg { backdrop-filter: blur(12px); background: rgba(11,25,42,0.7);}
+        .card-bg { background: linear-gradient(135deg, #13345f 60%, #153a6a 100%);}
+        .section-bg { background: linear-gradient(120deg,#0B192A 50%, #183a5f 100%);}
+        .social-btn:hover { color: #4C72B0;}
     </style>
 </head>
 <body>
-
-    <header class="header-nav">
-        <nav class="nav-content">
-            <a href="index.html" class="logo">מגדל של חיים</a>
-            <ul class="nav-menu">
-                <li><a href="about.html">הסיפור שלנו</a></li>
-                <li><a href="gallery.html">גלריה</a></li>
-                <li><a href="contact.html" class="cta-button">הזמינו עכשיו</a></li>
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 blur-bg border-b border-white/10">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <a href="index.html" class="text-2xl hero-title font-bold text-white">מגדל של חיים</a>
+            <ul class="hidden md:flex gap-10 text-lg items-center">
+                <li><a href="about.html" class="hover:text-blue-400 transition">הסיפור שלנו</a></li>
+                <li><a href="gallery.html" class="hover:text-blue-400 transition">גלריה</a></li>
+                <li><a href="contact.html" class="bg-gradient-to-r from-blue-700 via-blue-500 to-green-400 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:scale-105 transition">הזמינו חוויה</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+            <button class="md:hidden text-white text-2xl" id="mobileOpen"><i class="fas fa-bars"></i></button>
         </nav>
+        <!-- Mobile Nav -->
+        <div class="fixed top-0 right-0 w-80 h-full bg-[#172a45] transition-all duration-300 shadow-lg z-40 flex flex-col gap-8 px-8 py-16 text-xl text-white rtl" id="mobileNav" style="right:-100%;">
+            <button class="self-end text-2xl mb-6" id="mobileClose"><i class="fas fa-times"></i></button>
+            <a href="about.html" class="mb-3 hover:text-blue-400 transition">הסיפור שלנו</a>
+            <a href="gallery.html" class="mb-3 hover:text-blue-400 transition">גלריה</a>
+            <a href="contact.html" class="bg-gradient-to-r from-blue-700 via-blue-500 to-green-400 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:scale-105 transition">הזמינו חוויה</a>
+            <div class="flex gap-6 mt-8 justify-center text-2xl">
+                <a href="#"><i class="fab fa-facebook social-btn"></i></a>
+                <a href="#"><i class="fab fa-instagram social-btn"></i></a>
+                <a href="#"><i class="fab fa-whatsapp social-btn"></i></a>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
-        <video autoplay muted loop playsinline class="video-background" id="heroVideo">
-            <source src="https://github.com/kfischi/MIGDAL/raw/main/gallery/migdal_video2.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-            <h1 class="hero-title">מגדל של חיים</h1>
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">מתחם אירועים ונופש יוקרתי</p>
-            <a href="contact.html" class="hero-cta" data-aos="zoom-in" data-aos-delay="600">הזמינו עכשיו</a>
+    <!-- HERO -->
+    <section class="section-bg min-h-[85vh] flex flex-col justify-center items-center pt-36 pb-24" data-aos="fade-up">
+        <div class="max-w-3xl text-center">
+            <h1 class="hero-title text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">מגדל של חיים</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-blue-300">אירוח, נופש ואירועים ליד הכינרת</h2>
+            <p class="text-lg md:text-xl mb-8 text-gray-100">ברוכים הבאים למתחם היוקרתי שלנו – שילוב מושלם של שלווה, טבע, נוף מרהיב ובריכה חלומית. לנופש משפחתי, אירועים פרטיים, סדנאות וימי גיבוש.</p>
+            <a href="contact.html" class="bg-gradient-to-r from-green-400 via-blue-500 to-blue-700 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition text-xl">הזמנה מהירה</a>
         </div>
     </section>
 
-    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-heading" data-aos="fade-up">למה לבחור בנו?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-container">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-center text-white">פרטיות מוחלטת</h3>
-                    <p class="text-center text-gray-300">מתחם פרטי המבטיח שקט ופרטיות מלאה לאירוע או חופשה משפחתית.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-container">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-center text-white">שירות אישי</h3>
-                    <p class="text-center text-gray-300">הצוות שלנו זמין עבורכם 24/7 כדי להבטיח שהחופשה שלכם תהיה מושלמת.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-container">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-center text-white">נוף עוצר נשימה</h3>
-                    <p class="text-center text-gray-300">ממוקם מול הכנרת והרי הגליל, לנוף פנורמי מדהים מכל פינה במתחם.</p>
-                </div>
+    <!-- FEATURES -->
+    <section class="py-20 px-4 max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-center" data-aos="fade-up">
+        <div class="card-bg p-8 rounded-2xl shadow-lg text-center">
+            <i class="fas fa-water text-5xl mb-4 text-blue-300"></i>
+            <h3 class="text-2xl font-bold mb-2">בריכה מפנקת</h3>
+            <p>בריכה גדולה, ג'קוזי, פינות ישיבה ומדשאות ירוקות.</p>
+        </div>
+        <div class="card-bg p-8 rounded-2xl shadow-lg text-center">
+            <i class="fas fa-bed text-5xl mb-4 text-blue-300"></i>
+            <h3 class="text-2xl font-bold mb-2">חדרי אירוח יוקרתיים</h3>
+            <p>חדרים מעוצבים, מטבח מאובזר, סלון מרווח ונוף עוצר נשימה.</p>
+        </div>
+        <div class="card-bg p-8 rounded-2xl shadow-lg text-center">
+            <i class="fas fa-users text-5xl mb-4 text-blue-300"></i>
+            <h3 class="text-2xl font-bold mb-2">אירועים וסדנאות</h3>
+            <p>מתאים לאירועים פרטיים, קבוצות, סדנאות וימי גיבוש.</p>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-16 section-bg">
+        <div class="max-w-4xl mx-auto text-center mb-10">
+            <h2 class="hero-title text-3xl font-bold mb-5 text-blue-200">לקוחות מספרים</h2>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
+            <div class="bg-white/10 p-8 rounded-xl shadow-lg max-w-md mx-auto" data-aos="fade-left">
+                <p class="text-lg mb-4">"חוויה מושלמת – המקום מהמם, הבריכה נקייה וגדולה, והצוות מדהים!"</p>
+                <span class="font-bold text-blue-300">רוית ב.</span>
+            </div>
+            <div class="bg-white/10 p-8 rounded-xl shadow-lg max-w-md mx-auto" data-aos="fade-right">
+                <p class="text-lg mb-4">"הגענו כל המשפחה, והיה פשוט מדהים! מומלץ בחום לכל סוגי האירוח."</p>
+                <span class="font-bold text-blue-300">אורן ש.</span>
             </div>
         </div>
     </section>
 
-    <section class="section-padding" style="background: #0B192A;">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="section-heading" data-aos="fade-up">מה האורחים שלנו אומרים?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-lg italic mb-4 text-gray-300">"חוויה מושלמת, המתחם מדהים והנוף עוצר נשימה. דאגו לנו לכל מה שצריך. תודה רבה על שבת חתן בלתי נשכחת."</p>
-                    <p class="font-bold text-white">- משפחת כהן</p>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <p class="text-lg italic mb-4 text-gray-300">"מקום מדהים ומפנק! הכל מוקפד עד הפרטים הקטנים, מהחדרים ועד הבריכה. נחזור בוודאות לחופשה הבאה."</p>
-                    <p class="font-bold text-white">- משפחת לוי</p>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                    <p class="text-lg italic mb-4 text-gray-300">"הרגשנו כמו בבית, רק יותר טוב! שירות מצוין, אווירה נהדרת והמון מקום לילדים לשחק. המטבח הכשר היה הצלה אמיתית."</p>
-                    <p class="font-bold text-white">- משפחת מזרחי</p>
-                </div>
-            </div>
+    <!-- CONTACT QUICK FORM -->
+    <section class="py-16 px-4 max-w-2xl mx-auto section-bg rounded-2xl shadow-xl" data-aos="fade-up">
+        <h2 class="hero-title text-2xl font-bold mb-6 text-blue-200 text-center">הזמינו עכשיו</h2>
+        <form class="flex flex-col gap-6 text-lg">
+            <input type="text" name="name" placeholder="שם מלא" required class="p-4 rounded-lg bg-white/20 text-white border-none outline-none">
+            <input type="tel" name="phone" placeholder="טלפון" required class="p-4 rounded-lg bg-white/20 text-white border-none outline-none">
+            <input type="email" name="email" placeholder="אימייל" class="p-4 rounded-lg bg-white/20 text-white border-none outline-none">
+            <textarea name="details" rows="3" placeholder="פרטים נוספים / סוג אירוח" class="p-4 rounded-lg bg-white/20 text-white border-none outline-none"></textarea>
+            <button type="submit" class="bg-gradient-to-r from-green-400 via-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg text-xl hover:scale-105 transition">שליחת פנייה</button>
+        </form>
+        <div class="flex gap-6 mt-8 justify-center text-2xl">
+            <a href="https://wa.me/972501234567" target="_blank" class="text-green-400 hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:0501234567" class="text-blue-400 hover:text-blue-500"><i class="fas fa-phone"></i></a>
         </div>
     </section>
 
-    <section class="section-padding" style="background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);">
-        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
-            <h2 class="section-heading text-white">החופשה הבאה שלכם מתחילה כאן</h2>
-            <p class="text-xl text-gray-300 mb-10">אנו מחכים לכם לחוויה בלתי נשכחת. צרו קשר עוד היום וקבלו הצעת מחיר מותאמת אישית.</p>
-            <a href="contact.html" class="hero-cta">הזמינו עכשיו</a>
-        </div>
-    </section>
-
-    <footer class="py-12 text-center" style="background: #0A1628;">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <a href="index.html" class="logo mb-4 md:mb-0">מגדל של חיים</a>
-                <div class="flex gap-6 text-3xl">
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <p class="text-gray-500">© 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center mt-12">
+        <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
+        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl">
+            <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
         </div>
     </footer>
-    
-    <a href="https://wa.me/972501234567" class="floating-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // AOS
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1200,
-                    once: true,
-                    easing: 'ease-out-cubic'
-                });
-            }
-
-            // Mobile menu
-            const toggle = document.getElementById('mobileToggle');
-            const menu = document.querySelector('.nav-menu');
-            
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                    toggle.classList.toggle('active');
-                });
-
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        menu.classList.remove('active');
-                        toggle.classList.remove('active');
-                    });
-                });
-            }
-
-            // Video
-            const video = document.getElementById('heroVideo');
-            if (video) {
-                video.playbackRate = 1.0;
-                video.addEventListener('loadeddata', () => {
-                    video.style.opacity = '1';
+        // AOS Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 1000, once: true });
+            // Mobile navigation
+            const openBtn = document.getElementById('mobileOpen');
+            const closeBtn = document.getElementById('mobileClose');
+            const nav = document.getElementById('mobileNav');
+            if (openBtn && closeBtn && nav) {
+                openBtn.onclick = () => nav.style.right = '0';
+                closeBtn.onclick = () => nav.style.right = '-100%';
+                document.querySelectorAll('#mobileNav a').forEach(link => {
+                    link.onclick = () => nav.style.right = '-100%';
                 });
             }
         });
