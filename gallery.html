@@ -35,6 +35,73 @@
             line-height: 1.6;
         }
 
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 25, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-family-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger-line {
+            width: 28px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 50vh;
             display: flex;
@@ -46,7 +113,9 @@
             background-image: url('https://raw.githubusercontent.com/kfischi/MIGDAL/main/gallery/33.jpg');
             background-size: cover;
             background-position: center;
+            margin-top: 70px;
         }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -57,6 +126,7 @@
             background: rgba(11, 25, 42, 0.3);
             z-index: 1;
         }
+
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -65,6 +135,7 @@
             position: relative;
             z-index: 10;
         }
+
         .hero-title {
             font-family: var(--font-family-heading);
             font-size: clamp(3rem, 10vw, 6rem);
@@ -72,9 +143,7 @@
             line-height: 0.9;
             margin-bottom: 2rem;
             color: white;
-            text-shadow: 
-                0 0 20px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.7);
             animation: titleFloat 4s ease-in-out infinite;
         }
 
@@ -83,6 +152,7 @@
             50% { transform: translateY(-10px); }
         }
 
+        /* Gallery Section */
         .gallery-section {
             padding: 60px 0 80px;
             background: linear-gradient(180deg, #0B192A 0%, #1A2E44 100%);
@@ -101,6 +171,7 @@
             margin-bottom: 3rem;
             padding-top: 20px;
         }
+
         .filter-btn {
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-color);
@@ -111,6 +182,7 @@
             cursor: pointer;
             font-weight: 600;
         }
+
         .filter-btn:hover, .filter-btn.active {
             background: linear-gradient(135deg, var(--secondary-color), #3C5D90);
             color: white;
@@ -118,11 +190,13 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(76, 114, 176, 0.3);
         }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
+
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -133,10 +207,12 @@
             background: linear-gradient(135deg, rgba(26, 46, 68, 0.3), rgba(15, 31, 49, 0.3));
             display: block;
         }
+
         .gallery-item:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 20px 40px rgba(76, 114, 176, 0.4);
         }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
@@ -144,9 +220,11 @@
             transition: transform 0.5s ease;
             cursor: pointer;
         }
+
         .gallery-item:hover img {
             transform: scale(1.15);
         }
+
         .video-container {
             width: 100%;
             aspect-ratio: 16/9;
@@ -155,10 +233,12 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
+
         .video-container video {
             width: 100%;
             height: 100%;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -170,6 +250,7 @@
             background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
         }
+
         .modal-content {
             position: relative;
             margin: auto;
@@ -179,6 +260,7 @@
             transform: translateY(-50%);
             animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
         .modal-content img {
             width: 100%;
             height: auto;
@@ -187,6 +269,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
+
         .close {
             position: absolute;
             top: 15px;
@@ -198,21 +281,91 @@
             cursor: pointer;
             z-index: 2001;
         }
+
         @keyframes modalSlideIn {
             from { opacity: 0; transform: translateY(-50%) scale(0.8); }
             to { opacity: 1; transform: translateY(-50%) scale(1); }
         }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(11, 25, 42, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: right 0.3s ease-in-out;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+                padding: 20px 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+
+            .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+                transform: rotate(-45deg) translate(-6px, 6px);
+            }
+
+            .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+                transform: rotate(45deg) translate(-6px, -6px);
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">מגדל של חיים</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">בית</a></li>
+                <li><a href="index.html#about" class="nav-link">אודות</a></li>
+                <li><a href="index.html#facilities" class="nav-link">מתקנים</a></li>
+                <li><a href="gallery.html" class="nav-link">גלריה</a></li>
+                <li><a href="index.html#contact" class="nav-link">יצירת קשר</a></li>
+            </ul>
 
+            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="תפריט ניווט" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero::before"></div>
         <div class="hero-container" data-aos="fade-up">
             <h1 class="hero-title">גלריית המתחם</h1>
         </div>
     </section>
 
+    <!-- Gallery Section -->
     <main class="gallery-section">
         <div class="container mx-auto px-4">
             <div class="video-container" data-aos="zoom-in">
@@ -222,7 +375,8 @@
             </div>
             
             <div class="filter-buttons">
-                <button class="filter-btn active" data-category="pool">בריכה ואזורי מים</button>
+                <button class="filter-btn active" data-category="all">הכל</button>
+                <button class="filter-btn" data-category="pool">בריכה ואזורי מים</button>
                 <button class="filter-btn" data-category="rooms">חדרי שינה ומגורים</button>
                 <button class="filter-btn" data-category="kitchen">מטבח ואוכל</button>
                 <button class="filter-btn" data-category="entertainment">פנאי ומשחקים</button>
@@ -351,6 +505,7 @@
         </div>
     </main>
 
+    <!-- Modal -->
     <div id="imageModal" class="modal">
         <span class="close" id="closeModal">&times;</span>
         <div class="modal-content">
@@ -358,9 +513,10 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
         <p>&copy; 2025 מגדל של חיים. כל הזכויות שמורות.</p>
-        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl footer-socials">
+        <div class="mt-4 flex justify-center space-x-4 rtl:space-x-reverse text-2xl">
             <a href="#" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook"></i></a>
             <a href="#" target="_blank" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
             <a href="#" target="_blank" aria-label="יוטיוב"><i class="fab fa-youtube"></i></a>
@@ -370,82 +526,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            try {
-                // Initialize AOS
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 1200,
-                        once: true,
-                    });
-                }
-
-                // Filter buttons
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const galleryItems = document.querySelectorAll('.gallery-item');
-
-                if (filterButtons.length > 0 && galleryItems.length > 0) {
-                    filterButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const category = this.getAttribute('data-category');
-                            
-                            // Remove active class from all buttons
-                            filterButtons.forEach(btn => btn.classList.remove('active'));
-                            
-                            // Add active class to clicked button
-                            this.classList.add('active');
-                            
-                            // Filter gallery items
-                            galleryItems.forEach(item => {
-                                if (item.getAttribute('data-category') === category) {
-                                    item.style.display = 'block';
-                                } else {
-                                    item.style.display = 'none';
-                                }
-                            });
-                        });
-                    });
-
-                    // Show all items by default
-                    galleryItems.forEach(item => {
-                        item.style.display = 'block';
-                    });
-                }
-
-                // Modal functionality
-                const modal = document.getElementById('imageModal');
-                const modalImg = document.getElementById('modalImage');
-                const closeModal = document.getElementById('closeModal');
-
-                if (modal && modalImg && closeModal) {
-                    const galleryImages = document.querySelectorAll('.gallery-item img');
-                    
-                    galleryImages.forEach(img => {
-                        img.addEventListener('click', function() {
-                            modal.style.display = 'block';
-                            modalImg.src = this.src;
-                            modalImg.alt = this.alt;
-                        });
-                    });
-
-                    closeModal.addEventListener('click', function() {
-                        modal.style.display = 'none';
-                    });
-
-                    modal.addEventListener('click', function(e) {
-                        if (e.target === modal) {
-                            modal.style.display = 'none';
-                        }
-                    });
-
-                    document.addEventListener('keydown', function(e) {
-                        if (e.key === 'Escape' && modal.style.display === 'block') {
-                            modal.style.display = 'none';
-                        }
-                    });
-                }
-            } catch (error) {
-                console.error('Error initializing gallery:', error);
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                });
             }
+
+            // Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    mobileToggle.classList.toggle('active');
+                    const isExpanded = navMenu.classList.contains('active');
+                    mobileToggle.setAttribute('aria-expanded', isExpanded);
+                });
+
+                // Close on link click
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', (e) => {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    galleryItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                });
+            });
+
+            closeModal.addEventListener('click', () => modal.style.display = 'none');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
